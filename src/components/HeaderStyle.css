@@ -1,0 +1,9 @@
+@media (max-width:767px){
+    .nav>li{
+        text-align: center
+    }
+ }
+
+ li {
+     color: green
+ }
