@@ -1,11 +1,11 @@
 let Footer = () => {
     return (
-        <footer className="text-center text-lg-start text-muted" style={{backgroundColor: "#fffee2"}}>    
+        <footer className="text-center text-lg-start text-muted" style={{borderTop: "#eaedf2 2px solid", marginTop: "40px"}}>    
             <section
-            className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+            className="d-flex justify-content-center justify-content-lg-between p-4"
              >
                 <div className="me-5 d-none d-lg-block">
-                    <span>עקבו אחרינו ברשתות החברתיות, כדי להיות הראשונים ששומעים על המבצעים שלנו</span>
+                    <span>עקבו אחרינו ברשתות החברתיות, כדי להיות הראשונים ששומעים על המבצעים שלנו    <i class="far fa-smile"></i></span>
                 </div>
 
                <div>
@@ -28,7 +28,7 @@ let Footer = () => {
 
             </section>
 
-            <div className="text-center p-3" style={{backgroundColor: "#fffee2"}}>
+            <div className="text-center p-3" style={{backgroundColor: "#f8f9fa"}}>
                 מעדנים מן הטבע 2021 © כל הזכויות שמורות
                          </div>
 

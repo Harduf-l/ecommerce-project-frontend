@@ -1,5 +1,8 @@
 import Cookies from './Cookies'
 import React from 'react'
+import cookie1 from '../pictures/cookie1.jpg'
+import cookie2 from '../pictures/cookie2.jpg'
+import cookie3 from '../pictures/cookie3.jpg'
 
 class Content extends React.Component{
 
@@ -7,15 +10,17 @@ class Content extends React.Component{
         super()
         this.state = {
             cookies: [{
-            header: "עוגיות גרנולה טעימות במיוחד!",
+            header: "עוגיות גרנולה טעימות במיוחד",
             description: "עוגיות מופלאות מרכיבים טבעיים בלבד.",
             moreDescription: "שיבולת שועל, סילאן, שוקולד מריר. כל הטוב שיש לטבע להציע...",
             loveIt: "תתכוננו להתאהב...",
-            price: '35',
+            info: "עבור שמירה על פריכותן המקסימלית של העוגיות, רצוי לשמור אותן בהקפאה. בנוסף, שיבולת שועל טובה ביותר לבריאות, ויש לצרוך אותה בשעות הבוקר, עם פירות טריים. שילוב זה מקנה אנרגיה לאורך כל היום. שיבולת השועל עשירה באשלגן, ויחד עם הוויטמינים המצויים בפירות, מהווים תצרוכת מיטבית לגופנו. הקינמון שלנו, יוסיף את מנת הברזל רצויה, וכך תהנו מארוחת בוקר שהגוף שלכם יודה לכם עליה.",
+            fixedPrice: 35,
+            price: 35,
             quantity: 1,
-            pic1: "https://www.livewellbakeoften.com/wp-content/uploads/2020/09/Apple-Oatmeal-Cookies-7-new.jpg",
-            pic2: "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_696,h_870/f_jpg,q_auto:eco,w_1500,c_fill,g_auto,ar_1:1/k%2FPhoto%2FRecipes%2F2020-12-jesse's-cookie-club-overnight-oat-cookies%2F2020-12-14_ATK39523",
-            pic3: "https://www.kitchensanctuary.com/wp-content/uploads/2014/10/Banana-Oat-Cookies-square-FS-1.jpg"
+            pic1: cookie1,
+            pic2: cookie2,
+            pic3: cookie3
             }]
         }
     }
@@ -23,13 +28,15 @@ class Content extends React.Component{
     plus = (index) => {
         let myCookieArray = this.state.cookies
         myCookieArray[index].quantity = myCookieArray[index].quantity + 1
+        myCookieArray[index].price =  myCookieArray[index].fixedPrice *  myCookieArray[index].quantity
         this.setState({cookies: myCookieArray})
     }
 
     minus = (index) => {
         let myCookieArray = this.state.cookies
-        if (myCookieArray[index].quantity > 0) {
+        if (myCookieArray[index].quantity > 1) {
             myCookieArray[index].quantity = myCookieArray[index].quantity-1
+            myCookieArray[index].price =  myCookieArray[index].fixedPrice *  myCookieArray[index].quantity
             this.setState({cookies: myCookieArray})
         }    
     }
@@ -39,7 +46,7 @@ class Content extends React.Component{
         return (
             <div>
             {this.state.cookies.map((cookie, index)=>{
-               return  <Cookies myid={index} foodContent={cookie} plus={this.plus} minus={this.minus}/>
+               return  <Cookies key={index} myid={index} foodContent={cookie} plus={this.plus} minus={this.minus}/>
             })}
            </div>
         )
