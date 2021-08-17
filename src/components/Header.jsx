@@ -14,7 +14,7 @@ let Header = () => {
           <a class="nav-link active" aria-current="page" href="/">Home page</a>
         </li>
         <li class="nav-item text-center">
-          <a class="nav-link" aria-current="page" href="/">about</a>
+          <a class="nav-link" aria-current="page" href="/">About</a>
         </li>
         <li class="nav-item text-center" >
           <a class="nav-link" href="/">login/register</a>

@@ -4,7 +4,7 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
     return(
         <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap">
          
-    <div className="me-2 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "400px"}}>
+    <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "400px"}}>
         <h4 style={{marginBottom: "20px"}}>{header}</h4>
         <div>{description}</div>
         <div>{moreDescription}</div>
