@@ -11,11 +11,11 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
         <p style={{color: "#6f0000" , marginTop: "22px"}}>{loveIt}<span><i className="fas fa-heart"></i></span></p>
         <div>price: {price}$</div>
         <br/>
-        <span>quantity:</span> 
+        <span className="me-1">quantity:</span> 
        
         <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={() => minus(myid)}> <i class="fas fa-minus"></i> </span> 
-        <span className="ps-1 pe-1">{quantity}</span>
-        <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "2px"}} onClick={() => plus(myid)}> <i class="fas fa-plus"></i> </span> 
+        <span className="ps-2 pe-2">{quantity}</span>
+        <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => plus(myid)}> <i class="fas fa-plus"></i> </span> 
 
         <div className="d-flex justify-content-start mt-5">
         <button className="btn btn-secondary  mb-1 mt-2 me-2">Add to cart</button>
