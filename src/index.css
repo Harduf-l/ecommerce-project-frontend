@@ -1,6 +1,3 @@
-* {
-  direction: rtl;
-}
 
 .mobile-space-carousel {
   margin-top: 50px;
@@ -10,11 +7,15 @@
 @media screen and (max-width: 967px) {
   .mobile-space-carousel {margin-top:0px; }
 
-  .bit-left-phone {margin-left: 50px; margin-bottom: 50px}
+  .bit-margin-phone {margin-bottom: 50px}
 
   }
 
-  @media screen and (max-width: 1280px) {
+  @media only screen and (max-width: 1085px) and (min-width: 991px)  {
+    .smaller-text-header {font-size: 14px}
+  }
+  
 
+  @media screen and (max-width: 1280px) {
     .dont-display {display: none}
     }

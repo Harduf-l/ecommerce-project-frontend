@@ -1,6 +1,6 @@
 let Header = () => {
     return (
-<nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid"}}>
+<nav class="navbar navbar-expand-lg navbar-light smaller-text-header" style={{borderBottom: "#eaedf2 2px solid"}}>
   <div class="container-fluid">
   <a className="navbar-brand" href="/">
         <span><i style={{fontSize: "50px", color: "#2e4e14"}}class="fas fa-spa"></i></span>
@@ -9,38 +9,41 @@ let Header = () => {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item text-center">
-          <a class="nav-link active" aria-current="page" href="/">דף הבית</a>
+          <a class="nav-link active" aria-current="page" href="/">Home page</a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link" aria-current="page" href="/">about</a>
         </li>
         <li class="nav-item text-center" >
-          <a class="nav-link" href="/">התחבר/הירשם</a>
+          <a class="nav-link" href="/">login/register</a>
         </li>
         <li class="nav-item text-center">
           <a class="nav-link" href="/"><i className="fas fa-shopping-cart"></i></a>
         </li>
       </ul>
 
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
         <li class="nav-item">
-          <a class="nav-link" href="/">עוגיות</a>
+          <a class="nav-link" href="/">cookies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">ממרחים</a>
+          <a class="nav-link" href="/">spreads</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">לחמים</a>
+          <a class="nav-link" href="/">breads</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">מזונות-על</a>
+          <a class="nav-link" href="/">superfoods</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">ויטמינים</a>
+          <a class="nav-link" href="/">vitamins</a>
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" style={{direction: "rtl"}} placeholder="אני רוצה לקנות..." aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">חפש</button>
+        <input class="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
+        <button class="btn btn-outline-success me-2" type="submit">search</button>
       </form>
     </div>
   </div>

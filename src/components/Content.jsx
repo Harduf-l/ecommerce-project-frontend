@@ -10,13 +10,13 @@ class Content extends React.Component{
         super()
         this.state = {
             cookies: [{
-            header: "עוגיות גרנולה טעימות במיוחד",
-            description: "עוגיות מופלאות מרכיבים טבעיים בלבד.",
-            moreDescription: "שיבולת שועל, סילאן, שוקולד מריר. כל הטוב שיש לטבע להציע...",
-            loveIt: "תתכוננו להתאהב...",
-            info: "עבור שמירה על פריכותן המקסימלית של העוגיות, רצוי לשמור אותן בהקפאה. בנוסף, שיבולת שועל טובה ביותר לבריאות, ויש לצרוך אותה בשעות הבוקר, עם פירות טריים. שילוב זה מקנה אנרגיה לאורך כל היום. שיבולת השועל עשירה באשלגן, ויחד עם הוויטמינים המצויים בפירות, מהווים תצרוכת מיטבית לגופנו. הקינמון שלנו, יוסיף את מנת הברזל רצויה, וכך תהנו מארוחת בוקר שהגוף שלכם יודה לכם עליה.",
-            fixedPrice: 35,
-            price: 35,
+            header: "Oats cookies",
+            description: "wonderful cookies, natural ingrediends only.",
+            moreDescription:   "oats, dates syrup, bitter sweet chocolat. everything nature can offer us.",
+            loveIt: "you are going to fall in love...",
+            info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
+            fixedPrice: 9,
+            price: 9,
             quantity: 1,
             pic1: cookie1,
             pic2: cookie2,

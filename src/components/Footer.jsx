@@ -5,7 +5,7 @@ let Footer = () => {
             className="d-flex justify-content-center justify-content-lg-between p-4"
              >
                 <div className="me-5 d-none d-lg-block">
-                    <span>עקבו אחרינו ברשתות החברתיות, כדי להיות הראשונים ששומעים על המבצעים שלנו    <i class="far fa-smile"></i></span>
+                    <span>follow us to be the first who hear about our awesome discounts! <i class="far fa-smile"></i></span>
                 </div>
 
                <div>
@@ -29,7 +29,7 @@ let Footer = () => {
             </section>
 
             <div className="text-center p-3" style={{backgroundColor: "#f8f9fa"}}>
-                מעדנים מן הטבע 2021 © כל הזכויות שמורות
+            Taste From Heaven © 2021 all rights reserved 
                          </div>
 
         </footer>  

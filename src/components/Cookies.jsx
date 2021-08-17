@@ -2,23 +2,24 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
     let {header, description, moreDescription, info, loveIt, price, pic1, pic2, pic3, quantity} = foodContent
     console.log(header, )
     return(
-        <div id="bigfoodDiv" className="d-flex justify-content-around flex-wrap">
+        <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap">
          
-    <div className="me-5 mt-5 p-5 bit-left-phone" style={{backgroundColor: "#f2f5f3", height: "400px"}}>
+    <div className="me-2 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "400px"}}>
         <h4 style={{marginBottom: "20px"}}>{header}</h4>
         <div>{description}</div>
         <div>{moreDescription}</div>
         <p style={{color: "#6f0000" , marginTop: "22px"}}>{loveIt}<span><i className="fas fa-heart"></i></span></p>
-        <div>מחיר: {price} ש"ח</div>
+        <div>price: {price}$</div>
         <br/>
-        <span style={{marginLeft: "10px"}}>כמות:</span> 
-        <span style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px"}} onClick={() => plus(myid)}> <i class="fas fa-plus"></i> </span> 
-        <span className="ps-2 pe-2">{quantity}</span>
-        <span style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => minus(myid)}> <i class="fas fa-minus"></i> </span> 
+        <span>quantity:</span> 
+       
+        <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={() => minus(myid)}> <i class="fas fa-minus"></i> </span> 
+        <span className="ps-1 pe-1">{quantity}</span>
+        <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "2px"}} onClick={() => plus(myid)}> <i class="fas fa-plus"></i> </span> 
 
         <div className="d-flex justify-content-start mt-5">
-        <button className="btn btn-secondary btn-sm mb-1 mt-2 ms-2">הוספה לסל</button>
-        <button className="btn btn-danger btn-sm mb-1 mt-2">הוספה למועדפים</button>
+        <button className="btn btn-secondary  mb-1 mt-2 me-2">Add to cart</button>
+        <button className="btn btn-danger mb-1 mt-2">Add to favorites</button>
         </div>
     </div>
 
@@ -49,9 +50,9 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
   </button>
 </div>
 
-<div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid", width: "250px", padding: "0px 10px", height: "400px"}} className="dont-display mt-5 ms-5">
-<h5 className="mt-4" style={{textAlign: "center"}}>חשוב לדעת</h5>
-<p className="mt-2"  style={{textAlign: "center", fontSize: "15.5px",}}>{info}</p>
+<div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid", width: "250px", padding: "0px 10px", height: "400px"}} className="dont-display mt-5 ms-3">
+<h5 className="mt-3" style={{textAlign: "center"}}>important to know</h5>
+<p className="mt-3"  style={{textAlign: "center", fontSize: "17px",}}>{info}</p>
 </div>
 
 </div>
