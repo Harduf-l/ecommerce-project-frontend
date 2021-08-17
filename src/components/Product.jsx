@@ -1,5 +1,8 @@
-let Cookies = ({foodContent, myid, plus, minus}) => {
+let Product = ({foodContent, myid, plus, minus}) => {
     let {header, description, moreDescription, info, loveIt, price, pic1, pic2, pic3, quantity} = foodContent
+    let pictureCarouselStyle = {width: "350px", height: "400px", objectFit: "cover"}
+
+
     console.log(header, )
     return(
         <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap">
@@ -31,13 +34,13 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src={pic1} class="d-block w-100" alt="..."/>
+      <img style={pictureCarouselStyle} src={pic1} class="d-block w-100" alt="..."/>
     </div>
     <div class="carousel-item">
-      <img src={pic2} class="d-block w-100" alt="..."/>
+      <img style={pictureCarouselStyle} src={pic2} class="d-block w-100" alt="..."/>
     </div>
     <div class="carousel-item">
-      <img src={pic3} class="d-block w-100" alt="..."/>
+      <img style={pictureCarouselStyle} src={pic3} class="d-block w-100" alt="..."/>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -59,4 +62,4 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
     )
 }
 
-export default Cookies;
+export default Product;
