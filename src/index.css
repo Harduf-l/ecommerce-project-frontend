@@ -2,15 +2,15 @@
   direction: rtl;
 }
 
-.mobile-space {
+.mobile-space-carousel {
   margin-top: 50px;
 }
 
 
-@media screen and (max-width: 767px) {
-  .mobile-space {margin-top:0px; }
+@media screen and (max-width: 967px) {
+  .mobile-space-carousel {margin-top:0px; }
 
-  .mobile-top-no-space {margin-top: -50px;}
+  .bit-left-phone {margin-left: 50px; margin-bottom: 50px}
 
   }
 

@@ -2,9 +2,9 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
     let {header, description, moreDescription, info, loveIt, price, pic1, pic2, pic3, quantity} = foodContent
     console.log(header, )
     return(
-        <div id="bigfoodDiv" className="d-flex justify-content-around flex-wrap mobile-top-no-space">
+        <div id="bigfoodDiv" className="d-flex justify-content-around flex-wrap">
          
-    <div className="me-5 mt-5 p-5" style={{backgroundColor: "#f2f5f3", height: "400px"}}>
+    <div className="me-5 mt-5 p-5 bit-left-phone" style={{backgroundColor: "#f2f5f3", height: "400px"}}>
         <h4 style={{marginBottom: "20px"}}>{header}</h4>
         <div>{description}</div>
         <div>{moreDescription}</div>
@@ -22,7 +22,7 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
         </div>
     </div>
 
-    <div id="carouselExampleIndicators" class="carousel slide mobile-space" data-bs-ride="carousel" style={{width: "400px"}}>
+    <div id="carouselExampleIndicators" class="carousel slide mobile-space-carousel" data-bs-ride="carousel" style={{width: "400px"}}>
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -50,8 +50,8 @@ let Cookies = ({foodContent, myid, plus, minus}) => {
 </div>
 
 <div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid", width: "250px", padding: "0px 10px", height: "400px"}} className="dont-display mt-5 ms-5">
-<h5 className="mt-3" style={{textAlign: "center"}}>חשוב לדעת</h5>
-<p className="mt-3 me-2" style={{textAlign: "center", fontSize: "15.5px"}}>{info}</p>
+<h5 className="mt-4" style={{textAlign: "center"}}>חשוב לדעת</h5>
+<p className="mt-2"  style={{textAlign: "center", fontSize: "15.5px",}}>{info}</p>
 </div>
 
 </div>
