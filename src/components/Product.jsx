@@ -5,7 +5,7 @@ let Product = ({foodContent, myid, plus, minus}) => {
 
     console.log(header, )
     return(
-        <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap">
+        <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap" style={{marginBottom: "150px"}}>
          
     <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "400px", width: "540px"}}>
         <h4 style={{marginBottom: "20px"}}>{header}</h4>

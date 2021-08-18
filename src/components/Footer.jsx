@@ -1,6 +1,20 @@
 let Footer = () => {
+
+    let footerStyle = {
+    borderTop: "#eaedf2 2px solid", 
+    marginTop: "40px",
+    position: "fixed",
+    height: "120px",
+    bottom: "0px",
+    left: "0px",
+    right: "0px",
+    marginBottom: "0px",
+    backgroundColor: "#f0f0f0",
+    color: "white"
+    }
+
     return (
-        <footer className="text-center text-lg-start text-muted" style={{borderTop: "#eaedf2 2px solid", marginTop: "40px"}}>    
+        <footer className="text-center text-lg-start text-muted" style={footerStyle}>    
             <section
             className="d-flex justify-content-center justify-content-lg-between p-4"
              >
@@ -21,16 +35,13 @@ let Footer = () => {
             <a href="/" className="ms-4 text-reset">
                 <i className="fab fa-instagram"></i>
             </a>
-    </div>
-
-
-
+               </div>
 
             </section>
 
             <div className="text-center p-3" style={{backgroundColor: "#f8f9fa"}}>
             Taste From Heaven © 2021 all rights reserved 
-                         </div>
+             </div>
 
         </footer>  
     )

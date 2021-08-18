@@ -4,7 +4,7 @@ let pictureCategoryStyle = {width: "350px", height: "220px", objectFit: "cover",
 let infoStyle = {color: "white", backgroundColor: "rgba(143,147,151, 0.6)", position: "absolute", fontSize: "30px", marginLeft: "70px", marginTop: "100px"}
 
     return (
-        <div className="container flex-wrap d-flex justify-content-around mt-4">
+        <div className="container flex-wrap d-flex justify-content-around mt-4" style={{marginBottom: "150px"}}>
         <a href={links[0]}><p style={infoStyle}>{infotext[0]}</p><img style={pictureCategoryStyle} alt={infotext[0]} src={mypictures[0]}/></a>
         <a href={links[1]}><p style={infoStyle}>{infotext[1]}</p><img style={pictureCategoryStyle} alt={infotext[1]} src={mypictures[1]}/></a>
         <a href={links[2]}><p style={infoStyle}>{infotext[2]}</p><img style={pictureCategoryStyle} alt={infotext[2]} src={mypictures[2]}/></a>
