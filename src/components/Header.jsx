@@ -1,6 +1,6 @@
 let Header = () => {
     return (
-<nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid"}}>
+<nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid", fontSize: "1.3vw"}}>
   <div class="container-fluid">
   <a className="navbar-brand ms-2" href="/">
         <span><i style={{fontSize: "50px", color: "#e64723"}}class="fas fa-spa"></i></span>

@@ -7,10 +7,14 @@ import 'bootstrap/dist/js/bootstrap.bundle'
 
 function App() {
   return (
-    <div>
-      <Header/>
-      <Content/>
-      <Footer/>
+    <div id="htmldiv">
+      <div id="bodydiv">
+          <Header/>
+          <Content/>
+      </div>
+      <div id="footerdiv">
+          <Footer/>
+      </div>
     </div>
   );
 }
