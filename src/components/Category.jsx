@@ -1,7 +1,7 @@
 let Category = ({info}) => {
 let {mypictures, infotext, links} = info
 let pictureCategoryStyle = {height: "40vh", objectFit: "cover", margin: "8px"}
-let infoStyle = {color: "white", backgroundColor: "rgba(143,147,151, 0.6)", position: "absolute", left: "200px", top: "100px", zIndex: "999"}
+let infoStyle = {color: "white", backgroundColor: "rgba(143,147,151, 0.6)", position: "absolute", display: "none"}
 let outerLinkstyle = { marginBottom: "30px", position: "relative"}
 
     return (
