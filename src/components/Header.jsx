@@ -1,6 +1,6 @@
 let Header = () => {
     return (
-<nav class="navbar navbar-expand-lg navbar-light smaller-text-header" style={{borderBottom: "#eaedf2 2px solid"}}>
+<nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid"}}>
   <div class="container-fluid">
   <a className="navbar-brand ms-2" href="/">
         <span><i style={{fontSize: "50px", color: "#e64723"}}class="fas fa-spa"></i></span>
@@ -36,9 +36,6 @@ let Header = () => {
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/superfoods">superfoods</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/vitamins">vitamins</a>
         </li>
       </ul>
       <form class="d-flex">

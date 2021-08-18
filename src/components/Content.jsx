@@ -36,6 +36,15 @@ import bread1 from '../pictures/bread/baguette.jpg'
 import bread2 from '../pictures/bread/spelt-bread.jpg'
 import bread3 from '../pictures/bread/sprouted-bread.jpg'
 import bread4 from '../pictures/bread/whole-wheat-bread.jpg'
+import bread5 from '../pictures/bread/french-bread.jpg'
+import bread6 from '../pictures/bread/white.jpg'
+
+import berries from '../pictures/superfood/berries.jpg'
+import cacao_seeds from '../pictures/superfood/cacao-seeds.jpg'
+import chia from '../pictures/superfood/chia.png'
+import goji_berry from '../pictures/superfood/goji-berry.jpg'
+import maca_powder from '../pictures/superfood/maca-powder.jpg'
+import spirulina from '../pictures/superfood/Spirulina.jpg'
 
 
 import Catergory from './Category'
@@ -59,9 +68,14 @@ class Content extends React.Component{
                 infotext: ["walnut butter", "chocolate butter", "nut butter", "pistachop butter", "cashew butter",  "peanut butter"]
             },
             {
-                mypictures: [bread1,bread2,bread3,bread4 ],
-                links: ["/walnut-butter", "/chocolate-butter" , "/nut-butter", "/pistachio-butter"],
-                infotext: ["walnut butter", "chocolate butter", "nut butter", "pistachop butter"]
+                mypictures: [bread1,bread2,bread3,bread4,bread5,bread6 ],
+                links: ["/baguette", "/seeds-bread" , "/spelt-bread", "/rye-bread", "/french-bread", "/white-bread"],
+                infotext: ["baguette", "seeds bread", "spelt bread", "rye bread", "french bread", "white bread"]
+            },
+            {
+                mypictures: [berries,cacao_seeds,chia,goji_berry,maca_powder,spirulina ],
+                links: ["/berries", "/cacao-seeds" , "/chia-seeds", "/goji-berry", "/maca-powder", "/spirulina"],
+                infotext: ["berries", "cacao seeds", "chia seeds", "goji berry", "maca powder", "spirulina"]
             }
         
         
@@ -73,6 +87,7 @@ class Content extends React.Component{
             loveIt: "you are going to fall in love...",
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 9,
+            previousPrice: 13,
             price: 9,
             quantity: 1,
             pic1: cookie_granola1,
@@ -86,6 +101,7 @@ class Content extends React.Component{
             loveIt: "Those chocolate cookies will melt your heart...",
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
+            previousPrice: 13,
             price: 8,
             quantity: 1,
             pic1: cookie_chocolate1,
@@ -99,6 +115,7 @@ class Content extends React.Component{
             loveIt: "we are sure you are going to like it...",
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
+            previousPrice: 13,
             price: 8,
             quantity: 1,
             pic1: cookie_surprise1,
@@ -112,6 +129,7 @@ class Content extends React.Component{
             loveIt: "cookies that feel so divine...",
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
+            previousPrice: 13,
             price: 8,
             quantity: 1,
             pic1: cookie_lemon1,
@@ -125,6 +143,7 @@ class Content extends React.Component{
             loveIt: "Those blissful cookies are going to be your new favorite...",
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
+            previousPrice: 13,
             price: 8,
             quantity: 1,
             pic1: cookie_bliss1,
@@ -138,6 +157,7 @@ class Content extends React.Component{
             loveIt: "You will not forget them...",
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
+            previousPrice: 13,
             price: 8,
             quantity: 1,
             pic1: cookie_coconut1,
@@ -180,6 +200,9 @@ class Content extends React.Component{
                 </Route>
                 <Route path="/breads">
                     <Catergory info={this.state.categories[2]}/>
+                </Route>
+                <Route path="/superfoods">
+                    <Catergory info={this.state.categories[3]}/>
                 </Route>
                 <Route path="/granole-cookie">
                  <Product myid={0} foodContent={this.state.cookies[0]} plus={this.plus} minus={this.minus}/>

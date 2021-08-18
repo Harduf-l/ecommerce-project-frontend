@@ -1,5 +1,5 @@
 let Product = ({foodContent, myid, plus, minus}) => {
-    let {header, description, moreDescription, info, loveIt, price, pic1, pic2, pic3, quantity} = foodContent
+    let {header, description, moreDescription, info, loveIt, price,previousPrice, pic1, pic2, pic3, quantity} = foodContent
     let pictureCarouselStyle = {width: "350px", height: "400px", objectFit: "cover"}
 
 
@@ -7,12 +7,13 @@ let Product = ({foodContent, myid, plus, minus}) => {
     return(
         <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap">
          
-    <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "400px"}}>
+    <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "400px", width: "540px"}}>
         <h4 style={{marginBottom: "20px"}}>{header}</h4>
         <div>{description}</div>
         <div>{moreDescription}</div>
         <p style={{color: "#6f0000" , marginTop: "22px"}}>{loveIt}<span><i className="fas fa-heart"></i></span></p>
-        <div>price: {price}$</div>
+        <div  style={{textDecoration: "line-through"}}>original price: <span>{previousPrice}$</span></div>
+        <div style={{fontWeight: "bold", color: "#e64723"}}>sale price: {price}$</div>
         <br/>
         <span className="me-1">quantity:</span> 
        
@@ -20,7 +21,7 @@ let Product = ({foodContent, myid, plus, minus}) => {
         <span className="ps-2 pe-2">{quantity}</span>
         <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => plus(myid)}> <i class="fas fa-plus"></i> </span> 
 
-        <div className="d-flex justify-content-start mt-5">
+        <div className="d-flex justify-content-start mt-4">
         <button className="btn btn-secondary  mb-1 mt-2 me-2">Add to cart</button>
         <button className="btn btn-danger mb-1 mt-2">Add to favorites</button>
         </div>

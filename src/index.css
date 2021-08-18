@@ -17,10 +17,10 @@
 
 }
 
-  @media only screen and (max-width: 1085px) and (min-width: 991px)  {
+  /* @media only screen and (max-width: 1085px) and (min-width: 991px)  {
     .smaller-text-header {font-size: 14px}
   }
-  
+   */
 
   @media screen and (max-width: 1280px) {
     .dont-display {display: none}
