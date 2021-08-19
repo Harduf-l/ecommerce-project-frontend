@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Product from './Product'
 import SearchDisplay from './SearchDisplay'
+import CatalogForm from './CatalogForm'
 import Header from './Header'
 import React from 'react'
+
 
 
 import cookie_granola1 from '../pictures/cookies/cookie1.jpg'
@@ -121,7 +123,7 @@ class Content extends React.Component{
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
             previousPrice: 13,
-            price: 8,
+            price: 10,
             quantity: 1,
             pic1: cookie_surprise1,
             pic2: cookie_surprise2,
@@ -135,7 +137,7 @@ class Content extends React.Component{
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
             previousPrice: 13,
-            price: 8,
+            price: 12,
             quantity: 1,
             pic1: cookie_lemon1,
             pic2: cookie_lemon2,
@@ -149,7 +151,7 @@ class Content extends React.Component{
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
             previousPrice: 13,
-            price: 8,
+            price: 11,
             quantity: 1,
             pic1: cookie_bliss1,
             pic2: cookie_bliss2,
@@ -163,7 +165,7 @@ class Content extends React.Component{
             info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             fixedPrice: 8,
             previousPrice: 13,
-            price: 8,
+            price: 7,
             quantity: 1,
             pic1: cookie_coconut1,
             pic2: cookie_coconut2,
@@ -271,6 +273,14 @@ class Content extends React.Component{
         this.setState({filteredCookie: filteredArray })
     }
 
+    filterbyPrice = (e) => {
+    let currentArray = this.state.cookies
+    if (e.target.checked) {
+    currentArray = currentArray.sort((a, b) => (a.price > b.price) ? 1 : -1)
+    this.setState({filteredCookie: currentArray })
+    }
+    }
+
 
     plus = (index) => {
         let myCookieArray = this.state.cookies
@@ -300,9 +310,12 @@ class Content extends React.Component{
                     <Catergory info={this.state.categories[0]}/>
                 </Route>
                 <Route path="/catalog">
+                    <CatalogForm filterbyPrice={this.filterbyPrice}/>
+                    <div className="d-flex flex-wrap mt-3 justify-content-center">
                     {this.state.filteredCookie.map((cookie, index)=>{
                        return  <SearchDisplay myid={index} foodContent={cookie} plus={this.plus} minus={this.minus}  />
                     })}
+                    </div>
                 </Route>
                 <Route path="/spreads">
                     <Catergory info={this.state.categories[1]}/>

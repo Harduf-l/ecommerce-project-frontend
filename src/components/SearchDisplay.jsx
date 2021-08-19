@@ -4,7 +4,7 @@ let SearchDisplay = ({foodContent, myid, plus, minus}) => {
 
 return(
 
-<div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap mt-3" style={{height: "100px"}}>
+<div id="bigfoodDiv" style={{height: "230px", marginBottom: "40px",}} >
        
 <div className="me-3 mb-1 mt-2 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "400px", width: "540px"}}>
     <h4 style={{marginBottom: "20px"}}>{header}</h4>
