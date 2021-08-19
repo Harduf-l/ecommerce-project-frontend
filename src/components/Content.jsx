@@ -1,6 +1,10 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Product from './Product'
+import SearchDisplay from './SearchDisplay'
+import Header from './Header'
 import React from 'react'
+
+
 import cookie_granola1 from '../pictures/cookies/cookie1.jpg'
 import cookie_granola2 from '../pictures/cookies/cookie2.jpg'
 import cookie_granola3 from '../pictures/cookies/cookie3.jpg'
@@ -56,6 +60,7 @@ class Content extends React.Component{
 
     constructor() {
         super()
+
         this.state = {
             categories: [{
                 mypictures: [ cookie_granola1, cookie_chocolate1, cookie_bliss1, cookie_coconut1, cookie_lemon1,cookie_surprise1],
@@ -164,11 +169,24 @@ class Content extends React.Component{
             pic2: cookie_coconut2,
             pic3: cookie_coconut3
             }
-            ]
+            ],
+            filterWord: "",
+            filteredCookie: []
         }
 
 
     }
+
+    saveWordFilter = (e) => {
+        let newWord = e.target.value
+        let currentArray = this.state.cookies
+        console.log(currentArray)
+        let filteredArray = currentArray.filter(cookie => cookie.header.toLowerCase().includes(newWord))
+        console.log(filteredArray)
+
+        this.setState({filteredCookie: filteredArray })
+    }
+
 
     plus = (index) => {
         let myCookieArray = this.state.cookies
@@ -188,12 +206,19 @@ class Content extends React.Component{
 
 
         return (
+
             <Router>
+                <Header saveWord={this.saveWordFilter}/>
               {/* A <Switch> looks through its children <Route>s and
                   renders the first one that matches the current URL. */}
               <Switch>
                 <Route path="/cookies">
                     <Catergory info={this.state.categories[0]}/>
+                </Route>
+                <Route path="/catalog">
+                    {this.state.filteredCookie.map((cookie, index)=>{
+                       return  <Product myid={index} foodContent={cookie} plus={this.plus} minus={this.minus}  />
+                    })}
                 </Route>
                 <Route path="/spreads">
                     <Catergory info={this.state.categories[1]}/>
@@ -211,7 +236,6 @@ class Content extends React.Component{
                  <Product myid={1} foodContent={this.state.cookies[1]} plus={this.plus} minus={this.minus}/>
                 </Route>
                 <Route path="/blissful-cookie">
-                 <Product myid={4} foodContent={this.state.cookies[4]} plus={this.plus} minus={this.minus}/>
                 </Route>
                 <Route path="/coconute-cookie">
                  <Product myid={5} foodContent={this.state.cookies[5]} plus={this.plus} minus={this.minus}/>

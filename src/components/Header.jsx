@@ -1,4 +1,4 @@
-let Header = () => {
+let Header = (props) => {
     return (
 <nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid", fontSize: "1.3vw"}}>
   <div class="container-fluid">
@@ -37,11 +37,15 @@ let Header = () => {
         <li class="nav-item">
           <a class="nav-link" href="/superfoods">superfoods</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/catalog">catalog</a>
+        </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
-        <button class="btn btn-outline-success me-2" type="submit">search</button>
-      </form>
+      <div class="d-flex">
+        
+        <input class="me-2" type="search" placeholder="i would like to buy..." onChange={(e) => props.saveWord(e)}aria-label="Search"/>
+        <a href="/search"><button class="btn btn-outline-success me-2" type="submit" onClick={(e) => props.searchbar(e)}>search</button></a>
+      </div>
     </div>
   </div>
 </nav>

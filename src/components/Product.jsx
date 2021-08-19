@@ -4,13 +4,13 @@ let Product = ({foodContent, myid, plus, minus}) => {
 
 return(
 
-<div id="bigfoodDiv" className="container">
-  <div className="row">
+<div id="bigfoodDiv" className="flex d-flex row" style={{display: ""}}>
+  <div className="pt-5">
          
-          <div className="col-sm-12 col-md-6 col-lg-5" style={{backgroundColor: "#f2f5f3"}}>
+          <div className="" style={{backgroundColor: "#f2f5f3"}}>
             <div className="mt-4 ms-4">
-              <h4 style={{marginBottom: "20px", fontSize: "12px"}}>{header}</h4>
-              <div style={{fontSize: "12px"}}>
+              <h4 style={{marginBottom: "20px", fontSize: "22px"}}>{header}</h4>
+              <div style={{fontSize: "18px"}}>
                 <div>{description}</div>
                 <div>{moreDescription}</div>
                 <p style={{color: "#6f0000" , marginTop: "22px"}}>{loveIt}<span><i className="fas fa-heart"></i></span></p>
@@ -31,7 +31,7 @@ return(
             </div>
           </div>
 
-           <div id="carouselExampleIndicators" className="carousel slide col-sm-12 col-md-6 col-lg-4" data-bs-ride="carousel">
+           <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -39,13 +39,13 @@ return(
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img style={pictureCarouselStyle} src={pic1} class="d-block w-100" alt="..."/>
+                    <img style={pictureCarouselStyle} src={pic1} className=" d-inline w-100" alt="..."/>
                   </div>
                   <div class="carousel-item">
-                    <img style={pictureCarouselStyle} src={pic2} class="d-block w-100" alt="..."/>
+                    <img style={pictureCarouselStyle} src={pic2} className=" d-inline w-100" alt="..."/>
                   </div>
                   <div class="carousel-item">
-                    <img style={pictureCarouselStyle} src={pic3} class="d-block w-100" alt="..."/>
+                    <img style={pictureCarouselStyle} src={pic3} className="  d-inline w-100" alt="..."/>
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -58,9 +58,9 @@ return(
                 </button>
             </div>
 
-            <div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid"}} className="col-md-12 col-sm-12 col-lg-3">
-                <h5 className="mt-3" style={{textAlign: "center", fontSize: "12px"}}>important to know</h5>
-                <p className="mt-3"  style={{textAlign: "center", fontSize: "12px",}}>{info}</p>
+            <div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid"}} className="">
+                <h5 className="mt-3" style={{textAlign: "center", fontSize: "22px"}}>important to know</h5>
+                <p className="mt-3"  style={{textAlign: "center", fontSize: "18px",}}>{info}</p>
             </div>
 
   </div>
