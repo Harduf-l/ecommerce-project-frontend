@@ -1,6 +1,5 @@
 let SearchDisplay = ({foodContent, myid, plus, minus}) => {
-  let {header, description, moreDescription, info, loveIt, price,previousPrice, pic1, pic2, pic3, quantity} = foodContent
-  let pictureCarouselStyle = {objectFit: "cover", height: "70vh"}
+  let {header, description, moreDescription, loveIt, price,previousPrice} = foodContent
 
 return(
 

@@ -275,10 +275,19 @@ class Content extends React.Component{
 
     filterbyPrice = (e) => {
     let currentArray = this.state.cookies
-    if (e.target.checked) {
-    currentArray = currentArray.sort((a, b) => (a.price > b.price) ? 1 : -1)
-    this.setState({filteredCookie: currentArray })
+    if (e.target.id === "pricelower") {
+        if (e.target.checked) {
+            currentArray = currentArray.sort((a, b) => (a.price > b.price) ? 1 : -1)
+            this.setState({filteredCookie: currentArray })
+        }   
     }
+    else if (e.target.id === "pricehigher") {
+        if (e.target.checked) {
+            currentArray = currentArray.sort((a, b) => (b.price > a.price) ? 1 : -1)
+            this.setState({filteredCookie: currentArray })
+        }   
+    }
+
     }
 
 
