@@ -171,7 +171,91 @@ class Content extends React.Component{
             }
             ],
             filterWord: "",
-            filteredCookie: []
+            filteredCookie: [{
+                header: "Oats cookies",
+                description: "wonderful cookies, natural ingrediends only.",
+                moreDescription:   "oats, dates syrup, bitter sweet chocolat. everything nature can offer us.",
+                loveIt: "you are going to fall in love...",
+                info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
+                fixedPrice: 9,
+                previousPrice: 13,
+                price: 9,
+                quantity: 1,
+                pic1: cookie_granola1,
+                pic2: cookie_granola2,
+                pic3: cookie_granola3
+                },
+                {
+                header: "Chocolate cookies",
+                description: "chocolate cookies, for children and adults alike.",
+                moreDescription:   "special texture that feel so smooth. only natural ingredients.",
+                loveIt: "Those chocolate cookies will melt your heart...",
+                info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
+                fixedPrice: 8,
+                previousPrice: 13,
+                price: 8,
+                quantity: 1,
+                pic1: cookie_chocolate1,
+                pic2: cookie_chocolate2 ,
+                pic3: cookie_chocolate3
+                },
+                {
+                header: "Surprise cookies",
+                description: "everyone likes surprises. don't tell us otherwise.",
+                moreDescription:   "les us choose for you, a natural based cookies with an edge.",
+                loveIt: "we are sure you are going to like it...",
+                info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
+                fixedPrice: 8,
+                previousPrice: 13,
+                price: 8,
+                quantity: 1,
+                pic1: cookie_surprise1,
+                pic2: cookie_surprise2,
+                pic3: cookie_surprise3
+                },
+                {
+                header: "Lemon cookies",
+                description: "sophisticated yet delicate.",
+                moreDescription:   "an airy cookie with pure lemon extract. very sour, beware.",
+                loveIt: "cookies that feel so divine...",
+                info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
+                fixedPrice: 8,
+                previousPrice: 13,
+                price: 8,
+                quantity: 1,
+                pic1: cookie_lemon1,
+                pic2: cookie_lemon2,
+                pic3: cookie_lemon3
+                },
+                {
+                header: "Bliss cookies",
+                description: "rasphery and vanilla, a mix made in heaven",
+                moreDescription:   "special texture that feel so smooth. only natural ingredients.",
+                loveIt: "Those blissful cookies are going to be your new favorite...",
+                info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
+                fixedPrice: 8,
+                previousPrice: 13,
+                price: 8,
+                quantity: 1,
+                pic1: cookie_bliss1,
+                pic2: cookie_bliss2,
+                pic3: cookie_bliss3
+                },
+                {
+                header: "Coconut cookies",
+                description: "coconut cookies, try someting new.",
+                moreDescription:   "smooth texture with whole pieces of coconut. only natural ingredients.",
+                loveIt: "You will not forget them...",
+                info: "In order to keep cookies fresh as possible, please keep them in the refrigerator. as well, please notice oats are best eaten with fruits, in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
+                fixedPrice: 8,
+                previousPrice: 13,
+                price: 8,
+                quantity: 1,
+                pic1: cookie_coconut1,
+                pic2: cookie_coconut2,
+                pic3: cookie_coconut3
+                }
+                ]
         }
 
 
@@ -217,7 +301,7 @@ class Content extends React.Component{
                 </Route>
                 <Route path="/catalog">
                     {this.state.filteredCookie.map((cookie, index)=>{
-                       return  <Product myid={index} foodContent={cookie} plus={this.plus} minus={this.minus}  />
+                       return  <SearchDisplay myid={index} foodContent={cookie} plus={this.plus} minus={this.minus}  />
                     })}
                 </Route>
                 <Route path="/spreads">
