@@ -4,9 +4,9 @@ let Product = ({foodContent, myid, plus, minus}) => {
 
 return(
 
-  <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap" style={{marginBottom: "150px"}}>
+  <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap">
          
-  <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "400px", width: "540px"}}>
+  <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "70vh", width: "540px"}}>
       <h4 style={{marginBottom: "20px"}}>{header}</h4>
       <div>{description}</div>
       <div>{moreDescription}</div>
@@ -22,7 +22,7 @@ return(
 
       <div className="d-flex justify-content-start mt-4">
       <button className="btn btn-secondary  mb-1 mt-2 me-2">Add to cart</button>
-      <button className="btn btn-danger mb-1 mt-2">Add to favorites</button>
+      <button className="btn mb-1 mt-2" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
       </div>
   </div>
 
@@ -53,7 +53,7 @@ return(
 </button>
 </div>
 
-<div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid", width: "250px", padding: "0px 10px", height: "400px"}} className="dont-display mt-5 ms-3">
+<div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid", width: "250px", padding: "0px 10px", height: "70vh"}} className="dont-display mt-5 ms-3">
 <h5 className="mt-3" style={{textAlign: "center"}}>important to know</h5>
 <p className="mt-3"  style={{textAlign: "center", fontSize: "17px",}}>{info}</p>
 </div>
