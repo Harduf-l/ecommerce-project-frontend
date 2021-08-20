@@ -1,14 +1,26 @@
+import vegan_pic from '../pictures/baners/natural.png'
+import lowcarb_pic from '../pictures/baners/paleo.png'
+
+
 let Product = ({foodContent, myid, plus, minus}) => {
-    let {header, description, moreDescription, info, loveIt, price,previousPrice, pic1, pic2, pic3, quantity} = foodContent
+    let {header, description, moreDescription, info, vegan, lowcarb, loveIt, price,previousPrice, pic1, pic2, pic3, quantity} = foodContent
     let pictureCarouselStyle = {objectFit: "cover", height: "70vh"}
+
 
 return(
 
   <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap">
          
-  <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", height: "70vh", width: "540px"}}>
+  <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", width: "540px"}}>
+    
+    <div style={{marginBottom: "30px"}}>
       <h4 style={{marginBottom: "20px"}}>{header}</h4>
-      <div>{description}</div>
+
+         {vegan && <img style={{padding: "2px"}}src={vegan_pic} alt="vegan"/>}
+         {lowcarb && <img style={{padding: "2px"}} src={lowcarb_pic} alt="lowcarb"/>}
+
+
+      <div style={{marginTop:"10px"}}>{description}</div>
       <div>{moreDescription}</div>
       <p style={{color: "#6f0000" , marginTop: "22px"}}>{loveIt}<span><i className="fas fa-heart"></i></span></p>
       <div  style={{textDecoration: "line-through"}}>original price: <span>{previousPrice}$</span></div>
@@ -18,13 +30,25 @@ return(
      
       <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={() => minus(myid)}> <i class="fas fa-minus"></i> </span> 
       <span className="ps-2 pe-2">{quantity}</span>
-      <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => plus(myid)}> <i class="fas fa-plus"></i> </span> 
-
-      <div className="d-flex justify-content-start mt-4">
-      <button className="btn btn-secondary  mb-1 mt-2 me-2">Add to cart</button>
+      <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px"}} onClick={() => plus(myid)}> <i class="fas fa-plus"></i> </span> 
+      <button className="btn btn-secondary  ms-4 mb-1 mt-2 me-2">Add to cart</button>
       <button className="btn mb-1 mt-2" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
-      </div>
+    </div>
+
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+   <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        storage & delivery info
+      </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+       <div class="accordion-body">In order to keep cookies fresh as possible, please keep them in the refrigerator.<br/><br/> Delivery free worldwide. </div>
+     </div>
   </div>
+  </div>
+
+</div>
 
   <div id="carouselExampleIndicators" class="carousel slide mobile-space-carousel" data-bs-ride="carousel" style={{width: "400px"}}>
 <div class="carousel-indicators">
@@ -53,7 +77,7 @@ return(
 </button>
 </div>
 
-<div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid", width: "250px", padding: "0px 10px", height: "70vh"}} className="dont-display mt-5 ms-3">
+<div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid", width: "250px", padding: "0px 10px"}} className="dont-display mt-5 ms-3">
 <h5 className="mt-3" style={{textAlign: "center"}}>important to know</h5>
 <p className="mt-3"  style={{textAlign: "center", fontSize: "17px",}}>{info}</p>
 </div>

@@ -75,7 +75,7 @@ const allProducts = {
             pic2: cookie_chocolate2 ,
             pic3: cookie_chocolate3,
             vegan: false,
-            lowcarb: false
+            lowcarb: true
             },
             {
             header: "Surprise cookies",

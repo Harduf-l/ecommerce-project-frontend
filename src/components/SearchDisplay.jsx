@@ -3,7 +3,7 @@ import lowcarb_pic from '../pictures/baners/paleo.png'
 
 
 let SearchDisplay = ({foodContent,myid, plus, minus}) => {
-  let {header, description, pic1,vegan, lowcarb, price,previousPrice, } = foodContent
+  let {header, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
 
 return(
 
@@ -22,7 +22,7 @@ return(
 
     <div className="col-6">
       <div>{description}</div>
-      <div  style={{textDecoration: "line-through"}}>original price: <span>{previousPrice}$</span></div>
+      <div style={{textDecoration: "line-through"}}>original price: <span>{previousPrice}$</span></div>
       <div style={{fontWeight: "bold", color: "#e64723"}}>sale price: {price}$</div>
     </div>
 

@@ -1,5 +1,6 @@
 let Header = () => {
     return (
+
 <nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid", fontSize: "16px"}}>
   <div class="container-fluid">
   <a className="navbar-brand ms-2" href="/">
@@ -48,8 +49,13 @@ let Header = () => {
     </div>
   </div>
 </nav>
+
     )
 
 }
 
 export default Header
+
+
+
+
