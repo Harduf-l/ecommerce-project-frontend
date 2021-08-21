@@ -13,7 +13,7 @@ class Product extends React.Component {
     super(props)
     this.state= {
       currentpicture: this.props.foodContent.pic1, 
-      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", boxShadow: " 0 0 8px rgba(230,71,35, 1)"},
+      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "1px solid #fe4c4c", boxShadow: " 0 0 8px rgba(230,71,35, 1)"},
       stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
       stylepicture3: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
 
@@ -21,7 +21,7 @@ class Product extends React.Component {
 
     this.changePic = (e) => {
       console.log(e.target.id)
-      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", boxShadow: " 0 0 8px rgba(230,71,35, 1)"}
+      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px",border: "1px solid #fe4c4c", boxShadow: " 0 0 8px rgba(230,71,35, 1)"}
       const regularStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"}
 
       switch(e.target.id) {
