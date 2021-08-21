@@ -64,7 +64,7 @@ class Product extends React.Component {
 
 <div id="bigfoodDiv" className=" container d-flex justify-content-center flex-wrap pt-5">
 
-  <div className="col-12 col-lg-5 col-md-6 pe-2">
+  <div className="col-12 col-lg-5 col-md-6 pe-2 ps-md-0 ps-3">
 
      <div className="pb-4">Home / {category} / {header}</div>
 
@@ -131,7 +131,7 @@ class Product extends React.Component {
 
         <div>
           <h4 style={{paddingBottom: "10px"}}>importatnt to know...</h4> 
-          {info}
+          <div style={{width: "90%", margin: "0 auto"}}>{info}</div>
         </div>
 
         <div className="pt-5 ps-2"  style={{}}>
