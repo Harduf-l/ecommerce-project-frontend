@@ -60,7 +60,8 @@ const allProducts = {
             pic2: cookie_granola2,
             pic3: cookie_granola3,
             vegan: true,
-            lowcarb: false
+            lowcarb: false,
+            category: "cookies"
             },
             {
             header: "Chocolate cookies",
@@ -75,7 +76,8 @@ const allProducts = {
             pic2: cookie_chocolate2 ,
             pic3: cookie_chocolate3,
             vegan: false,
-            lowcarb: true
+            lowcarb: true,
+            category: "cookies"
             },
             {
             header: "Surprise cookies",
@@ -90,7 +92,8 @@ const allProducts = {
             pic2: cookie_surprise2,
             pic3: cookie_surprise3,
             vegan: false,
-            lowcarb: false
+            lowcarb: false,
+            category: "cookies"
             },
             {
             header: "Lemon cookies",
@@ -105,7 +108,8 @@ const allProducts = {
             pic2: cookie_lemon2,
             pic3: cookie_lemon3,
             vegan: false,
-            lowcarb: false
+            lowcarb: false,
+            category: "cookies"
             },
             {
             header: "Bliss cookies",
@@ -120,7 +124,8 @@ const allProducts = {
             pic2: cookie_bliss2,
             pic3: cookie_bliss3,
             vegan: true,
-            lowcarb: false
+            lowcarb: false,
+            category: "cookies"
             },
             {
             header: "Coconut cookies",
@@ -135,7 +140,8 @@ const allProducts = {
             pic2: cookie_coconut2,
             pic3: cookie_coconut3,
             vegan: false,
-            lowcarb: false
+            lowcarb: false,
+            category: "cookies"
             }
     ],
     spreads: [
@@ -151,6 +157,7 @@ const allProducts = {
             pic1: walnut_butter1 ,
             vegan: true,
             lowcarb: true,
+            category: "spreads"
             },
             {
             header: "Peanuts spread",
@@ -164,6 +171,7 @@ const allProducts = {
             pic1: peanut_spread1,
             vegan: true,
             lowcarb: true,
+            category: "spreads"
             },
             {
             header: "Nuts spread",
@@ -177,6 +185,7 @@ const allProducts = {
             pic1: nut_spread1,
             vegan: true,
             lowcarb: true,
+            category: "spreads"
             },
             {
             header: "Pistachio butter",
@@ -190,6 +199,7 @@ const allProducts = {
             pic1: pistachio_buuter,
             vegan: true,
             lowcarb: true,
+            category: "spreads"
             },
             {
             header: "Cashew butter",
@@ -203,6 +213,7 @@ const allProducts = {
             pic1: cashew_butter,
             vegan: true,
             lowcarb: true,
+            category: "spreads"
             },
             {
             header: "Chocolate butter",
@@ -216,6 +227,7 @@ const allProducts = {
             pic1: chocolate_butter,
             vegan: true,
             lowcarb: true,
+            category: "spreads"
             }
     ],
     breads: [
@@ -231,6 +243,7 @@ const allProducts = {
             pic1: bread1 ,
             vegan: true,
             lowcarb: false,
+            category: "breads"
             },
             {
             header: "seeds bread",
@@ -244,6 +257,7 @@ const allProducts = {
             pic1: bread2,
             vegan: true,
             lowcarb: false,
+            category: "breads",
             },
             {
             header: "spelt bread",
@@ -257,6 +271,7 @@ const allProducts = {
             pic1: bread3,
             vegan: true,
             lowcarb: false,
+            category: "breads",
             },
             {
             header: "rye bread",
@@ -270,6 +285,7 @@ const allProducts = {
             pic1: bread4,
             vegan: true,
             lowcarb: false,
+            category: "breads",
             },
             {
             header: "white bread",
@@ -283,6 +299,7 @@ const allProducts = {
             pic1: bread5,
             vegan: true,
             lowcarb: false,
+            category: "breads",
             },
             {
             header: "french bread",
@@ -296,6 +313,7 @@ const allProducts = {
             pic1: bread6,
             vegan: true,
             lowcarb: false,
+            category: "breads",
             }
     ],
     superfood: [
@@ -311,6 +329,7 @@ const allProducts = {
             pic1: berries ,
             vegan: true,
             lowcarb: false,
+            category: "superfood",
             },
             {
             header: "cacao seeds",
@@ -324,6 +343,7 @@ const allProducts = {
             pic1: cacao_seeds,
             vegan: true,
             lowcarb: true,
+            category: "superfood",
             },
             {
             header: "chia seeds",
@@ -337,6 +357,7 @@ const allProducts = {
             pic1: chia,
             vegan: true,
             lowcarb: true,
+            category: "superfood",
             },
             {
             header: "goji berry",
@@ -350,6 +371,7 @@ const allProducts = {
             pic1: goji_berry,
             vegan: true,
             lowcarb: true,
+            category: "superfood",
             },
             {
             header: "maca powder",
@@ -363,6 +385,7 @@ const allProducts = {
             pic1: maca_powder,
             vegan: true,
             lowcarb: true,
+            category: "superfood",
             },
             {
             header: "spirulina",
@@ -376,6 +399,7 @@ const allProducts = {
             pic1: spirulina,
             vegan: true,
             lowcarb: true,
+            category: "superfood",
             }
     ]
   }

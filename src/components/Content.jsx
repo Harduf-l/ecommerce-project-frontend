@@ -196,12 +196,22 @@ class Content extends React.Component{
             currentArray = this.backFilteredByCategory()
         }
        
-        if (e.target.value === "vegan" && e.target.checked) {
-            currentArray = currentArray.filter(product => product.vegan === true)
-            this.setState({filteredProducts: currentArray })
-        } else if (e.target.value === "lowcarb"  && e.target.checked) {
+        if (e.target.value === "vegan") {
+            if (e.target.checked) {
+                currentArray = currentArray.filter(product => product.vegan === true)
+                this.setState({filteredProducts: currentArray })
+                this.setState({vaganOn: true})
+            } else {
+                this.setState({vaganOn: false})
+            }
+        } else if (e.target.value === "lowcarb") {
+            if (e.target.checked) {
             currentArray = currentArray.filter(product => product.lowcarb === true)
             this.setState({filteredProducts: currentArray }) 
+            this.setState({lowcarbOn: true})
+            }else {
+                this.setState({lowcarbOn: false})
+            }
         } 
 
         this.setState({filteredProducts: currentArray }) 

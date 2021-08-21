@@ -1,25 +1,78 @@
 import vegan_pic from '../pictures/baners/natural.png'
 import lowcarb_pic from '../pictures/baners/paleo.png'
+import fair from '../pictures/baners/fairtrade.png'
+import organic from '../pictures/baners/organic.png'
+import React from 'react'
 
 
-let Product = ({foodContent, myid, plus, minus}) => {
-    let {header, description, moreDescription, info, vegan, lowcarb, loveIt, price,previousPrice, pic1, pic2, pic3, quantity} = foodContent
-    let pictureCarouselStyle = {objectFit: "cover", height: "70vh"}
+class Product extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state= {
+      currentpicture: this.props.foodContent.pic1, 
+      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", boxShadow: " 0 0 8px rgba(230,71,35, 1)"},
+      stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
+      stylepicture3: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
 
-return(
+    }
 
-  <div id="bigfoodDiv" className="d-flex justify-content-center flex-wrap">
-         
-  <div className="me-3 mt-5 p-5 bit-margin-phone" style={{backgroundColor: "#f2f5f3", width: "540px"}}>
-    
-    <div style={{marginBottom: "30px"}}>
+    this.changePic = (e) => {
+      console.log(e.target.id)
+      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", boxShadow: " 0 0 8px rgba(230,71,35, 1)"}
+      const regularStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"}
+
+      switch(e.target.id) {
+        case "pic1":
+          this.setState({currentpicture: this.props.foodContent.pic1})
+          this.setState({stylepicture1: specialStyle})
+          this.setState({stylepicture2: regularStyle})
+          this.setState({stylepicture3: regularStyle})
+
+          break;
+        case "pic2":
+          this.setState({currentpicture: this.props.foodContent.pic2})
+          this.setState({stylepicture1: regularStyle})
+          this.setState({stylepicture2: specialStyle})
+          this.setState({stylepicture3: regularStyle})
+
+          break;
+        case "pic3":
+          this.setState({currentpicture: this.props.foodContent.pic3})
+          this.setState({stylepicture1: regularStyle})
+          this.setState({stylepicture2: regularStyle})
+          this.setState({stylepicture3: specialStyle})
+
+          break;
+        default:
+          break; 
+      }
+    }
+  }
+  
+
+    render() {
+
+  let {header, description, category, moreDescription, info, vegan, lowcarb, loveIt, price,previousPrice, pic1, pic2, pic3, quantity} = this.props.foodContent
+      let myid = this.props.myid
+      let plus = this.props.plus
+      let minus = this.props.minus
+
+    return (
+
+      
+
+<div id="bigfoodDiv" className=" container d-flex justify-content-center flex-wrap pt-5">
+
+  <div className="col-12 col-lg-5 col-md-6 pe-2">
+
+     <div className="pb-4">Home / {category} / {header}</div>
+
       <h4 style={{marginBottom: "20px"}}>{header}</h4>
-
-         {vegan && <img style={{padding: "2px"}}src={vegan_pic} alt="vegan"/>}
-         {lowcarb && <img style={{padding: "2px"}} src={lowcarb_pic} alt="lowcarb"/>}
-
-
+  
+      {vegan && <img style={{padding: "2px"}}src={vegan_pic} alt="vegan"/>}
+      {lowcarb && <img style={{padding: "2px"}} src={lowcarb_pic} alt="lowcarb"/>}
+  
       <div style={{marginTop:"10px"}}>{description}</div>
       <div>{moreDescription}</div>
       <p style={{color: "#6f0000" , marginTop: "22px"}}>{loveIt}<span><i className="fas fa-heart"></i></span></p>
@@ -27,63 +80,78 @@ return(
       <div style={{fontWeight: "bold", color: "#e64723"}}>sale price: {price}$</div>
       <br/>
       <span className="me-1">quantity:</span> 
-     
+        
       <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={() => minus(myid)}> <i class="fas fa-minus"></i> </span> 
       <span className="ps-2 pe-2">{quantity}</span>
       <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px"}} onClick={() => plus(myid)}> <i class="fas fa-plus"></i> </span> 
       <button className="btn btn-secondary  ms-4 mb-1 mt-2 me-2">Add to cart</button>
       <button className="btn mb-1 mt-2" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
+
+
+            <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              storage & delivery information
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">In order to keep cookies fresh as possible, please keep them in the refrigerator.<br/><br/> Delivery free worldwide.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              reviews
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">very tasty!</div>
+          </div>
+        </div>
+      </div>
+
+        
+        
     </div>
 
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-   <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        storage & delivery info
-      </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-       <div class="accordion-body">In order to keep cookies fresh as possible, please keep them in the refrigerator.<br/><br/> Delivery free worldwide. </div>
-     </div>
-  </div>
-  </div>
+       <div className="col-12 col-lg-4 col-md-6 pt-3 pt-md-0">
 
-</div>
+            <img className="col-12" src={this.state.currentpicture} style={{height: "400px", objectFit: "cover" }} alt="product"/>
+        <div className="col-12" style={{display: "inline-block", textAlign: "center", marginTop: "20px"}}>
+          <img src={pic1} onMouseOver={(e) => this.changePic(e)} id="pic1" style={this.state.stylepicture1} alt="product"/>
+          <img src={pic2} onMouseOver={(e) => this.changePic(e)} id="pic2" style={this.state.stylepicture2} alt="product"/>
+          <img src={pic3} onMouseOver={(e) => this.changePic(e)} id="pic3" style={this.state.stylepicture3} alt="product"/>
+        </div>
 
-  <div id="carouselExampleIndicators" class="carousel slide mobile-space-carousel" data-bs-ride="carousel" style={{width: "400px"}}>
-<div class="carousel-indicators">
-  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-</div>
-<div class="carousel-inner">
-  <div class="carousel-item active">
-    <img style={pictureCarouselStyle} src={pic1} class="d-block w-100" alt="..."/>
-  </div>
-  <div class="carousel-item">
-    <img style={pictureCarouselStyle} src={pic2} class="d-block w-100" alt="..."/>
-  </div>
-  <div class="carousel-item">
-    <img style={pictureCarouselStyle} src={pic3} class="d-block w-100" alt="..."/>
-  </div>
-</div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Next</span>
-</button>
-</div>
+        </div>
 
-<div style={{ backgroundColor: "#f2f5f3", border: "3px #f2f5f3 solid", width: "250px", padding: "0px 10px"}} className="dont-display mt-5 ms-3">
-<h5 className="mt-3" style={{textAlign: "center"}}>important to know</h5>
-<p className="mt-3"  style={{textAlign: "center", fontSize: "17px",}}>{info}</p>
-</div>
 
+  <div className="col-lg-3 col-12 ps-3 pt-4 pt-lg-0" style={{textAlign: "center"}}>
+
+        <div>
+          <h4 style={{paddingBottom: "10px"}}>importatnt to know...</h4> 
+          {info}
+        </div>
+
+        <div className="pt-5 ps-2"  style={{}}>
+          <img style={{width: "150px"}} src={organic}/> 
+          <img style={{width: "100px"}} src={fair}/> 
+        </div>
+
+    </div>
+       
 </div>
     )
+
 }
 
+}
+
+
 export default Product;
+
+
+
+
+
