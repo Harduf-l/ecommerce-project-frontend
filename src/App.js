@@ -1,4 +1,6 @@
 import './App.css';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
+
 import Content from './components/Content'
 import Footer from './components/Footer'
 import Header from './components/Header'

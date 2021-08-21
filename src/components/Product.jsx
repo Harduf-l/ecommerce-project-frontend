@@ -1,3 +1,5 @@
+import InnerImageZoom from 'react-inner-image-zoom'
+
 import vegan_pic from '../pictures/baners/natural.png'
 import lowcarb_pic from '../pictures/baners/paleo.png'
 import fair from '../pictures/baners/fairtrade.png'
@@ -117,7 +119,11 @@ class Product extends React.Component {
 
        <div className="col-12 col-lg-4 col-md-6 pt-3 pt-md-0">
 
-            <img className="col-12" src={this.state.currentpicture} style={{height: "400px", objectFit: "cover" }} alt="product"/>
+       <div style={{textAlign: "center"}}>
+        <InnerImageZoom src={this.state.currentpicture} hasSpacer={true} height={450} width={400}/>
+      </div>
+
+
         <div className="col-12" style={{display: "inline-block", textAlign: "center", marginTop: "20px"}}>
           <img src={pic1} onMouseOver={(e) => this.changePic(e)} id="pic1" style={this.state.stylepicture1} alt="product"/>
           <img src={pic2} onMouseOver={(e) => this.changePic(e)} id="pic2" style={this.state.stylepicture2} alt="product"/>
