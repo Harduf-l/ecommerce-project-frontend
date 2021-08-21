@@ -136,7 +136,7 @@ class Product extends React.Component {
   <div className="col-lg-3 col-12 ps-3 pt-4 pt-lg-0" style={{textAlign: "center"}}>
 
         <div>
-          <h4 style={{paddingBottom: "10px"}}>important to know...!</h4> 
+          <h4 style={{paddingBottom: "10px"}}>important to know...</h4> 
           <div style={{width: "90%", margin: "0 auto"}}>{info}</div>
         </div>
 
