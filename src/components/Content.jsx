@@ -280,12 +280,18 @@ class Content extends React.Component{
                     <Catergory info={this.state.categories[0]}/>
                 </Route>
                 <Route path="/catalog">
+                <div class="row">
+                    <div className="col-lg-3 col-12">
                     <CatalogForm filterbyCategory={this.filterbyCategory} filterbySpecialPeople={this.filterbySpecialPeople} filterbyPrice={this.filterbyPrice} filterbyPriceRange={this.filterbyPriceRange} saveWord={this.saveWordFilter}/>
-                    <div className="d-flex flex-wrap mt-3 justify-content-center">
+                    </div>
+
+                    <div className="col-lg-9 col-12  d-flex flex-wrap mt-3 justify-content-center">
                     {this.state.filteredProducts.map((cookie, index)=>{
                        return  <SearchDisplay myid={index} foodContent={cookie} />
                     })}
                     </div>
+                </div>
+             
                 </Route>
                 <Route path="/spreads">
                     <Catergory info={this.state.categories[1]}/>

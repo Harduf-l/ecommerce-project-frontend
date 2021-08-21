@@ -2,12 +2,12 @@ import vegan_pic from '../pictures/baners/natural.png'
 import lowcarb_pic from '../pictures/baners/paleo.png'
 
 
-let SearchDisplay = ({foodContent,myid, plus, minus}) => {
+let SearchDisplay = ({foodContent}) => {
   let {header, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
 
 return(
 
-<div className="container col-lg-4 col-md-6 col-12" style={{border: "#f2f5f3 3px solid",  marginBottom: "20px"}}>
+<div className="container col-lg-4 col-md-6 col-10" style={{border: "#f2f5f3 1px solid", marginBottom: "10px"}}>
 
   <div className="row">
 
@@ -27,7 +27,7 @@ return(
     </div>
 
     <div className="col-6">
-    <img src={pic1} alt={header} style={{height: "150px", width: "150px", objectFit: "cover", borderRadius: "20px", marginLeft: "20px", marginTop: "-90px"}}/>
+    <img src={pic1} alt={header} style={{height: "120px", width: "120px", objectFit: "cover", borderRadius: "20px", marginTop: "-40px"}}/>
     </div>
 
   </div>
