@@ -144,6 +144,7 @@ class Product extends React.Component {
         <div className="pt-5 ps-2"  style={{}}>
           <img style={{width: "150px"}} src={organic}/> 
           <img style={{width: "100px"}} src={fair}/> 
+          <h1>pa!!!</h1>
         </div>
 
     </div>
