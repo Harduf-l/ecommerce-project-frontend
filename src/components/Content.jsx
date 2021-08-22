@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import Product from './Product'
 import SearchDisplay from './SearchDisplay'
@@ -273,8 +273,7 @@ class Content extends React.Component{
         return (
             
             <Router>
-              {/* A <Switch> looks through its children <Route>s and
-                  renders the first one that matches the current URL. */}
+                     <div>  
               <Switch>
                 <Route path="/cookies">
                     <Catergory info={this.state.categories[0]}/>
@@ -343,6 +342,7 @@ class Content extends React.Component{
                 </Route>
                 <Route component={Page404}/>
               </Switch>
+              </div>
           </Router>
 
 

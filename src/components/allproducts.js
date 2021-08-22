@@ -217,7 +217,7 @@ const allProducts = {
             },
             {
             header: "Chocolate butter",
-            description: "chocolate spread - the healthy version",
+            description: "chocolate spread, the healthy version",
             moreDescription:   "80% nuts, rest bitter-sweet chocolate. you can be sure you give your children the best.",
             loveIt: "kids going mad!",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -233,7 +233,7 @@ const allProducts = {
     breads: [
         {
             header: "baguette",
-            description: "wonderful walnuts spread.",
+            description: "a french baguette that never lets you down.",
             moreDescription:   "natural toasted walnuts.",
             loveIt: "you are going to fall in love...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -247,7 +247,7 @@ const allProducts = {
             },
             {
             header: "seeds bread",
-            description: "Home made peanuts spread.",
+            description: "very rich bread with lots of helthy seeds",
             moreDescription:   "special texture that feel so smooth. only natural ingredients.",
             loveIt: "This natural butter will melt your heart...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -261,7 +261,7 @@ const allProducts = {
             },
             {
             header: "spelt bread",
-            description: "nuts are the best.",
+            description: "spelt is a high-quality grain",
             moreDescription:   "les us choose for you, a natural based butter.",
             loveIt: "we are sure you are going to like it...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -275,7 +275,7 @@ const allProducts = {
             },
             {
             header: "rye bread",
-            description: "sophisticated yet delicate.",
+            description: "rye bread with a great dense texture.",
             moreDescription:   "a unique butter that tastes like heaven.",
             loveIt: "this spread is so divine...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -289,7 +289,7 @@ const allProducts = {
             },
             {
             header: "white bread",
-            description: "cashews are liked by everyone.",
+            description: "white dreamy bread, no need for extra words.",
             moreDescription:   "special texture that feel so smooth. only natural ingredients.",
             loveIt: "This creamy spread is going to be your new favorite...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -303,7 +303,7 @@ const allProducts = {
             },
             {
             header: "french bread",
-            description: "chocolate spread - the healthy version",
+            description: "french bread is great for kids and adults alike.",
             moreDescription:   "80% nuts, rest bitter-sweet chocolate. you can be sure you give your children the best.",
             loveIt: "kids going mad!",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -319,7 +319,7 @@ const allProducts = {
     superfood: [
         {
             header: "berries",
-            description: "wonderful walnuts spread.",
+            description: "wonderful fresh berries.",
             moreDescription:   "natural toasted walnuts.",
             loveIt: "you are going to fall in love...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -333,7 +333,7 @@ const allProducts = {
             },
             {
             header: "cacao seeds",
-            description: "Home made peanuts spread.",
+            description: "so intensive, the mother of all chocolate.",
             moreDescription:   "special texture that feel so smooth. only natural ingredients.",
             loveIt: "This natural butter will melt your heart...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -347,7 +347,7 @@ const allProducts = {
             },
             {
             header: "chia seeds",
-            description: "nuts are the best.",
+            description: "our chia seeds will improve your digestion.",
             moreDescription:   "les us choose for you, a natural based butter.",
             loveIt: "we are sure you are going to like it...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -361,7 +361,7 @@ const allProducts = {
             },
             {
             header: "goji berry",
-            description: "sophisticated yet delicate.",
+            description: "intense taste, for the brave ones.",
             moreDescription:   "a unique butter that tastes like heaven.",
             loveIt: "this spread is so divine...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -375,7 +375,7 @@ const allProducts = {
             },
             {
             header: "maca powder",
-            description: "cashews are liked by everyone.",
+            description: "our maca powder will increase your energy level.",
             moreDescription:   "special texture that feel so smooth. only natural ingredients.",
             loveIt: "This creamy spread is going to be your new favorite...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
@@ -389,7 +389,7 @@ const allProducts = {
             },
             {
             header: "spirulina",
-            description: "chocolate spread - the healthy version",
+            description: "spirulina is best for general health improvement.",
             moreDescription:   "80% nuts, rest bitter-sweet chocolate. you can be sure you give your children the best.",
             loveIt: "kids going mad!",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
