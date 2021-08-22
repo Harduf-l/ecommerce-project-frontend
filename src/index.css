@@ -56,3 +56,33 @@ box-sizing: border-box;
 
     }
 
+    .gotoProduct:hover {
+      background-color: #8fa663;
+      color: white; 
+      border: 1px solid white;
+      text-decoration: none;
+    }
+
+    .gotoProduct{
+      background-color: #d3d3d3; 
+      border: 1px solid white;
+      text-decoration: none;
+      color: #272727;
+      padding: 5px 10px;
+      border-radius: 20px; 
+      font-size: 14px;
+      margin-left: 10px
+    }
+
+    @media only screen and (max-width: 1167px) and (min-width: 991px)  {
+      .gotoProduct{
+        background-color: #d3d3d3; 
+        border: 1px solid white;
+        text-decoration: none;
+        color: #272727;
+        padding: 5px 10px;
+        border-radius: 20px; 
+        font-size: 10px;
+        margin-left: 10px;
+      }
+    }
