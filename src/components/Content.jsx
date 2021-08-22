@@ -7,6 +7,9 @@ import React from 'react'
 import Page404 from './Page404'
 import Catergory from './Category'
 import Home from './Home'
+import Login from './Login'
+import Cart from './Cart'
+import About from './About'
 
 import allproducts from './allproducts'
 
@@ -287,7 +290,7 @@ class Content extends React.Component{
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item text-center">
-                    <Link className="nav-link active"  aria-current="page" to="/">
+                    <Link className="nav-link"  aria-current="page" to="/">
                     Home page
                     </Link>
                     </li>
@@ -344,6 +347,7 @@ class Content extends React.Component{
             </nav>
 
               <Switch>
+                  
                 <Route path="/cookies">
                     <Catergory info={this.state.categories[0]}/>
                 </Route>
@@ -409,18 +413,23 @@ class Content extends React.Component{
                 <Route path="/" exact>
                     <Home/>
                 </Route>
+                <Route path="/about" exact>
+                    <About/>
+                </Route>
+                <Route path="/login" exact>
+                    <Login/>
+                </Route>
+                <Route path="/cart" exact>
+                    <Cart/>
+                </Route>
                 <Route component={Page404}/>
               </Switch>
               </div>
           </Router>
 
-
         )
-
-
     }
        
-   
 }
 
 export default Content 
