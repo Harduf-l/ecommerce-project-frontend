@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 
 import Product from './Product'
 import SearchDisplay from './SearchDisplay'
@@ -273,8 +273,77 @@ class Content extends React.Component{
         return (
             
             <Router>
-              {/* A <Switch> looks through its children <Route>s and
-                  renders the first one that matches the current URL. */}
+                <div>
+
+        <nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid", fontSize: "16px"}}>
+            <div class="container-fluid">
+            <Link className="navbar-brand ms-2" to="/">
+            <span><i style={{fontSize: "50px", color: "#e64723"}}class="fas fa-spa"></i></span>
+            </Link>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item text-center">
+                    <Link className="nav-link active"  aria-current="page" to="/">
+                    Home page
+                    </Link>
+                    </li>
+                    <li class="nav-item text-center">
+                    <Link className="nav-link"  aria-current="page" to="/about">
+                    about
+                    </Link>
+                    </li>
+                    <li class="nav-item text-center" >
+                    <Link className="nav-link"  aria-current="page" to="/login">
+                    login/register
+                    </Link>
+                    </li>
+                    <li class="nav-item text-center">
+                    <Link className="nav-link" to="/cart">
+                        <i className="fas fa-shopping-cart"></i>
+                        </Link>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+                    <li class="nav-item">
+                    <Link className="nav-link" to="/cookies">
+                    cookies
+                    </Link>
+                    </li>
+                    <li class="nav-item">
+                    <Link className="nav-link" to="/spreads">
+                        spreads
+                    </Link>
+                    </li>
+                    <li class="nav-item">
+                    <Link className="nav-link" to="/breads">
+                    breads
+                    </Link>
+                    </li>
+                    <li class="nav-item">
+                    <Link className="nav-link" to="/superfoods">
+                    superfoods
+                    </Link>
+                    </li>
+                    <li class="nav-item">
+                    <Link className="nav-link" to="/catalog">
+                    catalog
+                    </Link>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
+                    <Link to="/search"><button class="btn btn-outline-success me-2" type="submit">search</button></Link>
+                    </form>
+                </div>
+            </div>
+            </nav>
+
               <Switch>
                 <Route path="/cookies">
                     <Catergory info={this.state.categories[0]}/>
@@ -343,6 +412,8 @@ class Content extends React.Component{
                 </Route>
                 <Route component={Page404}/>
               </Switch>
+
+              </div>
           </Router>
 
 

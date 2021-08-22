@@ -138,13 +138,11 @@ class Product extends React.Component {
         <div>
           <h4 style={{paddingBottom: "10px"}}>important to know</h4> 
           <div style={{width: "90%", margin: "0 auto"}}>{info}</div>
-          <h1>blablabla</h1>
         </div>
 
         <div className="pt-5 ps-2"  style={{}}>
           <img style={{width: "150px"}} src={organic}/> 
           <img style={{width: "100px"}} src={fair}/> 
-          <h1>pa!!!</h1>
         </div>
 
     </div>
