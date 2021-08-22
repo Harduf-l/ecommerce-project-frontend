@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 
 import Product from './Product'
+import Contact from './Contact'
+
 import SearchDisplay from './SearchDisplay'
 import CatalogForm from './CatalogForm'
 import React from 'react'
@@ -8,6 +10,7 @@ import Page404 from './Page404'
 import Catergory from './Category'
 import Home from './Home'
 import Login from './Login'
+import Blog from './Blog'
 import Cart from './Cart'
 import About from './About'
 
@@ -304,6 +307,11 @@ class Content extends React.Component{
                     login/register
                     </Link>
                     </li>
+                    <li className="nav-item text-center" >
+                    <Link className="nav-link"  aria-current="page" to="/blog">
+                    blog
+                    </Link>
+                    </li>
                     <li className="nav-item text-center">
                     <Link className="nav-link" to="/cart">
                         <i className="fas fa-shopping-cart"></i>
@@ -419,7 +427,13 @@ class Content extends React.Component{
                 <Route path="/login" exact>
                     <Login/>
                 </Route>
+                <Route path="/blog" exact>
+                    <Blog/>
+                </Route>
                 <Route path="/cart" exact>
+                    <Cart/>
+                </Route>
+                <Route path="/contact" exact>
                     <Cart/>
                 </Route>
                 <Route component={Page404}/>

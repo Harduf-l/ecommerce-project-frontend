@@ -28,3 +28,31 @@ box-sizing: border-box;
   @media screen and (max-width: 1280px) {
     .dont-display {display: none}
     }
+
+
+
+    .hoverlink:hover {
+      text-decoration: none;
+      text-decoration: underline;
+      color: black; 
+
+    }
+
+    .hoverlink{
+      text-decoration: none;
+      color: black; 
+
+    }
+
+
+    .hoverlinkcontact {
+      text-decoration: none;
+      color: black; 
+    }
+
+    .hoverlinkcontact:hover {
+      text-decoration: none;
+      color: #305017; 
+
+    }
+

@@ -61,7 +61,8 @@ const allProducts = {
             pic3: cookie_granola3,
             vegan: true,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            mylink: "granole-cookie"
             },
             {
             header: "Chocolate cookies",
@@ -77,7 +78,8 @@ const allProducts = {
             pic3: cookie_chocolate3,
             vegan: false,
             lowcarb: true,
-            category: "cookies"
+            category: "cookies",
+            mylink: "chocoloate-cookie"
             },
             {
             header: "Surprise cookies",
@@ -93,7 +95,8 @@ const allProducts = {
             pic3: cookie_surprise3,
             vegan: false,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            mylink: "surpise-cookie"
             },
             {
             header: "Lemon cookies",
@@ -109,7 +112,9 @@ const allProducts = {
             pic3: cookie_lemon3,
             vegan: false,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            mylink: "lemon-cookie"
+
             },
             {
             header: "Bliss cookies",
@@ -125,7 +130,8 @@ const allProducts = {
             pic3: cookie_bliss3,
             vegan: true,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            mylink: "blissful-cookie"
             },
             {
             header: "Coconut cookies",
@@ -141,7 +147,8 @@ const allProducts = {
             pic3: cookie_coconut3,
             vegan: false,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            mylink: "coconute-cookie"
             }
     ],
     spreads: [
@@ -157,7 +164,8 @@ const allProducts = {
             pic1: walnut_butter1 ,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            mylink: "walnut-butter"
             },
             {
             header: "Peanuts spread",
@@ -171,7 +179,8 @@ const allProducts = {
             pic1: peanut_spread1,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            mylink: "peanut-butter"
             },
             {
             header: "Nuts spread",
@@ -185,7 +194,8 @@ const allProducts = {
             pic1: nut_spread1,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            mylink: "nut-butter"
             },
             {
             header: "Pistachio butter",
@@ -199,7 +209,8 @@ const allProducts = {
             pic1: pistachio_buuter,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            mylink: "pistachio-butter"
             },
             {
             header: "Cashew butter",
@@ -213,7 +224,8 @@ const allProducts = {
             pic1: cashew_butter,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            mylink: "cashew-butter"
             },
             {
             header: "Chocolate butter",
@@ -227,7 +239,8 @@ const allProducts = {
             pic1: chocolate_butter,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            mylink: "chocolate-butter"
             }
     ],
     breads: [

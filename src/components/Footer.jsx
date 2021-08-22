@@ -1,3 +1,4 @@
+
 let Footer = () => {
 
     let footerStyle = {
@@ -28,22 +29,23 @@ let Footer = () => {
             <div className="col-12 col-lg-4 2 mt-3">
             <h6>call us 24/7</h6>
            <p>any problem? no problem! call us at 072-332-192</p>
+           <a href="/contact" className="hoverlinkcontact">Contact Us</a>
             </div>
 
         </div>
     </div>
 
                <div style={{textAlign: "center", paddingTop: "40px"}}>
-            <a href="/" className="ms-4 text-reset">
+            <a href="https://www.facebook.com/" target="_blank" className="ms-4 text-reset">
                 <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="/" className="ms-4 text-reset">
+            <a href="https://twitter.com/"  target="_blank" className="ms-4 text-reset">
                 <i className="fab fa-twitter"></i>
             </a>
-            <a href="/" className="ms-4 text-reset">
+            <a href="https://www.google.co.il/"  target="_blank" className="ms-4 text-reset">
                 <i className="fab fa-google"></i>
             </a>
-            <a href="/" className="ms-4 text-reset">
+            <a href="https://www.instagram.com/"  target="_blank" className="ms-4 text-reset">
                 <i className="fab fa-instagram"></i>
             </a>
                </div>

@@ -1,11 +1,11 @@
 import InnerImageZoom from 'react-inner-image-zoom'
-
 import vegan_pic from '../pictures/baners/natural.png'
 import lowcarb_pic from '../pictures/baners/paleo.png'
 import fair from '../pictures/baners/fairtrade.png'
 import organic from '../pictures/baners/organic.png'
 import React from 'react'
 
+import {NavLink} from 'react-router-dom'
 
 class Product extends React.Component {
 
@@ -68,7 +68,11 @@ class Product extends React.Component {
 
   <div className="col-12 col-lg-5 col-md-6 pe-2 ps-md-0 ps-3">
 
-     <div className="pb-4">Home / {category} / {header}</div>
+     <div className="pb-4">
+       <NavLink className="hoverlink" to='/'>Home</NavLink>
+       <NavLink className="hoverlink" to={category}> / {category}</NavLink>
+       <span style={{textDecoration: "none", color: "black"}}> / {header}</span>
+       </div>
 
       <h4 style={{marginBottom: "20px"}}>{header}</h4>
   
