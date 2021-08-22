@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 
 import Product from './Product'
 import SearchDisplay from './SearchDisplay'
@@ -277,70 +277,70 @@ class Content extends React.Component{
             <Router>
         <div>
 
-        <nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid", fontSize: "16px"}}>
-            <div class="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid", fontSize: "16px"}}>
+            <div className="container-fluid">
             <Link className="navbar-brand ms-2" to="/">
-            <span><i style={{fontSize: "50px", color: "#e64723"}}class="fas fa-spa"></i></span>
+            <span><i style={{fontSize: "50px", color: "#e64723"}}className="fas fa-spa"></i></span>
             </Link>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item text-center">
+                    <li className="nav-item text-center">
                     <Link className="nav-link"  aria-current="page" to="/">
                     Home page
                     </Link>
                     </li>
-                    <li class="nav-item text-center">
+                    <li className="nav-item text-center">
                     <Link className="nav-link"  aria-current="page" to="/about">
                     about
                     </Link>
                     </li>
-                    <li class="nav-item text-center" >
+                    <li className="nav-item text-center" >
                     <Link className="nav-link"  aria-current="page" to="/login">
                     login/register
                     </Link>
                     </li>
-                    <li class="nav-item text-center">
+                    <li className="nav-item text-center">
                     <Link className="nav-link" to="/cart">
                         <i className="fas fa-shopping-cart"></i>
                         </Link>
                     </li>
                 </ul>
 
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
-                    <li class="nav-item">
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+                    <li className="nav-item">
                     <Link className="nav-link" to="/cookies">
                     cookies
                     </Link>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                     <Link className="nav-link" to="/spreads">
                         spreads
                     </Link>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                     <Link className="nav-link" to="/breads">
                     breads
                     </Link>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                     <Link className="nav-link" to="/superfoods">
                     superfoods
                     </Link>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                     <Link className="nav-link" to="/catalog">
                     catalog
                     </Link>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
-                    <Link to="/search"><button class="btn btn-outline-success me-2" type="submit">search</button></Link>
+                <form className="d-flex">
+                    <input className="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
+                    <Link to="/search"><button className="btn btn-outline-success me-2" type="submit">search</button></Link>
                     </form>
                 </div>
             </div>
@@ -352,14 +352,14 @@ class Content extends React.Component{
                     <Catergory info={this.state.categories[0]}/>
                 </Route>
                 <Route path="/catalog">
-                <div class="row">
+                <div className="row">
                     <div className="col-lg-3 col-12">
                     <CatalogForm filterbyCategory={this.filterbyCategory} filterbySpecialPeople={this.filterbySpecialPeople} filterbyPrice={this.filterbyPrice} filterbyPriceRange={this.filterbyPriceRange} saveWord={this.saveWordFilter}/>
                     </div>
 
                     <div className="col-lg-9 col-12  d-flex flex-wrap mt-3 justify-content-center">
                     {this.state.filteredProducts.map((cookie, index)=>{
-                       return  <SearchDisplay myid={index} foodContent={cookie} />
+                       return  <SearchDisplay key={index} myid={index} foodContent={cookie} />
                     })}
                     </div>
                 </div>

@@ -5,7 +5,7 @@ let Page404 = () => {
         <div style={{textAlign: "center", color: "#737373"}}>
             <h1>404</h1>
             <h2>page not found</h2>
-            <img src={cookie_bliss1} style={{width: "30%"}}/>
+            <img src={cookie_bliss1} alt="product" style={{width: "30%"}}/>
             <h3>looking for something tasty?</h3>
         </div>
     )

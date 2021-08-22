@@ -8,7 +8,7 @@ let Footer = () => {
     return (
         <footer className="text-center text-lg-start text-muted" style={footerStyle}>    
 
-    <div className="container">
+    <div className="container pt-2">
         <div className="row">
 
             <div className="col-12 col-lg-4 mb-2 mt-3">

@@ -24,8 +24,8 @@ let CatalogForm = (props) => {
                     <span>filter by price range:</span>
                     <br/>
                     <div className="mt-2"> 
-                    lowest <input maxlength="3" id="lowest" onChange={(e) => props.filterbyPriceRange(e)} type="text" style={{width: "40px", height: "25px"}}/>
-                    highest <input id="highest" maxlength="3" onChange={(e) => props.filterbyPriceRange(e)} type="text" style={{width: "40px", height: "25px"}}/></div>
+                    lowest <input maxLength="3" id="lowest" onChange={(e) => props.filterbyPriceRange(e)} type="text" style={{width: "40px", height: "25px"}}/>
+                    highest <input id="highest" maxLength="3" onChange={(e) => props.filterbyPriceRange(e)} type="text" style={{width: "40px", height: "25px"}}/></div>
                 </div>
             
             </div>
