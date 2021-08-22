@@ -1,6 +1,7 @@
 let Header = () => {
     return (
-<nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid"}}>
+
+<nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid", fontSize: "16px"}}>
   <div class="container-fluid">
   <a className="navbar-brand ms-2" href="/">
         <span><i style={{fontSize: "50px", color: "#e64723"}}class="fas fa-spa"></i></span>
@@ -11,7 +12,7 @@ let Header = () => {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item text-center">
-          <a class="nav-link active" aria-current="page" href="/">Home page</a>
+          <a class="nav-link active" aria-current="page" href="/">Home page</a> 
         </li>
         <li class="nav-item text-center">
           <a class="nav-link" aria-current="page" href="/about">about</a>
@@ -37,16 +38,24 @@ let Header = () => {
         <li class="nav-item">
           <a class="nav-link" href="/superfoods">superfoods</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/catalog">catalog</a>
+        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
-        <button class="btn btn-outline-success me-2" type="submit">search</button>
-      </form>
+        <a href="/search"><button class="btn btn-outline-success me-2" type="submit">search</button></a>
+        </form>
     </div>
   </div>
 </nav>
+
     )
 
 }
 
 export default Header
+
+
+
+
