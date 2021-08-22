@@ -5,7 +5,7 @@ import auth from '../lib/auth'
 let Members = (props) => {
     return(
         <div>
-            <h1>Secret page!!! shshsh!!!</h1>
+            <h3>special sales for members only :) :) :)</h3>
             <button onClick={ 
                     () => auth.logout(
                         () => props.history.push("/")
