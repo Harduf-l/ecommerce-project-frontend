@@ -10,7 +10,7 @@ function App() {
   return (
     <div id="htmldiv">
       <div id="bodydiv">
-          <Header/>
+          {/* <Header/> */}
           <Content/>
       </div>
       <div id="footerdiv">
