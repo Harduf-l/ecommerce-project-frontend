@@ -45,9 +45,8 @@ import maca_powder from '../pictures/superfood/maca-powder.jpg'
 import spirulina from '../pictures/superfood/Spirulina.jpg'
 
 
-const allProducts = {
-    cookies: [
-        {
+const allProducts = 
+        [ {
             header: "Oats cookies",
             description: "wonderful cookies, natural ingrediends only.",
             moreDescription:   "oats, dates syrup, bitter sweet chocolat. everything nature can offer us.",
@@ -61,7 +60,8 @@ const allProducts = {
             pic3: cookie_granola3,
             vegan: true,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            id: "granole-cookie",
             },
             {
             header: "Chocolate cookies",
@@ -77,7 +77,8 @@ const allProducts = {
             pic3: cookie_chocolate3,
             vegan: false,
             lowcarb: true,
-            category: "cookies"
+            category: "cookies",
+            id: "chocoloate-cookie",
             },
             {
             header: "Surprise cookies",
@@ -93,7 +94,8 @@ const allProducts = {
             pic3: cookie_surprise3,
             vegan: false,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            id: "surpise-cookie"
             },
             {
             header: "Lemon cookies",
@@ -109,7 +111,9 @@ const allProducts = {
             pic3: cookie_lemon3,
             vegan: false,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            id: "lemon-cookie"
+
             },
             {
             header: "Bliss cookies",
@@ -125,7 +129,8 @@ const allProducts = {
             pic3: cookie_bliss3,
             vegan: true,
             lowcarb: false,
-            category: "cookies"
+            category: "cookies",
+            id: "blissful-cookie"
             },
             {
             header: "Coconut cookies",
@@ -141,11 +146,10 @@ const allProducts = {
             pic3: cookie_coconut3,
             vegan: false,
             lowcarb: false,
-            category: "cookies"
-            }
-    ],
-    spreads: [
-        {
+            category: "cookies",
+            id: "coconute-cookie"
+            },
+            {
             header: "Walnut spread",
             description: "wonderful walnuts spread.",
             moreDescription:   "natural toasted walnuts.",
@@ -157,7 +161,8 @@ const allProducts = {
             pic1: walnut_butter1 ,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            id: "walnut-butter"
             },
             {
             header: "Peanuts spread",
@@ -171,7 +176,8 @@ const allProducts = {
             pic1: peanut_spread1,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            id: "peanut-butter"
             },
             {
             header: "Nuts spread",
@@ -185,7 +191,8 @@ const allProducts = {
             pic1: nut_spread1,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            id: "nut-butter"
             },
             {
             header: "Pistachio butter",
@@ -199,7 +206,8 @@ const allProducts = {
             pic1: pistachio_buuter,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            id: "pistachio-butter"
             },
             {
             header: "Cashew butter",
@@ -213,7 +221,8 @@ const allProducts = {
             pic1: cashew_butter,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
+            category: "spreads",
+            id: "cashew-butter"
             },
             {
             header: "Chocolate butter",
@@ -227,11 +236,11 @@ const allProducts = {
             pic1: chocolate_butter,
             vegan: true,
             lowcarb: true,
-            category: "spreads"
-            }
-    ],
-    breads: [
-        {
+            category: "spreads",
+            id: "chocolate-butter",
+            },
+
+            {
             header: "baguette",
             description: "a french baguette that never lets you down.",
             moreDescription:   "natural toasted walnuts.",
@@ -243,7 +252,8 @@ const allProducts = {
             pic1: bread1 ,
             vegan: true,
             lowcarb: false,
-            category: "breads"
+            category: "breads",
+            id: "baguette",
             },
             {
             header: "seeds bread",
@@ -258,6 +268,7 @@ const allProducts = {
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "seed-bread",
             },
             {
             header: "spelt bread",
@@ -272,6 +283,7 @@ const allProducts = {
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "spelt-bread",
             },
             {
             header: "rye bread",
@@ -286,6 +298,7 @@ const allProducts = {
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "rye-bread",
             },
             {
             header: "white bread",
@@ -300,6 +313,7 @@ const allProducts = {
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "white-bread",
             },
             {
             header: "french bread",
@@ -314,10 +328,9 @@ const allProducts = {
             vegan: true,
             lowcarb: false,
             category: "breads",
-            }
-    ],
-    superfood: [
-        {
+            id: "french-bread",
+            },
+            {
             header: "berries",
             description: "wonderful fresh berries.",
             moreDescription:   "natural toasted walnuts.",
@@ -330,6 +343,7 @@ const allProducts = {
             vegan: true,
             lowcarb: false,
             category: "superfood",
+            id: "berries",
             },
             {
             header: "cacao seeds",
@@ -344,6 +358,7 @@ const allProducts = {
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "cacao-seeds",
             },
             {
             header: "chia seeds",
@@ -358,6 +373,7 @@ const allProducts = {
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "chia",
             },
             {
             header: "goji berry",
@@ -372,6 +388,7 @@ const allProducts = {
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "goji",
             },
             {
             header: "maca powder",
@@ -386,6 +403,7 @@ const allProducts = {
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "maca",
             },
             {
             header: "spirulina",
@@ -400,8 +418,9 @@ const allProducts = {
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "spirulina",
             }
-    ]
-  }
+          ]
+  
 
   export default allProducts 

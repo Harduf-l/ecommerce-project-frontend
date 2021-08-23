@@ -1,7 +1,8 @@
 let About = () => {
     return(
         <div>
-            About page
+            About page - 
+            our mission is your goal. 
         </div>
     )
 }

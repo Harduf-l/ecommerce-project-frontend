@@ -1,18 +1,19 @@
 import vegan_pic from '../pictures/baners/natural.png'
 import lowcarb_pic from '../pictures/baners/paleo.png'
-
+import {Link} from 'react-router-dom'
+import React from 'react'
 
 let SearchDisplay = ({foodContent}) => {
-  let {header, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
+  let {header, id, category, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
 
 return(
 
-<div className="container col-lg-4 col-md-6 col-10" style={{border: "#f2f5f3 1px solid", marginBottom: "10px"}}>
+<div className="container col-lg-4 col-md-6 col-10 p-3" style={{border: "#f0f0f0 1px solid"}}>
 
   <div className="row">
 
     <div className="col-12">
-    <h4 style={{marginBottom: "5px", marginTop: "20px"}}>{header}</h4>
+    <h4 style={{marginBottom: "5px"}}>{header}</h4>
     <div>
         {vegan && <img style={{padding: "2px"}}src={vegan_pic} alt="vegan"/>}
         {lowcarb && <img style={{padding: "2px"}} src={lowcarb_pic} alt="vegan"/>}
@@ -27,7 +28,13 @@ return(
     </div>
 
     <div className="col-6">
-    <img src={pic1} alt={header} style={{height: "120px", width: "120px", objectFit: "cover", borderRadius: "20px", marginTop: "-40px"}}/>
+      <div>
+    <img src={pic1} alt={header} style={{height: "120px", width: "120px", objectFit: "cover", borderRadius: "20px", marginTop: "-50px"}}/>
+      </div>
+      <br/>
+      <div>
+      <Link to={`/product/${id}`} className="gotoProduct">product page</Link>
+      </div>
     </div>
 
   </div>

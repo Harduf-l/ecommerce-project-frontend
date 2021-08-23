@@ -2,16 +2,16 @@
 let CatalogForm = (props) => {
     
     return(
-        <div style={{ border: "2px #f2f5f3 solid", padding: "10px", marginTop: "20px"}}>
+        <div style={{ border: "2px #f2f5f3 solid", paddingLeft: "15px", paddingTop: "4px", paddingRight: "15px", marginTop: "20px"}}>
 
         <div>
-        <h3 style={{color: "#e64723", paddingBottom: "10px"}}>search by...</h3>
+        <h3 style={{color: "#2b3239", paddingLeft: "5px", paddingTop:"5px", paddingBottom: "10px"}}>search by...</h3>
 
         </div>
 
         <div className="flex d-flex flex-wrap flex-column">
 
-            <div className="col-12 mb-4 pb-2" style={{ backgroundColor: "#f0f0f0"}}>
+            <div className="col-12 mb-4 ps-2 pt-1 pb-2" style={{ backgroundColor: "#f0f0f0"}}>
                 <h6>prices</h6>
                 <input type="radio" id="pricelower" name="price" value="pricelower" onChange={(e) => props.filterbyPrice(e)}/>
                 <label for="pricelower"> lower to higher</label>
@@ -24,13 +24,13 @@ let CatalogForm = (props) => {
                     <span>filter by price range:</span>
                     <br/>
                     <div className="mt-2"> 
-                    lowest <input maxlength="3" id="lowest" onChange={(e) => props.filterbyPriceRange(e)} type="text" style={{width: "40px", height: "25px"}}/>
-                    highest <input id="highest" maxlength="3" onChange={(e) => props.filterbyPriceRange(e)} type="text" style={{width: "40px", height: "25px"}}/></div>
+                    lowest <input maxLength="3" id="lowest" onChange={(e) => props.filterbyPriceRange(e)} type="text" style={{width: "40px", height: "25px"}}/>
+                    highest <input id="highest" maxLength="3" onChange={(e) => props.filterbyPriceRange(e)} type="text" style={{width: "40px", height: "25px"}}/></div>
                 </div>
             
             </div>
 
-            <div className="col-12 mb-4" style={{backgroundColor: "#f0f0f0",}}>
+            <div className="col-12 ps-2  pt-1 mb-4" style={{backgroundColor: "#f0f0f0",}}>
                 <h6>categories</h6>
                 <div style={{marginTop: "10px"}}>
                 <input defaultChecked style={{backgroundColor: "black"}} onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="all"/>
@@ -52,7 +52,7 @@ let CatalogForm = (props) => {
             </div>
 
             
-            <div className="col-12 mb-4" style={{backgroundColor: "#f0f0f0",}}>
+            <div className="col-12 ps-2 pt-1 mb-4 pb-2" style={{backgroundColor: "#f0f0f0",}}>
                  <h6>special needs</h6>
                 <div style={{marginTop: "10px"}}>
                 <input type="checkbox" id="vegan" name="vegan" value="vegan" onChange={(e) => props.filterbySpecialPeople(e)}/>

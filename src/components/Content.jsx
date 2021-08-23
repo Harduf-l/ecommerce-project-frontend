@@ -1,6 +1,8 @@
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Product from './Product'
+
+
 import SearchDisplay from './SearchDisplay'
 import CatalogForm from './CatalogForm'
 import React from 'react'
@@ -8,8 +10,15 @@ import Page404 from './Page404'
 import Catergory from './Category'
 import Home from './Home'
 import Login from './Login'
+import Blog from './Blog'
 import Cart from './Cart'
 import About from './About'
+import Members from './Members'
+import Contact from './Contact'
+
+import ProtectedRoute from './Protected'
+
+import Header from './Header'
 
 import allproducts from './allproducts'
 
@@ -48,8 +57,7 @@ class Content extends React.Component{
     constructor() {
         super()
 
-        let allMyProducts =  [...allproducts.cookies, ...allproducts.spreads, ...allproducts.breads, ...allproducts.superfood]
-
+        let allMyProducts = [...allproducts]
         allMyProducts =allMyProducts.sort((a, b) => {
             let fa = a.header.toLowerCase(),
                 fb = b.header.toLowerCase();
@@ -77,12 +85,12 @@ class Content extends React.Component{
             },
             {
                 mypictures: [bread1,bread2,bread3,bread4,bread5,bread6 ],
-                links: ["/baguette", "/seeds-bread" , "/spelt-bread", "/rye-bread", "/french-bread", "/white-bread"],
+                links: ["/baguette", "/seed-bread" , "/spelt-bread", "/rye-bread", "/french-bread", "/white-bread"],
                 infotext: ["baguette", "seeds bread", "spelt bread", "rye bread", "french bread", "white bread"]
             },
             {
                 mypictures: [berries,cacao_seeds,chia,goji_berry,maca_powder,spirulina ],
-                links: ["/berries", "/cacao-seeds" , "/chia-seeds", "/goji-berry", "/maca-powder", "/spirulina"],
+                links: ["/berries", "/cacao-seeds" , "/chia", "/goji", "/maca", "/spirulina"],
                 infotext: ["berries", "cacao seeds", "chia seeds", "goji berry", "maca powder", "spirulina"]
             }
         
@@ -104,13 +112,13 @@ class Content extends React.Component{
         
         switch(this.state.categoryOn) {
             case "cookies":
-                return allproducts.cookies; 
+                return allproducts.filter(product => product.category === "cookies")
             case "spreads":
-                return allproducts.spreads; 
+                return allproducts.filter(product => product.category === "spreads")
             case "superfood":
-                return allproducts.superfood
+                return allproducts.filter(product => product.category === "superfood")
             case "breads":
-                return allproducts.breads
+                return allproducts.filter(product => product.category === "breads")
             default:
                 break; 
             }
@@ -223,36 +231,8 @@ class Content extends React.Component{
 
     filterbyCategory = (e) => {
         let currentArray = this.state.allProducts
-
-        switch(e.target.id) {
-            case "cookies":
-                currentArray = allproducts.cookies
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: "cookies"})
-              break;
-            case "all":
-                currentArray = this.state.allProducts
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: false})
-              break;
-            case "spreads":
-                currentArray = allproducts.spreads
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: "spreads"})
-              break;
-            case "superfood":
-                currentArray = allproducts.superfood
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: "superfood"})
-              break;
-            case "breads":
-                currentArray = allproducts.breads
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: "breads"})
-              break;
-            default:
-                break; 
-            }
+        currentArray = currentArray.filter(product => product.category === e.target.id)
+        this.setState({filteredProducts: currentArray })
     }
 
     plus = (index) => {
@@ -276,140 +256,35 @@ class Content extends React.Component{
             
             <Router>
         <div>
-
-        <nav class="navbar navbar-expand-lg navbar-light" style={{borderBottom: "#eaedf2 2px solid", fontSize: "16px"}}>
-            <div class="container-fluid">
-            <Link className="navbar-brand ms-2" to="/">
-            <span><i style={{fontSize: "50px", color: "#e64723"}}class="fas fa-spa"></i></span>
-            </Link>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    <li class="nav-item text-center">
-                    <Link className="nav-link"  aria-current="page" to="/">
-                    Home page
-                    </Link>
-                    </li>
-                    <li class="nav-item text-center">
-                    <Link className="nav-link"  aria-current="page" to="/about">
-                    about
-                    </Link>
-                    </li>
-                    <li class="nav-item text-center" >
-                    <Link className="nav-link"  aria-current="page" to="/login">
-                    login/register
-                    </Link>
-                    </li>
-                    <li class="nav-item text-center">
-                    <Link className="nav-link" to="/cart">
-                        <i className="fas fa-shopping-cart"></i>
-                        </Link>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
-                    <li class="nav-item">
-                    <Link className="nav-link" to="/cookies">
-                    cookies
-                    </Link>
-                    </li>
-                    <li class="nav-item">
-                    <Link className="nav-link" to="/spreads">
-                        spreads
-                    </Link>
-                    </li>
-                    <li class="nav-item">
-                    <Link className="nav-link" to="/breads">
-                    breads
-                    </Link>
-                    </li>
-                    <li class="nav-item">
-                    <Link className="nav-link" to="/superfoods">
-                    superfoods
-                    </Link>
-                    </li>
-                    <li class="nav-item">
-                    <Link className="nav-link" to="/catalog">
-                    catalog
-                    </Link>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
-                    <Link to="/search"><button class="btn btn-outline-success me-2" type="submit">search</button></Link>
-                    </form>
-                </div>
-            </div>
-            </nav>
-
+            <Header/>
               <Switch>
-                  
-                <Route path="/cookies">
-                    <Catergory info={this.state.categories[0]}/>
-                </Route>
                 <Route path="/catalog">
-                <div class="row">
+                <div className="row">
                     <div className="col-lg-3 col-12">
                     <CatalogForm filterbyCategory={this.filterbyCategory} filterbySpecialPeople={this.filterbySpecialPeople} filterbyPrice={this.filterbyPrice} filterbyPriceRange={this.filterbyPriceRange} saveWord={this.saveWordFilter}/>
                     </div>
 
                     <div className="col-lg-9 col-12  d-flex flex-wrap mt-3 justify-content-center">
                     {this.state.filteredProducts.map((cookie, index)=>{
-                       return  <SearchDisplay myid={index} foodContent={cookie} />
+                       return  <SearchDisplay key={index} myid={index} foodContent={cookie} />
                     })}
                     </div>
                 </div>
              
                 </Route>
-                <Route path="/spreads">
+                <Route path="/product/spreads">
                     <Catergory info={this.state.categories[1]}/>
                 </Route>
-                <Route path="/breads">
+                <Route path="/product/breads">
                     <Catergory info={this.state.categories[2]}/>
                 </Route>
-                <Route path="/superfoods">
+                <Route path="/product/superfood">
                     <Catergory info={this.state.categories[3]}/>
                 </Route>
-                <Route path="/granole-cookie">
-                 <Product myid={0} foodContent={allproducts.cookies[0]} plus={this.plus} minus={this.minus}/>
+                <Route path="/product/cookies">
+                    <Catergory info={this.state.categories[0]}/>
                 </Route>
-                <Route path="/chocoloate-cookie">
-                 <Product myid={1} foodContent={allproducts.cookies[1]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/blissful-cookie">
-                <Product myid={5} foodContent={allproducts.cookies[4]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/coconute-cookie">
-                 <Product myid={5} foodContent={allproducts.cookies[5]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/lemon-cookie">
-                 <Product myid={3} foodContent={allproducts.cookies[3]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/surpise-cookie">
-                 <Product myid={2} foodContent={allproducts.cookies[2]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/walnut-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[0]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/chocolate-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[5]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/nut-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[2]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/pistachio-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[3]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/cashew-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[4]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/peanut-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[1]} plus={this.plus} minus={this.minus}/>
-                </Route>
+                <Route path="/product/:id" component={Product} />
                 <Route path="/" exact>
                     <Home/>
                 </Route>
@@ -419,11 +294,19 @@ class Content extends React.Component{
                 <Route path="/login" exact>
                     <Login/>
                 </Route>
+                <Route path="/blog" exact>
+                    <Blog/>
+                </Route>
                 <Route path="/cart" exact>
                     <Cart/>
                 </Route>
+                <Route path="/contact" exact>
+                    <Contact/>
+                </Route>
+                <ProtectedRoute path="/membersZone" component={Members}/>
                 <Route component={Page404}/>
               </Switch>
+
               </div>
           </Router>
 
