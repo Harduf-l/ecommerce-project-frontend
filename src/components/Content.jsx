@@ -258,10 +258,6 @@ class Content extends React.Component{
         <div>
             <Header/>
               <Switch>
-                  
-                <Route path="/cookies">
-                    <Catergory info={this.state.categories[0]}/>
-                </Route>
                 <Route path="/catalog">
                 <div className="row">
                     <div className="col-lg-3 col-12">
@@ -276,21 +272,18 @@ class Content extends React.Component{
                 </div>
              
                 </Route>
-                <Route path="/spreads">
+                <Route path="/product/spreads">
                     <Catergory info={this.state.categories[1]}/>
                 </Route>
-                <Route path="/breads">
+                <Route path="/product/breads">
                     <Catergory info={this.state.categories[2]}/>
                 </Route>
-                <Route path="/superfoods">
+                <Route path="/product/superfood">
                     <Catergory info={this.state.categories[3]}/>
                 </Route>
-                {/* <Route path="/granole-cookie">
-                 <Product myid={0} foodContent={allproducts.cookies[0]} plus={this.plus} minus={this.minus}/>
+                <Route path="/product/cookies">
+                    <Catergory info={this.state.categories[0]}/>
                 </Route>
-                <Route path="/chocoloate-cookie">
-                 <Product myid={1} foodContent={allproducts.cookies[1]} plus={this.plus} minus={this.minus}/>
-                </Route> */}
                 <Route path="/product/:id" component={Product} />
                 <Route path="/" exact>
                     <Home/>

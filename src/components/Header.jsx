@@ -48,10 +48,10 @@ let Header = () => {
             Categories
           </Link>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/cookies">cookies</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/spreads">spreads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/breads">breads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/superfoods">superfood</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/cookies">cookies</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/spreads">spreads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/breads">breads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/superfood">superfood</Link></li>
           </ul>
         </li>
               <li className="nav-item hovernav">

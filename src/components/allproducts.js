@@ -237,7 +237,7 @@ const allProducts =
             vegan: true,
             lowcarb: true,
             category: "spreads",
-            id: "chocolate-butter"
+            id: "chocolate-butter",
             },
 
             {
@@ -252,7 +252,8 @@ const allProducts =
             pic1: bread1 ,
             vegan: true,
             lowcarb: false,
-            category: "breads"
+            category: "breads",
+            id: "baguette",
             },
             {
             header: "seeds bread",
@@ -267,6 +268,7 @@ const allProducts =
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "seed-bread",
             },
             {
             header: "spelt bread",
@@ -281,6 +283,7 @@ const allProducts =
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "spelt-bread",
             },
             {
             header: "rye bread",
@@ -295,6 +298,7 @@ const allProducts =
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "rye-bread",
             },
             {
             header: "white bread",
@@ -309,6 +313,7 @@ const allProducts =
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "white-bread",
             },
             {
             header: "french bread",
@@ -323,6 +328,7 @@ const allProducts =
             vegan: true,
             lowcarb: false,
             category: "breads",
+            id: "french-bread",
             },
             {
             header: "berries",
@@ -337,6 +343,7 @@ const allProducts =
             vegan: true,
             lowcarb: false,
             category: "superfood",
+            id: "berries",
             },
             {
             header: "cacao seeds",
@@ -351,6 +358,7 @@ const allProducts =
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "cacato-seeds",
             },
             {
             header: "chia seeds",
@@ -365,6 +373,7 @@ const allProducts =
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "chia",
             },
             {
             header: "goji berry",
@@ -379,6 +388,7 @@ const allProducts =
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "joji",
             },
             {
             header: "maca powder",
@@ -393,6 +403,7 @@ const allProducts =
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "maca",
             },
             {
             header: "spirulina",
@@ -407,6 +418,7 @@ const allProducts =
             vegan: true,
             lowcarb: true,
             category: "superfood",
+            id: "spirulina",
             }
           ]
   

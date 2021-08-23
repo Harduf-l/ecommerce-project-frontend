@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import React from 'react'
 
 let SearchDisplay = ({foodContent}) => {
-  let {header, id, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
+  let {header, id, category, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
 
 return(
 
