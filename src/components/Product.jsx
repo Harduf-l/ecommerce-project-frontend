@@ -1,7 +1,5 @@
 import InnerImageZoom from 'react-inner-image-zoom'
 import ReactStars from "react-rating-stars-component";
-import { render } from "react-dom";
-
 
 import vegan_pic from '../pictures/baners/natural.png'
 import lowcarb_pic from '../pictures/baners/paleo.png'
@@ -64,9 +62,8 @@ class Product extends React.Component {
       let plus = this.props.plus
       let minus = this.props.minus
 
-    return (
-
       
+  return (
 
 <div id="bigfoodDiv" className=" container d-flex justify-content-center flex-wrap pt-5">
 
@@ -140,9 +137,9 @@ class Product extends React.Component {
 
 
         <div className="col-12" style={{display: "inline-block", textAlign: "center", marginTop: "20px"}}>
-          <img alt={"product"} src={pic1} onMouseOver={(e) => this.changePic(e)} id="pic1" style={this.state.stylepicture1} alt="product"/>
-          <img alt={"product"} src={pic2} onMouseOver={(e) => this.changePic(e)} id="pic2" style={this.state.stylepicture2} alt="product"/>
-          <img alt={"product"} src={pic3} onMouseOver={(e) => this.changePic(e)} id="pic3" style={this.state.stylepicture3} alt="product3"/>
+          <img alt={"product"} src={pic1} onMouseOver={(e) => this.changePic(e)} id="pic1" style={this.state.stylepicture1} />
+          <img alt={"product"} src={pic2} onMouseOver={(e) => this.changePic(e)} id="pic2" style={this.state.stylepicture2} />
+          <img alt={"product"} src={pic3} onMouseOver={(e) => this.changePic(e)} id="pic3" style={this.state.stylepicture3} />
         </div>
 
         </div>

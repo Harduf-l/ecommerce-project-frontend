@@ -14,6 +14,7 @@ import Blog from './Blog'
 import Cart from './Cart'
 import About from './About'
 import Members from './Members'
+import Contact from './Contact'
 
 import ProtectedRoute from './Protected'
 
@@ -319,36 +320,7 @@ class Content extends React.Component{
                 <Route path="/chocoloate-cookie">
                  <Product myid={1} foodContent={allproducts.cookies[1]} plus={this.plus} minus={this.minus}/>
                 </Route>
-                <Route path="/blissful-cookie">
-                <Product myid={5} foodContent={allproducts.cookies[4]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/coconute-cookie">
-                 <Product myid={5} foodContent={allproducts.cookies[5]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/lemon-cookie">
-                 <Product myid={3} foodContent={allproducts.cookies[3]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/surpise-cookie">
-                 <Product myid={2} foodContent={allproducts.cookies[2]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/walnut-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[0]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/chocolate-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[5]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/nut-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[2]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/pistachio-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[3]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/cashew-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[4]} plus={this.plus} minus={this.minus}/>
-                </Route>
-                <Route path="/peanut-butter">
-                 <Product myid={2} foodContent={allproducts.spreads[1]} plus={this.plus} minus={this.minus}/>
-                </Route>
+               
                 <Route path="/" exact>
                     <Home/>
                 </Route>
@@ -365,7 +337,7 @@ class Content extends React.Component{
                     <Cart/>
                 </Route>
                 <Route path="/contact" exact>
-                    <Cart/>
+                    <Contact/>
                 </Route>
                 <ProtectedRoute path="/membersZone" component={Members}/>
                 <Route component={Page404}/>

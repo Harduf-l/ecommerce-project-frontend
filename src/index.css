@@ -86,3 +86,14 @@ box-sizing: border-box;
         margin-left: 10px;
       }
     }
+
+
+    .hovernav:hover{
+    background-color: #f0f0f0
+    }
+
+    .hovernav {
+      display: inline-block;
+
+    }
+ 
