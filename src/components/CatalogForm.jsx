@@ -2,7 +2,7 @@
 let CatalogForm = (props) => {
     
     return(
-        <div style={{ border: "2px #f2f5f3 solid", padding: "10px", marginTop: "20px"}}>
+        <div style={{ border: "2px #f2f5f3 solid", paddingLeft: "15px", paddingTop: "4px", paddingRight: "15px", marginTop: "20px"}}>
 
         <div>
         <h3 style={{color: "#e64723", paddingBottom: "10px"}}>search by...</h3>
@@ -52,7 +52,7 @@ let CatalogForm = (props) => {
             </div>
 
             
-            <div className="col-12 mb-4" style={{backgroundColor: "#f0f0f0",}}>
+            <div className="col-12 mb-4 pb-2" style={{backgroundColor: "#f0f0f0",}}>
                  <h6>special needs</h6>
                 <div style={{marginTop: "10px"}}>
                 <input type="checkbox" id="vegan" name="vegan" value="vegan" onChange={(e) => props.filterbySpecialPeople(e)}/>

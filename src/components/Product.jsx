@@ -1,4 +1,8 @@
 import InnerImageZoom from 'react-inner-image-zoom'
+import ReactStars from "react-rating-stars-component";
+import { render } from "react-dom";
+
+
 import vegan_pic from '../pictures/baners/natural.png'
 import lowcarb_pic from '../pictures/baners/paleo.png'
 import fair from '../pictures/baners/fairtrade.png'
@@ -74,10 +78,16 @@ class Product extends React.Component {
        <span style={{textDecoration: "none", color: "black"}}> / {header}</span>
        </div>
 
-      <h4 style={{marginBottom: "20px"}}>{header}</h4>
+      <h4>{header}</h4>
+        <ReactStars
+        count={5}
+        size={24}
+        value = {4}
+        activeColor="#e64723"
+      />,
   
-      {vegan && <img style={{padding: "2px"}}src={vegan_pic} alt="vegan"/>}
-      {lowcarb && <img style={{padding: "2px"}} src={lowcarb_pic} alt="lowcarb"/>}
+      {vegan && <img style={{padding: "2px", marginTop: "10px"}}src={vegan_pic} alt="vegan"/>}
+      {lowcarb && <img style={{padding: "2px",  marginTop: "10px"}} src={lowcarb_pic} alt="lowcarb"/>}
   
       <div style={{marginTop:"10px"}}>{description}</div>
       <div>{moreDescription}</div>
@@ -89,9 +99,10 @@ class Product extends React.Component {
         
       <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={() => minus(myid)}> <i className="fas fa-minus"></i> </span> 
       <span className="ps-2 pe-2">{quantity}</span>
-      <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px"}} onClick={() => plus(myid)}> <i className="fas fa-plus"></i> </span> 
-      <button className="btn btn-secondary  ms-4 mb-1 mt-2 me-2">Add to cart</button>
-      <button className="btn mb-1 mt-2" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
+      <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => plus(myid)}> <i className="fas fa-plus"></i> </span> 
+      <br/>
+      <button className="btn btn-secondary mb-1 mt-4 me-2">Add to cart</button>
+      <button className="btn mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
 
 
             <div className="accordion accordion-flush mt-3" style={{marginLeft: "-20px"}} id="accordionFlushExample">
@@ -131,7 +142,7 @@ class Product extends React.Component {
         <div className="col-12" style={{display: "inline-block", textAlign: "center", marginTop: "20px"}}>
           <img alt={"product"} src={pic1} onMouseOver={(e) => this.changePic(e)} id="pic1" style={this.state.stylepicture1} alt="product"/>
           <img alt={"product"} src={pic2} onMouseOver={(e) => this.changePic(e)} id="pic2" style={this.state.stylepicture2} alt="product"/>
-          <img alt={"product"} src={pic3} onMouseOver={(e) => this.changePic(e)} id="pic3" style={this.state.stylepicture3} alt="product"/>
+          <img alt={"product"} src={pic3} onMouseOver={(e) => this.changePic(e)} id="pic3" style={this.state.stylepicture3} alt="product3"/>
         </div>
 
         </div>
