@@ -57,8 +57,7 @@ class Content extends React.Component{
     constructor() {
         super()
 
-        let allMyProducts =  [...allproducts.cookies, ...allproducts.spreads, ...allproducts.breads, ...allproducts.superfood]
-
+        let allMyProducts = [...allproducts]
         allMyProducts =allMyProducts.sort((a, b) => {
             let fa = a.header.toLowerCase(),
                 fb = b.header.toLowerCase();
@@ -113,13 +112,13 @@ class Content extends React.Component{
         
         switch(this.state.categoryOn) {
             case "cookies":
-                return allproducts.cookies; 
+                return allproducts.filter(product => product.category === "cookies")
             case "spreads":
-                return allproducts.spreads; 
+                return allproducts.filter(product => product.category === "spreads")
             case "superfood":
-                return allproducts.superfood
+                return allproducts.filter(product => product.category === "superfood")
             case "breads":
-                return allproducts.breads
+                return allproducts.filter(product => product.category === "breads")
             default:
                 break; 
             }
@@ -232,36 +231,8 @@ class Content extends React.Component{
 
     filterbyCategory = (e) => {
         let currentArray = this.state.allProducts
-
-        switch(e.target.id) {
-            case "cookies":
-                currentArray = allproducts.cookies
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: "cookies"})
-              break;
-            case "all":
-                currentArray = this.state.allProducts
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: false})
-              break;
-            case "spreads":
-                currentArray = allproducts.spreads
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: "spreads"})
-              break;
-            case "superfood":
-                currentArray = allproducts.superfood
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: "superfood"})
-              break;
-            case "breads":
-                currentArray = allproducts.breads
-                this.setState({filteredProducts: currentArray })
-                this.setState({categoryOn: "breads"})
-              break;
-            default:
-                break; 
-            }
+        currentArray = currentArray.filter(product => product.category === e.target.id)
+        this.setState({filteredProducts: currentArray })
     }
 
     plus = (index) => {
@@ -314,13 +285,13 @@ class Content extends React.Component{
                 <Route path="/superfoods">
                     <Catergory info={this.state.categories[3]}/>
                 </Route>
-                <Route path="/granole-cookie">
+                {/* <Route path="/granole-cookie">
                  <Product myid={0} foodContent={allproducts.cookies[0]} plus={this.plus} minus={this.minus}/>
                 </Route>
                 <Route path="/chocoloate-cookie">
                  <Product myid={1} foodContent={allproducts.cookies[1]} plus={this.plus} minus={this.minus}/>
-                </Route>
-               
+                </Route> */}
+                <Route path="/product/:id" component={Product} />
                 <Route path="/" exact>
                     <Home/>
                 </Route>

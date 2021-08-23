@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import React from 'react'
 
 let SearchDisplay = ({foodContent}) => {
-  let {header, mylink, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
+  let {header, id, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
 
 return(
 
@@ -33,7 +33,7 @@ return(
       </div>
       <br/>
       <div>
-    <Link to={mylink} className="gotoProduct">product page</Link>
+      <Link to={`/product/${id}`} className="gotoProduct">product page</Link>
       </div>
     </div>
 
