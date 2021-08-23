@@ -358,7 +358,7 @@ const allProducts =
             vegan: true,
             lowcarb: true,
             category: "superfood",
-            id: "cacato-seeds",
+            id: "cacao-seeds",
             },
             {
             header: "chia seeds",
@@ -388,7 +388,7 @@ const allProducts =
             vegan: true,
             lowcarb: true,
             category: "superfood",
-            id: "joji",
+            id: "goji",
             },
             {
             header: "maca powder",

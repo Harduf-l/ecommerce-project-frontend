@@ -85,12 +85,12 @@ class Content extends React.Component{
             },
             {
                 mypictures: [bread1,bread2,bread3,bread4,bread5,bread6 ],
-                links: ["/baguette", "/seeds-bread" , "/spelt-bread", "/rye-bread", "/french-bread", "/white-bread"],
+                links: ["/baguette", "/seed-bread" , "/spelt-bread", "/rye-bread", "/french-bread", "/white-bread"],
                 infotext: ["baguette", "seeds bread", "spelt bread", "rye bread", "french bread", "white bread"]
             },
             {
                 mypictures: [berries,cacao_seeds,chia,goji_berry,maca_powder,spirulina ],
-                links: ["/berries", "/cacao-seeds" , "/chia-seeds", "/goji-berry", "/maca-powder", "/spirulina"],
+                links: ["/berries", "/cacao-seeds" , "/chia", "/goji", "/maca", "/spirulina"],
                 infotext: ["berries", "cacao seeds", "chia seeds", "goji berry", "maca powder", "spirulina"]
             }
         
