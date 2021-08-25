@@ -1,17 +1,30 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+
+import dataCategory from './dataCategory'
+import  {Link } from "react-router-dom";
+
+class Category extends React.Component {
+
+    constructor(props) {
+        super(props)
+        console.log(this.props.num)
+
+    }
 
 
-let Category = ({info}) => {
-let {mypictures, infotext, links} = info
-let pictureCategoryStyle = {height: "250px", width: "410px", objectFit: "cover", marginLeft: "8px"}
-let infoStyle = {color: "white", backgroundColor: "rgba(143,147,151, 0.6)", width: "250px", position: "absolute", fontSize: "30px", left:"80px", top:"110px", zIndex: "9999"}
-let outerLinkstyle = { marginBottom: "10px", position: "relative"}
+    render() {
 
-    return (
-        <div className="d-flex flex-wrap justify-content-center" style={{textAlign: "center", paddingTop: "30px"}}>
             
+        let {mypictures, infotext, links} = dataCategory[this.props.num]
+        let pictureCategoryStyle = {height: "250px", width: "410px", objectFit: "cover", marginLeft: "8px"}
+        let infoStyle = {color: "white", backgroundColor: "rgba(143,147,151, 0.6)", width: "250px", position: "absolute", fontSize: "30px", left:"80px", top:"110px", zIndex: "9999"}
+        let outerLinkstyle = { marginBottom: "10px", position: "relative"}
 
+
+     return (
+
+        <div className="d-flex flex-wrap justify-content-center" style={{textAlign: "center", paddingTop: "30px"}}>
+          
         <Link to={`/product${[links[0]]}`}style={outerLinkstyle}> <p style={infoStyle}>{infotext[0]}</p><img style={pictureCategoryStyle} alt={infotext[0]} src={mypictures[0]}/></Link>
         
         <Link to={`/product${[links[1]]}`} style={outerLinkstyle}> <p style={infoStyle}>{infotext[1]}</p><img style={pictureCategoryStyle} alt={infotext[1]} src={mypictures[1]}/></Link>
@@ -25,9 +38,10 @@ let outerLinkstyle = { marginBottom: "10px", position: "relative"}
         <Link to={`/product${[links[5]]}`} style={outerLinkstyle}  ><p style={infoStyle}>{infotext[5]}</p><img style={pictureCategoryStyle} alt={infotext[5]} src={mypictures[5]}/></Link>
         
         </div>
-)
-
-
+        )
+    }
 }
+
+
 
 export default Category; 

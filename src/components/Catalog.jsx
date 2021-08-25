@@ -1,11 +1,10 @@
 import SearchDisplay from './SearchDisplay'
 import CatalogForm from './CatalogForm'
 import React from 'react'
-import queryString from 'query-string'
 
 import allproducts from './allproducts'
 
-class CatalogAll extends React.Component {
+class Catalog extends React.Component {
 
     constructor(props) {
         super(props)
@@ -194,7 +193,7 @@ class CatalogAll extends React.Component {
         
         }
   
-  export default CatalogAll
+  export default Catalog
   
 
 

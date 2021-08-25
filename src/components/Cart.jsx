@@ -11,12 +11,26 @@ class Cart extends React.Component {
         valueInput: "",
         cartInput: 0 
     }
+
+}
+
+allStorage = () => {
+
+    var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        values.unshift([keys[i], localStorage.getItem(keys[i]) ]);
+    }
+
+    return values;
 }
 
     render() {
     return(
         <div>
-           {this.props.allStorage()}
+           {this.props.allStorage}
         </div>
     )
 

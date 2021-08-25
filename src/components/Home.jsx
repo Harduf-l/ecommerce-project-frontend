@@ -9,17 +9,14 @@ import cookie_coconut1 from '../pictures/cookies/coconute_cookie1.jpg'
 
 import walnut_butter1 from '../pictures/butters/walnut-butter1.jpg'
 import peanut_spread1 from '../pictures/butters/peanut-spread1.jpg'
-import nut_spread1 from '../pictures/butters/nut-spread1.jpg'
-import pistachio_buuter from '../pictures/butters/pistachio-buuter.jpg'
-import cashew_butter from '../pictures/butters/cashew-butter.jpg'
-import chocolate_butter from '../pictures/butters/chocolate-butter.jpg'
 
-import bread1 from '../pictures/bread/baguette.jpg'
+import pistachio_buuter from '../pictures/butters/pistachio-buuter.jpg'
+
+
 import bread2 from '../pictures/bread/spelt-bread.jpg'
 import bread3 from '../pictures/bread/sprouted-bread.jpg'
 import bread4 from '../pictures/bread/whole-wheat-bread.jpg'
-import bread5 from '../pictures/bread/french-bread.jpg'
-import bread6 from '../pictures/bread/white.jpg'
+
 
 import berries from '../pictures/superfood/berries.jpg'
 import cacao_seeds from '../pictures/superfood/cacao-seeds.jpg'
@@ -34,15 +31,13 @@ import Carousel from './Carousel'
 
 
 
-let Home = () => {
+function Home() {
 
     const picturestyle1={width: "1600px", height: "300px",objectFit: "cover" }
     const picturestyle2={width: "300px", height: "300px",objectFit: "cover",} 
     return(
 
         <div>
-
-
         
  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
    <div class="carousel-inner">
@@ -69,18 +64,15 @@ let Home = () => {
         <div style={{padding: 8}}>
             <img src={cacao_seeds} style={picturestyle2} alt="altplacer"  />
         </div>
-
         <div style={{padding: 8}}>
             <img src={chia} style={picturestyle2}  alt="altplacer"  />
         </div>
-
         <div style={{padding: 8}}>
             <img src={goji_berry} style={picturestyle2} alt="altplacer"/>
         </div>
         <div style={{padding: 8}}>
             <img src={ maca_powder} style={picturestyle2} alt="altplacer"/>
         </div>
-
         <div style={{padding: 8}}>
             <img src={ spirulina} style={picturestyle2} alt="altplacer"/>
         </div>
