@@ -88,7 +88,7 @@ class Header extends React.Component {
           <form className="d-flex">
               <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
               {console.log(this.state.valueInput)}
-              <Link to={`/shop/${this.state.valueInput}`}><button className="btn btn-outline-success me-2" type="submit">search</button></Link>
+              <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button className="btn btn-outline-success me-2" type="submit">search</button></Link>
               </form>
     </div>
   </div>

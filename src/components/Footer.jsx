@@ -36,16 +36,16 @@ let Footer = () => {
     </div>
 
                <div style={{textAlign: "center", paddingTop: "40px"}}>
-            <a href="https://www.facebook.com/" target="_blank" className="ms-4 text-reset">
+            <a href="https://www.facebook.com/" rel="noreferrer" target="_blank" className="ms-4 text-reset">
                 <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="https://twitter.com/"  target="_blank" className="ms-4 text-reset">
+            <a href="https://twitter.com/" rel="noreferrer" target="_blank" className="ms-4 text-reset">
                 <i className="fab fa-twitter"></i>
             </a>
-            <a href="https://www.google.co.il/"  target="_blank" className="ms-4 text-reset">
+            <a href="https://www.google.co.il/" rel="noreferrer" target="_blank" className="ms-4 text-reset">
                 <i className="fab fa-google"></i>
             </a>
-            <a href="https://www.instagram.com/"  target="_blank" className="ms-4 text-reset">
+            <a href="https://www.instagram.com/" rel="noreferrer" target="_blank" className="ms-4 text-reset">
                 <i className="fab fa-instagram"></i>
             </a>
                </div>

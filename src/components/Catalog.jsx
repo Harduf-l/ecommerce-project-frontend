@@ -38,7 +38,23 @@ class Catalog extends React.Component {
       }
     }
   
-    
+    componentDidMount=()=>{
+        console.log(this.props.location.search)
+        let myArr=this.state.allProducts
+        let search=""
+        if(this.props.location.search){
+            const urlSearchParams = new URLSearchParams(this.props.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            if (params) {
+                search=params.q.slice(1, -1).toLowerCase()
+                console.log(search)
+                const newFilteredData = myArr.filter(product => 
+                            product.header.toLowerCase().includes(search)
+                );
+                this.setState({filteredProducts: newFilteredData})
+            } 
+        }
+    }
 
     backFilteredByCategory() {
         
@@ -177,6 +193,8 @@ class Catalog extends React.Component {
       return (
         
         <div className="row">
+
+        {  }
         <div className="col-lg-3 col-12">
         <CatalogForm filterbyCategory={this.filterbyCategory} filterbySpecialPeople={this.filterbySpecialPeople} filterbyPrice={this.filterbyPrice} filterbyPriceRange={this.filterbyPriceRange} saveWord={this.saveWordFilter}/>
         </div>

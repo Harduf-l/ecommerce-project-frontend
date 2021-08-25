@@ -22,7 +22,8 @@ import Category from "./components/Category"
 
 function App() {
   return (
-      <div>
+      <div id="htmldiv">
+        <div id="bodydiv">
           <Header/>
   
               <Switch>
@@ -41,8 +42,11 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route component={Page404} />
               </Switch>
+        </div>
 
+        <div id="footerdiv">
           <Footer/>
+        </div>
     </div>
   );
 }

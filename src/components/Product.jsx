@@ -205,8 +205,8 @@ class Product extends React.Component {
         </div>
 
         <div className="pt-5 ps-2"  style={{}}>
-          <a href="https://www.britannica.com/topic/organic-food" target="_blank"> <img  alt={"product"}  style={{width: "150px"}} src={organic}/></a>
-          <a href="https://www.fairtrade.net/" target="_blank"><img  alt={"product"}  style={{width: "100px"}} src={fair}/></a>
+          <a href="https://www.britannica.com/topic/organic-food" target="_blank" rel="noreferrer"> <img  alt={"product"}  style={{width: "150px"}} src={organic}/></a>
+          <a href="https://www.fairtrade.net/" target="_blank" rel="noreferrer"><img  alt={"product"}  style={{width: "100px"}} src={fair}/></a>
         </div>
 
     </div>
