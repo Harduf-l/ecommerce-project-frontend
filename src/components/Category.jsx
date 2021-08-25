@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom'
 
 let Category = ({info}) => {
 let {mypictures, infotext, links} = info
-let pictureCategoryStyle = {height: "250px", width: "410px", objectFit: "cover", margin: "8px"}
+let pictureCategoryStyle = {height: "250px", width: "410px", objectFit: "cover", marginLeft: "8px"}
 let infoStyle = {color: "white", backgroundColor: "rgba(143,147,151, 0.6)", width: "250px", position: "absolute", fontSize: "30px", left:"80px", top:"110px", zIndex: "9999"}
-let outerLinkstyle = { marginBottom: "30px", position: "relative"}
+let outerLinkstyle = { marginBottom: "10px", position: "relative"}
 
     return (
         <div className="d-flex flex-wrap justify-content-center" style={{textAlign: "center", paddingTop: "30px"}}>

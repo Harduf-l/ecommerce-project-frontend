@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom'
 import React from 'react'
 
 let SearchDisplay = ({foodContent}) => {
-  let {header, id, category, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
+  let {header, id, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
 
 return(
 
 <div className="container col-lg-4 col-md-6 col-10 p-3" style={{border: "#f0f0f0 1px solid"}}>
-
+<Link to={`/product/${id}`} style={{textDecoration: "none", color: "#2b3239"}}>
   <div className="row">
 
     <div className="col-12">
@@ -33,12 +33,12 @@ return(
       </div>
       <br/>
       <div>
-      <Link to={`/product/${id}`} className="gotoProduct">product page</Link>
+
       </div>
     </div>
 
   </div>
-
+  </Link>
 </div>
 
   )

@@ -18,15 +18,35 @@ class Product extends React.Component {
     super(props)
     this.myProduct = this.findProductById(this.props.match.params.id);
     
+    
 
     this.state= {
-      
+      quantity: localStorage.getItem(this.myProduct.id) || 1,
       currentpicture: this.myProduct.pic1,
       stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "1px solid #fe4c4c", boxShadow: " 0 0 8px rgba(230,71,35, 1)"},
       stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
       stylepicture3: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
 
     }
+
+    
+      this.minus = () => {
+
+        if (this.state.quantity) {
+          let newQuantity = this.state.quantity
+          newQuantity = newQuantity-1
+          this.setState({quantity: newQuantity})
+
+        localStorage.setItem(this.myProduct.id, newQuantity);
+        }
+      }
+
+      this.plus = () => {
+        let newQuantity = this.state.quantity
+        newQuantity = newQuantity+1
+        this.setState({quantity: newQuantity})
+        localStorage.setItem(this.myProduct.id, newQuantity);
+      }
 
     this.changePic = (e) => {
       console.log(e.target.id)
@@ -71,11 +91,7 @@ class Product extends React.Component {
     render() {
       
 
-      let myid = this.props.myid
-      let plus = this.props.plus
-      let minus = this.props.minus
-
-
+      console.log(this.props.match.params.id)
     
 
   return (
@@ -109,9 +125,9 @@ class Product extends React.Component {
       <br/>
       <span className="me-1">quantity:</span> 
         
-      <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={() => minus(myid)}> <i className="fas fa-minus"></i> </span> 
-      <span className="ps-2 pe-2">{this.myProduct.quantity}</span>
-      <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => plus(myid)}> <i className="fas fa-plus"></i> </span> 
+      <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={this.minus}> <i className="fas fa-minus"></i> </span> 
+      <span className="ps-2 pe-2">{this.state.quantity}</span>
+      <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={this.plus}> <i className="fas fa-plus"></i> </span> 
       <br/>
       <button className="btn btn-secondary mb-1 mt-4 me-2">Add to cart</button>
       <button className="btn mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
@@ -131,11 +147,32 @@ class Product extends React.Component {
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingTwo">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-              reviews
+              reviews (2)
             </button>
           </h2>
           <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-            <div className="accordion-body">very tasty!</div>
+            <div className="accordion-body">
+            <div>        <ReactStars
+                        count={5}
+                        size={20}
+                        value = {5}
+                        activeColor="#e64723"
+            /></div>
+           <h6>very tasty natural food.</h6>
+           <p>i enjoyed it very much. highly recommended</p>
+           <p style={{color: "grey", textAlign: "end"}}>Jeniffer n.</p>
+            
+           <div>        <ReactStars
+                        count={5}
+                        size={20}
+                        value = {4}
+                        activeColor="#e64723"
+            /></div>
+           <h6>surprisingly well made.</h6>
+           <p>but a bit too expensive. better wait for sales</p>
+           <p style={{color: "grey", textAlign: "end"}}>Edward r.</p>
+
+            </div>
           </div>
         </div>
       </div>
@@ -163,13 +200,13 @@ class Product extends React.Component {
   <div className="col-lg-3 col-12 ps-3 pt-4 pt-lg-0" style={{textAlign: "center"}}>
 
         <div>
-          <h4 style={{paddingBottom: "10px"}}>important to know</h4> 
+          <h4 style={{paddingBottom: "10px"}}>Important to know</h4> 
           <div style={{width: "90%", margin: "0 auto"}}>{this.myProduct.info}</div>
         </div>
 
         <div className="pt-5 ps-2"  style={{}}>
-          <img  alt={"product"}  style={{width: "150px"}} src={organic}/> 
-          <img  alt={"product"}  style={{width: "100px"}} src={fair}/> 
+          <a href="https://www.britannica.com/topic/organic-food" target="_blank"> <img  alt={"product"}  style={{width: "150px"}} src={organic}/></a>
+          <a href="https://www.fairtrade.net/" target="_blank"><img  alt={"product"}  style={{width: "100px"}} src={fair}/></a>
         </div>
 
     </div>

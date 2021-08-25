@@ -1,6 +1,25 @@
-import {Link} from 'react-router-dom'
+import React from 'react'
+import  {Link } from "react-router-dom";
 
-let Header = () => {
+class Header extends React.Component {
+
+  constructor() {
+    super() 
+
+    this.state = { 
+      valueInput: "",
+      cartInput: 0 
+    }
+
+    this.trackInput = (e) => {
+      let newWord = e.target.value
+      this.setState({valueInput: newWord})
+    }
+  }
+
+
+  render() {
+
     return (
 
 <nav className="navbar navbar-expand-lg navbar-light pb-0 pt-2"  style={{borderBottom: "#eaedf2 2px solid", fontSize: "17px"}}>
@@ -34,9 +53,10 @@ let Header = () => {
               </Link>
               </li>
               
-              <li className="nav-item text-center">
+              <li className="nav-item text-center" style={{position: "relative"}}>
               <Link className="nav-link" to="/cart">
-                  <i className="fas fa-shopping-cart"></i>
+                  <i className="fas fa-shopping-cart">
+                    <div style={{backgroundColor: "#8fa663",  borderRadius: "50%", width: "17px", height: "17px", display: "inline-block"}}>{this.state.cartInput}</div></i>
                   </Link>
               </li>
 
@@ -66,14 +86,16 @@ let Header = () => {
               </li>
           </ul>
           <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
-              <Link to="/search"><button className="btn btn-outline-success me-2" type="submit">search</button></Link>
+              <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
+              {console.log(this.state.valueInput)}
+              <Link to={`/shop/${this.state.valueInput}`}><button className="btn btn-outline-success me-2" type="submit">search</button></Link>
               </form>
     </div>
   </div>
 </nav>
 
     )
+  }
 
 }
 

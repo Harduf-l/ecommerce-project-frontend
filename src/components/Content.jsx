@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Product from './Product'
 
+import ProductSearch from './ProductSearch'
 
 import SearchDisplay from './SearchDisplay'
 import CatalogForm from './CatalogForm'
@@ -106,7 +107,18 @@ class Content extends React.Component{
         }
     }
 
+    allStorage() {
 
+        var values = [],
+            keys = Object.keys(localStorage),
+            i = keys.length;
+    
+        while ( i-- ) {
+            values.unshift([keys[i], localStorage.getItem(keys[i]) ]);
+        }
+    
+        return values;
+    }
 
     backFilteredByCategory() {
         
@@ -285,6 +297,7 @@ class Content extends React.Component{
                     <Catergory info={this.state.categories[0]}/>
                 </Route>
                 <Route path="/product/:id" component={Product} />
+                <Route path="/shop/:id" component={ProductSearch} />                
                 <Route path="/" exact>
                     <Home/>
                 </Route>
@@ -298,7 +311,7 @@ class Content extends React.Component{
                     <Blog/>
                 </Route>
                 <Route path="/cart" exact>
-                    <Cart/>
+                    <Cart  allStorage={this.allStorage}/>
                 </Route>
                 <Route path="/contact" exact>
                     <Contact/>
