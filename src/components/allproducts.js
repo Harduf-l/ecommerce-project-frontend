@@ -333,7 +333,7 @@ const allProducts =
             {
             header: "berries",
             description: "wonderful fresh berries.",
-            moreDescription:   "natural toasted walnuts.",
+            moreDescription:   "natural berries. great with our chocolate cake.",
             loveIt: "you are going to fall in love...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             previousPrice: 22,
