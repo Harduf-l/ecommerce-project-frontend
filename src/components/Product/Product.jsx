@@ -36,8 +36,9 @@ class Product extends React.Component {
           let newQuantity = this.state.quantity
           newQuantity = newQuantity-1
           this.setState({quantity: newQuantity})
-
-        localStorage.setItem(this.myProduct.id, newQuantity);
+          let myCart =  JSON.parse.localStorage.getItem("cart") || []
+          myCart.push(this.myProduct.id, newQuantity)
+          localStorage.setItem("cart", JSON.stringify(myCart) );
         }
       }
 
@@ -45,7 +46,10 @@ class Product extends React.Component {
         let newQuantity = this.state.quantity
         newQuantity = newQuantity+1
         this.setState({quantity: newQuantity})
-        localStorage.setItem(this.myProduct.id, newQuantity);
+       
+        let myCart =  JSON.parse.localStorage.getItem("cart") || []
+        myCart.push(this.myProduct.id, newQuantity)
+        localStorage.setItem("cart", JSON.stringify(myCart) );
       }
 
     this.changePic = (e) => {
