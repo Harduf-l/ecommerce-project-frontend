@@ -64,6 +64,19 @@ allStorage = () => {
         }
 
 
+    calculateTotal = () => {
+    let currentArray = [...this.state.cartArray]
+    let sum = 0; 
+
+    for (let i=0; i<currentArray.length; i++) {
+        sum = sum + (currentArray[i].price * currentArray[i].quantity)
+    }
+
+    return sum; 
+
+    }
+
+
     render() {
 
     return(
@@ -72,38 +85,38 @@ allStorage = () => {
 
         <div className="row" style={{margin: "0 auto", marginTop: "30px"}}>
 
-        <div className="col-lg-6 col-12">
+        <div className="col-lg-5 col-12">
             <table className="table smaller-phone-th" >
                 <thead style={{}}>
                 <tr style={{paddingTop: "80px"}}>
-                    <th style={{}}><span className="ms-4">Product</span></th>
-                    <th style={{ }} >Price</th>
-                    <th style={{ }}><span>Quantity</span></th>
+                    <th  style={{fontWeight: "normal", borderColor: "#cecece"}}><span className="ms-4">Product</span></th>
+                    <th  style={{fontWeight: "normal", borderColor: "#cecece"}} >Price</th>
+                    <th  style={{fontWeight: "normal", borderColor: "#cecece"}}><span>Quantity</span></th>
                     
-                    <th style={{ }}>Subtotal</th>
+                    <th  style={{fontWeight: "normal", borderColor: "#cecece"}}>Subtotal</th>
                 </tr> 
                 </thead>
                 <tbody>
             {this.state.cartArray.map((element, index)=>{
                 return  <tr style={{borderColor: "black"}}>
                     
-                    <td >
+                    <td style={{borderColor: "#cecece"}}>
                     <div className="flex d-flex flex-wrap align-items-center">
                     <img style={{height: "80px", width: "70px", objectFit: "cover"}} src={element.pic1}/> 
                     <span style={{marginLeft: "10px"}}>{element.header}</span>
                     </div>
                     </td>
 
-                    <td style={{paddingTop: "30px", paddingBottom: "30px"}}>{element.price}$</td>
-                    <td style={{paddingTop: "30px", paddingBottom: "30px"}}>
+                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>{element.price}$</td>
+                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
                     
-                    <span className="ms-2" style={{color: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
+                    <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
                     <span className="ps-2 pe-2">{this.state.cartArray[index].quantity} </span>
-                    <span  style={{color: "#2e4e14",  fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => this.plus(index)}> <i className="fas fa-plus"></i> </span> 
+                    <span  className="ps-1" style={{color: "white",backgroundColor: "#2e4e14",  fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => this.plus(index)}> <i className="fas fa-plus"></i> </span> 
                         
                     </td>
                     
-                    <td style={{paddingTop: "30px", paddingBottom: "30px"}}>
+                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
                     <div className="flex d-flex justify-content-between">
                     {element.price * element.quantity }$
                     <button className="dltbtn" onClick={() => this.remove(index)}><i class="fas fa-times"></i></button>
@@ -112,6 +125,7 @@ allStorage = () => {
                     
                     </tr>
             })}
+                        <tr><td style={{fontWeight: "bold", color: "#881d1d", textAlign: "end"}}>Total: {this.calculateTotal()} $</td></tr>
                 </tbody>
             </table>
 
@@ -120,7 +134,7 @@ allStorage = () => {
 
             <div>
             <input type="text" style={{width: "100px", paddingBottom: "5px"}}/> 
-            <button className="ms-2 btn-light  btn btn-sm" style={{backgroundColor: "#d3d3d3"}}>i have a coupon!</button>
+            <button className="ms-2 btn-light  btn btn-sm" style={{backgroundColor: "#dd9431", color: "white"}}>I have a coupon</button>
             </div>
 
             <div>
@@ -128,19 +142,56 @@ allStorage = () => {
             </div>
 
             </div>
-            <div style={{margin: "0 auto", textAlign: "end"}}>
-            <button style={{backgroundColor: "#e64723", color: "white"}} className="btn btn-light btn-lg mt-4">Place order</button>
-            </div>
             </div>
 
 
 
-            <div className="col-lg-6 col-12">
-                <h2 style={{textAlign: "center"}}> payment method</h2>
-                <div style={{textAlign: "end"}}>
+            <div className="col-lg-6 col-12" style={{backgroundColor: "#f2f5f3"}}>
+                
+                <div className="flex d-flex flex-wrap justify-content-around pt-3">
+                    <div>
+                        <p style={{padding: "10px 20px", backgroundColor: "#f2f5f3"}}>Billing Address:</p>
+                        <form>
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Name" type="text"/>
+                            <br/> 
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Last name" type="text"/> 
+                            <br/>
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Email" type="email"/> 
+                            <br/>
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Mobile Phone" type="email"/> 
+                            <br/>
+                            <input style={{margin: "10px 0px", padding: "6px"}} type="checkbox"/> subscribe
+                            
+                            
+                        </form>
+                    </div>
+                
+                    <div>
+                        <p style={{padding: "10px 20px", backgroundColor: "#f2f5f3"}}>Delivery Address:</p>
+                        <form>
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Name" type="text"/> 
+                            <br/> 
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Last name" type="text"/> 
+                            <br/>
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Country" type="email"/> 
+                            <br/>
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="City / Suburb" type="email"/> 
+                            <br/>
+                            <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Zip / Postcode" type="email"/> 
+                        </form>
+                    </div>
+                </div>
+
+
+                {/* <div style={{textAlign: "end"}}>
                 <img style={{height: "50px"}} src={cards}/>
                 <img style={{height: "50px"}} src={paypal}/>
-                </div>
+                </div> */}
+
+
+
+
+
             </div>
 
 

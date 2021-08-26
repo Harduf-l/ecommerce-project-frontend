@@ -32,10 +32,10 @@ function App() {
               <Route path="/contact" component={Contact} />
               <Route path="/about" component={About} />
               <Route path="/blog" component={Blog} />
-              <Route path="/cookies" render={() => <Category num = {0}/>}/>
-              <Route path="/spreads" render={() => <Category num = {1}/>}/>
-              <Route path="/breads" render={() => <Category num = {2}/>}/>
-              <Route path="/superfood" render={() => <Category num = {3}/>}/>
+              <Route path="/product/cookies" render={() => <Category num = {0}/>}/>
+              <Route path="/product/spreads" render={() => <Category num = {1}/>}/>
+              <Route path="/product/breads" render={() => <Category num = {2}/>}/>
+              <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
               <ProtectedRoute path="/membersZone" component={Members}/>
               <Route path="/cart" component={Cart} />
               <Route path="/login" component={Login} />

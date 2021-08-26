@@ -8,7 +8,6 @@ class Header extends React.Component {
 
     this.state = { 
       valueInput: "",
-      cartInput: this.checkCart()
     }
 
     this.trackInput = (e) => {
@@ -76,7 +75,7 @@ class Header extends React.Component {
               <li className="nav-item text-center" style={{position: "relative"}}>
               <Link className="nav-link" to="/cart">
                   <i className="fas fa-shopping-cart">
-                    <div style={{backgroundColor: "#8fa663",  borderRadius: "50%", width: "17px", height: "17px", display: "inline-block"}}>{this.state.cartInput}</div></i>
+                    <div style={{backgroundColor: "#8fa663",  borderRadius: "50%", width: "17px", height: "17px", display: "inline-block"}}>{this.checkCart()}</div></i>
                   </Link>
               </li>
 
@@ -88,10 +87,10 @@ class Header extends React.Component {
             Categories
           </Link>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/cookies" params={{index: 0}}>cookies</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/spreads" params={{index: 1}}>spreads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/breads" params={{index: 2}}>breads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/superfood" params={{index: 3}}>superfood</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/cookies" params={{index: 0}}>cookies</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/spreads" params={{index: 1}}>spreads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/breads" params={{index: 2}}>breads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/superfood" params={{index: 3}}>superfood</Link></li>
           </ul>
         </li>
               <li className="nav-item hovernav">

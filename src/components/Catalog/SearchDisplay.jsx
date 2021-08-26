@@ -9,7 +9,7 @@ let SearchDisplay = ({foodContent}) => {
 return(
 
 <div className="container col-lg-4 col-md-6 col-10 p-3" style={{border: "#f0f0f0 1px solid"}}>
-<Link to={`/product/${id}`} style={{textDecoration: "none", color: "#2b3239"}}>
+<Link to={`/${id}`} style={{textDecoration: "none", color: "#2b3239"}}>
   <div className="row">
 
     <div className="col-12">
