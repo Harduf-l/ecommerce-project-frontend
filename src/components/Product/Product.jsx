@@ -166,8 +166,8 @@ class Product extends React.Component {
       <span className="ps-2 pe-2">{this.state.quantity}</span>
       <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={this.plus}> <i className="fas fa-plus"></i> </span> 
       <br/>
-      <button onClick={this.addtoCart} style={{backgroundColor: "#6c757d", color: "white"}} className="btn mb-1 mt-4 me-2">{this.state.cartBtn}</button>
-      <button className="btn mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
+      <button onClick={this.addtoCart} style={{backgroundColor: "#6c757d", color: "white"}} className="btn btn-light mb-1 mt-4 me-2">{this.state.cartBtn}</button>
+      <button className="btn btn-light mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
 
 
             <div className="accordion accordion-flush mt-3" style={{marginLeft: "-20px"}} id="accordionFlushExample">

@@ -18,6 +18,14 @@ html {
 
 }
 
+@media screen and (max-width: 420px) {
+  .smaller-phone-th {}
+
+
+}
+
+
+
 
 @media screen and (max-width: 785px) {
   .mobile-space-carousel {margin-top:0px; }
