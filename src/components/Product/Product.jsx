@@ -32,24 +32,53 @@ class Product extends React.Component {
     
       this.minus = () => {
 
-        if (this.state.quantity) {
+        if (this.state.quantity > 1) {
           let newQuantity = this.state.quantity
           newQuantity = newQuantity-1
           this.setState({quantity: newQuantity})
-          let myCart =  JSON.parse.localStorage.getItem("cart") || []
-          myCart.push(this.myProduct.id, newQuantity)
-          localStorage.setItem("cart", JSON.stringify(myCart) );
         }
       }
 
       this.plus = () => {
         let newQuantity = this.state.quantity
         newQuantity = newQuantity+1
-        this.setState({quantity: newQuantity})
-       
-        let myCart =  JSON.parse.localStorage.getItem("cart") || []
-        myCart.push(this.myProduct.id, newQuantity)
-        localStorage.setItem("cart", JSON.stringify(myCart) );
+        this.setState({quantity: newQuantity})  
+      } 
+
+      this.addtoCart = () => {
+
+        let myQuantity = this.state.quantity
+
+        let doesExist = false
+        let cart;
+
+        if ( localStorage.getItem("cart") == null) {
+            cart = []; 
+        } else {
+              cart = JSON.parse(localStorage.getItem("cart")); 
+        }
+    
+        if (cart) {
+          for (let i=0; i<cart.length; i++) {
+            if (cart[i].id === this.myProduct.id) {
+              cart[i].quantity = myQuantity
+              doesExist = true
+            }
+        } 
+        } 
+        
+        if (!doesExist) {
+          let product = {
+            id: this.myProduct.id,
+            quantity: myQuantity,
+        } 
+    
+        cart.push(product)
+
+        }
+
+    localStorage.setItem("cart", JSON.stringify(cart)); 
+    
       }
 
     this.changePic = (e) => {
@@ -133,7 +162,7 @@ class Product extends React.Component {
       <span className="ps-2 pe-2">{this.state.quantity}</span>
       <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={this.plus}> <i className="fas fa-plus"></i> </span> 
       <br/>
-      <button className="btn btn-secondary mb-1 mt-4 me-2">Add to cart</button>
+      <button onClick={this.addtoCart} className="btn btn-secondary mb-1 mt-4 me-2">Add to cart</button>
       <button className="btn mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
 
 

@@ -8,29 +8,28 @@ class Cart extends React.Component {
     constructor(props) {
         super(props) 
         this.state = { 
-        valueInput: "",
-        cartInput: 0 
+        cartArray: this.allStorage()
     }
 
 }
 
 allStorage = () => {
+    let cart = []
 
-    var values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-        values.unshift([keys[i], localStorage.getItem(keys[i]) ]);
+    if ( localStorage.getItem("cart") == null) {
+        cart = []; 
+    } else {
+        cart = JSON.parse(localStorage.getItem("cart")); 
     }
 
-    return values;
+    return cart; 
 }
 
     render() {
     return(
         <div>
-           {this.props.allStorage}
+           {this.state.cartArray[0].id}
+           {this.state.cartArray[0].quantity}
         </div>
     )
 
