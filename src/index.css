@@ -18,6 +18,7 @@ html {
 
 }
 
+
 @media screen and (max-width: 420px) {
   .smaller-phone-th {}
 
@@ -109,3 +110,20 @@ html {
 
     }
  
+
+    .dltbtn:hover {
+      color: #bb0000
+    }
+
+    .dltbtn {
+      border-radius: 50%;
+      border: none;
+      padding: 0px 8px;
+      color: #a12d24;
+      font-weight: bold;
+      background-color: white; 
+      font-size: 17px; 
+      padding-left: 20px; 
+    }
+
+  

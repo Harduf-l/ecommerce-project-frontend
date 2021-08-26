@@ -75,6 +75,7 @@ class Product extends React.Component {
             header: this.myProduct.header,
             price:  this.myProduct.price,
             quantity: myQuantity,
+            pic1: this.myProduct.pic1
         } 
     
         cart.push(product)
