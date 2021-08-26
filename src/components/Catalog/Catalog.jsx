@@ -38,12 +38,14 @@ class Catalog extends React.Component {
       }
     }
   
-    componentDidMount=()=>{
-        console.log(this.props.location.search)
+    searchMethod=(word)=>{
+
         let myArr=this.state.allProducts
         let search=""
-        if(this.props.location.search){
-            const urlSearchParams = new URLSearchParams(this.props.location.search);
+        if (!word) {
+            word = this.props.location.search
+        }
+            const urlSearchParams = new URLSearchParams(word);
             const params = Object.fromEntries(urlSearchParams.entries());
             if (params) {
                 search=params.q.slice(1, -1).toLowerCase()
@@ -53,7 +55,18 @@ class Catalog extends React.Component {
                 );
                 this.setState({filteredProducts: newFilteredData})
             } 
-        }
+        
+    }
+
+
+    componentWillMount() {
+        if (this.props.location.search) {
+            this.searchMethod(this.props.location.search)
+        }  
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.searchMethod(nextProps.location.search)
     }
 
     backFilteredByCategory() {

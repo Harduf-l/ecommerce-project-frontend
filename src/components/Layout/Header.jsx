@@ -8,13 +8,33 @@ class Header extends React.Component {
 
     this.state = { 
       valueInput: "",
-      cartInput: 0 
+      cartInput: this.checkCart()
     }
 
     this.trackInput = (e) => {
       let newWord = e.target.value
       this.setState({valueInput: newWord})
     }
+
+  }
+
+  removePlaceHolder = (e) => {
+    document.getElementById("inputon").value = ""
+  }
+
+  checkCart = () => {
+    if ( localStorage.getItem("cart") == null) {
+      return 0; 
+  } else {
+      let cart = JSON.parse(localStorage.getItem("cart")); 
+      let number = 0;
+
+      for (let i=0; i< cart.length; i++) {
+        number = number + cart[i].quantity
+      }
+      return number; 
+  }
+
   }
 
 
@@ -88,7 +108,7 @@ class Header extends React.Component {
           <form className="d-flex">
               <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
               {console.log(this.state.valueInput)}
-              <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button className="btn btn-outline-success me-2" type="submit">search</button></Link>
+              <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">search</button></Link>
               </form>
     </div>
   </div>

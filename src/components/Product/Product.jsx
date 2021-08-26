@@ -21,7 +21,8 @@ class Product extends React.Component {
     
 
     this.state= {
-      quantity: localStorage.getItem(this.myProduct.id) || 1,
+      cartBtn: "Add to cart",
+      quantity: 1,
       currentpicture: this.myProduct.pic1,
       stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "1px solid #fe4c4c", boxShadow: " 0 0 8px rgba(230,71,35, 1)"},
       stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
@@ -47,6 +48,7 @@ class Product extends React.Component {
 
       this.addtoCart = () => {
 
+        this.setState({cartBtn: "Added to cart"})
         let myQuantity = this.state.quantity
 
         let doesExist = false
@@ -70,6 +72,8 @@ class Product extends React.Component {
         if (!doesExist) {
           let product = {
             id: this.myProduct.id,
+            header: this.myProduct.header,
+            price:  this.myProduct.price,
             quantity: myQuantity,
         } 
     
@@ -162,7 +166,7 @@ class Product extends React.Component {
       <span className="ps-2 pe-2">{this.state.quantity}</span>
       <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={this.plus}> <i className="fas fa-plus"></i> </span> 
       <br/>
-      <button onClick={this.addtoCart} className="btn btn-secondary mb-1 mt-4 me-2">Add to cart</button>
+      <button onClick={this.addtoCart} style={{backgroundColor: "#6c757d", color: "white"}} className="btn mb-1 mt-4 me-2">{this.state.cartBtn}</button>
       <button className="btn mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
 
 
@@ -237,9 +241,15 @@ class Product extends React.Component {
           <div style={{width: "90%", margin: "0 auto"}}>{this.myProduct.info}</div>
         </div>
 
-        <div className="pt-5 ps-2"  style={{}}>
+
+        <div style={{backgroundColor: "#f0f0f0", marginTop: "20px", height: "100px"}}>
+        <h6 style={{textAlign: "start", color: "#305017", marginLeft: "15px", paddingTop: "8px"}}>ingredients:</h6>
+        <span style={{margin: "0", fontSize: "12px"}}>cacato butter, whole-wheat flour, dates syrop, bitter sweet chocolate ©organic certificated </span>
+        </div>
+
+        <div className="pt-3 ps-2"  style={{}}>
           <a href="https://www.britannica.com/topic/organic-food" target="_blank" rel="noreferrer"> <img  alt={"product"}  style={{width: "150px"}} src={organic}/></a>
-          <a href="https://www.fairtrade.net/" target="_blank" rel="noreferrer"><img  alt={"product"}  style={{width: "100px"}} src={fair}/></a>
+          <a href="https://www.fairtrade.net/" target="_blank" rel="noreferrer"><img  alt={"product"}  style={{marginTop: "10px", width: "100px"}} src={fair}/></a>
         </div>
 
     </div>
