@@ -1,24 +1,26 @@
 import './App.css';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
 
-import Footer from './components/Footer'
-import Header from './components/Header'
+import Footer from './components/Layout/Footer'
+import Header from './components/Layout/Header'
 import { Route, Switch } from "react-router-dom";
 
 
-import Product from './components/Product'
+import Product from './components/Product/Product'
 
 import React from 'react'
-import Page404 from './components/Page404'
+import Page404 from './components/Page404/Page404'
+import Home from './components/Home/Home'
+import Login from './components/Login/Login'
+import Blog from './components/Blog/Blog'
+import About from './components/About/About'
+import Contact from './components/Contact/Contact'
+import Catalog from './components/Catalog/Catalog'
+import Cart from './components/Cart/Cart'
+import Category from "./components/Category/Category"
+import Members from "./components/Protected/Members"
+import ProtectedRoute from "./components/Protected/Protected"
 
-import Home from './components/Home'
-import Login from './components/Login'
-import Blog from './components/Blog'
-import About from './components/About'
-import Contact from './components/Contact'
-import Catalog from './components/Catalog'
-import Cart from './components/Cart'
-import Category from "./components/Category"
 
 function App() {
   return (
@@ -34,7 +36,7 @@ function App() {
               <Route path="/spreads" render={() => <Category num = {1}/>}/>
               <Route path="/breads" render={() => <Category num = {2}/>}/>
               <Route path="/superfood" render={() => <Category num = {3}/>}/>
-
+              <ProtectedRoute path="/membersZone" component={Members}/>
               <Route path="/cart" component={Cart} />
               <Route path="/login" component={Login} />
               <Route path="/product/:id" component={Product} />

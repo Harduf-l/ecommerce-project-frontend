@@ -1,6 +1,6 @@
 import React from 'react'
 
-import dataCategory from './dataCategory'
+import dataCategory from '../Data/dataCategory'
 import  {Link } from "react-router-dom";
 
 class Category extends React.Component {

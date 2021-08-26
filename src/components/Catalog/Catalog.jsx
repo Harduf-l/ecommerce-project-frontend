@@ -2,7 +2,7 @@ import SearchDisplay from './SearchDisplay'
 import CatalogForm from './CatalogForm'
 import React from 'react'
 
-import allproducts from './allproducts'
+import allproducts from '../Data/allproducts'
 
 class Catalog extends React.Component {
 

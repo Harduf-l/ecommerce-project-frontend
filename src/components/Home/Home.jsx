@@ -1,29 +1,29 @@
 import {Link} from 'react-router-dom'
 
-import cookie_granola1 from '../pictures/cookies/cookie1.jpg'
-import cookie_chocolate1 from '../pictures/cookies/chocolate_cookie1.jpg'
-import cookie_bliss1 from '../pictures/cookies/bliss_cookie1.jpg'
-import cookie_lemon1 from '../pictures/cookies/lemon_cookie1.jpg'
-import cookie_surprise1 from '../pictures/cookies/surprise_cookie1.jpg'
-import cookie_coconut1 from '../pictures/cookies/coconute_cookie1.jpg'
+import cookie_granola1 from '../../pictures/cookies/cookie1.jpg'
+import cookie_chocolate1 from '../../pictures/cookies/chocolate_cookie1.jpg'
+import cookie_bliss1 from '../../pictures/cookies/bliss_cookie1.jpg'
+import cookie_lemon1 from '../../pictures/cookies/lemon_cookie1.jpg'
+import cookie_surprise1 from '../../pictures/cookies/surprise_cookie1.jpg'
+import cookie_coconut1 from '../../pictures/cookies/coconute_cookie1.jpg'
 
-import walnut_butter1 from '../pictures/butters/walnut-butter1.jpg'
-import peanut_spread1 from '../pictures/butters/peanut-spread1.jpg'
+import walnut_butter1 from '../../pictures/butters/walnut-butter1.jpg'
+import peanut_spread1 from '../../pictures/butters/peanut-spread1.jpg'
 
-import pistachio_buuter from '../pictures/butters/pistachio-buuter.jpg'
-
-
-import bread2 from '../pictures/bread/spelt-bread.jpg'
-import bread3 from '../pictures/bread/sprouted-bread.jpg'
-import bread4 from '../pictures/bread/whole-wheat-bread.jpg'
+import pistachio_buuter from '../../pictures/butters/pistachio-buuter.jpg'
 
 
-import berries from '../pictures/superfood/berries.jpg'
-import cacao_seeds from '../pictures/superfood/cacao-seeds.jpg'
-import chia from '../pictures/superfood/chia.png'
-import goji_berry from '../pictures/superfood/goji-berry.jpg'
-import maca_powder from '../pictures/superfood/maca-powder.jpg'
-import spirulina from '../pictures/superfood/Spirulina.jpg'
+import bread2 from '../../pictures/bread/spelt-bread.jpg'
+import bread3 from '../../pictures/bread/sprouted-bread.jpg'
+import bread4 from '../../pictures/bread/whole-wheat-bread.jpg'
+
+
+import berries from '../../pictures/superfood/berries.jpg'
+import cacao_seeds from '../../pictures/superfood/cacao-seeds.jpg'
+import chia from '../../pictures/superfood/chia.png'
+import goji_berry from '../../pictures/superfood/goji-berry.jpg'
+import maca_powder from '../../pictures/superfood/maca-powder.jpg'
+import spirulina from '../../pictures/superfood/Spirulina.jpg'
 
 
 import Carousel from './Carousel'

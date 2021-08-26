@@ -1,5 +1,5 @@
 import React from 'react'
-import allproducts from './allproducts'
+import allproducts from '../Data/allproducts'
 
 
 

@@ -1,4 +1,4 @@
-import cookie_bliss1 from '../pictures/cookies/bliss_cookie1.jpg'
+import cookie_bliss1 from '../../pictures/cookies/bliss_cookie1.jpg'
 
 let Page404 = () => {
     return (

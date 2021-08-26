@@ -1,14 +1,14 @@
 import InnerImageZoom from 'react-inner-image-zoom'
 import ReactStars from "react-rating-stars-component";
 
-import vegan_pic from '../pictures/baners/natural.png'
-import lowcarb_pic from '../pictures/baners/paleo.png'
-import fair from '../pictures/baners/fairtrade.png'
-import organic from '../pictures/baners/organic.png'
+import vegan_pic from '../../pictures/baners/natural.png'
+import lowcarb_pic from '../../pictures/baners/paleo.png'
+import fair from '../../pictures/baners/fairtrade.png'
+import organic from '../../pictures/baners/organic.png'
 import React from 'react'
 
 import {NavLink} from 'react-router-dom'
-import allproducts from './allproducts'
+import allproducts from '../Data/allproducts'
 
 
 class Product extends React.Component {

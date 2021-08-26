@@ -1,5 +1,5 @@
-import vegan_pic from '../pictures/baners/natural.png'
-import lowcarb_pic from '../pictures/baners/paleo.png'
+import vegan_pic from '../../pictures/baners/natural.png'
+import lowcarb_pic from '../../pictures/baners/paleo.png'
 import {Link} from 'react-router-dom'
 import React from 'react'
 
