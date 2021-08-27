@@ -131,3 +131,37 @@ html {
       .signToRemove {display: none }
     
     }
+
+
+    .shopHome {
+      position: absolute;
+      color: white;
+      font-size: 50px;
+      padding-left: 50px;
+      padding-top: 100px; 
+    }
+
+
+.shopSquare {
+
+  position: absolute;
+  top: 470px;
+  padding: 10px 20px;
+  left: 43%;
+  text-decoration: none;
+  font-size: 40px;
+  color: white;
+  border: 3px white solid;
+  background-color: rgba(69,51,63, 0.5);
+
+}
+.shopSquare:hover {
+  color: white; 
+}
+
+@media screen and (max-width: 760px) {
+  .shopSquare {left: 30%; }
+    
+}
+    
+  

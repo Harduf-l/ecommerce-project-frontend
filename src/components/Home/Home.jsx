@@ -19,7 +19,7 @@ import bread4 from '../../pictures/bread/whole-wheat-bread.jpg'
 
 
 import berries from '../../pictures/superfood/berries.jpg'
-import cacao_seeds from '../../pictures/superfood/cacao-seeds.jpg'
+import cacao_seeds from '../../pictures/superfood/cacao-seeds-original.jpg'
 import chia from '../../pictures/superfood/chia.png'
 import goji_berry from '../../pictures/superfood/goji-berry.jpg'
 import maca_powder from '../../pictures/superfood/maca-powder.jpg'
@@ -42,12 +42,12 @@ function Home() {
  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
    <div class="carousel-inner">
      <div class="carousel-item active">
-         <p style={{position: "absolute", color: "white", fontSize:"50px", paddingLeft: "50px", paddingTop: "100px"}}>Welcome to a world of health and joy</p>
+         <p className="shopHome" style={{position: "absolute", color: "white", fontSize:"50px", paddingLeft: "50px", paddingTop: "100px"}}>Welcome to a world of health and joy</p>
        <img src={cacao_seeds}  style={{height: "550px", width: "410px", objectFit: "cover", margin: "8px"} } class="d-block w-100" alt="..."/>
      </div>
    </div>
  </div>
- <Link to="/catalog" style={{position: "absolute", top: "470px",padding: "10px 20px", left: "43%", textDecoration: "none", fontSize: "40px", color: "white", border: "3px white solid", backgroundColor: "rgba(69,51,63, 0.5)"}}>Shop now</Link>
+ <Link to="/catalog" className="shopSquare">Shop now</Link>
 
 <div style={{maxWidth: "1200px", margin: '0 auto', marginTop:'64px' }}>
    <h2 style={{textAlign: "center", marginBottom: "20px"}}>get to know our new breads collection.</h2>

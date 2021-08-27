@@ -75,7 +75,7 @@ class Header extends React.Component {
               <li className="nav-item text-center" style={{position: "relative"}}>
               <Link className="nav-link" to="/cart">
                   <i className="fas fa-shopping-cart">
-                    <div style={{backgroundColor: "#8fa663",  borderRadius: "50%", width: "17px", height: "17px", display: "inline-block"}}>{this.checkCart()}</div></i>
+                    <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#8fa663",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>{this.checkCart()}</div></i>
                   </Link>
               </li>
 
@@ -105,9 +105,9 @@ class Header extends React.Component {
               </li>
           </ul>
           <form className="d-flex">
-              <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
+              <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="I would like to buy..." aria-label="Search"/>
               {console.log(this.state.valueInput)}
-              <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">search</button></Link>
+              <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">Search</button></Link>
               </form>
     </div>
   </div>

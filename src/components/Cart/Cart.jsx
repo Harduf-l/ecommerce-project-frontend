@@ -131,7 +131,7 @@ componentDidMount()  {
 
 
                     <Link to={`/product/${element.id}`} style={{textDecoration: "none", color: "#2b3239"}}>
-                    <img style={{ height: "80px", width: "70px", objectFit: "cover"}} src={element.pic1}/> 
+                    <img style={{ borderRadius: "20%", height: "80px", width: "70px", objectFit: "cover"}} src={element.pic1} alt={"food product"}/> 
                     </Link>
 
 
@@ -139,7 +139,7 @@ componentDidMount()  {
                     </div>
                     </td>
 
-                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>{element.price}$</td>
+                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>${element.price}</td>
                     <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
                     
                     <span className="ms-2 signToRemove" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
@@ -150,7 +150,7 @@ componentDidMount()  {
                     
                     <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
                     <div className="flex d-flex justify-content-between">
-                    {element.price * element.quantity }$
+                    ${element.price * element.quantity }
                     <button className="dltbtn" onClick={() => this.remove(index)}><i class="fas fa-times"></i></button>
                     </div>
                     </td>
@@ -160,11 +160,11 @@ componentDidMount()  {
                         <tr>
                         {this.state.discount &&
                             <td colspan="4" style={{ color: "#2e4e14", textAlign: "end"}}>
-                            Subtotal: <span style={{textDecoration: "line-through"}}>{this.calculateTotal("notexist")}</span> {this.calculateTotal("exist")} $ Incl. taxes
+                            Subtotal: <span style={{textDecoration: "line-through"}}> ${this.calculateTotal("notexist")}</span> {this.calculateTotal("exist")} Incl. taxes
                             </td> }
                         {!this.state.discount &&
                             <td colspan="4" style={{ color: "#2e4e14", textAlign: "end"}}>
-                            Subtotal: {this.calculateTotal("notexist")} $ Incl. taxes
+                            Subtotal: ${this.calculateTotal("notexist")} Incl. taxes
                             </td> }
                             
                             
@@ -182,7 +182,7 @@ componentDidMount()  {
             </div>
 
             <div>
-            <Link to="/catalog" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>go back shopping</span></Link>
+            <Link to="/catalog" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back shopping</span></Link>
             </div>
 
             </div>
@@ -194,7 +194,7 @@ componentDidMount()  {
                 
                 <div className="flex d-flex flex-wrap justify-content-around pt-3">
                     <div>
-                        <p style={{padding: "10px 20px", backgroundColor: "#f2f5f3"}}>Billing Address:</p>
+                        <p style={{backgroundColor: "#f2f5f3"}}>Billing Address:</p>
                         <form>
                             <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Name" type="text"/>
                             <br/> 
@@ -211,7 +211,7 @@ componentDidMount()  {
                     </div>
                 
                     <div>
-                        <p style={{padding: "10px 20px", backgroundColor: "#f2f5f3"}}>Delivery Address:</p>
+                        <p style={{ backgroundColor: "#f2f5f3"}}>Delivery Address:</p>
                         <form>
                             <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Name" type="text"/> 
                             <br/> 

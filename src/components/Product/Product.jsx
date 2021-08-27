@@ -136,7 +136,7 @@ class Product extends React.Component {
 
 <div id="bigfoodDiv" className=" container d-flex justify-content-center flex-wrap pt-5">
 
-  <div className="col-12 col-lg-5 col-md-6 pe-2 ps-md-0 ps-3">
+  <div className="col-12 col-lg-5 col-md-6 ps-md-0 ps-3">
 
      <div className="pb-4">
        <NavLink className="hoverlink" to='/'>Home</NavLink>
@@ -219,7 +219,7 @@ class Product extends React.Component {
         
     </div>
 
-       <div className="col-12 col-lg-4 col-md-6 pt-4 pt-md-2">
+       <div className="col-12 col-lg-4 col-md-6 pt-4 pt-md-2 pe-4">
 
        <div style={{textAlign: "center"}}>
         <InnerImageZoom alt={"product"} src={this.state.currentpicture} hasSpacer={true} height={450} width={400}/>
@@ -237,15 +237,15 @@ class Product extends React.Component {
 
   <div className="col-lg-3 col-12 ps-3 pt-4 pt-lg-0" style={{textAlign: "center"}}>
 
-        <div>
-          <h4 style={{paddingBottom: "10px"}}>Important to know</h4> 
-          <div style={{width: "90%", margin: "0 auto"}}>{this.myProduct.info}</div>
+        <div style={{border: "1px rgba(221,148,49, 0.5) solid", paddingTop: "5px", marginTop: "10px"}}>
+          <h4 style={{paddingBottom: "10px", paddingTop: "10px", color: "#2b3239"}}>Important to know</h4> 
+          <div style={{width: "90%", margin: "0 auto", paddingBottom: "10px"}}>{this.myProduct.info}</div>
         </div>
 
 
         <div style={{backgroundColor: "#f0f0f0", marginTop: "20px", height: "100px"}}>
-        <h6 style={{textAlign: "start", color: "#305017", marginLeft: "15px", paddingTop: "8px"}}>ingredients:</h6>
-        <span style={{margin: "0", fontSize: "12px"}}>cacato butter, whole-wheat flour, dates syrop, bitter sweet chocolate ©organic certificated </span>
+        <h6 style={{textAlign: "start", color: "#305017", marginLeft: "10px", paddingTop: "8px"}}>Ingredients:</h6>
+        <div style={{textAlign: "start", fontSize: "12px",  marginLeft: "10px"}}>cacato butter, whole-wheat flour, dates syrop, bitter sweet chocolate ©organic certificated </div>
         </div>
 
         <div className="pt-3 ps-2"  style={{}}>
