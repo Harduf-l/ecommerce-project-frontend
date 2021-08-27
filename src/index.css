@@ -127,3 +127,7 @@ html {
     }
 
   
+    @media screen and (max-width: 476px) {
+      .signToRemove {display: none }
+    
+    }

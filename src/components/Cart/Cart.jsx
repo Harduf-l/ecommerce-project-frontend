@@ -9,13 +9,16 @@ class Cart extends React.Component {
     constructor(props) {
         super(props) 
         this.state = { 
-        cartArray: this.allStorage(),
-        sumMoney: 0,
+        cartArray: [],
+        discount: false,
+        couponEntered: "",
+        couponState: "",
     }
 
 }
 
-allStorage = () => {
+componentDidMount()  {
+
     let cart = []
 
     if ( localStorage.getItem("cart") == null) {
@@ -24,7 +27,8 @@ allStorage = () => {
         cart = JSON.parse(localStorage.getItem("cart")); 
     }
 
-    return cart; 
+    this.setState({cartArray: cart})
+
 }
 
     minus = (index) => {
@@ -64,7 +68,7 @@ allStorage = () => {
         }
 
 
-    calculateTotal = () => {
+    calculateTotal = (sign) => {
     let currentArray = [...this.state.cartArray]
     let sum = 0; 
 
@@ -72,10 +76,32 @@ allStorage = () => {
         sum = sum + (currentArray[i].price * currentArray[i].quantity)
     }
 
+    if (sign === "exist") {
+        return sum - sum/10     
+    }
+
+
     return sum; 
 
     }
 
+    insertWord = (e) => {
+        let currWord = e.target.value
+        this.setState({couponEntered: currWord})
+    }
+
+
+    verifyCoupon = () => {
+
+    if (this.state.couponEntered === "10OFF")  {
+    this.setState({discount: true})
+    this.setState({couponState: ""})
+    } else {
+        this.setState({couponState: "Enter a valid discount code"})
+    }
+
+    document.getElementById("couponInput").value = ""
+    }
 
     render() {
 
@@ -89,11 +115,11 @@ allStorage = () => {
             <table className="table smaller-phone-th" >
                 <thead style={{}}>
                 <tr style={{paddingTop: "80px"}}>
-                    <th  style={{fontWeight: "normal", borderColor: "#cecece"}}><span className="ms-4">Product</span></th>
+                    <th  style={{fontWeight: "normal", borderColor: "#cecece",}}><span className="ms-4">Product</span></th>
                     <th  style={{fontWeight: "normal", borderColor: "#cecece"}} >Price</th>
                     <th  style={{fontWeight: "normal", borderColor: "#cecece"}}><span>Quantity</span></th>
                     
-                    <th  style={{fontWeight: "normal", borderColor: "#cecece"}}>Subtotal</th>
+                    <th  style={{fontWeight: "normal", borderColor: "#cecece"}}>Total</th>
                 </tr> 
                 </thead>
                 <tbody>
@@ -102,7 +128,13 @@ allStorage = () => {
                     
                     <td style={{borderColor: "#cecece"}}>
                     <div className="flex d-flex flex-wrap align-items-center">
-                    <img style={{height: "80px", width: "70px", objectFit: "cover"}} src={element.pic1}/> 
+
+
+                    <Link to={`/product/${element.id}`} style={{textDecoration: "none", color: "#2b3239"}}>
+                    <img style={{ height: "80px", width: "70px", objectFit: "cover"}} src={element.pic1}/> 
+                    </Link>
+
+
                     <span style={{marginLeft: "10px"}}>{element.header}</span>
                     </div>
                     </td>
@@ -110,9 +142,9 @@ allStorage = () => {
                     <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>{element.price}$</td>
                     <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
                     
-                    <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
+                    <span className="ms-2 signToRemove" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
                     <span className="ps-2 pe-2">{this.state.cartArray[index].quantity} </span>
-                    <span  className="ps-1" style={{color: "white",backgroundColor: "#2e4e14",  fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => this.plus(index)}> <i className="fas fa-plus"></i> </span> 
+                    <span  className="ps-1 signToRemove" style={{color: "white",backgroundColor: "#2e4e14",  fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => this.plus(index)}> <i className="fas fa-plus"></i> </span> 
                         
                     </td>
                     
@@ -125,7 +157,18 @@ allStorage = () => {
                     
                     </tr>
             })}
-                        <tr><td style={{fontWeight: "bold", color: "#881d1d", textAlign: "end"}}>Total: {this.calculateTotal()} $</td></tr>
+                        <tr>
+                        {this.state.discount &&
+                            <td colspan="4" style={{ color: "#2e4e14", textAlign: "end"}}>
+                            Subtotal: <span style={{textDecoration: "line-through"}}>{this.calculateTotal("notexist")}</span> {this.calculateTotal("exist")} $ Incl. taxes
+                            </td> }
+                        {!this.state.discount &&
+                            <td colspan="4" style={{ color: "#2e4e14", textAlign: "end"}}>
+                            Subtotal: {this.calculateTotal("notexist")} $ Incl. taxes
+                            </td> }
+                            
+                            
+                            </tr>
                 </tbody>
             </table>
 
@@ -133,8 +176,9 @@ allStorage = () => {
             <div className="flex d-flex flex-wrap justify-content-between">
 
             <div>
-            <input type="text" style={{width: "100px", paddingBottom: "5px"}}/> 
-            <button className="ms-2 btn-light  btn btn-sm" style={{backgroundColor: "#dd9431", color: "white"}}>I have a coupon</button>
+            <input onChange={(e) => this.insertWord(e)} type="text" id="couponInput" style={{width: "100px", paddingBottom: "5px"}}/> 
+            <button onClick={this.verifyCoupon} className="ms-2 btn-secondary  btn btn-sm">I have a coupon</button>
+            <div style={{color: "red", fontSize: "14px", marginTop: "4px"}}>{this.state.couponState}</div>
             </div>
 
             <div>
