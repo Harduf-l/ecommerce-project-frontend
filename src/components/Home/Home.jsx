@@ -49,8 +49,12 @@ function Home() {
  </div>
  <Link to="/catalog" className="shopSquare">Shop now</Link>
 
+ 
+
+             
+
 <div style={{maxWidth: "1200px", margin: '0 auto', marginTop:'64px' }}>
-   <h2 style={{textAlign: "center", marginBottom: "20px"}}>get to know our new breads collection.</h2>
+<Link to={{ pathname: `/catalog/`, search: `breads` }}><h2 style={{textAlign: "center", marginBottom: "20px"}}>get to know our new breads collection.</h2></Link>
     <Carousel>
         <img src={bread2} style={picturestyle1} alt="altplacer" />
         <img src={bread3}   style={picturestyle1} alt="altplacer" />
@@ -78,7 +82,7 @@ function Home() {
         </div>
     </Carousel>
 
-    <h2 style={{textAlign: "center", marginBottom: "20px", marginTop: "40px"}}>On Sale</h2>
+    <Link to={{ pathname: `/catalog/`, search: `cookies` }}><h2 style={{textAlign: "center", marginBottom: "20px", marginTop: "40px"}}>Cookies On Sale</h2></Link>
     <Carousel show={4}>
     <div style={{padding: 8}}>
             <img src={cookie_granola1} style={picturestyle2} alt="altplacer"  />
@@ -110,7 +114,7 @@ function Home() {
         <div style={{padding: 8}}>
             <img  src={pistachio_buuter} style={picturestyle2} alt="altplacer" />
         </div>
-    </Carousel>
+        </Carousel>
 </div>
 
 </div>

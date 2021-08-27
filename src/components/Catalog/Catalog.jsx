@@ -40,11 +40,20 @@ class Catalog extends React.Component {
   
     searchMethod=(word)=>{
 
+
         let myArr=this.state.allProducts
         let search=""
         if (!word) {
             word = this.props.location.search
-        }
+        } else if(word === "?breads") {
+            let currentArray = this.state.allProducts
+            currentArray = currentArray.filter(product => product.category === "breads")
+            this.setState({filteredProducts: currentArray })
+        } else if (word === "?cookies") {
+            let currentArray = this.state.allProducts
+            currentArray = currentArray.filter(product => product.category === "cookies")
+            this.setState({filteredProducts: currentArray })
+        } else {
             const urlSearchParams = new URLSearchParams(word);
             const params = Object.fromEntries(urlSearchParams.entries());
             if (params) {
@@ -55,11 +64,11 @@ class Catalog extends React.Component {
                 );
                 this.setState({filteredProducts: newFilteredData})
             } 
-        
+        }
     }
 
 
-    componentWillMount() {
+    componentDidMount() {
         if (this.props.location.search) {
             this.searchMethod(this.props.location.search)
         }  
@@ -226,6 +235,4 @@ class Catalog extends React.Component {
   
   export default Catalog
   
-
-
 
