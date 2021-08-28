@@ -30,26 +30,6 @@ export default class Carousel extends Component {
         this.setState({touchPosition: touchDown})
     } 
 
-    handleTouchMove = (e) => {
-        const touchDown = this.state.touchPosition
-    
-        if(touchDown === null) {
-            return
-        }
-    
-        const currentTouch = e.touches[0].clientX
-        const diff = touchDown - currentTouch
-    
-        if (diff > 5) {
-            this.next()
-        }
-    
-        if (diff < -5) {
-            this.prev()
-        }
-    
-        this.setState({touchPosition : null})
-    }
 
     render(){
         const {length, show, currentIndex} = this.state;
@@ -62,8 +42,6 @@ export default class Carousel extends Component {
                     </button> }
     
                     <div
-                     onTouchStart={this.handleTouchStart}
-                     onTouchMove={this.handleTouchMove}
                      className="carousel-content-wrapper">
                         <div 
                         className={`carousel-content show-${show}`}
