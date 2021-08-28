@@ -18,12 +18,12 @@ let Footer = () => {
             </div>
 
             <div className="col-12 col-lg-4 mb-2 2 mt-3">
-            <h6>openning hours </h6>
-           <p>09:00 - 20:00</p>
-           <br/>
-           <h6>stores locations</h6>
+            <h6>stores locations</h6>
            <div>Ibn Gabirol 22, Tel Aviv</div>
            <div style={{marginTop: "5px"}}>Izhak shamir 7, Naharia</div>
+           <br/>
+           <h6>openning hours </h6>
+           <p>09:00 - 20:00</p>
             </div>
 
             <div className="col-12 col-lg-4 2 mt-3">

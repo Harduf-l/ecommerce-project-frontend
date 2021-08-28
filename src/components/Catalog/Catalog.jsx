@@ -48,14 +48,17 @@ class Catalog extends React.Component {
         } else if(word === "?breads") {
             let currentArray = this.state.allProducts
             currentArray = currentArray.filter(product => product.category === "breads")
+            document.getElementById("breads").checked = true;  
             this.setState({filteredProducts: currentArray })
         } else if (word === "?cookies") {
             let currentArray = this.state.allProducts
             currentArray = currentArray.filter(product => product.category === "cookies")
+            document.getElementById("cookies").checked = true;  
             this.setState({filteredProducts: currentArray })
         } else if (word === "?superfood") {
             let currentArray = this.state.allProducts
             currentArray = currentArray.filter(product => product.category === "superfood")
+            document.getElementById("superfood").checked = true;  
             this.setState({filteredProducts: currentArray })
         } else {
             const urlSearchParams = new URLSearchParams(word);
@@ -79,6 +82,7 @@ class Catalog extends React.Component {
         }  
     }
 
+
     componentWillReceiveProps(nextProps) {
         this.searchMethod(nextProps.location.search)
     }
@@ -96,6 +100,8 @@ class Catalog extends React.Component {
                 return allproducts.filter(product => product.category === "breads")
             case "all":
                     return allproducts
+            case false:
+                return allproducts
             default:
                 break; 
             }
@@ -208,9 +214,14 @@ class Catalog extends React.Component {
 
     filterbyCategory = (e) => {
         let currentArray = this.state.allProducts
-        if (e.target.id !== "all")
+        if (e.target.id !== "all") {
         currentArray = currentArray.filter(product => product.category === e.target.id)
         this.setState({filteredProducts: currentArray })
+        }
+
+        if (e.target.id === "all") {
+        this.setState({filteredProducts: currentArray })
+        }
     }
 
  

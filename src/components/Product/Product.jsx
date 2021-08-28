@@ -22,6 +22,7 @@ class Product extends React.Component {
 
     this.state= {
       cartBtn: "Add to cart",
+      cartStyle: {backgroundColor: "#555555", color: "white"},
       quantity: 1,
       currentpicture: this.myProduct.pic1,
       stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "1px solid #dd9431", boxShadow: " 0 0 8px #dd9431"},
@@ -49,6 +50,12 @@ class Product extends React.Component {
       this.addtoCart = () => {
 
         this.setState({cartBtn: "Added to cart"})
+        this.setState({cartStyle: {backgroundColor: "#dd9431", color: "white"}}) 
+
+        setTimeout(()=>{  this.setState({cartBtn: "Add to cart", cartStyle: { backgroundColor: "#555555", color: "white"}}     
+        )       
+      }, 2000);
+
         let myQuantity = this.state.quantity
 
         let doesExist = false
@@ -125,6 +132,9 @@ class Product extends React.Component {
     })
  }
 
+ componentDidMount() {
+  window.scrollTo(0, 0)
+}
 
     render() {
       
@@ -167,7 +177,7 @@ class Product extends React.Component {
       <span className="ps-2 pe-2">{this.state.quantity}</span>
       <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={this.plus}> <i className="fas fa-plus"></i> </span> 
       <br/>
-      <button onClick={this.addtoCart} style={{backgroundColor: "#6c757d", color: "white"}} className="btn btn-light mb-1 mt-4 me-2">{this.state.cartBtn}</button>
+      <button onClick={this.addtoCart} className="btn btn-light mb-1 mt-4 me-2" style={this.state.cartStyle}>{this.state.cartBtn}</button>
       <button className="btn btn-light mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
 
 

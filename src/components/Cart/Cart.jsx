@@ -159,12 +159,12 @@ componentDidMount()  {
             })}
                         <tr>
                         {this.state.discount &&
-                            <td colspan="4" style={{ color: "#2e4e14", textAlign: "end"}}>
-                            Subtotal: <span style={{textDecoration: "line-through"}}> ${this.calculateTotal("notexist")}</span> {this.calculateTotal("exist")} Incl. taxes
+                            <td colspan="4" style={{ color: "#2b3239", textAlign: "end"}}>
+                            <span style={{fontWeight: "600"}}>Subtotal: <span style={{textDecoration: "line-through"}}> ${this.calculateTotal("notexist")}</span> ${this.calculateTotal("exist")} Incl. taxes</span>
                             </td> }
                         {!this.state.discount &&
-                            <td colspan="4" style={{ color: "#2e4e14", textAlign: "end"}}>
-                            Subtotal: ${this.calculateTotal("notexist")} Incl. taxes
+                            <td colspan="4" style={{ color: "#2b3239", textAlign: "end"}}>
+                            <span style={{fontWeight: "600"}}>Subtotal: ${this.calculateTotal("notexist")} Incl. taxes</span>
                             </td> }
                             
                             

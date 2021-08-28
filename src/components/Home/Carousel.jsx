@@ -16,7 +16,7 @@ export default class Carousel extends Component {
     }
 
     next = () => {
-        if( this.state.currentIndex < this.state.length - this.state.show)
+        if( this.state.currentIndex < this.state.length)
             this.setState({currentIndex: this.state.currentIndex + 1})
     }
 
@@ -25,19 +25,13 @@ export default class Carousel extends Component {
             this.setState({currentIndex: this.state.currentIndex - 1})
     }
 
-    handleTouchStart = (e) => {
-        const touchDown = e.touches[0].clientX
-        this.setState({touchPosition: touchDown})
-    } 
-
-
     render(){
         const {length, show, currentIndex} = this.state;
         
         return (
             <div className="carousel-container" style={{marginBottom: "50px", paddingTop: "10px"}}>
                 <div className="carousel-wrapper">
-                   { currentIndex < (length - show ) && <button onClick={this.prev} className="left-arrow">
+                   { currentIndex < (length) && <button onClick={this.prev} className="left-arrow">
                         &lt;
                     </button> }
     
@@ -51,9 +45,9 @@ export default class Carousel extends Component {
                         </div>
                     </div>
     
-                    <button onClick={this.next} className="right-arrow">
+                    { currentIndex < (length-2) && <button onClick={this.next} className="right-arrow">
                         &gt;
-                    </button>
+                    </button> }
                 </div>
             </div>
         )
