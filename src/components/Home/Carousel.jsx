@@ -55,7 +55,7 @@ export default class Carousel extends Component {
         const {length, show, currentIndex} = this.state;
         
         return (
-            <div className="carousel-container">
+            <div className="carousel-container" style={{marginBottom: "50px", paddingTop: "10px"}}>
                 <div className="carousel-wrapper">
                    { currentIndex < (length - show ) && <button onClick={this.prev} className="left-arrow">
                         &lt;

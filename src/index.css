@@ -163,5 +163,33 @@ html {
   .shopSquare {left: 30%; }
     
 }
+
+.homeLinks{
+  text-decoration: none;
+  color: black; 
+  text-align: center; 
+}
+
+.homeLinks:hover{
+  color: black; 
+  cursor: pointer; 
+}
     
   
+.homeHeaderSpan {
+  display: block;
+  margin: 0 auto; 
+}
+
+.homeHeaderSpan::before {
+  content: "__________________";
+  font-weight: bold; 
+  color: white; 
+  border-bottom: 2px solid orange; 
+}
+
+.homeHeader{
+  color: #555555; 
+  font-weight: 400;
+  padding-top: 15px
+}

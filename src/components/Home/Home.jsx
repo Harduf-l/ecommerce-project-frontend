@@ -54,13 +54,13 @@ function Home() {
              
 
 <div style={{maxWidth: "1200px", margin: '0 auto', marginTop:'64px' }}>
-<Link to={{ pathname: `/catalog/`, search: `breads` }}><h2 style={{textAlign: "center", marginBottom: "20px"}}>get to know our new breads collection.</h2></Link>
+<Link to={{ pathname: `/catalog/`, search: `breads` }} className="homeLinks"><span className="homeHeaderSpan"><h2 className="homeHeader" style={{textAlign: "center", marginBottom: "20px"}}>Get to know our new breads collection</h2></span></Link>
     <Carousel>
         <img src={bread2} style={picturestyle1} alt="altplacer" />
         <img src={bread3}   style={picturestyle1} alt="altplacer" />
         <img src={bread4}  style={picturestyle1} alt="altplacer" />
     </Carousel>
-    <h2 style={{textAlign: "center", marginBottom: "20px",  marginTop: "40px"}}>New Products</h2>
+    <Link to={{ pathname: `/catalog/`, search: `superfood` }} className="homeLinks"><span className="homeHeaderSpan"><h2 className="homeHeader" style={{textAlign: "center", marginBottom: "20px"}}>Superfood for perfect health</h2></span></Link>
     <Carousel show={3}>
         <div style={{padding: 8}}>
             <img src={berries} style={picturestyle2} alt="altplacer"  />
@@ -82,7 +82,7 @@ function Home() {
         </div>
     </Carousel>
 
-    <Link to={{ pathname: `/catalog/`, search: `cookies` }}><h2 style={{textAlign: "center", marginBottom: "20px", marginTop: "40px"}}>Cookies On Sale</h2></Link>
+    <Link to={{ pathname: `/catalog/`, search: `cookies` }} className="homeLinks"><span className="homeHeaderSpan"><h2 className="homeHeader" style={{textAlign: "center", marginBottom: "20px"}}>Cookies On Sale</h2></span></Link>
     <Carousel show={4}>
     <div style={{padding: 8}}>
             <img src={cookie_granola1} style={picturestyle2} alt="altplacer"  />

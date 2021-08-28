@@ -53,6 +53,10 @@ class Catalog extends React.Component {
             let currentArray = this.state.allProducts
             currentArray = currentArray.filter(product => product.category === "cookies")
             this.setState({filteredProducts: currentArray })
+        } else if (word === "?superfood") {
+            let currentArray = this.state.allProducts
+            currentArray = currentArray.filter(product => product.category === "superfood")
+            this.setState({filteredProducts: currentArray })
         } else {
             const urlSearchParams = new URLSearchParams(word);
             const params = Object.fromEntries(urlSearchParams.entries());
@@ -69,6 +73,7 @@ class Catalog extends React.Component {
 
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         if (this.props.location.search) {
             this.searchMethod(this.props.location.search)
         }  
