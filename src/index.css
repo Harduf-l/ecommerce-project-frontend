@@ -242,5 +242,16 @@ html {
 }
 
 .cartHover:hover {
-  color: blue; 
+  color: #dd9431; 
 }
+
+
+.cartModal {
+  background-color: rgba(242,245,243, 0.9);
+  z-index: 9999;
+  padding: 10px;
+  position: absolute; 
+  left: 220px;
+  top: 60px; 
+}
+
