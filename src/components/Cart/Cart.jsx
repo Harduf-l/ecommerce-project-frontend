@@ -217,7 +217,6 @@ componentDidMount()  {
                             <span style={{fontWeight: "600"}}><span style={{textDecoration: "line-through"}}> ${this.calculateTotal("notexist")}</span> ${this.calculateTotal("exist")} Incl. taxes</span> }
                     
                         {!this.state.discount &&
-                         
                             <span style={{fontWeight: "600"}}>${this.calculateTotal("notexist")} Incl. taxes</span>}
 
                 <br/>

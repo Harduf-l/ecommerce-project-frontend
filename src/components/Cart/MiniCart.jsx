@@ -1,6 +1,4 @@
 import React from 'react'
-import paypal from '../../pictures/baners/paypal.png'
-import cards from '../../pictures/baners/cards.png'
 import  {Link } from "react-router-dom";
 
 

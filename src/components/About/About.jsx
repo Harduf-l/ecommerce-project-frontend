@@ -1,8 +1,7 @@
 let About = () => {
     return(
         <div>
-            About page - 
-            our mission is your goal. 
+<span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "60px"}}>About</h2></span>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 let Contact = () => {
     return(
         <div>
-            contact page
+           <span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "60px"}}>Contact us</h2></span>
         </div>
     )
 }
