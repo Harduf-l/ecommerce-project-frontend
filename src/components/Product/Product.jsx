@@ -168,10 +168,10 @@ class Product extends React.Component {
       <div style={{marginTop:"10px"}}>{this.myProduct.description}</div>
       <div>{this.myProduct.moreDescription}</div>
       <p style={{color: "#6f0000" , marginTop: "22px"}}>{this.myProduct.loveIt}<span><i className="fas fa-heart"></i></span></p>
-      <div  style={{textDecoration: "line-through"}}>original price: <span>{this.myProduct.previousPrice}$</span></div>
-      <div style={{fontWeight: "bold", color: "#e64723"}}>sale price: {this.myProduct.price}$</div>
+      <div  style={{textDecoration: "line-through"}}>Original price: <span>{this.myProduct.previousPrice}$</span></div>
+      <div style={{fontWeight: "bold", color: "#e64723"}}>Sale price: {this.myProduct.price}$</div>
       <br/>
-      <span className="me-1">quantity:</span> 
+      <span className="me-1">Quantity:</span> 
         
       <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={this.minus}> <i className="fas fa-minus"></i> </span> 
       <span className="ps-2 pe-2">{this.state.quantity}</span>
@@ -185,7 +185,7 @@ class Product extends React.Component {
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingOne">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              storage & delivery information
+              Storage & Delivery information
             </button>
           </h2>
           <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -195,7 +195,7 @@ class Product extends React.Component {
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingTwo">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-              reviews (2)
+              Reviews (2)
             </button>
           </h2>
           <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -207,8 +207,8 @@ class Product extends React.Component {
                         activeColor="#e64723"
             /></div>
            <h6>very tasty natural food.</h6>
-           <p>i enjoyed it very much. highly recommended</p>
-           <p style={{color: "grey", textAlign: "end"}}>Jeniffer n.</p>
+           <p>I enjoyed it very much. highly recommended</p>
+           <p style={{color: "grey", textAlign: "end"}}>Jeniffer N.</p>
             
            <div>        <ReactStars
                         count={5}
@@ -218,7 +218,7 @@ class Product extends React.Component {
             /></div>
            <h6>surprisingly well made.</h6>
            <p>but a bit too expensive. better wait for sales</p>
-           <p style={{color: "grey", textAlign: "end"}}>Edward r.</p>
+           <p style={{color: "grey", textAlign: "end"}}>Edward R.</p>
 
             </div>
           </div>

@@ -42,7 +42,7 @@ function Home() {
  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
    <div class="carousel-inner">
      <div class="carousel-item active">
-         <p className="shopHome">Welcome to a world of health and joy</p>
+         <p className="shopHome" style={{position: "absolute", color: "white", fontSize:"50px", paddingLeft: "50px", paddingTop: "100px"}}>Welcome to a world of health and joy</p>
        <img src={cacao_seeds}  style={{height: "550px", width: "410px", objectFit: "cover", margin: "8px"} } class="d-block w-100" alt="..."/>
      </div>
    </div>

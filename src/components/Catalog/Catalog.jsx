@@ -79,7 +79,9 @@ class Catalog extends React.Component {
         window.scrollTo(0, 0)
         if (this.props.location.search) {
             this.searchMethod(this.props.location.search)
-        }  
+        }  else {
+            document.getElementById("all").checked = true;  
+        }
     }
 
 
