@@ -97,11 +97,11 @@ componentDidMount()  {
             <table style={{width: "400px"}} className="" >
                 <thead style={{}}>
                 <tr style={{paddingTop: "80px"}}>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece",}}><span className="ms-4">Product</span></th>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece"}} >Price</th>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece"}}><span>Quantity</span></th>
+                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}><span className="ms-4">Product</span></th>
+                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}} >Price</th>
+                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}><span>Quantity</span></th>
                     
-                    <th  style={{fontWeight: "600", borderColor: "#cecece"}}>Total</th>
+                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}>Total</th>
                 </tr> 
                 </thead>
                 <tbody>
@@ -115,8 +115,8 @@ componentDidMount()  {
                     </div>
                     </td>
 
-                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>${element.price}</td>
-                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
+                    <td style={{ borderColor: "#cecece"}}>${element.price}</td>
+                    <td style={{ borderColor: "#cecece"}}>
                     
                     <span className="ms-2 signToRemove" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
                     <span className="ps-2 pe-2">{this.state.cartArray[index].quantity} </span>
@@ -124,7 +124,7 @@ componentDidMount()  {
                         
                     </td>
                     
-                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
+                    <td style={{paddingTop: "10px", paddingBottom: "10px", borderColor: "#cecece"}}>
                     <div className="flex d-flex justify-content-between">
                     ${element.price * element.quantity }
                     <div className="dltbtn2" onClick={() => this.remove(index)}><i class="fas fa-times"></i></div>
@@ -138,13 +138,13 @@ componentDidMount()  {
                 </tbody>
             </table>
 
-                         <div className="flex d-flex justify-content-between">
+                         <div className="flex d-flex justify-content-between pt-3">
 
-                                <div>
+                                <div className="ms-2">
                                 <span style={{fontWeight: "600"}}>${this.calculateTotal("notexist")} Incl. taxes  </span><span style={{fontSize: "12px"}}> <br/> delivery not included</span>
                                 </div>
 
-                                <div>
+                                <div >
                                 <Link className="nav-link" to="/cart">
                                     <button onClick={this.props.cartNotHoverFunction} className="btn btn-secondary">Go to cart</button>
                                 </Link>

@@ -144,7 +144,7 @@ componentDidMount()  {
 
         <div className="row justify-content-center" style={{margin: "0 auto", marginTop: "30px"}}>
 
-        <div className="col-lg-5 col-12">
+        <div className="col-lg-5 col-12 mb-lg-0 mb-5">
             <table className="table smaller-phone-th" >
                 <thead style={{}}>
                 <tr style={{paddingTop: "80px"}}>
