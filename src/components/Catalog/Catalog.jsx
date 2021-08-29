@@ -45,6 +45,7 @@ class Catalog extends React.Component {
         let search=""
         if (!word) {
             word = this.props.location.search
+            document.getElementById("all").checked = true;  
         } else if(word === "?breads") {
             let currentArray = this.state.allProducts
             currentArray = currentArray.filter(product => product.category === "breads")
@@ -79,7 +80,7 @@ class Catalog extends React.Component {
         window.scrollTo(0, 0)
         if (this.props.location.search) {
             this.searchMethod(this.props.location.search)
-        }  else {
+        }   else {
             document.getElementById("all").checked = true;  
         }
     }

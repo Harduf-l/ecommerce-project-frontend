@@ -4,18 +4,12 @@ import cards from '../../pictures/baners/cards.png'
 import  {Link } from "react-router-dom";
 
 
-class Cart extends React.Component {
+class MiniCart extends React.Component {
 
     constructor(props) {
         super(props) 
         this.state = { 
         cartArray: [],
-        discount: false,
-        couponEntered: "",
-        couponState: "",
-        finalPrice: "",
-        delivery: false,
-
     }
 
 }
@@ -94,58 +88,12 @@ componentDidMount()  {
 
     }
 
-    insertWord = (e) => {
-        let currWord = e.target.value
-        this.setState({couponEntered: currWord})
-    }
-
-
-    verifyCoupon = () => {
-
-    if (this.state.couponEntered === "10OFF")  {
-    this.setState({discount: true})
-    this.setState({couponState: ""})
-    } else {
-        this.setState({couponState: "Enter a valid discount code"})
-    }
-
-    document.getElementById("couponInput").value = ""
-    }
-
-    addDeliveryFee = (e) => {
-        console.log(e.target.value)
-
-        switch(e.target.value) {
-            case "express":
-                this.setState({delivery: 15})
-              break;
-            case "air":
-                this.setState({delivery: 12})
-              break;
-            case "sea":
-                this.setState({delivery: 9})
-                 break;
-            case "default":
-                    this.setState({delivery: false})
-                     break;
-            default:
-                break; 
-          }
-    }
-
 
     render() {
 
     return(
 
-        <div>
-
-<span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "60px"}}>Cart</h2></span>
-
-        <div className="row justify-content-center" style={{margin: "0 auto", marginTop: "30px"}}>
-
-        <div className="col-lg-5 col-12">
-            <table className="table smaller-phone-th" >
+            <table style={{width: "400px"}} className="" >
                 <thead style={{}}>
                 <tr style={{paddingTop: "80px"}}>
                     <th  style={{fontWeight: "600", borderColor: "#cecece",}}><span className="ms-4">Product</span></th>
@@ -162,13 +110,7 @@ componentDidMount()  {
                     <td style={{borderColor: "#cecece"}}>
                     <div className="flex d-flex flex-wrap align-items-center">
 
-
-                    <Link to={`/product/${element.id}`} style={{textDecoration: "none", color: "#2b3239"}}>
-                    <img style={{ borderRadius: "20%", height: "80px", width: "70px", objectFit: "cover"}} src={element.pic1} alt={"food product"}/> 
-                    </Link>
-
-
-                    <span style={{marginLeft: "10px"}}>{element.header}</span>
+                    <Link to={`/product/${element.id}`} style={{textDecoration: "none", color: "#2b3239"}}><span style={{marginLeft: "10px"}}>{element.header}</span></Link>
                     </div>
                     </td>
 
@@ -190,59 +132,17 @@ componentDidMount()  {
                     
                     </tr>
             })}
+   
+                    <tr>
+
+                    <td colspan="4" style={{ color: "#2b3239", textAlign: "end"}}> <span style={{fontWeight: "600"}}>${this.calculateTotal("notexist")} Incl. taxes  </span><span style={{fontSize: "12px"}}> <br/> delivery not included</span></td>
+                    </tr>
 
                 </tbody>
             </table>
-
-
-            <div className="flex d-flex flex-wrap justify-content-between">
-
-            <div>
-            <input onChange={(e) => this.insertWord(e)} type="text" id="couponInput" style={{width: "100px", paddingBottom: "5px"}}/> 
-            <button onClick={this.verifyCoupon} className="ms-2 btn-secondary  btn btn-sm">Apply coupon</button>
-            <div style={{color: "red", fontSize: "14px", marginTop: "4px"}}>{this.state.couponState}</div>
-            </div>
-
-            <div>
-            <Link to="/catalog" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back shopping</span></Link>
-            </div>
-
-            </div>
-            </div>
-
-
-            <div className="col-lg-5 col-12 ps-4 pt-2 " style={{backgroundColor: "#f2f5f3"}}>
-                <h4 className="pb-2" style={{color: "#2b3239", fontWeight: "470"}}>Cart total</h4>
-                {this.state.discount &&
-                            <span style={{fontWeight: "600"}}><span style={{textDecoration: "line-through"}}> ${this.calculateTotal("notexist")}</span> ${this.calculateTotal("exist")} Incl. taxes</span> }
-                    
-                        {!this.state.discount &&
-                         
-                            <span style={{fontWeight: "600"}}>${this.calculateTotal("notexist")} Incl. taxes</span>}
-
-                <br/>
-                <br/>
-                <select onChange={(e)=>this.addDeliveryFee(e)} name="delivery" id="delivery">
-                <option value="default">Select delivery option</option>
-                <option value="express">Express 1-2 days - $15</option>
-                <option value="air">By air 10-14 days - $12</option>
-                <option value="sea">By sea 21-28 days - $9</option>
-                </select>
-                
-                <div className="flex d-flex justify-content-end flex-wrap pt-5">
-                
-                <button className="btn btn-light" style={{backgroundColor: "#8fa663", color: "white", fontWeight: "490"}}>Proceed to checkout</button>
-
-                </div>
-            </div>
-
-          </div>
-
-          </div>
-
     )
 
     }
 }
 
-export default Cart
+export default MiniCart
