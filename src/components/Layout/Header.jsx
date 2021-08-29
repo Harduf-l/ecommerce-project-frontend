@@ -83,11 +83,11 @@ class Header extends React.Component {
               </Link>
               </li>
               
-              <li className="nav-item text-center" onMouseOut={this.cartNotHoverFunction} onClick ={this.cartHoverFunction} style={{position: "relative"}}>
-              <Link className="nav-link" to="/cart">
+              <li className="nav-item text-center cartHover" onClick ={this.cartHoverFunction} style={{position: "relative", cursor: "pointer"}}>
+              <div className="nav-link cartHover">
                   <i className="fas fa-shopping-cart">
                     <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#8fa663",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>{this.checkCart()}</div></i>
-                  </Link>
+                  </div>
               </li>
 
 
@@ -127,7 +127,7 @@ class Header extends React.Component {
 
       { this.state.cartHover &&
         <div style={{backgroundColor: "rgba(242,245,243, 0.9)", zIndex: "9999", padding: "10px", position: "absolute", left: "220px", top: "60px"}}>
-          <MiniCart/>
+          <MiniCart cartNotHoverFunction={this.cartNotHoverFunction} />
         </div> }
 
 </nav>

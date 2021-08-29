@@ -121,8 +121,30 @@ html {
       font-weight: bold;
       background-color: white; 
       font-size: 17px; 
-      padding-left: 20px; 
+      cursor: pointer; 
     }
+
+    .dltbtn2 {
+      border-radius: 50%;
+      border: none;
+      padding: 0px 8px;
+      color: #a12d24;
+      font-weight: bold;
+      font-size: 17px; 
+      cursor: pointer; 
+    }
+
+    .dltbtn3 {
+      border: none;
+      color: #2b3239;
+      font-weight: bold;
+      cursor: pointer; 
+      font-size: 24px; 
+      padding-left: 5px; 
+      padding-right: 5px; 
+    }
+
+    
 
   
     @media screen and (max-width: 476px) {
@@ -217,4 +239,8 @@ html {
   color: #555555; 
   font-weight: 400;
   padding-top: 15px
+}
+
+.cartHover:hover {
+  color: blue; 
 }

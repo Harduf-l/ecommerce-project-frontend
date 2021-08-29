@@ -7,7 +7,8 @@ import  {Link } from "react-router-dom";
 class MiniCart extends React.Component {
 
     constructor(props) {
-        super(props) 
+        super() 
+        console.log(props.cartNotHoverFunction)
         this.state = { 
         cartArray: [],
     }
@@ -92,7 +93,7 @@ componentDidMount()  {
     render() {
 
     return(
-
+            <div onMouseLeave={this.props.cartNotHoverFunction}>
             <table style={{width: "400px"}} className="" >
                 <thead style={{}}>
                 <tr style={{paddingTop: "80px"}}>
@@ -126,20 +127,34 @@ componentDidMount()  {
                     <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
                     <div className="flex d-flex justify-content-between">
                     ${element.price * element.quantity }
-                    <button className="dltbtn" onClick={() => this.remove(index)}><i class="fas fa-times"></i></button>
+                    <div className="dltbtn2" onClick={() => this.remove(index)}><i class="fas fa-times"></i></div>
                     </div>
                     </td>
                     
                     </tr>
             })}
    
-                    <tr>
-
-                    <td colspan="4" style={{ color: "#2b3239", textAlign: "end"}}> <span style={{fontWeight: "600"}}>${this.calculateTotal("notexist")} Incl. taxes  </span><span style={{fontSize: "12px"}}> <br/> delivery not included</span></td>
-                    </tr>
 
                 </tbody>
             </table>
+
+                         <div className="flex d-flex justify-content-between">
+
+                                <div>
+                                <span style={{fontWeight: "600"}}>${this.calculateTotal("notexist")} Incl. taxes  </span><span style={{fontSize: "12px"}}> <br/> delivery not included</span>
+                                </div>
+
+                                <div>
+                                <Link className="nav-link" to="/cart">
+                                    <button onClick={this.props.cartNotHoverFunction} className="btn btn-secondary">Go to cart</button>
+                                </Link>
+                                </div>
+
+                          </div>
+
+
+
+                        </div>
     )
 
     }
