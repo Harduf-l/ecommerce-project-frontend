@@ -55,7 +55,7 @@ class Product extends React.Component {
         
         setTimeout(()=>{  this.setState({cartBtn: "Add to cart", cartStyle: { backgroundColor: "#555555", color: "white"}}     
         )       
-      }, 2000);
+      }, 1200);
 
         let myQuantity = this.state.quantity
 

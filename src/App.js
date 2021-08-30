@@ -34,7 +34,7 @@ class App extends React.Component {
   }
 
   checkCart = () => {
-    if ( localStorage.getItem("cart") == null) {
+    if ( localStorage.getItem("cart") == null || localStorage.getItem("cart") === [] ) {
       this.setState({numberInCart: 0})
   } else {
       let cart = JSON.parse(localStorage.getItem("cart")); 
@@ -43,7 +43,6 @@ class App extends React.Component {
       for (let i=0; i< cart.length; i++) {
         number = number + cart[i].quantity
       }
-
 
       this.setState({numberInCart: number})
   }

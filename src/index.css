@@ -254,3 +254,15 @@ html {
   top: 60px; 
 }
 
+.cartBtnNumberStyle {
+  margin-left: 3px;
+  padding-top: 2px;
+  background-color: #8fa663;
+  color: white;
+  font-family: Helvetica;
+  font-weight: normal;
+  border-radius: 50%;
+  width: 19px;
+  height: 19px;
+  display: inline-block; 
+}

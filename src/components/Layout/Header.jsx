@@ -10,7 +10,7 @@ class Header extends React.Component {
     this.state = { 
       valueInput: "",
       cartHover: false, 
-      items: "",
+      items: 0, 
     }
 
     this.trackInput = (e) => {
@@ -31,20 +31,6 @@ class Header extends React.Component {
   }
 
   
-  checkCart = () => {
-    if ( localStorage.getItem("cart") == null) {
-      return 0; 
-  } else {
-      let cart = JSON.parse(localStorage.getItem("cart")); 
-      let number = 0;
-
-      for (let i=0; i< cart.length; i++) {
-        number = number + cart[i].quantity
-      }
-      return number; 
-  }
-
-  }
 
   cartHoverFunction = () => {
     this.setState({cartHover: true})
@@ -94,8 +80,7 @@ class Header extends React.Component {
               <div className="nav-link">
                 <div className="cartHover">
                   <i className="fas fa-shopping-cart">
-                   {!this.state.items && <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#dd9431",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>0</div>}
-                    {this.state.items && <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#8fa663",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>{this.state.items}</div>}
+                    <div className="cartBtnNumberStyle">{this.state.items}</div>
                     </i></div>
                   </div>
               </li>
