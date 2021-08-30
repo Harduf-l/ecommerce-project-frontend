@@ -34,7 +34,7 @@ class Checkout extends React.Component {
         } else {
             this.setState({nameInstructions: ""})
             this.setState({nameOK: true})
-            localStorage.setItem("name", e.target.value)
+            
         }
     }
 

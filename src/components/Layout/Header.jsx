@@ -46,10 +46,6 @@ class Header extends React.Component {
   }
 
   
-  componentDidMount = () => {
-    let { innerWidth: width } = window;
-    console.log(width); 
-  }
 
   cartHoverFunction = () => {
     this.setState({cartHover: true})
