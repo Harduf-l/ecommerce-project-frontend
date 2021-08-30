@@ -12,13 +12,19 @@ class Checkout extends React.Component {
         this.state = {
             nameInstructions: "",
             nameOK: false,
+            nameClass: "",
+
             lastNameInstructions: "",
             lastNameOK: false,
+            lastNameClass: "",
+
             emailInstructions: "",
             emailOK: false,
+            emailClass: "",
+
             phoneInstructions: "",
             phoneOK: false,
-
+            phoneClass: "",
 
         }
 
@@ -31,10 +37,11 @@ class Checkout extends React.Component {
         if (!result) {
             this.setState({nameInstructions: "Enter a valid name"})
             this.setState({nameOK: false})
+            this.setState({nameClass: "badInput"})
         } else {
             this.setState({nameInstructions: ""})
             this.setState({nameOK: true})
-            
+            this.setState({nameClass: "goodInput"})
         }
     }
 
@@ -45,10 +52,12 @@ class Checkout extends React.Component {
         if (!result) {
             this.setState({lastNameInstructions: "Enter a valid last name"})
             this.setState({lastNameOK: false})
+            this.setState({lastNameClass: "badInput"})
         } else {
             this.setState({lastNameInstructions: ""})
             this.setState({lastNameOK: true})
             localStorage.setItem("lastname", e.target.value)
+            this.setState({lastNameClass: "goodInput"})
         }
     }
 
@@ -59,10 +68,12 @@ class Checkout extends React.Component {
         if (!result) {
             this.setState({emailInstructions: "Enter a valid E-mail"})
             this.setState({emailOK: false})
+            this.setState({emailClass: "badInput"})
         } else {
             this.setState({emailInstructions: ""})
             this.setState({emailOK: true})
             localStorage.setItem("email", e.target.value)
+            this.setState({emailClass: "goodInput"})
         }
     }
 
@@ -73,10 +84,12 @@ class Checkout extends React.Component {
         if (!result) {
             this.setState({phoneInstructions: "Enter a valid phone number"})
             this.setState({phoneOK: false})
+            this.setState({phoneClass: "badInput"})
         } else {
             this.setState({phoneInstructions: ""})
             this.setState({phoneOK: true})
             localStorage.setItem("phone", e.target.value)
+            this.setState({phoneClass: "goodInput"})
         }
     }
 
@@ -96,24 +109,24 @@ class Checkout extends React.Component {
                 <p style={{backgroundColor: "#f2f5f3"}}>Billing Address:</p>
                 <form>
                 
-                    <input style={{padding: "6px"}} onBlur={(e) => this.checkFirstName(e)} placeholder="Name" type="text"/>
+                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} placeholder="Name" type="text"/>
                     <br/>
                     <span style={{color: "red", fontSize: "13px"}}>{this.state.nameInstructions}</span>
                     <br/> 
 
-                    <input style={{ padding: "6px"}} onBlur={(e) => this.checkLastName(e)} placeholder="Last name" type="text"/> 
+                    <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} placeholder="Last name" type="text"/> 
                     <br/>
                     <span style={{color: "red", fontSize: "13px"}}>{this.state.lastNameInstructions}</span>
                     <br/>
 
 
-                    <input style={{ padding: "6px"}}  onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
+                    <input className={this.state.emailClass}   onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
                     <br/>
                     <span style={{color: "red", fontSize: "13px"}}>{this.state.emailInstructions}</span>
                     <br/>
 
 
-                    <input style={{ padding: "6px"}}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="email"/> 
+                    <input className={this.state.phoneClass}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="email"/> 
                     <br/>
                     <span style={{color: "red", fontSize: "13px"}}>{this.state.phoneInstructions}</span>
                     <br/>
