@@ -91,7 +91,7 @@ componentDidMount()  {
     render() {
 
     return(
-            <div onMouseLeave={this.props.cartNotHoverFunction}>
+            <div onMouseLeave={this.props.cartNotHoverFunction} className="cartOverFlow">
             <table style={{width: "400px"}} className="" >
                 <thead style={{}}>
                 <tr style={{paddingTop: "80px"}}>
