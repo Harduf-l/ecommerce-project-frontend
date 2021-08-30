@@ -16,8 +16,8 @@ import bread1 from '../../pictures/bread/baguette.jpg'
 import bread2 from '../../pictures/bread/spelt-bread.jpg'
 import bread3 from '../../pictures/bread/sprouted-bread.jpg'
 import bread4 from '../../pictures/bread/whole-wheat-bread.jpg'
-import bread5 from '../../pictures/bread/french-bread.jpg'
-import bread6 from '../../pictures/bread/white.jpg'
+import bread6 from '../../pictures/bread/french-bread.jpg'
+import bread5 from '../../pictures/bread/white.jpg'
 
 import berries from '../../pictures/superfood/berries.jpg'
 import cacao_seeds from '../../pictures/superfood/cacao-seeds.jpg'
@@ -32,13 +32,13 @@ const dataCategory = [
     type: "cookie",
     mypictures: [ cookie_granola1, cookie_chocolate1, cookie_bliss1, cookie_coconut1, cookie_lemon1,cookie_surprise1],
     links: ["/granole-cookie", "/chocoloate-cookie", "/blissful-cookie", "/coconute-cookie", "/lemon-cookie", "/surpise-cookie"],
-    infotext: ["granola cookies", "chocolate cookies", "blissful cookies", "coconute cookies", "lemon cookies", "surprise cookies"]
+    infotext: ["granola cookies", "chocolate cookies", "blissful cookies", "coconut cookies", "lemon cookies", "surprise cookies"]
 },
     {
     type: "spreads",
     mypictures: [ walnut_butter1, chocolate_butter, nut_spread1, pistachio_buuter, cashew_butter, peanut_spread1 ],
     links: ["/walnut-butter", "/chocolate-butter" , "/nut-butter", "/pistachio-butter", "/cashew-butter", "/peanut-butter"],
-    infotext: ["walnut butter", "chocolate butter", "nut butter", "pistachop butter", "cashew butter",  "peanut butter"]
+    infotext: ["walnut butter", "chocolate butter", "nut butter", "pistachio butter", "cashew butter",  "peanut butter"]
 },
     {
     type: "breads",

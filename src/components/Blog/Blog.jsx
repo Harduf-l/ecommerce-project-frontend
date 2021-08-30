@@ -1,7 +1,7 @@
 let Blog = () => {
     return(
         <div>
-            blog page
+           <span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "60px"}}>Blog</h2></span>
         </div>
     )
 }

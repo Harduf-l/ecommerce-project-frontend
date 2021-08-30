@@ -38,12 +38,31 @@ class Catalog extends React.Component {
       }
     }
   
-    componentDidMount=()=>{
-        console.log(this.props.location.search)
+    searchMethod=(word)=>{
+
+
         let myArr=this.state.allProducts
         let search=""
-        if(this.props.location.search){
-            const urlSearchParams = new URLSearchParams(this.props.location.search);
+        if (!word) {
+            word = this.props.location.search
+            document.getElementById("all").checked = true;  
+        } else if(word === "?breads") {
+            let currentArray = this.state.allProducts
+            currentArray = currentArray.filter(product => product.category === "breads")
+            document.getElementById("breads").checked = true;  
+            this.setState({filteredProducts: currentArray })
+        } else if (word === "?cookies") {
+            let currentArray = this.state.allProducts
+            currentArray = currentArray.filter(product => product.category === "cookies")
+            document.getElementById("cookies").checked = true;  
+            this.setState({filteredProducts: currentArray })
+        } else if (word === "?superfood") {
+            let currentArray = this.state.allProducts
+            currentArray = currentArray.filter(product => product.category === "superfood")
+            document.getElementById("superfood").checked = true;  
+            this.setState({filteredProducts: currentArray })
+        } else {
+            const urlSearchParams = new URLSearchParams(word);
             const params = Object.fromEntries(urlSearchParams.entries());
             if (params) {
                 search=params.q.slice(1, -1).toLowerCase()
@@ -54,6 +73,21 @@ class Catalog extends React.Component {
                 this.setState({filteredProducts: newFilteredData})
             } 
         }
+    }
+
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
+        if (this.props.location.search) {
+            this.searchMethod(this.props.location.search)
+        }   else {
+            document.getElementById("all").checked = true;  
+        }
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+        this.searchMethod(nextProps.location.search)
     }
 
     backFilteredByCategory() {
@@ -69,6 +103,8 @@ class Catalog extends React.Component {
                 return allproducts.filter(product => product.category === "breads")
             case "all":
                     return allproducts
+            case false:
+                return allproducts
             default:
                 break; 
             }
@@ -181,9 +217,14 @@ class Catalog extends React.Component {
 
     filterbyCategory = (e) => {
         let currentArray = this.state.allProducts
-        if (e.target.id !== "all")
+        if (e.target.id !== "all") {
         currentArray = currentArray.filter(product => product.category === e.target.id)
         this.setState({filteredProducts: currentArray })
+        }
+
+        if (e.target.id === "all") {
+        this.setState({filteredProducts: currentArray })
+        }
     }
 
  
@@ -213,6 +254,4 @@ class Catalog extends React.Component {
   
   export default Catalog
   
-
-
 

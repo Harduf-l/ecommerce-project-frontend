@@ -241,7 +241,7 @@ const allProducts =
             },
 
             {
-            header: "baguette",
+            header: "Baguette",
             description: "a french baguette that never lets you down.",
             moreDescription:   "natural toasted walnuts.",
             loveIt: "you are going to fall in love...",
@@ -256,7 +256,7 @@ const allProducts =
             id: "baguette",
             },
             {
-            header: "seeds bread",
+            header: "Seeds bread",
             description: "very rich bread with lots of helthy seeds",
             moreDescription:   "special texture that feel so smooth. only natural ingredients.",
             loveIt: "This natural butter will melt your heart...",
@@ -271,7 +271,7 @@ const allProducts =
             id: "seed-bread",
             },
             {
-            header: "spelt bread",
+            header: "Spelt bread",
             description: "spelt is a high-quality grain",
             moreDescription:   "les us choose for you, a natural based butter.",
             loveIt: "we are sure you are going to like it...",
@@ -286,7 +286,7 @@ const allProducts =
             id: "spelt-bread",
             },
             {
-            header: "rye bread",
+            header: "Rye bread",
             description: "rye bread with a great dense texture.",
             moreDescription:   "a unique butter that tastes like heaven.",
             loveIt: "this spread is so divine...",
@@ -301,7 +301,7 @@ const allProducts =
             id: "rye-bread",
             },
             {
-            header: "white bread",
+            header: "White bread",
             description: "white dreamy bread, no need for extra words.",
             moreDescription:   "special texture that feel so smooth. only natural ingredients.",
             loveIt: "This creamy spread is going to be your new favorite...",
@@ -316,7 +316,7 @@ const allProducts =
             id: "white-bread",
             },
             {
-            header: "french bread",
+            header: "French bread",
             description: "french bread is great for kids and adults alike.",
             moreDescription:   "80% nuts, rest bitter-sweet chocolate. you can be sure you give your children the best.",
             loveIt: "kids going mad!",
@@ -331,7 +331,7 @@ const allProducts =
             id: "french-bread",
             },
             {
-            header: "berries",
+            header: "Berries",
             description: "wonderful fresh berries.",
             moreDescription:   "natural berries. great with our chocolate cake.",
             loveIt: "you are going to fall in love...",
@@ -346,7 +346,7 @@ const allProducts =
             id: "berries",
             },
             {
-            header: "cacao seeds",
+            header: "Cacao seeds",
             description: "so intensive, the mother of all chocolate.",
             moreDescription:   "special texture that feel so smooth. only natural ingredients.",
             loveIt: "This natural butter will melt your heart...",
@@ -361,7 +361,7 @@ const allProducts =
             id: "cacao-seeds",
             },
             {
-            header: "chia seeds",
+            header: "Chia seeds",
             description: "our chia seeds will improve your digestion.",
             moreDescription:   "les us choose for you, a natural based butter.",
             loveIt: "we are sure you are going to like it...",
@@ -376,7 +376,7 @@ const allProducts =
             id: "chia",
             },
             {
-            header: "goji berry",
+            header: "Goji berry",
             description: "intense taste, for the brave ones.",
             moreDescription:   "a unique butter that tastes like heaven.",
             loveIt: "this spread is so divine...",
@@ -391,7 +391,7 @@ const allProducts =
             id: "goji",
             },
             {
-            header: "maca powder",
+            header: "Maca powder",
             description: "our maca powder will increase your energy level.",
             moreDescription:   "special texture that feel so smooth. only natural ingredients.",
             loveIt: "This creamy spread is going to be your new favorite...",
@@ -406,7 +406,7 @@ const allProducts =
             id: "maca",
             },
             {
-            header: "spirulina",
+            header: "Spirulina",
             description: "spirulina is best for general health improvement.",
             moreDescription:   "80% nuts, rest bitter-sweet chocolate. you can be sure you give your children the best.",
             loveIt: "kids going mad!",

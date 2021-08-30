@@ -21,9 +21,11 @@ class Product extends React.Component {
     
 
     this.state= {
-      quantity: localStorage.getItem(this.myProduct.id) || 1,
+      cartBtn: "Add to cart",
+      cartStyle: {backgroundColor: "#555555", color: "white"},
+      quantity: 1,
       currentpicture: this.myProduct.pic1,
-      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "1px solid #fe4c4c", boxShadow: " 0 0 8px rgba(230,71,35, 1)"},
+      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "1px solid #dd9431", boxShadow: " 0 0 8px #dd9431"},
       stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
       stylepicture3: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
 
@@ -32,25 +34,69 @@ class Product extends React.Component {
     
       this.minus = () => {
 
-        if (this.state.quantity) {
+        if (this.state.quantity > 1) {
           let newQuantity = this.state.quantity
           newQuantity = newQuantity-1
           this.setState({quantity: newQuantity})
-
-        localStorage.setItem(this.myProduct.id, newQuantity);
+          
         }
       }
 
       this.plus = () => {
         let newQuantity = this.state.quantity
         newQuantity = newQuantity+1
-        this.setState({quantity: newQuantity})
-        localStorage.setItem(this.myProduct.id, newQuantity);
+        this.setState({quantity: newQuantity})  
+      } 
+
+      this.addtoCart = () => {
+
+        this.setState({cartBtn: "Added to cart"})
+        this.setState({cartStyle: {backgroundColor: "#dd9431", color: "white"}}) 
+        
+        setTimeout(()=>{  this.setState({cartBtn: "Add to cart", cartStyle: { backgroundColor: "#555555", color: "white"}}     
+        )       
+      }, 1200);
+
+        let myQuantity = this.state.quantity
+
+        let doesExist = false
+        let cart;
+
+        if ( localStorage.getItem("cart") == null) {
+            cart = []; 
+        } else {
+              cart = JSON.parse(localStorage.getItem("cart")); 
+        }
+    
+        if (cart) {
+          for (let i=0; i<cart.length; i++) {
+            if (cart[i].id === this.myProduct.id) {
+              cart[i].quantity = myQuantity
+              doesExist = true
+            }
+        } 
+        } 
+        
+        if (!doesExist) {
+          let product = {
+            id: this.myProduct.id,
+            header: this.myProduct.header,
+            price:  this.myProduct.price,
+            quantity: myQuantity,
+            pic1: this.myProduct.pic1
+        } 
+    
+        cart.push(product)
+
+        }
+
+    localStorage.setItem("cart", JSON.stringify(cart)); 
+    this.props.checkCart()
+    
       }
 
     this.changePic = (e) => {
-      console.log(e.target.id)
-      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px",border: "1px solid #fe4c4c", boxShadow: " 0 0 8px rgba(230,71,35, 1)"}
+      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px",border: "1px solid #dd9431", boxShadow: " 0 0 8px #dd9431"}
       const regularStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"}
 
       switch(e.target.id) {
@@ -87,18 +133,19 @@ class Product extends React.Component {
     })
  }
 
+ componentDidMount() {
+  window.scrollTo(0, 0)
+}
 
     render() {
       
-
-      console.log(this.props.match.params.id)
     
 
   return (
 
 <div id="bigfoodDiv" className=" container d-flex justify-content-center flex-wrap pt-5">
 
-  <div className="col-12 col-lg-5 col-md-6 pe-2 ps-md-0 ps-3">
+  <div className="col-12 col-lg-5 col-md-6 ps-md-0 ps-3">
 
      <div className="pb-4">
        <NavLink className="hoverlink" to='/'>Home</NavLink>
@@ -120,24 +167,24 @@ class Product extends React.Component {
       <div style={{marginTop:"10px"}}>{this.myProduct.description}</div>
       <div>{this.myProduct.moreDescription}</div>
       <p style={{color: "#6f0000" , marginTop: "22px"}}>{this.myProduct.loveIt}<span><i className="fas fa-heart"></i></span></p>
-      <div  style={{textDecoration: "line-through"}}>original price: <span>{this.myProduct.previousPrice}$</span></div>
-      <div style={{fontWeight: "bold", color: "#e64723"}}>sale price: {this.myProduct.price}$</div>
+      <div  style={{textDecoration: "line-through"}}>Original price: <span>{this.myProduct.previousPrice}$</span></div>
+      <div style={{fontWeight: "bold", color: "#e64723"}}>Sale price: {this.myProduct.price}$</div>
       <br/>
-      <span className="me-1">quantity:</span> 
+      <span className="me-1">Quantity:</span> 
         
       <span className="ms-2" style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", }} onClick={this.minus}> <i className="fas fa-minus"></i> </span> 
       <span className="ps-2 pe-2">{this.state.quantity}</span>
       <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={this.plus}> <i className="fas fa-plus"></i> </span> 
       <br/>
-      <button className="btn btn-secondary mb-1 mt-4 me-2">Add to cart</button>
-      <button className="btn mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
+      <button onClick={this.addtoCart} className="btn btn-light mb-1 mt-4 me-2" style={this.state.cartStyle}>{this.state.cartBtn}</button>
+      <button className="btn btn-light mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
 
 
             <div className="accordion accordion-flush mt-3" style={{marginLeft: "-20px"}} id="accordionFlushExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingOne">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              storage & delivery information
+              Storage & Delivery information
             </button>
           </h2>
           <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -147,7 +194,7 @@ class Product extends React.Component {
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingTwo">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-              reviews (2)
+              Reviews (2)
             </button>
           </h2>
           <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -159,8 +206,8 @@ class Product extends React.Component {
                         activeColor="#e64723"
             /></div>
            <h6>very tasty natural food.</h6>
-           <p>i enjoyed it very much. highly recommended</p>
-           <p style={{color: "grey", textAlign: "end"}}>Jeniffer n.</p>
+           <p>I enjoyed it very much. highly recommended</p>
+           <p style={{color: "grey", textAlign: "end"}}>Jeniffer N.</p>
             
            <div>        <ReactStars
                         count={5}
@@ -170,7 +217,7 @@ class Product extends React.Component {
             /></div>
            <h6>surprisingly well made.</h6>
            <p>but a bit too expensive. better wait for sales</p>
-           <p style={{color: "grey", textAlign: "end"}}>Edward r.</p>
+           <p style={{color: "grey", textAlign: "end"}}>Edward R.</p>
 
             </div>
           </div>
@@ -181,7 +228,7 @@ class Product extends React.Component {
         
     </div>
 
-       <div className="col-12 col-lg-4 col-md-6 pt-4 pt-md-2">
+       <div className="col-12 col-lg-4 col-md-6 pt-4 pt-md-2 pe-4">
 
        <div style={{textAlign: "center"}}>
         <InnerImageZoom alt={"product"} src={this.state.currentpicture} hasSpacer={true} height={450} width={400}/>
@@ -199,14 +246,20 @@ class Product extends React.Component {
 
   <div className="col-lg-3 col-12 ps-3 pt-4 pt-lg-0" style={{textAlign: "center"}}>
 
-        <div>
-          <h4 style={{paddingBottom: "10px"}}>Important to know</h4> 
-          <div style={{width: "90%", margin: "0 auto"}}>{this.myProduct.info}</div>
+        <div style={{border: "1px rgba(221,148,49, 0.5) solid", paddingTop: "5px", marginTop: "10px"}}>
+          <h4 style={{paddingBottom: "10px", paddingTop: "10px", color: "#2b3239"}}>Important to know</h4> 
+          <div style={{width: "90%", margin: "0 auto", paddingBottom: "10px"}}>{this.myProduct.info}</div>
         </div>
 
-        <div className="pt-5 ps-2"  style={{}}>
+
+        <div style={{backgroundColor: "#f0f0f0", marginTop: "20px", height: "100px"}}>
+        <h6 style={{textAlign: "start", color: "#305017", marginLeft: "10px", paddingTop: "8px"}}>Ingredients:</h6>
+        <div style={{textAlign: "start", fontSize: "12px",  marginLeft: "10px"}}>cacato butter, whole-wheat flour, dates syrop, bitter sweet chocolate ©organic certificated </div>
+        </div>
+
+        <div className="pt-3 ps-2"  style={{}}>
           <a href="https://www.britannica.com/topic/organic-food" target="_blank" rel="noreferrer"> <img  alt={"product"}  style={{width: "150px"}} src={organic}/></a>
-          <a href="https://www.fairtrade.net/" target="_blank" rel="noreferrer"><img  alt={"product"}  style={{width: "100px"}} src={fair}/></a>
+          <a href="https://www.fairtrade.net/" target="_blank" rel="noreferrer"><img  alt={"product"}  style={{marginTop: "10px", width: "100px"}} src={fair}/></a>
         </div>
 
     </div>

@@ -16,8 +16,8 @@ class Category extends React.Component {
 
             
         let {mypictures, infotext, links} = dataCategory[this.props.num]
-        let pictureCategoryStyle = {height: "250px", width: "410px", objectFit: "cover", marginLeft: "8px"}
-        let infoStyle = {color: "white", backgroundColor: "rgba(143,147,151, 0.6)", width: "250px", position: "absolute", fontSize: "30px", left:"80px", top:"110px", zIndex: "9999"}
+        let pictureCategoryStyle = {height: "250px", width: "440px", objectFit: "cover", marginLeft: "8px"}
+        let infoStyle = {color: "white", backgroundColor: "rgba(143,147,151, 0.6)", width: "250px", position: "absolute", fontSize: "30px", left:"80px", top:"110px", zIndex: "9"}
         let outerLinkstyle = { marginBottom: "10px", position: "relative"}
 
 

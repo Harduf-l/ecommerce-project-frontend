@@ -1,22 +1,60 @@
 import React from 'react'
 import  {Link } from "react-router-dom";
+import MiniCart from '../Cart/MiniCart'
 
 class Header extends React.Component {
 
-  constructor() {
+  constructor(props) {
     super() 
 
     this.state = { 
       valueInput: "",
-      cartInput: 0 
+      cartHover: false, 
+      items: 0, 
     }
 
     this.trackInput = (e) => {
       let newWord = e.target.value
       this.setState({valueInput: newWord})
     }
+
   }
 
+  componentDidMount() {
+    if ( localStorage.getItem("cart") == null || localStorage.getItem("cart") === [] ) {
+      this.setState({items: 0 })
+  } else {
+      let cart = JSON.parse(localStorage.getItem("cart")); 
+      let number = 0;
+
+      for (let i=0; i< cart.length; i++) {
+        number = number + cart[i].quantity
+      }
+
+      this.setState({items: number })
+  }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.itemsInCart)
+    this.setState({items: nextProps.itemsInCart })
+  }
+
+  removePlaceHolder = (e) => {
+    this.setState({valueInput: ""})
+    document.getElementById("inputon").value = ""
+  }
+
+  
+
+  cartHoverFunction = () => {
+    this.setState({cartHover: true})
+  }
+
+
+  cartNotHoverFunction = () => {
+    this.setState({cartHover: false})
+  }
 
   render() {
 
@@ -53,11 +91,13 @@ class Header extends React.Component {
               </Link>
               </li>
               
-              <li className="nav-item text-center" style={{position: "relative"}}>
-              <Link className="nav-link" to="/cart">
+              <li className="nav-item text-center cartHover" onClick ={this.cartHoverFunction} style={{position: "relative", cursor: "pointer"}}>
+              <div className="nav-link">
+                <div className="cartHover">
                   <i className="fas fa-shopping-cart">
-                    <div style={{backgroundColor: "#8fa663",  borderRadius: "50%", width: "17px", height: "17px", display: "inline-block"}}>{this.state.cartInput}</div></i>
-                  </Link>
+                    <div className="cartBtnNumberStyle">{this.state.items}</div>
+                    </i></div>
+                  </div>
               </li>
 
 
@@ -68,10 +108,10 @@ class Header extends React.Component {
             Categories
           </Link>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/cookies" params={{index: 0}}>cookies</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/spreads" params={{index: 1}}>spreads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/breads" params={{index: 2}}>breads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/superfood" params={{index: 3}}>superfood</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/cookies" params={{index: 0}}>cookies</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/spreads" params={{index: 1}}>spreads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/breads" params={{index: 2}}>breads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/superfood" params={{index: 3}}>superfood</Link></li>
           </ul>
         </li>
               <li className="nav-item hovernav">
@@ -86,12 +126,20 @@ class Header extends React.Component {
               </li>
           </ul>
           <form className="d-flex">
-              <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="i would like to buy..." aria-label="Search"/>
+              <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="I would like to buy..." aria-label="Search"/>
               {console.log(this.state.valueInput)}
-              <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button className="btn btn-outline-success me-2" type="submit">search</button></Link>
+
+              {this.state.valueInput  && <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">Search</button></Link>}
+              {!this.state.valueInput && <button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">Search</button>}
               </form>
     </div>
   </div>
+
+      { this.state.cartHover &&
+        <div className="cartModal" >
+          <MiniCart checkCart={this.props.checkCart} cartNotHoverFunction={this.cartNotHoverFunction} />
+        </div> }
+
 </nav>
 
     )

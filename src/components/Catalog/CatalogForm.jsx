@@ -33,7 +33,7 @@ let CatalogForm = (props) => {
             <div className="col-12 ps-2  pt-1 mb-4" style={{backgroundColor: "#f0f0f0",}}>
                 <h6>categories</h6>
                 <div style={{marginTop: "10px"}}>
-                <input defaultChecked style={{backgroundColor: "black"}} onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="all"/>
+                <input style={{backgroundColor: "black"}} onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="all"/>
                 <label for="all"  >all</label>
                 <br/>
                 <input onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="cookies"/>
@@ -42,10 +42,10 @@ let CatalogForm = (props) => {
                 <input  onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="superfood"/>
                 <label for="superfood">superfoods</label>
                 <br/>
-                <input  onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="spreads"/>
+                <input onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="spreads"/>
                 <label for="spreads">spreads</label>
                 <br/>
-                <input  onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="breads"/>
+                <input onChange={(e) => props.filterbyCategory(e)} type="radio" name="category" id="breads"/>
                 <label for="breads">breads</label>
                 </div>
 
