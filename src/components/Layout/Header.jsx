@@ -20,6 +20,21 @@ class Header extends React.Component {
 
   }
 
+  componentDidMount() {
+    if ( localStorage.getItem("cart") == null || localStorage.getItem("cart") === [] ) {
+      this.setState({items: 0 })
+  } else {
+      let cart = JSON.parse(localStorage.getItem("cart")); 
+      let number = 0;
+
+      for (let i=0; i< cart.length; i++) {
+        number = number + cart[i].quantity
+      }
+
+      this.setState({items: number })
+  }
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.itemsInCart)
     this.setState({items: nextProps.itemsInCart })
