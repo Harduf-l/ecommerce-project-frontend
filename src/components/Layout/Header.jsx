@@ -24,6 +24,7 @@ class Header extends React.Component {
     document.getElementById("inputon").value = ""
   }
 
+  
   checkCart = () => {
     if ( localStorage.getItem("cart") == null) {
       return 0; 

@@ -1,6 +1,4 @@
 import React from 'react'
-import paypal from '../../pictures/baners/paypal.png'
-import cards from '../../pictures/baners/cards.png'
 import  {Link } from "react-router-dom";
 
 
@@ -15,6 +13,7 @@ class Cart extends React.Component {
         couponState: "",
         finalPrice: "",
         delivery: false,
+        deliveryRequired: "",
 
     }
 
@@ -117,15 +116,19 @@ componentDidMount()  {
 
         switch(e.target.value) {
             case "express":
+                this.setState({deliveryRequired: ""})
                 this.setState({delivery: 15})
               break;
             case "air":
+                this.setState({deliveryRequired: ""})
                 this.setState({delivery: 12})
               break;
             case "sea":
+                this.setState({deliveryRequired: ""})
                 this.setState({delivery: 9})
                  break;
             case "default":
+                    this.setState({deliveryRequired: "Please choose a shipping method"})
                     this.setState({delivery: false})
                      break;
             default:
@@ -133,6 +136,14 @@ componentDidMount()  {
           }
     }
 
+    moveCheckout = () => {
+        if (this.state.delivery) {
+            this.setState({deliveryRequired: ""})
+        this.props.history.push("/checkout")
+        }
+        this.setState({deliveryRequired: "Please choose a shipping method"})
+
+    }
 
     render() {
 
@@ -227,10 +238,10 @@ componentDidMount()  {
                 <option value="air">By air 10-14 days - $12</option>
                 <option value="sea">By sea 21-28 days - $9</option>
                 </select>
-                
+                <p style={{color: "#e61a23", marginTop: "5px"}}>{this.state.deliveryRequired}</p>
                 <div className="flex d-flex justify-content-end flex-wrap pt-5">
                 
-                <button className="btn btn-light" style={{backgroundColor: "#8fa663", color: "white", fontWeight: "490"}}>Proceed to checkout</button>
+                <button onClick={this.moveCheckout} className="btn btn-light" style={{backgroundColor: "#8fa663", color: "white", fontWeight: "490"}}>Proceed to checkout</button>
 
                 </div>
             </div>

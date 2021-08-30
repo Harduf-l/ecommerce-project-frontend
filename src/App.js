@@ -20,6 +20,7 @@ import Cart from './components/Cart/Cart'
 import Category from "./components/Category/Category"
 import Members from "./components/Protected/Members"
 import ProtectedRoute from "./components/Protected/Protected"
+import Checkout from './components/Cart/Checkout'
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/product/:id" component={Product} />
               <Route exact path="/catalog" component={Catalog} />
+              <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/" component={Home} />
               <Route component={Page404} />
               </Switch>
