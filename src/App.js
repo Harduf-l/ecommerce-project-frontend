@@ -23,11 +23,38 @@ import ProtectedRoute from "./components/Protected/Protected"
 import Checkout from './components/Cart/Checkout'
 
 
-function App() {
+class App extends React.Component {
+
+  constructor(props) {
+      super(props)
+      this.state = {
+        numberInCart: 0,
+      }
+
+  }
+
+  checkCart = () => {
+    if ( localStorage.getItem("cart") == null) {
+      this.setState({numberInCart: 0})
+  } else {
+      let cart = JSON.parse(localStorage.getItem("cart")); 
+      let number = 0;
+
+      for (let i=0; i< cart.length; i++) {
+        number = number + cart[i].quantity
+      }
+
+
+      this.setState({numberInCart: number})
+  }
+
+  }
+
+render() {
   return (
       <div id="htmldiv">
         <div id="bodydiv">
-          <Header/>
+          <Header itemsInCart={this.state.numberInCart}/>
   
               <Switch>
               <Route path="/contact" component={Contact} />
@@ -40,7 +67,7 @@ function App() {
               <ProtectedRoute path="/membersZone" component={Members}/>
               <Route path="/cart" component={Cart} />
               <Route path="/login" component={Login} />
-              <Route path="/product/:id" component={Product} />
+              <Route path="/product/:id" render={(props) => <Product checkCart={this.checkCart} {...props}/>} />
               <Route exact path="/catalog" component={Catalog} />
               <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/" component={Home} />
@@ -53,6 +80,7 @@ function App() {
         </div>
     </div>
   );
+}
 }
 
 export default App;

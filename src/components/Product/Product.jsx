@@ -38,6 +38,7 @@ class Product extends React.Component {
           let newQuantity = this.state.quantity
           newQuantity = newQuantity-1
           this.setState({quantity: newQuantity})
+          
         }
       }
 
@@ -51,7 +52,7 @@ class Product extends React.Component {
 
         this.setState({cartBtn: "Added to cart"})
         this.setState({cartStyle: {backgroundColor: "#dd9431", color: "white"}}) 
-
+        
         setTimeout(()=>{  this.setState({cartBtn: "Add to cart", cartStyle: { backgroundColor: "#555555", color: "white"}}     
         )       
       }, 2000);
@@ -90,11 +91,11 @@ class Product extends React.Component {
         }
 
     localStorage.setItem("cart", JSON.stringify(cart)); 
+    this.props.checkCart()
     
       }
 
     this.changePic = (e) => {
-      console.log(e.target.id)
       const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px",border: "1px solid #dd9431", boxShadow: " 0 0 8px #dd9431"}
       const regularStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"}
 
@@ -138,8 +139,6 @@ class Product extends React.Component {
 
     render() {
       
-
-      console.log(this.props.match.params.id)
     
 
   return (

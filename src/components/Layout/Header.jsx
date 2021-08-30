@@ -4,12 +4,13 @@ import MiniCart from '../Cart/MiniCart'
 
 class Header extends React.Component {
 
-  constructor() {
+  constructor(props) {
     super() 
 
     this.state = { 
       valueInput: "",
       cartHover: false, 
+      items: "",
     }
 
     this.trackInput = (e) => {
@@ -17,6 +18,11 @@ class Header extends React.Component {
       this.setState({valueInput: newWord})
     }
 
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.itemsInCart)
+    this.setState({items: nextProps.itemsInCart })
   }
 
   removePlaceHolder = (e) => {
@@ -88,7 +94,7 @@ class Header extends React.Component {
               <div className="nav-link">
                 <div className="cartHover">
                   <i className="fas fa-shopping-cart">
-                    <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#8fa663",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>{this.checkCart()}</div></i></div>
+                    <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#8fa663",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>{this.state.items}</div></i></div>
                   </div>
               </li>
 
