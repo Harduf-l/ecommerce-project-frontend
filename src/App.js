@@ -54,7 +54,7 @@ render() {
   return (
       <div id="htmldiv">
         <div id="bodydiv">
-          <Header itemsInCart={this.state.numberInCart}/>
+          <Header itemsInCart={this.state.numberInCart} checkCart={this.checkCart}/>
   
               <Switch>
               <Route path="/contact" component={Contact} />
@@ -65,7 +65,7 @@ render() {
               <Route path="/product/breads" render={() => <Category num = {2}/>}/>
               <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
               <ProtectedRoute path="/membersZone" component={Members}/>
-              <Route path="/cart" component={Cart} />
+              <Route path="/cart" render={(props) => <Cart checkCart={this.checkCart} {...props}/>} />
               <Route path="/login" component={Login} />
               <Route path="/product/:id" render={(props) => <Product checkCart={this.checkCart} {...props}/>} />
               <Route exact path="/catalog" component={Catalog} />

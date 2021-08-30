@@ -44,6 +44,7 @@ componentDidMount()  {
     
     localStorage.setItem("cart", JSON.stringify(currentArray)); 
     this.setState({cartArray: currentArray})
+    this.props.checkCart()
     }
 
 
@@ -55,6 +56,7 @@ componentDidMount()  {
     
     localStorage.setItem("cart", JSON.stringify(currentArray)); 
     this.setState({cartArray: currentArray})
+    this.props.checkCart()
 
     }
 
@@ -66,6 +68,7 @@ componentDidMount()  {
         
         localStorage.setItem("cart", JSON.stringify(currentArray)); 
         this.setState({cartArray: currentArray})
+        this.props.checkCart()
     
         }
 

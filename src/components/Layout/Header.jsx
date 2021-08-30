@@ -94,7 +94,9 @@ class Header extends React.Component {
               <div className="nav-link">
                 <div className="cartHover">
                   <i className="fas fa-shopping-cart">
-                    <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#8fa663",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>{this.state.items}</div></i></div>
+                   {!this.state.items && <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#dd9431",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>0</div>}
+                    {this.state.items && <div style={{marginLeft: "3px", paddingTop: "2px",  backgroundColor: "#8fa663",color: "white", fontFamily: "Helvetica", fontWeight:"normal", borderRadius: "50%", width: "19px", height: "19px", display: "inline-block"}}>{this.state.items}</div>}
+                    </i></div>
                   </div>
               </li>
 
@@ -135,7 +137,7 @@ class Header extends React.Component {
 
       { this.state.cartHover &&
         <div className="cartModal" >
-          <MiniCart cartNotHoverFunction={this.cartNotHoverFunction} />
+          <MiniCart checkCart={this.props.checkCart} cartNotHoverFunction={this.cartNotHoverFunction} />
         </div> }
 
 </nav>
