@@ -1,4 +1,5 @@
 import SearchDisplay from './SearchDisplay'
+import SkeletonDisplay from './SkeletonDisplay'
 import CatalogForm from './CatalogForm'
 import React from 'react'
 
@@ -35,6 +36,7 @@ class Catalog extends React.Component {
           pricehighest: false, 
           vaganOn: false,
           lowcarbOn: false,
+          loading: false, 
       }
     }
   
@@ -77,12 +79,19 @@ class Catalog extends React.Component {
 
 
     componentDidMount() {
+        this.setState({loading: true})
+
         window.scrollTo(0, 0)
         if (this.props.location.search) {
             this.searchMethod(this.props.location.search)
         }   else {
             document.getElementById("all").checked = true;  
         }
+        
+        setTimeout(()=>{  this.setState({loading: false}  
+        )       
+      }, 2000);
+
     }
 
 
@@ -241,9 +250,17 @@ class Catalog extends React.Component {
         </div>
 
         <div className="col-lg-9 col-12  d-flex flex-wrap mt-3 justify-content-center">
-        {this.state.filteredProducts.map((cookie, index)=>{
-        return  <SearchDisplay key={index} myid={index} foodContent={cookie} />
+
+        {this.state.loading && this.state.filteredProducts.map((cookie, index)=>{
+        return <SkeletonDisplay key={index} myid={index} />
+        })
+        }
+
+        {!this.state.loading && this.state.filteredProducts.map((cookie, index)=>{
+        return <SearchDisplay key={index} myid={index} foodContent={cookie} />
         })}
+
+
         </div>
         </div>
         
