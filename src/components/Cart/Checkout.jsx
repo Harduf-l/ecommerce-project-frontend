@@ -46,6 +46,8 @@ class Checkout extends React.Component {
             zipOK: false,
             zipClass: "regularInput",
 
+            endProcess: "", 
+
         }
 
     }
@@ -61,17 +63,9 @@ class Checkout extends React.Component {
         this.state.lastNameOK2 &&
         this.state.nameOK2 ) {
             console.log("order is placed")
+            this.setState({endProcess: "order is placed"})
         } else {
-            console.log("something is not valid")
-            console.log("name " + this.state.nameOK)
-            console.log("email " +  this.state.emailOK)
-            console.log("lastname " + this.state.lastNameOK)
-            console.log("phone " + this.state.phoneOK)
-            console.log("zip " + this.state.zipOK)
-            console.log("city " +  this.state.cityOK)
-            console.log("country " + this.state.countryOK)
-            console.log("lastname2 " + this.state.lastNameOK2)
-            console.log("name2 " + this.state.nameOK2)
+            this.setState({endProcess: "please fill up the inputs correctly"})
         }
 
      }
@@ -316,12 +310,16 @@ class Checkout extends React.Component {
                 <br/>
                 
                 <button onClick={this.allValid} className="btn btn-secondary mt-4">Place order</button>
+
+                <div style={{fontSize: "24px", fontWeight: "bold", marginTop: "30px"}}>{this.state.endProcess}</div>
+
                 <div className="flex d-flex justify-content-between pt-5">
-            <img src={paypal} style={{width: "160px"}} />
-            <img src={cards} style={{width: "160px"}}/>
+            <img src={paypal} style={{width: "160px"}} alt={"paypal"}/>
+            <img src={cards} style={{width: "160px"}} alt={"creditCard"}/>
                 </div>
             <br/>
-
+            
+            <br/>
             <Link to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
     
             </div>
