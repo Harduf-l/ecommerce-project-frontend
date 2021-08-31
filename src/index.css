@@ -270,10 +270,16 @@ html {
 .goodInput {
   border: 2px solid green;  
   background-color: #d3ffdc;
+  padding: 6px; 
 }
 
 
 .badInput {
   border: 2px solid red; 
   background-color: #ffc0c3;
+  padding: 6px; 
+}
+
+.regularInput {
+  padding: 6px; 
 }

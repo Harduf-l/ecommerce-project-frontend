@@ -12,57 +12,145 @@ class Checkout extends React.Component {
         this.state = {
             nameInstructions: "",
             nameOK: false,
-            nameClass: "",
+            nameClass: "regularInput",
 
             lastNameInstructions: "",
             lastNameOK: false,
-            lastNameClass: "",
+            lastNameClass: "regularInput",
 
             emailInstructions: "",
             emailOK: false,
-            emailClass: "",
+            emailClass: "regularInput",
 
             phoneInstructions: "",
             phoneOK: false,
-            phoneClass: "",
+            phoneClass: "regularInput",
+
+            nameInstructions2: "",
+            nameOK2: false,
+            nameClass2: "regularInput",
+
+            lastNameInstructions2: "",
+            lastNameOK2: false,
+            lastNameClass2: "regularInput",
+
+            countyInstructions: "",
+            countryOK: false,
+            countryClass: "regularInput",
+
+            cityInstructions: "",
+            cityOK: false,
+            cityClass: "regularInput",
+
+            zipInstructions: "",
+            zipOK: false,
+            zipClass: "regularInput",
 
         }
 
     }
 
+    allValid = () => {
+        if (this.state.nameOK && 
+        this.state.emailOK &&
+        this.state.lastNameOK &&
+        this.state.phoneOK &&
+        this.state.zipOK &&
+        this.state.cityOK &&
+        this.state.countryOK &&
+        this.state.lastNameOK2 &&
+        this.state.nameOK2 ) {
+            console.log("order is placed")
+        } else {
+            console.log("something is not valid")
+            console.log("name " + this.state.nameOK)
+            console.log("email " +  this.state.emailOK)
+            console.log("lastname " + this.state.lastNameOK)
+            console.log("phone " + this.state.phoneOK)
+            console.log("zip " + this.state.zipOK)
+            console.log("city " +  this.state.cityOK)
+            console.log("country " + this.state.countryOK)
+            console.log("lastname2 " + this.state.lastNameOK2)
+            console.log("name2 " + this.state.nameOK2)
+        }
+
+     }
+
     checkFirstName = (e) => {
-        console.log(e.target.value)
+        
         let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
         let result = pattern.test(e.target.value)
-        if (!result) {
-            this.setState({nameInstructions: "Enter a valid name"})
-            this.setState({nameOK: false})
-            this.setState({nameClass: "badInput"})
-        } else {
-            this.setState({nameInstructions: ""})
-            this.setState({nameOK: true})
-            this.setState({nameClass: "goodInput"})
-        }
+
+
+        switch(e.target.id) {
+            case "firstname":
+                if (!result) {
+                    this.setState({nameInstructions: "Enter a valid first name"})
+                    this.setState({nameOK: false})
+                    this.setState({nameClass: "badInput"})
+                } else {
+                    this.setState({nameOK: ""})
+                    this.setState({nameOK: true})
+                    localStorage.setItem("firstname", e.target.value)
+                    this.setState({nameClass: "goodInput"})
+                }
+              break;
+            case "firstname2":
+                if (!result) {
+                    this.setState({nameInstructions2: "Enter a valid first name"})
+                    this.setState({nameOK2: false})
+                    this.setState({nameClass2: "badInput"})
+                } else {
+                    this.setState({nameInstructions2: ""})
+                    this.setState({nameOK2: true})
+                    localStorage.setItem("lastname2", e.target.value)
+                    this.setState({nameClass2: "goodInput"})
+                }
+              break;
+            default:
+                break; 
+          }
     }
 
     checkLastName = (e) => {
-        console.log(e.target.value)
+
         let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
         let result = pattern.test(e.target.value)
-        if (!result) {
-            this.setState({lastNameInstructions: "Enter a valid last name"})
-            this.setState({lastNameOK: false})
-            this.setState({lastNameClass: "badInput"})
-        } else {
-            this.setState({lastNameInstructions: ""})
-            this.setState({lastNameOK: true})
-            localStorage.setItem("lastname", e.target.value)
-            this.setState({lastNameClass: "goodInput"})
-        }
+
+        switch(e.target.id) {
+            case "lastname":
+                if (!result) {
+                    this.setState({lastNameInstructions: "Enter a valid last name"})
+                    this.setState({lastNameOK: false})
+                    this.setState({lastNameClass: "badInput"})
+                } else {
+                    this.setState({lastNameInstructions: ""})
+                    this.setState({lastNameOK: true})
+                    localStorage.setItem("lastname", e.target.value)
+                    this.setState({lastNameClass: "goodInput"})
+                }
+              break;
+            case "lastname2":
+                if (!result) {
+                    this.setState({lastNameInstructions2: "Enter a valid last name"})
+                    this.setState({lastNameOK2: false})
+                    this.setState({lastNameClass2: "badInput"})
+                } else {
+                    this.setState({lastNameInstructions2: ""})
+                    this.setState({lastNameOK2: true})
+                    localStorage.setItem("lastname2", e.target.value)
+                    this.setState({lastNameClass2: "goodInput"})
+                }
+              break;
+            default:
+                break; 
+          }
+
+
     }
 
     checkEmail = (e) => {
-        console.log(e.target.value)
+      
         let pattern = /[a-zA-Z0-9-_.]+@[a-z]+.[a-z]{2,4}/gm 
         let result = pattern.test(e.target.value)
         if (!result) {
@@ -78,7 +166,7 @@ class Checkout extends React.Component {
     }
 
     checkPhone = (e) => {
-        console.log(e.target.value)
+      
         let pattern = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
         let result = pattern.test(e.target.value)
         if (!result) {
@@ -92,6 +180,56 @@ class Checkout extends React.Component {
             this.setState({phoneClass: "goodInput"})
         }
     }
+
+    checkcountry = (e) => {
+        
+        let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+        let result = pattern.test(e.target.value)
+        if (!result) {
+            this.setState({countyInstructions: "Enter a valid country name"})
+            this.setState({countryOK: false})
+            this.setState({countryClass: "badInput"})
+        } else {
+            this.setState({countyInstructions: ""})
+            this.setState({countryOK: true})
+            localStorage.setItem("country", e.target.value)
+            this.setState({countryClass: "goodInput"})
+        }
+    }
+
+
+    checkcity = (e) => {
+      
+        let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+        let result = pattern.test(e.target.value)
+        if (!result) {
+            this.setState({cityInstructions: "Enter a valid city name"})
+            this.setState({cityOK: false})
+            this.setState({cityClass: "badInput"})
+        } else {
+            this.setState({cityInstructions: ""})
+            this.setState({cityOK: true})
+            localStorage.setItem("city", e.target.value)
+            this.setState({cityClass: "goodInput"})
+        }
+    }
+
+    checkzip = (e) => {
+      
+        let pattern = /\b\d{6}\b/g
+        let result = pattern.test(e.target.value)
+        if (!result) {
+            this.setState({zipInstructions: "Enter a valid zip code - 6 digits"})
+            this.setState({zipOK: false})
+            this.setState({zipClass: "badInput"})
+        } else {
+            this.setState({zipInstructions: ""})
+            this.setState({zipOK: true})
+            localStorage.setItem("zip", e.target.value)
+            this.setState({zipClass: "goodInput"})
+        }
+    }
+
 
 
 
@@ -109,12 +247,12 @@ class Checkout extends React.Component {
                 <p style={{backgroundColor: "#f2f5f3"}}>Billing Address:</p>
                 <form>
                 
-                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} placeholder="Name" type="text"/>
+                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" type="text"/>
                     <br/>
                     <span style={{color: "red", fontSize: "13px"}}>{this.state.nameInstructions}</span>
                     <br/> 
 
-                    <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} placeholder="Last name" type="text"/> 
+                    <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} id="lastname" placeholder="Last name" type="text"/> 
                     <br/>
                     <span style={{color: "red", fontSize: "13px"}}>{this.state.lastNameInstructions}</span>
                     <br/>
@@ -141,15 +279,32 @@ class Checkout extends React.Component {
             <div>
                 <p style={{ backgroundColor: "#f2f5f3"}}>Delivery Address:</p>
                 <form>
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Name" type="text"/> 
+                <input className={this.state.nameClass2} onBlur={(e) => this.checkFirstName(e)} id="firstname2" placeholder="Name" type="text"/>
+                    <br/>
+                    <span style={{color: "red", fontSize: "13px"}}>{this.state.nameInstructions2}</span>
                     <br/> 
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Last name" type="text"/> 
+
+                    <input  className={this.state.lastNameClass2}  onBlur={(e) => this.checkLastName(e)} id="lastname2" placeholder="Last name" type="text"/> 
                     <br/>
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Country" type="email"/> 
+                    <span style={{color: "red", fontSize: "13px"}}>{this.state.lastNameInstructions2}</span>
                     <br/>
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="City / Suburb" type="email"/> 
+
+                    <input className={this.state.countryClass}  onBlur={(e) => this.checkcountry(e)} placeholder="Country" type="email"/> 
                     <br/>
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Zip / Postcode" type="email"/> 
+                    <span style={{color: "red", fontSize: "13px"}}>{this.state.countyInstructions}</span>
+                    <br/>
+
+
+                    <input className={this.state.cityClass}   onBlur={(e) => this.checkcity(e)} placeholder="City / Suburb" type="email"/> 
+                    <br/>
+                    <span style={{color: "red", fontSize: "13px"}}>{this.state.cityInstructions}</span>
+                    <br/>
+
+                    <input className={this.state.zipClass} onBlur={(e) => this.checkzip(e)}  placeholder="Zip / Postcode" type="text"/> 
+                    <br/>
+                    <span style={{color: "red", fontSize: "13px"}}>{this.state.zipInstructions}</span>
+                    <br/>
+
                 </form>
             </div>
 
@@ -160,7 +315,7 @@ class Checkout extends React.Component {
                 <input type="text" style={{margin: "10px 0px", padding: "6px"}} placeholder="*** digits"/>
                 <br/>
                 
-                <button className="btn btn-secondary mt-4">Place order</button>
+                <button onClick={this.allValid} className="btn btn-secondary mt-4">Place order</button>
                 <div className="flex d-flex justify-content-between pt-5">
             <img src={paypal} style={{width: "160px"}} />
             <img src={cards} style={{width: "160px"}}/>
