@@ -65,7 +65,42 @@ class Checkout extends React.Component {
             console.log("order is placed")
             this.setState({endProcess: "order is placed"})
         } else {
-            this.setState({endProcess: "please fill up the inputs correctly"})
+            if (!this.state.nameOK) {
+                this.setState({nameInstructions: "Enter a valid first name"})
+                this.setState({nameClass: "badInput"})
+            }
+            if (!this.state.emailOK) {
+                this.setState({emailInstructions: "Enter a valid E-mail"})
+                this.setState({emailClass: "badInput"})
+            }
+            if (!this.state.lastNameOK) {
+                this.setState({lastNameInstructions: "Enter a valid last name"})
+                this.setState({lastNameClass: "badInput"})
+            }
+            if (!this.state.phoneOK) {
+                this.setState({phoneInstructions: "Enter a valid phone number"})
+                this.setState({phoneClass: "badInput"})
+            }
+            if (!this.state.zipOK) {
+                this.setState({zipInstructions: "Enter a valid zip code - 6 digits"})
+                this.setState({zipClass: "badInput"})
+            }
+            if (!this.state.cityOK) {
+                this.setState({cityInstructions: "Enter a valid city name"})
+                this.setState({cityClass: "badInput"})
+            }
+            if (!this.state.countryOK) {
+                this.setState({countyInstructions: "Enter a valid country name"})
+                this.setState({countryClass: "badInput"})
+            }
+            if (!this.state.nameOK2) {
+                this.setState({nameInstructions2: "Enter a valid first name"})
+                this.setState({nameClass2: "badInput"})
+            }
+            if (!this.state.lastNameOK2) {
+                this.setState({lastNameInstructions2: "Enter a valid last name"})
+                this.setState({lastNameClass2: "badInput"})
+            }
         }
 
      }
@@ -83,7 +118,7 @@ class Checkout extends React.Component {
                     this.setState({nameOK: false})
                     this.setState({nameClass: "badInput"})
                 } else {
-                    this.setState({nameOK: ""})
+                    this.setState({nameInstructions: ""})
                     this.setState({nameOK: true})
                     localStorage.setItem("firstname", e.target.value)
                     this.setState({nameClass: "goodInput"})
