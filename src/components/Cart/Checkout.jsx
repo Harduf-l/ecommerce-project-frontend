@@ -276,7 +276,7 @@ class Checkout extends React.Component {
                 <p style={{backgroundColor: "#f2f5f3"}}>Billing Address:</p>
                 <form>
                 
-                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" type="text"/>
+                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" value={(localStorage.getItem("namelogged"))? localStorage.getItem("namelogged") : ""} type="text"/>
                     <br/>
                     <span style={{color: "red", fontSize: "13px"}}>{this.state.nameInstructions}</span>
                     <br/> 

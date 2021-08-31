@@ -38,6 +38,8 @@ class Header extends React.Component {
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.itemsInCart)
     this.setState({items: nextProps.itemsInCart })
+
+    console.log(nextProps.itemsInCart)
   }
 
   removePlaceHolder = (e) => {
@@ -86,9 +88,20 @@ class Header extends React.Component {
               </Link>
               </li>
               <li className="nav-item text-center" >
+
+              {(this.props.logged)? 
+              <Link className="nav-link hovernav"  aria-current="page" to="/membersZone">
+              Hello, {localStorage.getItem("namelogged")}!
+              </Link> : 
+
               <Link className="nav-link hovernav"  aria-current="page" to="/login">
               Login/register
-              </Link>
+              </Link>}
+
+
+
+
+
               </li>
               
               <li className="nav-item text-center cartHover" onClick ={this.cartHoverFunction} style={{position: "relative", cursor: "pointer"}}>
