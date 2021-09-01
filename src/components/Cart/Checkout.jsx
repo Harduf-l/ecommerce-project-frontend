@@ -4,6 +4,8 @@ import  {Link } from "react-router-dom";
 import paypal from '../../pictures/baners/paypal.png'
 import cards from '../../pictures/baners/cards.png'
 
+import CheckoutCart from './CheckoutCart'
+
 
 class Checkout extends React.Component {
 
@@ -25,14 +27,6 @@ class Checkout extends React.Component {
             phoneInstructions: "",
             phoneOK: false,
             phoneClass: "regularInput",
-
-            nameInstructions2: "",
-            nameOK2: false,
-            nameClass2: "regularInput",
-
-            lastNameInstructions2: "",
-            lastNameOK2: false,
-            lastNameClass2: "regularInput",
 
             countyInstructions: "",
             countryOK: false,
@@ -59,9 +53,8 @@ class Checkout extends React.Component {
         this.state.phoneOK &&
         this.state.zipOK &&
         this.state.cityOK &&
-        this.state.countryOK &&
-        this.state.lastNameOK2 &&
-        this.state.nameOK2 ) {
+        this.state.countryOK 
+         ) {
             console.log("order is placed")
             this.setState({endProcess: "order is placed"})
         } else {
@@ -93,14 +86,7 @@ class Checkout extends React.Component {
                 this.setState({countyInstructions: "Enter a valid country name"})
                 this.setState({countryClass: "badInput"})
             }
-            if (!this.state.nameOK2) {
-                this.setState({nameInstructions2: "Enter a valid first name"})
-                this.setState({nameClass2: "badInput"})
-            }
-            if (!this.state.lastNameOK2) {
-                this.setState({lastNameInstructions2: "Enter a valid last name"})
-                this.setState({lastNameClass2: "badInput"})
-            }
+
         }
 
      }
@@ -124,18 +110,6 @@ class Checkout extends React.Component {
                     this.setState({nameClass: "goodInput"})
                 }
               break;
-            case "firstname2":
-                if (!result) {
-                    this.setState({nameInstructions2: "Enter a valid first name"})
-                    this.setState({nameOK2: false})
-                    this.setState({nameClass2: "badInput"})
-                } else {
-                    this.setState({nameInstructions2: ""})
-                    this.setState({nameOK2: true})
-                    localStorage.setItem("lastname2", e.target.value)
-                    this.setState({nameClass2: "goodInput"})
-                }
-              break;
             default:
                 break; 
           }
@@ -157,18 +131,6 @@ class Checkout extends React.Component {
                     this.setState({lastNameOK: true})
                     localStorage.setItem("lastname", e.target.value)
                     this.setState({lastNameClass: "goodInput"})
-                }
-              break;
-            case "lastname2":
-                if (!result) {
-                    this.setState({lastNameInstructions2: "Enter a valid last name"})
-                    this.setState({lastNameOK2: false})
-                    this.setState({lastNameClass2: "badInput"})
-                } else {
-                    this.setState({lastNameInstructions2: ""})
-                    this.setState({lastNameOK2: true})
-                    localStorage.setItem("lastname2", e.target.value)
-                    this.setState({lastNameClass2: "goodInput"})
                 }
               break;
             default:
@@ -260,109 +222,101 @@ class Checkout extends React.Component {
     }
 
 
+    calculateTotal = () => {
+
+        let result = localStorage.getItem("price"); 
+        return result; 
+    
+        }
 
 
     render() {
 
             
      return (
-        <div>
-            {console.log(localStorage.getItem("price"))}
-        <span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "60px"}}>Checkout</h2></span>
 
-        <div className="col-12" style={{backgroundColor: "#f2f5f3"}}>
-        <div className="flex d-flex flex-wrap justify-content-around pt-3">
-            <div>
-                <p style={{backgroundColor: "#f2f5f3"}}>Billing Address:</p>
-                <form>
-                
+        <div className="container">
+            
+        <span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "50px"}}>Checkout</h2></span>
+  
+
+  <div className="row">
+        <div className="col-lg-8 col-12">
+
+            <p style={{ fontSize: "20px"}}>Shipping address</p>
+
+            <div className="row">
+                <div className="col-lg-6 col-12">
                     <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" value={(localStorage.getItem("namelogged")) && localStorage.getItem("namelogged")} type="text"/>
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.nameInstructions}</span>
-                    <br/> 
-
-                    <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} id="lastname" placeholder="Last name" type="text"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.lastNameInstructions}</span>
-                    <br/>
-
+                    <div className="errorMsg">{this.state.nameInstructions}</div>
+                
 
                     <input className={this.state.emailClass}   onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.emailInstructions}</span>
-                    <br/>
-
+               
+                    <div className="errorMsg">{this.state.emailInstructions}</div>
+               
 
                     <input className={this.state.phoneClass}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="email"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.phoneInstructions}</span>
-                    <br/>
+               
+                    <div className="errorMsg">{this.state.phoneInstructions}</div>
 
+                    <input className={this.state.zipClass} onBlur={(e) => this.checkzip(e)}  placeholder="Zip / Postcode" type="text"/> 
+               
+                    <div className="errorMsg">{this.state.zipInstructions}</div>
 
-                    <input style={{padding: "6px"}} type="checkbox"/> subscribe
-                    
-                    
-                </form>
-            </div>
-        
-            <div>
-                <p style={{ backgroundColor: "#f2f5f3"}}>Delivery Address:</p>
-                <form>
-                <input className={this.state.nameClass2} onBlur={(e) => this.checkFirstName(e)} id="firstname2" placeholder="Name" type="text"/>
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.nameInstructions2}</span>
-                    <br/> 
+      
+                </div>
 
-                    <input  className={this.state.lastNameClass2}  onBlur={(e) => this.checkLastName(e)} id="lastname2" placeholder="Last name" type="text"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.lastNameInstructions2}</span>
-                    <br/>
+                <div className="col-lg-6 col-12 mt-4 mt-lg-0">
+
+                   <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} id="lastname" placeholder="Last name" type="text"/> 
+               
+                    <div className="errorMsg">{this.state.lastNameInstructions}</div>
+               
 
                     <input className={this.state.countryClass}  onBlur={(e) => this.checkcountry(e)} placeholder="Country" type="email"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.countyInstructions}</span>
-                    <br/>
+               
+                    <div className="errorMsg">{this.state.countyInstructions}</div>
+               
 
 
                     <input className={this.state.cityClass}   onBlur={(e) => this.checkcity(e)} placeholder="City / Suburb" type="email"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.cityInstructions}</span>
-                    <br/>
+               
+                    <div className="errorMsg">{this.state.cityInstructions}</div>
+               
 
-                    <input className={this.state.zipClass} onBlur={(e) => this.checkzip(e)}  placeholder="Zip / Postcode" type="text"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.zipInstructions}</span>
-                    <br/>
+                    <input style={{padding: "6px", marginTop: "20px"}} type="checkbox"/> Subscribe
+               </div>
 
-                </form>
-            </div>
-
-            <div>
-                <p>Total: ${localStorage.getItem("price")}</p>
-                <input type="text" style={{margin: "10px 0px", padding: "6px"}} placeholder="credit card number"/>
-                <br/>
-                <input type="text" style={{margin: "10px 0px", padding: "6px"}} placeholder="*** digits"/>
-                <br/>
-                
-                <button onClick={this.allValid} className="btn btn-secondary mt-4">Place order</button>
-
-                <div style={{fontSize: "24px", fontWeight: "bold", marginTop: "30px"}}>{this.state.endProcess}</div>
-
-                <div className="flex d-flex justify-content-between pt-5">
-            <img src={paypal} style={{width: "160px"}} alt={"paypal"}/>
-            <img src={cards} style={{width: "160px"}} alt={"creditCard"}/>
-                </div>
-            <br/>
-            
-            <br/>
-            <Link to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
-    
             </div>
         </div>
+  
 
+        <div className="col-lg-4 col-12 pt-md-5 pt-5 pt-lg-0">
+
+            <div className="col-lg-12 col-5">
+                <CheckoutCart/>
+            </div>
+
+                <p style={{paddingTop: "20px", fontWeight: "500", fontSize: "17px"}}>Total of <span className="ms-1"> ${this.calculateTotal()}</span></p>
+
+                <div className= "flex d-flex justify-content-between">
+                <button onClick={this.allValid} className="btn btn-light btn-lg mt-4" style={{backgroundColor: "#8fa663", color: "white"}}>Place order</button>
+                <Link className="align-self-end" to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
+                </div>
+            
+  
+            <div className="mt-4 flex d-flex justify-content-between">
+            <img src={paypal} style={{width: "160px"}} alt={"paypal"}/>
+            <img src={cards} style={{width: "160px"}} alt={"creditCard"}/>
+            </div>
+
+        </div>
     </div>
 
     </div>
+        
+
         )
     }
 }
