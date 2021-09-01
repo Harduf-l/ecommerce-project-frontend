@@ -1,16 +1,30 @@
-class Auth{
+
+
+import React from 'react'
+
+import App from '../App'
+
+
+class Auth extends React.Component {
+
     constructor(){
+        super()
         this.authenticated = false
     }
 
-    login(){
+    login(myfunction){
+        console.log(this.props)
         this.authenticated = true
-      
+        localStorage.setItem("isLogged", true)
+        myfunction()
+
     }
 
     logout(){
         this.authenticated = false
-    
+        localStorage.removeItem("isLogged")
+        localStorage.removeItem("namelogged")
+
     }
 
     isAuthenticated(){

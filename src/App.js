@@ -29,6 +29,7 @@ class App extends React.Component {
       super(props)
       this.state = {
         numberInCart: 0,
+        isLogged: false,
       }
 
   }
@@ -49,11 +50,20 @@ class App extends React.Component {
 
   }
 
+  checkLogged = () => {
+    if ( !localStorage.getItem("isLogged") ) {
+      this.setState({isLogged: false})
+  } else {
+      this.setState({isLogged: true})
+      }
+  }
+  
+
 render() {
   return (
       <div id="htmldiv">
         <div id="bodydiv">
-          <Header itemsInCart={this.state.numberInCart} checkCart={this.checkCart}/>
+          <Header itemsInCart={this.state.numberInCart} logged={this.state.isLogged} checkCart={this.checkCart}/>
   
               <Switch>
               <Route path="/contact" component={Contact} />
@@ -65,7 +75,7 @@ render() {
               <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
               <ProtectedRoute path="/membersZone" component={Members}/>
               <Route path="/cart" render={(props) => <Cart checkCart={this.checkCart} {...props}/>} />
-              <Route path="/login" component={Login} />
+              <Route path="/login" render={() => <Login checkLogged = {this.checkLogged}/>} />
               <Route path="/product/:id" render={(props) => <Product checkCart={this.checkCart} {...props}/>} />
               <Route exact path="/catalog" component={Catalog} />
               <Route exact path="/checkout" component={Checkout} />

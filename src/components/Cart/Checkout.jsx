@@ -4,6 +4,8 @@ import  {Link } from "react-router-dom";
 import paypal from '../../pictures/baners/paypal.png'
 import cards from '../../pictures/baners/cards.png'
 
+import CheckoutCart from './CheckoutCart'
+
 
 class Checkout extends React.Component {
 
@@ -12,156 +14,309 @@ class Checkout extends React.Component {
         this.state = {
             nameInstructions: "",
             nameOK: false,
+            nameClass: "regularInput",
+
             lastNameInstructions: "",
             lastNameOK: false,
+            lastNameClass: "regularInput",
+
             emailInstructions: "",
             emailOK: false,
+            emailClass: "regularInput",
+
             phoneInstructions: "",
             phoneOK: false,
+            phoneClass: "regularInput",
 
+            countyInstructions: "",
+            countryOK: false,
+            countryClass: "regularInput",
+
+            cityInstructions: "",
+            cityOK: false,
+            cityClass: "regularInput",
+
+            zipInstructions: "",
+            zipOK: false,
+            zipClass: "regularInput",
+
+            endProcess: "", 
 
         }
 
     }
 
+    allValid = () => {
+        if (this.state.nameOK && 
+        this.state.emailOK &&
+        this.state.lastNameOK &&
+        this.state.phoneOK &&
+        this.state.zipOK &&
+        this.state.cityOK &&
+        this.state.countryOK 
+         ) {
+            console.log("order is placed")
+            this.setState({endProcess: "order is placed"})
+        } else {
+            if (!this.state.nameOK) {
+                this.setState({nameInstructions: "Enter a valid first name"})
+                this.setState({nameClass: "badInput"})
+            }
+            if (!this.state.emailOK) {
+                this.setState({emailInstructions: "Enter a valid E-mail"})
+                this.setState({emailClass: "badInput"})
+            }
+            if (!this.state.lastNameOK) {
+                this.setState({lastNameInstructions: "Enter a valid last name"})
+                this.setState({lastNameClass: "badInput"})
+            }
+            if (!this.state.phoneOK) {
+                this.setState({phoneInstructions: "Enter a valid phone number"})
+                this.setState({phoneClass: "badInput"})
+            }
+            if (!this.state.zipOK) {
+                this.setState({zipInstructions: "Enter a valid zip code - 6 digits"})
+                this.setState({zipClass: "badInput"})
+            }
+            if (!this.state.cityOK) {
+                this.setState({cityInstructions: "Enter a valid city name"})
+                this.setState({cityClass: "badInput"})
+            }
+            if (!this.state.countryOK) {
+                this.setState({countyInstructions: "Enter a valid country name"})
+                this.setState({countryClass: "badInput"})
+            }
+
+        }
+
+     }
+
     checkFirstName = (e) => {
-        console.log(e.target.value)
+        
         let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
         let result = pattern.test(e.target.value)
-        if (!result) {
-            this.setState({nameInstructions: "Enter a valid name"})
-            this.setState({nameOK: false})
-        } else {
-            this.setState({nameInstructions: ""})
-            this.setState({nameOK: true})
-            
-        }
+
+
+        switch(e.target.id) {
+            case "firstname":
+                if (!result) {
+                    this.setState({nameInstructions: "Enter a valid first name"})
+                    this.setState({nameOK: false})
+                    this.setState({nameClass: "badInput"})
+                } else {
+                    this.setState({nameInstructions: ""})
+                    this.setState({nameOK: true})
+                    localStorage.setItem("firstname", e.target.value)
+                    this.setState({nameClass: "goodInput"})
+                }
+              break;
+            default:
+                break; 
+          }
     }
 
     checkLastName = (e) => {
-        console.log(e.target.value)
+
         let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
         let result = pattern.test(e.target.value)
-        if (!result) {
-            this.setState({lastNameInstructions: "Enter a valid last name"})
-            this.setState({lastNameOK: false})
-        } else {
-            this.setState({lastNameInstructions: ""})
-            this.setState({lastNameOK: true})
-            localStorage.setItem("lastname", e.target.value)
-        }
+
+        switch(e.target.id) {
+            case "lastname":
+                if (!result) {
+                    this.setState({lastNameInstructions: "Enter a valid last name"})
+                    this.setState({lastNameOK: false})
+                    this.setState({lastNameClass: "badInput"})
+                } else {
+                    this.setState({lastNameInstructions: ""})
+                    this.setState({lastNameOK: true})
+                    localStorage.setItem("lastname", e.target.value)
+                    this.setState({lastNameClass: "goodInput"})
+                }
+              break;
+            default:
+                break; 
+          }
+
+
     }
 
     checkEmail = (e) => {
-        console.log(e.target.value)
+      
         let pattern = /[a-zA-Z0-9-_.]+@[a-z]+.[a-z]{2,4}/gm 
         let result = pattern.test(e.target.value)
         if (!result) {
             this.setState({emailInstructions: "Enter a valid E-mail"})
             this.setState({emailOK: false})
+            this.setState({emailClass: "badInput"})
         } else {
             this.setState({emailInstructions: ""})
             this.setState({emailOK: true})
             localStorage.setItem("email", e.target.value)
+            this.setState({emailClass: "goodInput"})
         }
     }
 
     checkPhone = (e) => {
-        console.log(e.target.value)
+      
         let pattern = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
         let result = pattern.test(e.target.value)
         if (!result) {
             this.setState({phoneInstructions: "Enter a valid phone number"})
             this.setState({phoneOK: false})
+            this.setState({phoneClass: "badInput"})
         } else {
             this.setState({phoneInstructions: ""})
             this.setState({phoneOK: true})
             localStorage.setItem("phone", e.target.value)
+            this.setState({phoneClass: "goodInput"})
         }
     }
 
+    checkcountry = (e) => {
+        
+        let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+        let result = pattern.test(e.target.value)
+        if (!result) {
+            this.setState({countyInstructions: "Enter a valid country name"})
+            this.setState({countryOK: false})
+            this.setState({countryClass: "badInput"})
+        } else {
+            this.setState({countyInstructions: ""})
+            this.setState({countryOK: true})
+            localStorage.setItem("country", e.target.value)
+            this.setState({countryClass: "goodInput"})
+        }
+    }
+
+
+    checkcity = (e) => {
+      
+        let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+        let result = pattern.test(e.target.value)
+        if (!result) {
+            this.setState({cityInstructions: "Enter a valid city name"})
+            this.setState({cityOK: false})
+            this.setState({cityClass: "badInput"})
+        } else {
+            this.setState({cityInstructions: ""})
+            this.setState({cityOK: true})
+            localStorage.setItem("city", e.target.value)
+            this.setState({cityClass: "goodInput"})
+        }
+    }
+
+    checkzip = (e) => {
+      
+        let pattern = /\b\d{6}\b/g
+        let result = pattern.test(e.target.value)
+        if (!result) {
+            this.setState({zipInstructions: "Enter a valid zip code - 6 digits"})
+            this.setState({zipOK: false})
+            this.setState({zipClass: "badInput"})
+        } else {
+            this.setState({zipInstructions: ""})
+            this.setState({zipOK: true})
+            localStorage.setItem("zip", e.target.value)
+            this.setState({zipClass: "goodInput"})
+        }
+    }
+
+
+    calculateTotal = () => {
+
+        let result = localStorage.getItem("price"); 
+        return result; 
+    
+        }
 
 
     render() {
 
             
      return (
-        <div>
-            {console.log(localStorage.getItem("price"))}
-        <span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "60px"}}>Checkout</h2></span>
 
-        <div className="col-12" style={{backgroundColor: "#f2f5f3"}}>
-        <div className="flex d-flex flex-wrap justify-content-around pt-3">
-            <div>
-                <p style={{backgroundColor: "#f2f5f3"}}>Billing Address:</p>
-                <form>
+        <div className="container">
+            
+        <span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "50px"}}>Checkout</h2></span>
+  
+
+  <div className="row">
+        <div className="col-lg-8 col-12">
+
+            <p style={{ fontSize: "20px"}}>Shipping address</p>
+
+            <div className="row">
+                <div className="col-lg-6 col-12">
+                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" value={(localStorage.getItem("namelogged")) && localStorage.getItem("namelogged")} type="text"/>
+                    <div className="errorMsg">{this.state.nameInstructions}</div>
                 
-                    <input style={{padding: "6px"}} onBlur={(e) => this.checkFirstName(e)} placeholder="Name" type="text"/>
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.nameInstructions}</span>
-                    <br/> 
 
-                    <input style={{ padding: "6px"}} onBlur={(e) => this.checkLastName(e)} placeholder="Last name" type="text"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.lastNameInstructions}</span>
-                    <br/>
+                    <input className={this.state.emailClass}   onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
+               
+                    <div className="errorMsg">{this.state.emailInstructions}</div>
+               
 
+                    <input className={this.state.phoneClass}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="email"/> 
+               
+                    <div className="errorMsg">{this.state.phoneInstructions}</div>
 
-                    <input style={{ padding: "6px"}}  onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.emailInstructions}</span>
-                    <br/>
+                    <input className={this.state.zipClass} onBlur={(e) => this.checkzip(e)}  placeholder="Zip / Postcode" type="text"/> 
+               
+                    <div className="errorMsg">{this.state.zipInstructions}</div>
 
-
-                    <input style={{ padding: "6px"}}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="email"/> 
-                    <br/>
-                    <span style={{color: "red", fontSize: "13px"}}>{this.state.phoneInstructions}</span>
-                    <br/>
-
-
-                    <input style={{padding: "6px"}} type="checkbox"/> subscribe
-                    
-                    
-                </form>
-            </div>
-        
-            <div>
-                <p style={{ backgroundColor: "#f2f5f3"}}>Delivery Address:</p>
-                <form>
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Name" type="text"/> 
-                    <br/> 
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Last name" type="text"/> 
-                    <br/>
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Country" type="email"/> 
-                    <br/>
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="City / Suburb" type="email"/> 
-                    <br/>
-                    <input style={{margin: "10px 0px", padding: "6px"}} placeholder="Zip / Postcode" type="email"/> 
-                </form>
-            </div>
-
-            <div>
-                <p>Total: ${localStorage.getItem("price")}</p>
-                <input type="text" style={{margin: "10px 0px", padding: "6px"}} placeholder="credit card number"/>
-                <br/>
-                <input type="text" style={{margin: "10px 0px", padding: "6px"}} placeholder="*** digits"/>
-                <br/>
-                
-                <button className="btn btn-secondary mt-4">Place order</button>
-                <div className="flex d-flex justify-content-between pt-5">
-            <img src={paypal} style={{width: "160px"}} />
-            <img src={cards} style={{width: "160px"}}/>
+      
                 </div>
-            <br/>
 
-            <Link to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
-    
+                <div className="col-lg-6 col-12 mt-4 mt-lg-0">
+
+                   <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} id="lastname" placeholder="Last name" type="text"/> 
+               
+                    <div className="errorMsg">{this.state.lastNameInstructions}</div>
+               
+
+                    <input className={this.state.countryClass}  onBlur={(e) => this.checkcountry(e)} placeholder="Country" type="email"/> 
+               
+                    <div className="errorMsg">{this.state.countyInstructions}</div>
+               
+
+
+                    <input className={this.state.cityClass}   onBlur={(e) => this.checkcity(e)} placeholder="City / Suburb" type="email"/> 
+               
+                    <div className="errorMsg">{this.state.cityInstructions}</div>
+               
+
+                    <input style={{padding: "6px", marginTop: "20px"}} type="checkbox"/> Subscribe
+               </div>
+
             </div>
         </div>
+  
 
+        <div className="col-lg-4 col-12 pt-md-5 pt-5 pt-lg-0">
+
+            <div className="col-lg-12 col-5">
+                <CheckoutCart/>
+            </div>
+
+                <p style={{paddingTop: "20px", fontWeight: "500", fontSize: "17px"}}>Total of <span className="ms-1"> ${this.calculateTotal()}</span></p>
+
+                <div className= "flex d-flex justify-content-between">
+                <button onClick={this.allValid} className="btn btn-light btn-lg mt-4" style={{backgroundColor: "#8fa663", color: "white"}}>Place order</button>
+                <Link className="align-self-end" to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
+                </div>
+            
+  
+            <div className="mt-4 flex d-flex justify-content-between">
+            <img src={paypal} style={{width: "160px"}} alt={"paypal"}/>
+            <img src={cards} style={{width: "160px"}} alt={"creditCard"}/>
+            </div>
+
+        </div>
     </div>
 
     </div>
+        
+
         )
     }
 }

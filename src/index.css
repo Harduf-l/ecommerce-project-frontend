@@ -266,3 +266,30 @@ html {
   height: 19px;
   display: inline-block; 
 }
+
+.goodInput {
+  border: 2px solid green;  
+  background-color: #d3ffdc;
+  padding: 6px; 
+  width: 90%;
+}
+
+
+.badInput {
+  border: 2px solid red; 
+  background-color: #ffdfdf;
+  padding: 6px; 
+  width: 90%;
+}
+
+.regularInput {
+  padding: 6px; 
+  width: 90%;
+}
+
+
+.errorMsg{
+  height: 25px; 
+  color: red; 
+  font-size: 13px; 
+}
