@@ -1,4 +1,8 @@
+import Map from './Map'
+
 let Contact = () => {
+
+      
     return(
         <div>
         <div>
@@ -18,6 +22,9 @@ let Contact = () => {
                     </div>
         </form>
 
+        <div style={{marginTop: "40px"}}>
+          <Map/>
+        </div>
         </div>
     )
 }
