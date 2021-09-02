@@ -285,6 +285,12 @@ html {
 .regularInput {
   padding: 6px; 
   width: 90%;
+  
+}
+
+.regularInput2 {
+  padding: 6px; 
+  width: 100%;
 }
 
 

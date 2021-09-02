@@ -53,7 +53,6 @@ componentDidMount()  {
                     <th   style={{fontWeight: "500", borderColor: "white",}}><span className="ms-2">Product</span></th>
                     <th   style={{fontWeight: "500", borderColor: "white",}}><span className="ms-4"></span></th>
                     <th   style={{fontWeight: "500", borderColor: "white",}}><span className="ms-4"></span></th>
-                    <th   style={{fontWeight: "500", borderColor: "white",}}><span className="ms-4"></span></th>
                     <th  style={{fontWeight: "500", borderColor: "white"}} >Price</th>
                     <th  style={{fontWeight: "500", borderColor: "white"}}><span>Qty</span></th>
                     

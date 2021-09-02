@@ -294,7 +294,7 @@ class Checkout extends React.Component {
 
         <div className="col-lg-4 col-12 pt-md-5 pt-5 pt-lg-0">
 
-            <div className="col-lg-12 col-5">
+            <div className="col-12">
                 <CheckoutCart/>
             </div>
 

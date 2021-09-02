@@ -36,10 +36,9 @@ class Header extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.itemsInCart)
+
     this.setState({items: nextProps.itemsInCart })
 
-    console.log(nextProps.itemsInCart)
   }
 
   removePlaceHolder = (e) => {
@@ -140,7 +139,7 @@ class Header extends React.Component {
           </ul>
           <form className="d-flex">
               <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="I would like to buy..." aria-label="Search"/>
-              {console.log(this.state.valueInput)}
+         
 
               {this.state.valueInput  && <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">Search</button></Link>}
               {!this.state.valueInput && <button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">Search</button>}
@@ -148,7 +147,7 @@ class Header extends React.Component {
     </div>
   </div>
 
-      { this.state.cartHover &&
+      { this.state.cartHover && window.location.pathname!=="/cart" && window.location.pathname!=="/checkout" &&
         <div className="cartModal" >
           <MiniCart checkCart={this.props.checkCart} cartNotHoverFunction={this.cartNotHoverFunction} />
         </div> }
