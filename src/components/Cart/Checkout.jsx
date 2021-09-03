@@ -294,12 +294,25 @@ class Checkout extends React.Component {
 
         <div className="col-lg-4 col-12 pt-md-5 pt-5 pt-lg-0">
 
-            <div className="col-12">
+            <div className="col-lg-12 col-5">
                 <CheckoutCart/>
             </div>
-                <div>total ${this.calculateTotal() -localStorage.getItem("deliveryPrice")} </div>
-                <div>delivery ${localStorage.getItem("deliveryPrice")} <span>{localStorage.getItem("deliveryMethod")}</span></div>
-                <p style={{paddingTop: "20px", fontWeight: "500", fontSize: "17px"}}>Subtotal of <span className="ms-1"> ${this.calculateTotal()}</span></p>
+
+            <div style={{color: "#474747", fontWeight: "470", marginTop: "40px"}}>
+
+                <div className="flex d-flex justify-content-between" style={{borderBottom: "1px solid #f3f3f3", paddingBottom: "8px"}}>
+                <div>Items total</div> <div> ${(this.calculateTotal() -localStorage.getItem("deliveryPrice")).toFixed(1) } </div>
+
+                </div>
+
+                <div className="flex d-flex justify-content-between mt-2" style={{borderBottom: "1px solid #f3f3f3", paddingBottom: "8px"}}>
+                <div>Shipping</div> <div>${localStorage.getItem("deliveryPrice")}</div>
+                </div>
+
+            </div>
+                <div  className="flex d-flex justify-content-between mt-3"> 
+                <div style={{fontWeight: "500", fontSize: "17px"}}>TOTAL FOR YOUR ORDER</div> <div className="ms-1"> ${this.calculateTotal()}</div>
+                </div>
                 <div className= "flex d-flex justify-content-between">
                 <button onClick={this.allValid} className="btn btn-light btn-lg mt-4" style={{backgroundColor: "#8fa663", color: "white"}}>Place order</button>
                 <Link className="align-self-end" to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
