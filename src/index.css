@@ -143,7 +143,17 @@ html {
       padding-right: 5px; 
     }
 
-    
+    .dltbtn4 {
+      margin-left: 20px; 
+      border-radius: 50%;
+      border: none;
+      padding: 0px 8px;
+      color: #a12d24;
+      font-weight: bold;
+      font-size: 17px; 
+      cursor: pointer; 
+      background-color:rgba(242,245,243, 0.9); 
+    }
 
   
     @media screen and (max-width: 476px) {

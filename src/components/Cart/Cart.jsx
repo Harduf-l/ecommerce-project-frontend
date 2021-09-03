@@ -160,7 +160,7 @@ componentDidMount()  {
 
         <div className="col-lg-5 col-12 mb-lg-0 mb-5">
             <table className="table smaller-phone-th" >
-                <thead style={{}}>
+                <thead >
                 <tr style={{paddingTop: "80px"}}>
                     <th  style={{fontWeight: "600", borderColor: "#cecece",}}><span className="ms-4">Product</span></th>
                     <th  style={{fontWeight: "600", borderColor: "#cecece"}} >Price</th>
@@ -169,7 +169,7 @@ componentDidMount()  {
                     <th  style={{fontWeight: "600", borderColor: "#cecece"}}>Total</th>
                 </tr> 
                 </thead>
-                <tbody>
+                <tbody >
             {this.state.cartArray.map((element, index)=>{
                 return  <tr style={{borderColor: "black"}}>
                     

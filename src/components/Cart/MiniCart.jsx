@@ -91,33 +91,40 @@ componentDidMount()  {
     }
 
 
+
     render() {
 
     return(
             <div onMouseLeave={this.props.cartNotHoverFunction} className="cartOverFlow">
-            <table style={{width: "400px"}} className="" >
-                <thead style={{}}>
+            <table className="table smaller-phone-th" >
+                <thead style={{display: "block"}}>
                 <tr style={{paddingTop: "80px"}}>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}><span className="ms-4">Product</span></th>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}} >Price</th>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}><span>Quantity</span></th>
+                    <th  style={{width: "190px",fontWeight: "600", borderColor: "#cecece",}}><span>Product</span></th>
+                    <th  style={{width: "65px",fontWeight: "600", borderColor: "#cecece"}} >Price</th>
+                    <th  style={{width: "60px", fontWeight: "600", borderColor: "#cecece"}}><span>Qty</span></th>
                     
-                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}>Total</th>
+                    <th  style={{fontWeight: "600", borderColor: "#cecece"}}>Total</th>
                 </tr> 
                 </thead>
-                <tbody>
+                <tbody  style={{'height': '160px', 'overflowY':'scroll', 'display': 'block'}}>
             {this.state.cartArray.map((element, index)=>{
                 return  <tr style={{borderColor: "black"}}>
                     
                     <td style={{borderColor: "#cecece"}}>
                     <div className="flex d-flex flex-wrap align-items-center">
 
-                    <Link to={`/product/${element.id}`} style={{textDecoration: "none", color: "#2b3239"}}><span style={{marginLeft: "10px"}}>{element.header}</span></Link>
+
+                    <Link to={`/product/${element.id}`} style={{textDecoration: "none", color: "#2b3239"}}>
+                    <img style={{ borderRadius: "20%", height: "80px", width: "70px", objectFit: "cover"}} src={element.pic1} alt={"food product"}/> 
+                    </Link>
+
+
+                    <span style={{marginLeft: "10px"}}>{element.header}</span>
                     </div>
                     </td>
 
-                    <td style={{ borderColor: "#cecece"}}>${element.price}</td>
-                    <td style={{ borderColor: "#cecece"}}>
+                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>${element.price}</td>
+                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
                     
                     <span className="ms-2 signToRemove" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
                     <span className="ps-2 pe-2">{this.state.cartArray[index].quantity} </span>
@@ -125,20 +132,18 @@ componentDidMount()  {
                         
                     </td>
                     
-                    <td style={{paddingTop: "10px", paddingBottom: "10px", borderColor: "#cecece"}}>
+                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
                     <div className="flex d-flex justify-content-between">
                     ${element.price * element.quantity }
-                    <div className="dltbtn2" onClick={() => this.remove(index)}><i class="fas fa-times"></i></div>
+                    <button className="dltbtn4" onClick={() => this.remove(index)}><i class="fas fa-times"></i></button>
                     </div>
                     </td>
                     
                     </tr>
             })}
-   
 
                 </tbody>
             </table>
-
                          <div className="flex d-flex justify-content-between pt-3">
 
                                 <div className="ms-2">
