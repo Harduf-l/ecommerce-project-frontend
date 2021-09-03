@@ -50,7 +50,7 @@ componentDidMount()  {
             <table className="table smaller-phone-th">
                 <thead style={{display: "block"}}>
                 <tr>
-                    <th   style={{fontWeight: "500", borderColor: "white",}}><span className="ms-2">Product</span></th>
+                    <th   style={{fontWeight: "500", borderColor: "white", width: "220px"}}><span className="ms-2">Product</span></th>
                     <th   style={{fontWeight: "500", borderColor: "white",}}><span className="ms-4"></span></th>
                     <th   style={{fontWeight: "500", borderColor: "white",}}><span className="ms-4"></span></th>
                     <th   style={{fontWeight: "500", borderColor: "white",}}><span className="ms-4"></span></th>
@@ -64,7 +64,7 @@ componentDidMount()  {
             {this.state.cartArray.map((element, index)=>{
                 return  <tr style={{borderColor: "black"}}>
                     
-                    <td style={{borderColor: "#cecece"}}>
+                    <td style={{borderColor: "#cecece", width: "220px"}}>
                     <div className="flex d-flex flex-wrap align-items-center">
 
 

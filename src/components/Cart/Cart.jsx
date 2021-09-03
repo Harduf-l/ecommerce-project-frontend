@@ -14,6 +14,7 @@ class Cart extends React.Component {
         finalPrice: "",
         delivery: false,
         deliveryRequired: "",
+        deliveryMethod: "",
 
     }
 
@@ -121,18 +122,22 @@ componentDidMount()  {
             case "express":
                 this.setState({deliveryRequired: ""})
                 this.setState({delivery: 15})
+                this.setState({deliveryMethod: "express"})
               break;
             case "air":
                 this.setState({deliveryRequired: ""})
                 this.setState({delivery: 12})
+                this.setState({deliveryMethod: "by air"})
               break;
             case "sea":
                 this.setState({deliveryRequired: ""})
                 this.setState({delivery: 9})
+                this.setState({deliveryMethod: "by sea"})
                  break;
             case "default":
                     this.setState({deliveryRequired: "Please choose a shipping method"})
                     this.setState({delivery: false})
+                    this.setState({deliveryMethod: ""})
                      break;
             default:
                 break; 
@@ -141,6 +146,8 @@ componentDidMount()  {
 
     moveCheckout = () => {
         if (this.state.delivery) {
+            localStorage.setItem("deliveryPrice", this.state.delivery )
+            localStorage.setItem("deliveryMethod", this.state.deliveryMethod )
             this.setState({deliveryRequired: ""})
         this.props.history.push("/checkout")
         }

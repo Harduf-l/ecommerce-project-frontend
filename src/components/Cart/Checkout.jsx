@@ -297,9 +297,9 @@ class Checkout extends React.Component {
             <div className="col-12">
                 <CheckoutCart/>
             </div>
-
-                <p style={{paddingTop: "20px", fontWeight: "500", fontSize: "17px"}}>Total of <span className="ms-1"> ${this.calculateTotal()}</span></p>
-
+                <div>total ${this.calculateTotal() -localStorage.getItem("deliveryPrice")} </div>
+                <div>delivery ${localStorage.getItem("deliveryPrice")} <span>{localStorage.getItem("deliveryMethod")}</span></div>
+                <p style={{paddingTop: "20px", fontWeight: "500", fontSize: "17px"}}>Subtotal of <span className="ms-1"> ${this.calculateTotal()}</span></p>
                 <div className= "flex d-flex justify-content-between">
                 <button onClick={this.allValid} className="btn btn-light btn-lg mt-4" style={{backgroundColor: "#8fa663", color: "white"}}>Place order</button>
                 <Link className="align-self-end" to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
