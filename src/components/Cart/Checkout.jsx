@@ -12,6 +12,7 @@ class Checkout extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            
             nameInstructions: "",
             nameOK: false,
             nameClass: "regularInput",
@@ -40,8 +41,12 @@ class Checkout extends React.Component {
             zipOK: false,
             zipClass: "regularInput",
 
+            addressInstructions: "", 
+            addressOK: false,
             addressClass: "regularInput",
-            endProcess: "", 
+
+
+            endProcess: false, 
 
         }
 
@@ -54,20 +59,17 @@ class Checkout extends React.Component {
         this.state.phoneOK &&
         this.state.zipOK &&
         this.state.cityOK &&
-        this.state.addressOk &&
+        this.state.addressOK &&
         this.state.countryOK 
          ) {
             console.log("order is placed")
-            this.setState({endProcess: "order is placed"})
+            this.setState({endProcess: true})
         } else {
             if (!this.state.nameOK) {
                 this.setState({nameInstructions: "Enter a valid first name"})
                 this.setState({nameClass: "badInput"})
             }
-            if (!this.state.addressOk) {
-                this.setState({addressInstructions: "Enter a valid address"})
-                this.setState({addressClass: "badInput"})
-            }
+
             if (!this.state.emailOK) {
                 this.setState({emailInstructions: "Enter a valid E-mail"})
                 this.setState({emailClass: "badInput"})
@@ -91,6 +93,10 @@ class Checkout extends React.Component {
             if (!this.state.countryOK) {
                 this.setState({countyInstructions: "Enter a valid country name"})
                 this.setState({countryClass: "badInput"})
+            }
+            if (!this.state.addressOK) {
+                this.setState({addressInstructions: "Enter a valid address"})
+                this.setState({addressClass: "badInput"})
             }
 
         }
@@ -323,7 +329,7 @@ class Checkout extends React.Component {
         </div>
   
 
-        <div className="col-lg-5 col-12 pt-md-5 pt-5 pt-lg-0 ps-4">
+        <div className="col-lg-5 col-12 pt-md-5 pt-5 pt-lg-0 ps-4" style={{backgroundColor: "#f3f3f3"}}>
 
             <div className="col-12">
                 <CheckoutCart/>
@@ -355,7 +361,8 @@ class Checkout extends React.Component {
             <img src={cards} style={{width: "160px"}} alt={"creditCard"}/>
             </div> */}
 
-            <Paypal/>
+            {this.state.endProcess && 
+            <Paypal/> }
 
         </div>
     </div>

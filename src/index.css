@@ -288,16 +288,16 @@ html {
 }
 
 .goodInput {
-  border: 2px solid green;  
-  background-color: #d3ffdc;
+  border: 1px solid #4aa53d;  
+  background-color: #ebffef;
   padding: 6px; 
   width: 100%;
 }
 
 
 .badInput {
-  border: 2px solid red; 
-  background-color: #ffdfdf;
+  border: 1px solid red; 
+  background-color: #ffeeef;
   padding: 6px; 
   width: 100%;
 }
