@@ -47,6 +47,7 @@ componentDidMount()  {
 
     return(
 
+        <div class="table-responsive">
             <table className="table smaller-phone-th">
                 <thead style={{display: "block"}}>
                 <tr>
@@ -96,6 +97,7 @@ componentDidMount()  {
 
                 </tbody>
             </table>
+            </div>
 
 
 

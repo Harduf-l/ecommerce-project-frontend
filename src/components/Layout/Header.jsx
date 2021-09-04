@@ -11,6 +11,7 @@ class Header extends React.Component {
       valueInput: "",
       cartHover: false, 
       items: 0, 
+      smallScreen: true, 
     }
 
     this.trackInput = (e) => {
@@ -33,6 +34,15 @@ class Header extends React.Component {
 
       this.setState({items: number })
   }
+
+  let { innerWidth: width, } = window;
+
+  if (width > 996) {
+    this.setState({smallScreen: false})
+  } else {
+    this.setState({smallScreen: true})
+  }
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,7 +59,9 @@ class Header extends React.Component {
   
 
   cartHoverFunction = () => {
+
     this.setState({cartHover: true})
+
   }
 
 
@@ -103,6 +115,7 @@ class Header extends React.Component {
 
               </li>
               
+              {!this.state.smallScreen &&
               <li className="nav-item text-center cartHover" onClick ={this.cartHoverFunction} style={{position: "relative", cursor: "pointer"}}>
               <div className="nav-link">
                 <div className="cartHover">
@@ -110,8 +123,17 @@ class Header extends React.Component {
                     <div className="cartBtnNumberStyle">{this.state.items}</div>
                     </i></div>
                   </div>
-              </li>
+              </li> }
 
+              {this.state.smallScreen &&
+             <Link to="/cart"> <li className="nav-item text-center cartHover" style={{position: "relative", cursor: "pointer"}}>
+              <div className="nav-link">
+                <div className="cartHover">
+                  <i className="fas fa-shopping-cart">
+                    <div className="cartBtnNumberStyle">{this.state.items}</div>
+                    </i></div>
+                  </div>
+              </li> </Link> }
 
       </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">

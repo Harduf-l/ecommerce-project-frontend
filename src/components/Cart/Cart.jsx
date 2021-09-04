@@ -166,6 +166,7 @@ componentDidMount()  {
         <div className="row justify-content-center" style={{margin: "0 auto", marginTop: "30px"}}>
 
         <div className="col-lg-5 col-12 mb-lg-0 mb-5">
+            <div class="table-responsive">
             <table className="table smaller-phone-th" >
                 <thead >
                 <tr style={{paddingTop: "80px"}}>
@@ -194,11 +195,11 @@ componentDidMount()  {
                     </td>
 
                     <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>${element.price}</td>
-                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
+                    <td style={{paddingTop: "30px",  paddingBottom: "30px", borderColor: "#cecece"}}>
                     
-                    <span className="ms-2 signToRemove" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
+                    <span className="ps-1 signToRemove"  onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
                     <span className="ps-2 pe-2">{this.state.cartArray[index].quantity} </span>
-                    <span  className="ps-1 signToRemove" style={{color: "white",backgroundColor: "#2e4e14",  fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => this.plus(index)}> <i className="fas fa-plus"></i> </span> 
+                    <span  className="pe-1 ps-1 signToRemove"  onClick={() => this.plus(index)}> <i className="fas fa-plus"></i> </span> 
                         
                     </td>
                     
@@ -214,9 +215,9 @@ componentDidMount()  {
 
                 </tbody>
             </table>
+            </div>
 
-
-            <div className="flex d-flex flex-wrap justify-content-between">
+            <div className="flex d-flex flex-wrap justify-content-between pt-4 pt-lg-3">
 
             <div>
             <input onChange={(e) => this.insertWord(e)} type="text" id="couponInput" style={{width: "100px", paddingBottom: "5px"}}/> 
