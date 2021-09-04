@@ -5,7 +5,7 @@ import paypal from '../../pictures/baners/paypal.png'
 import cards from '../../pictures/baners/cards.png'
 
 import CheckoutCart from './CheckoutCart'
-
+import Paypal from './Paypal'
 
 class Checkout extends React.Component {
 
@@ -40,6 +40,7 @@ class Checkout extends React.Component {
             zipOK: false,
             zipClass: "regularInput",
 
+            addressClass: "regularInput",
             endProcess: "", 
 
         }
@@ -53,6 +54,7 @@ class Checkout extends React.Component {
         this.state.phoneOK &&
         this.state.zipOK &&
         this.state.cityOK &&
+        this.state.addressOk &&
         this.state.countryOK 
          ) {
             console.log("order is placed")
@@ -61,6 +63,10 @@ class Checkout extends React.Component {
             if (!this.state.nameOK) {
                 this.setState({nameInstructions: "Enter a valid first name"})
                 this.setState({nameClass: "badInput"})
+            }
+            if (!this.state.addressOk) {
+                this.setState({addressInstructions: "Enter a valid address"})
+                this.setState({addressClass: "badInput"})
             }
             if (!this.state.emailOK) {
                 this.setState({emailInstructions: "Enter a valid E-mail"})
@@ -221,6 +227,21 @@ class Checkout extends React.Component {
         }
     }
 
+    checkAddress = (e) => {
+        let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+        let result = pattern.test(e.target.value)
+        if (!result) {
+            this.setState({addressInstructions: "Enter a valid city name"})
+            this.setState({addressOK: false})
+            this.setState({addressClass: "badInput"})
+        } else {
+            this.setState({addressInstructions: ""})
+            this.setState({addressOK: true})
+            localStorage.setItem("address", e.target.value)
+            this.setState({addressClass: "goodInput"})
+        }
+    }
+
 
     calculateTotal = () => {
 
@@ -241,58 +262,68 @@ class Checkout extends React.Component {
   
 
   <div className="row">
-        <div className="col-lg-8 col-12">
+        <div className="col-lg-7 col-12">
 
             <p style={{ fontSize: "20px"}}>Shipping address</p>
+
+            <div className="row">
+                <div>
 
             <div className="row">
                 <div className="col-lg-6 col-12">
                     <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" value={(localStorage.getItem("namelogged")) && localStorage.getItem("namelogged")} type="text"/>
                     <div className="errorMsg">{this.state.nameInstructions}</div>
-                
-
-                    <input className={this.state.emailClass}   onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
-               
-                    <div className="errorMsg">{this.state.emailInstructions}</div>
-               
-
-                    <input className={this.state.phoneClass}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="email"/> 
-               
-                    <div className="errorMsg">{this.state.phoneInstructions}</div>
-
-                    <input className={this.state.zipClass} onBlur={(e) => this.checkzip(e)}  placeholder="Zip / Postcode" type="text"/> 
-               
-                    <div className="errorMsg">{this.state.zipInstructions}</div>
-
-      
                 </div>
 
-                <div className="col-lg-6 col-12 mt-4 mt-lg-0">
-
-                   <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} id="lastname" placeholder="Last name" type="text"/> 
-               
+                <div className="col-lg-6 col-12">
+                    <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} id="lastname" placeholder="Last name" type="text"/> 
                     <div className="errorMsg">{this.state.lastNameInstructions}</div>
-               
-
-                    <input className={this.state.countryClass}  onBlur={(e) => this.checkcountry(e)} placeholder="Country" type="email"/> 
-               
-                    <div className="errorMsg">{this.state.countyInstructions}</div>
-               
+                </div>
+            </div>
 
 
-                    <input className={this.state.cityClass}   onBlur={(e) => this.checkcity(e)} placeholder="City / Suburb" type="email"/> 
+
+                <div className="row">
+
+                    <div className="col-lg-6 col-12">
+                        <input className={this.state.zipClass} onBlur={(e) => this.checkzip(e)}  placeholder="Zip / Postcode" type="text"/> 
+                        <div className="errorMsg">{this.state.zipInstructions}</div>
+                    </div>
+
+                    <div  className="col-lg-6 col-12">
+                        <input className={this.state.countryClass}  onBlur={(e) => this.checkcountry(e)} placeholder="Country" type="text"/> 
+                        <div className="errorMsg">{this.state.countyInstructions}</div>
+                    </div>
                
+                </div>
+
+                <input className={this.state.emailClass}   onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
+               
+               <div className="errorMsg">{this.state.emailInstructions}</div>
+          
+
+                <input className={this.state.phoneClass}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="text"/> 
+               
+               <div className="errorMsg">{this.state.phoneInstructions}</div>
+
+
+                    <input className={this.state.cityClass}   onBlur={(e) => this.checkcity(e)} placeholder="City / Suburb" type="text"/> 
                     <div className="errorMsg">{this.state.cityInstructions}</div>
+
+                    <input className={this.state.addressClass}   onBlur={(e) => this.checkAddress(e)} placeholder="Full address" type="text"/> 
+                    <div className="errorMsg">{this.state.addressInstructions}</div>
                
 
                     <input style={{padding: "6px", marginTop: "20px"}} type="checkbox"/> Subscribe
                </div>
 
             </div>
+
+
         </div>
   
 
-        <div className="col-lg-4 col-12 pt-md-5 pt-5 pt-lg-0">
+        <div className="col-lg-5 col-12 pt-md-5 pt-5 pt-lg-0 ps-4">
 
             <div className="col-12">
                 <CheckoutCart/>
@@ -318,11 +349,13 @@ class Checkout extends React.Component {
                 <Link className="align-self-end" to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
                 </div>
             
-  
+{/*   
             <div className="mt-4 flex d-flex justify-content-between">
             <img src={paypal} style={{width: "160px"}} alt={"paypal"}/>
             <img src={cards} style={{width: "160px"}} alt={"creditCard"}/>
-            </div>
+            </div> */}
+
+            <Paypal/>
 
         </div>
     </div>

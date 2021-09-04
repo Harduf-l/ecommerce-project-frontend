@@ -291,7 +291,7 @@ html {
   border: 2px solid green;  
   background-color: #d3ffdc;
   padding: 6px; 
-  width: 90%;
+  width: 100%;
 }
 
 
@@ -299,12 +299,12 @@ html {
   border: 2px solid red; 
   background-color: #ffdfdf;
   padding: 6px; 
-  width: 90%;
+  width: 100%;
 }
 
 .regularInput {
   padding: 6px; 
-  width: 90%;
+  width: 100%;
   
 }
 
