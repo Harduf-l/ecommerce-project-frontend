@@ -10,7 +10,7 @@ import Product from './components/Product/Product'
 
 import React from 'react'
 import Page404 from './components/Page404/Page404'
-import Home from './components/Home/Home'
+import Home2 from './components/Home/Home2'
 import Login from './components/Login/Login'
 import Blog from './components/Blog/Blog'
 import About from './components/About/About'
@@ -79,7 +79,7 @@ render() {
               <Route path="/product/:id" render={(props) => <Product checkCart={this.checkCart} {...props}/>} />
               <Route exact path="/catalog" component={Catalog} />
               <Route exact path="/checkout" component={Checkout} />
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Home2} />
               <Route component={Page404} />
               </Switch>
         </div>

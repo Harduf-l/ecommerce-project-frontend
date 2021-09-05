@@ -216,6 +216,7 @@ html {
   margin: 0 auto; 
   display: block; 
   padding-bottom: 50px; 
+  margin-top: 40px; 
 }
 
 .homeLinks:hover{

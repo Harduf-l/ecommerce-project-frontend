@@ -11,7 +11,6 @@ import cookie_surprise2 from '../../pictures/cookies/surprise_cookie2.jpg'
 import cookie_coconut2 from '../../pictures/cookies/coconute_cookie2.jpg'
 
 
-
 import berries from '../../pictures/superfood/berries.jpg'
 import cacao_seeds from '../../pictures/superfood/cacao-seeds-original.jpg'
 import chia from '../../pictures/superfood/chia.png'
