@@ -1,8 +1,5 @@
 import React from 'react'
-
 import  {Link } from "react-router-dom";
-import paypal from '../../pictures/baners/paypal.png'
-import cards from '../../pictures/baners/cards.png'
 
 import CheckoutCart from './CheckoutCart'
 import Paypal from './Paypal'

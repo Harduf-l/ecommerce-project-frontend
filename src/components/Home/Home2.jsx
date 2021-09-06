@@ -75,8 +75,10 @@ returnSuper =()=> {
 
 <div style={{maxWidth: "1200px", margin: '0 auto', marginTop:'64px' }}>
 <span className="homeHeaderSpan"><h2 className="homeHeader" style={{textAlign: "center", marginBottom: "20px"}}>Get to know our new breads collection</h2></span>
+    <div >
     <Carousel2 myArray={this.returnBreads()}>
     </Carousel2>
+    </div>
 
     <Link to={{ pathname: `/catalog/`, search: `breads` }} className="homeLinks"><button>Watch more</button></Link>
 

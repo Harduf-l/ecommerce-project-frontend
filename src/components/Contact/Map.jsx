@@ -1,6 +1,6 @@
 import { Icon } from 'leaflet'
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
-import logoPic from './../../pictures/baners/womencake.jpg'
+
 
 import React from 'react'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
@@ -16,7 +16,7 @@ export default function Map() {
           />
           <Marker position={position} icon={new Icon({iconUrl:markerIconPng, iconSize:[25, 41] ,iconAnchor: [12, 0]})}>
             <Popup>
-                <img style={{width: "140px"}} src={logoPic}/>
+            <span><i style={{fontSize: "37px", color: "#e64723"}}className="fas fa-spa"></i></span>
             <span><p><span style={{fontWeight: "bold"}}>Ibn gabirol 22</span><br/>
               Come visit to see where the magic happens</p></span>
             </Popup>

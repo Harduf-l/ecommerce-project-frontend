@@ -1,3 +1,4 @@
+import  {Link } from "react-router-dom";
 
 let Footer = () => {
 
@@ -29,7 +30,7 @@ let Footer = () => {
             <div className="col-12 col-lg-4 2 mt-3">
             <h6>Call us 24/7</h6>
            <p>Any problem? no problem! call us at 072-332-192</p>
-           <a href="/contact" className="hoverlinkcontact">Contact Us</a>
+           <Link to="/contact" className="hoverlinkcontact">Contact Us</Link>
             </div>
 
         </div>

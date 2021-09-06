@@ -25,6 +25,7 @@ const Carousel2 = (props)=>{
       };
 
     return (
+        <div style={{paddingTop:"20px"}}> 
         <Carousel
         swipeable={true}
         draggable={true}
@@ -46,10 +47,11 @@ const Carousel2 = (props)=>{
           {props.myArray.map((foodObj,index)=>{
               return(
                 <Link to={`/product/${foodObj.id}`} key ={index}>
-                    <img style={{height: "220px", objectFit: "contain"}} src={foodObj.pic1} alt ="" className="imgInCarusel"></img>
+                    <img style={{height: "200px", objectFit: "contain"}} src={foodObj.pic1} alt ="" className="imgInCarusel"></img>
                 </Link> 
           )})}
       </Carousel>
+      </div>
         ) 
 }
    

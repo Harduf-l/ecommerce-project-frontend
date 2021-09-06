@@ -13,6 +13,10 @@ class Contact extends React.Component {
         }
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
+      
     myErrors = {
         name: "Name field contains letter only",
         email: "Email format ....@....com"
