@@ -11,6 +11,7 @@ class Header extends React.Component {
       valueInput: "",
       cartHover: false, 
       items: 0, 
+      smallScreen: true, 
     }
 
     this.trackInput = (e) => {
@@ -33,13 +34,21 @@ class Header extends React.Component {
 
       this.setState({items: number })
   }
+
+  let { innerWidth: width, } = window;
+
+  if (width > 996) {
+    this.setState({smallScreen: false})
+  } else {
+    this.setState({smallScreen: true})
+  }
+
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.itemsInCart)
+
     this.setState({items: nextProps.itemsInCart })
 
-    console.log(nextProps.itemsInCart)
   }
 
   removePlaceHolder = (e) => {
@@ -50,7 +59,9 @@ class Header extends React.Component {
   
 
   cartHoverFunction = () => {
+
     this.setState({cartHover: true})
+
   }
 
 
@@ -104,6 +115,7 @@ class Header extends React.Component {
 
               </li>
               
+              {!this.state.smallScreen &&
               <li className="nav-item text-center cartHover" onClick ={this.cartHoverFunction} style={{position: "relative", cursor: "pointer"}}>
               <div className="nav-link">
                 <div className="cartHover">
@@ -111,8 +123,17 @@ class Header extends React.Component {
                     <div className="cartBtnNumberStyle">{this.state.items}</div>
                     </i></div>
                   </div>
-              </li>
+              </li> }
 
+              {this.state.smallScreen &&
+             <Link to="/cart"> <li className="nav-item text-center cartHover" style={{position: "relative", cursor: "pointer"}}>
+              <div className="nav-link">
+                <div className="cartHover">
+                  <i className="fas fa-shopping-cart">
+                    <div className="cartBtnNumberStyle">{this.state.items}</div>
+                    </i></div>
+                  </div>
+              </li> </Link> }
 
       </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
@@ -140,7 +161,7 @@ class Header extends React.Component {
           </ul>
           <form className="d-flex">
               <input id="inputon" onChange={(e) => this.trackInput(e)} className="form-control me-2" type="search" placeholder="I would like to buy..." aria-label="Search"/>
-              {console.log(this.state.valueInput)}
+         
 
               {this.state.valueInput  && <Link to={{pathname:`/catalog/`, search:`q="${this.state.valueInput}"`}}><button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">Search</button></Link>}
               {!this.state.valueInput && <button onClick={(e) => this.removePlaceHolder(e)} className="btn btn-outline-success me-2" type="submit">Search</button>}
@@ -148,7 +169,7 @@ class Header extends React.Component {
     </div>
   </div>
 
-      { this.state.cartHover &&
+      { this.state.cartHover && window.location.pathname!=="/cart" && window.location.pathname!=="/checkout" &&
         <div className="cartModal" >
           <MiniCart checkCart={this.props.checkCart} cartNotHoverFunction={this.cartNotHoverFunction} />
         </div> }

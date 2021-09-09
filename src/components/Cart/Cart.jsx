@@ -14,6 +14,7 @@ class Cart extends React.Component {
         finalPrice: "",
         delivery: false,
         deliveryRequired: "",
+        deliveryMethod: "",
 
     }
 
@@ -121,18 +122,22 @@ componentDidMount()  {
             case "express":
                 this.setState({deliveryRequired: ""})
                 this.setState({delivery: 15})
+                this.setState({deliveryMethod: "express"})
               break;
             case "air":
                 this.setState({deliveryRequired: ""})
                 this.setState({delivery: 12})
+                this.setState({deliveryMethod: "by air"})
               break;
             case "sea":
                 this.setState({deliveryRequired: ""})
                 this.setState({delivery: 9})
+                this.setState({deliveryMethod: "by sea"})
                  break;
             case "default":
                     this.setState({deliveryRequired: "Please choose a shipping method"})
                     this.setState({delivery: false})
+                    this.setState({deliveryMethod: ""})
                      break;
             default:
                 break; 
@@ -141,6 +146,8 @@ componentDidMount()  {
 
     moveCheckout = () => {
         if (this.state.delivery) {
+            localStorage.setItem("deliveryPrice", this.state.delivery )
+            localStorage.setItem("deliveryMethod", this.state.deliveryMethod )
             this.setState({deliveryRequired: ""})
         this.props.history.push("/checkout")
         }
@@ -159,8 +166,9 @@ componentDidMount()  {
         <div className="row justify-content-center" style={{margin: "0 auto", marginTop: "30px"}}>
 
         <div className="col-lg-5 col-12 mb-lg-0 mb-5">
+            <div class="table-responsive">
             <table className="table smaller-phone-th" >
-                <thead style={{}}>
+                <thead >
                 <tr style={{paddingTop: "80px"}}>
                     <th  style={{fontWeight: "600", borderColor: "#cecece",}}><span className="ms-4">Product</span></th>
                     <th  style={{fontWeight: "600", borderColor: "#cecece"}} >Price</th>
@@ -169,7 +177,7 @@ componentDidMount()  {
                     <th  style={{fontWeight: "600", borderColor: "#cecece"}}>Total</th>
                 </tr> 
                 </thead>
-                <tbody>
+                <tbody >
             {this.state.cartArray.map((element, index)=>{
                 return  <tr style={{borderColor: "black"}}>
                     
@@ -187,11 +195,11 @@ componentDidMount()  {
                     </td>
 
                     <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>${element.price}</td>
-                    <td style={{paddingTop: "30px", paddingBottom: "30px", borderColor: "#cecece"}}>
+                    <td style={{paddingTop: "30px",  paddingBottom: "30px", borderColor: "#cecece"}}>
                     
-                    <span className="ms-2 signToRemove" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
+                    <span className="ps-1 signToRemove"  onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
                     <span className="ps-2 pe-2">{this.state.cartArray[index].quantity} </span>
-                    <span  className="ps-1 signToRemove" style={{color: "white",backgroundColor: "#2e4e14",  fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={() => this.plus(index)}> <i className="fas fa-plus"></i> </span> 
+                    <span  className="pe-1 ps-1 signToRemove"  onClick={() => this.plus(index)}> <i className="fas fa-plus"></i> </span> 
                         
                     </td>
                     
@@ -207,9 +215,9 @@ componentDidMount()  {
 
                 </tbody>
             </table>
+            </div>
 
-
-            <div className="flex d-flex flex-wrap justify-content-between">
+            <div className="flex d-flex flex-wrap justify-content-between pt-4 pt-lg-3">
 
             <div>
             <input onChange={(e) => this.insertWord(e)} type="text" id="couponInput" style={{width: "100px", paddingBottom: "5px"}}/> 

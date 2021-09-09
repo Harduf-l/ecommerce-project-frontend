@@ -143,12 +143,32 @@ html {
       padding-right: 5px; 
     }
 
-    
+    .dltbtn4 {
+      margin-left: 20px; 
+      border-radius: 50%;
+      border: none;
+      padding: 0px 8px;
+      color: #a12d24;
+      font-weight: bold;
+      font-size: 17px; 
+      cursor: pointer; 
+      background-color:rgba(242,245,243, 0.9); 
+    }
 
   
     @media screen and (max-width: 476px) {
-      .signToRemove {display: none }
+      .signToRemove {font-size: "5px" }
     
+    }
+
+    .signToRemove {
+      color: white;
+      background-color: #2e4e14;
+      font-weight: bold;
+      cursor: pointer; 
+      border-radius: 50%;
+      font-size: 10px; 
+
     }
 
 
@@ -196,6 +216,7 @@ html {
   margin: 0 auto; 
   display: block; 
   padding-bottom: 50px; 
+  margin-top: 40px; 
 }
 
 .homeLinks:hover{
@@ -250,7 +271,7 @@ html {
   z-index: 9999;
   padding: 10px;
   position: absolute; 
-  left: 220px;
+  left: 230px;
   top: 60px; 
 }
 
@@ -268,23 +289,29 @@ html {
 }
 
 .goodInput {
-  border: 2px solid green;  
-  background-color: #d3ffdc;
+  border: 1px solid #4aa53d;  
+  background-color: #ebffef;
   padding: 6px; 
-  width: 90%;
+  width: 100%;
 }
 
 
 .badInput {
-  border: 2px solid red; 
-  background-color: #ffdfdf;
+  border: 1px solid red; 
+  background-color: #ffeeef;
   padding: 6px; 
-  width: 90%;
+  width: 100%;
 }
 
 .regularInput {
   padding: 6px; 
-  width: 90%;
+  width: 100%;
+  
+}
+
+.regularInput2 {
+  padding: 6px; 
+  width: 100%;
 }
 
 

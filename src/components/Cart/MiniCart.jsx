@@ -90,34 +90,55 @@ componentDidMount()  {
 
     }
 
+    calculateHeader = (string, sign) => {
+        console.log(string)
+        string = string.split(" ")
+        console.log(string)
+
+        if (sign === 1) {
+            return string[0]
+        } else if (sign === 2 && string[1]) {
+            return string[1]
+        }
+
+        return null; 
+    }
+
 
     render() {
 
     return(
             <div onMouseLeave={this.props.cartNotHoverFunction} className="cartOverFlow">
-            <table style={{width: "400px"}} className="" >
-                <thead style={{}}>
+            {this.state.cartArray.length? 
+            <table className="table smaller-phone-th" style={{fontSize: "13px"}} >
+                <thead style={{display: "block"}}>
                 <tr style={{paddingTop: "80px"}}>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}><span className="ms-4">Product</span></th>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}} >Price</th>
-                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}><span>Quantity</span></th>
+                    <th  style={{width: "130px",fontWeight: "600", borderColor: "#cecece",}}><span>Product</span></th>
+                    <th   style={{width: "75px",fontWeight: "600", borderColor: "#cecece"}} >Price</th>
+                    <th   style={{width: "60px", fontWeight: "600", borderColor: "#cecece"}}><span>Qty</span></th>
                     
-                    <th  style={{fontWeight: "600", borderColor: "#cecece", paddingBottom: "10px"}}>Total</th>
+                    <th  style={{fontWeight: "600", borderColor: "#cecece"}}>Total</th>
                 </tr> 
                 </thead>
-                <tbody>
+                <tbody  style={{'height': '160px', 'overflowY':'scroll', display: "inline-block"}}>
             {this.state.cartArray.map((element, index)=>{
                 return  <tr style={{borderColor: "black"}}>
                     
-                    <td style={{borderColor: "#cecece"}}>
+                    <td  style={{borderColor: "#cecece", width: "135px"}}>
                     <div className="flex d-flex flex-wrap align-items-center">
 
-                    <Link to={`/product/${element.id}`} style={{textDecoration: "none", color: "#2b3239"}}><span style={{marginLeft: "10px"}}>{element.header}</span></Link>
+
+                    <Link to={`/product/${element.id}`} style={{textDecoration: "none", color: "#2b3239"}}>
+                    <img style={{ borderRadius: "20%", height: "50px", width: "40px", objectFit: "cover"}} src={element.pic1} alt={"food product"}/> 
+                    </Link>
+
+
+                    <span style={{marginLeft: "10px"}}>{this.calculateHeader(element.header, 1)}<br/>{this.calculateHeader(element.header, 2)}</span>
                     </div>
                     </td>
 
-                    <td style={{ borderColor: "#cecece"}}>${element.price}</td>
-                    <td style={{ borderColor: "#cecece"}}>
+                    <td style={{paddingTop: "20px", paddingBottom: "20px", borderColor: "#cecece", width: "45px"}}>${element.price}</td>
+                    <td style={{paddingTop: "20px", paddingBottom: "20px", borderColor: "#cecece", width: "90px"}}>
                     
                     <span className="ms-2 signToRemove" style={{color: "white", backgroundColor: "#2e4e14", fontWeight: "bold", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingLeft: "2px"}} onClick={() => this.minus(index)}> <i className="fas fa-minus"></i> </span> 
                     <span className="ps-2 pe-2">{this.state.cartArray[index].quantity} </span>
@@ -125,30 +146,33 @@ componentDidMount()  {
                         
                     </td>
                     
-                    <td style={{paddingTop: "10px", paddingBottom: "10px", borderColor: "#cecece"}}>
+                    <td style={{paddingTop: "20px", paddingBottom: "20px", borderColor: "#cecece"}}>
                     <div className="flex d-flex justify-content-between">
                     ${element.price * element.quantity }
-                    <div className="dltbtn2" onClick={() => this.remove(index)}><i class="fas fa-times"></i></div>
+                    <button className="dltbtn4" onClick={() => this.remove(index)}><i class="fas fa-times"></i></button>
                     </div>
                     </td>
                     
                     </tr>
             })}
-   
 
                 </tbody>
-            </table>
-
+            </table> : <div style={{'height': '50px', width: "350px", textAlign: "center", marginTop: "40px"}}>Sorry, nothing in your cart yet. </div>}
                          <div className="flex d-flex justify-content-between pt-3">
 
                                 <div className="ms-2">
-                                <span style={{fontWeight: "600"}}>${this.calculateTotal("notexist")} Incl. taxes  </span><span style={{fontSize: "12px"}}> <br/> delivery not included</span>
+                                <span style={{fontWeight: "600", fontSize: "14px"}}>${this.calculateTotal("notexist")} Incl. taxes  </span><span style={{fontSize: "12px"}}> <br/> delivery not included</span>
                                 </div>
 
+
                                 <div >
+                                {this.state.cartArray.length? 
+                        
                                 <Link className="nav-link" to="/cart">
-                                    <button onClick={this.props.cartNotHoverFunction} className="btn btn-secondary">Go to cart</button>
-                                </Link>
+                                    <button onClick={this.props.cartNotHoverFunction} className="btn btn-sm btn-secondary">Go to cart</button>
+                                </Link> : <Link className="nav-link" to="/catalog">
+                                    <button onClick={this.props.cartNotHoverFunction} className="btn btn-sm btn-light" style={{fontWeight: "480", backgroundColor: "#8fa663", color: "white"}}>Go shopping</button>
+                                </Link> }
                                 </div>
 
                           </div>
