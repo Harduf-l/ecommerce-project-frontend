@@ -47,7 +47,7 @@ class Blog extends React.Component {
                        <p><span style={{fontWeight: "600"}}>name: </span> {comment.name}</p></span>
                        <p>{comment.body}</p>
                        </div>
-                       )
+                       ) 
                    })}
                    </div>
 

@@ -105,7 +105,7 @@ class Header extends React.Component {
               Hello, {localStorage.getItem("namelogged")}!
               </Link> : 
 
-              <Link className="nav-link hovernav"  aria-current="page" to="/login">
+              <Link className="nav-link hovernav"  aria-current="page" to="/signup">
               Login/register
               </Link>}
 
