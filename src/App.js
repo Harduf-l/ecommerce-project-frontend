@@ -60,13 +60,6 @@ class App extends React.Component {
 
   }
 
-  checkLogged = () => {
-    if ( !localStorage.getItem("isLogged") ) {
-      this.setState({isLogged: false})
-  } else {
-      this.setState({isLogged: true})
-      }
-  }
   
 
 render() {
@@ -83,13 +76,16 @@ render() {
               <Route path="/product/spreads" render={() => <Category num = {1}/>}/>
               <Route path="/product/breads" render={() => <Category num = {2}/>}/>
               <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
-              <ProtectedRoute path="/membersZone" component={Members}/>
               <Route path="/cart" render={(props) => <Cart checkCart={this.checkCart} {...props}/>} />
+              
+              <PrivateRoute path="/membersZone" component={Members}/>
               <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              <PrivateRoute path="/checklogin" component={Dashboard} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
+
               <Route path="/product/:id" render={(props) => <Product checkCart={this.checkCart} {...props}/>} />
               <Route exact path="/catalog" component={Catalog} />
               <Route exact path="/checkout" component={Checkout} />

@@ -2,6 +2,7 @@ import React from 'react'
 import  {Link } from "react-router-dom";
 import MiniCart from '../Cart/MiniCart'
 
+
 class Header extends React.Component {
 
   constructor(props) {
@@ -69,6 +70,8 @@ class Header extends React.Component {
     this.setState({cartHover: false})
   }
 
+
+
   render() {
 
     return (
@@ -85,7 +88,7 @@ class Header extends React.Component {
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item text-center">
         <Link className="nav-link hovernav"  aria-current="page" to="/">
-              Home page
+              Home
               </Link>
               </li>
               <li className="nav-item text-center">
@@ -100,14 +103,9 @@ class Header extends React.Component {
               </li>
               <li className="nav-item text-center" >
 
-              {(this.props.logged)? 
-              <Link className="nav-link hovernav"  aria-current="page" to="/membersZone">
-              Hello, {localStorage.getItem("namelogged")}!
-              </Link> : 
-
-              <Link className="nav-link hovernav"  aria-current="page" to="/signup">
+              <Link className="nav-link hovernav"  aria-current="page" to="/checklogin">
               Login/register
-              </Link>}
+              </Link>
 
 
 

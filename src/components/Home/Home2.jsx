@@ -17,7 +17,9 @@ class Home2 extends React.Component {
 
     }
 
-    
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
 
 returnCookies =()=> {
     let allMyProducts = [...allproducts]

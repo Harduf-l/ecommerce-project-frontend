@@ -1,11 +1,14 @@
 import React from 'react'
 import auth from '../../lib/auth'
 import  {Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext"
 
 import berries from '../../pictures/superfood/berries.jpg'
 import chia from '../../pictures/superfood/chia.png'
 
 let Members = (props) => {
+
+    const { logout } = useAuth()
     console.log(props)
     return(
         <div>
@@ -22,7 +25,7 @@ let Members = (props) => {
             <p style={{position: "relative", top: "60px", color: "white", fontSize: "42px", textAlign: "center", backgroundColor: "#e64723"}}>100 grams chia - 18.90$ only!</p>
         </div>
 
-        <Link to="/"><button onClick={()=>auth.logout()} className="btn btn-secondary btn-lg">Logout</button></Link>
+        <Link to="/"><button onClick={()=>logout()} className="btn btn-secondary btn-lg">Logout</button></Link>
         </div>
     )
 }
