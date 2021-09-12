@@ -8,6 +8,11 @@ import chia from '../../pictures/superfood/chia.png'
 
 let Members = (props) => {
 
+    function logOutMembers() {
+        logout()
+        props.myfunc()
+    }
+
     const { logout } = useAuth()
     console.log(props)
     return(
@@ -25,7 +30,7 @@ let Members = (props) => {
             <p style={{position: "relative", top: "60px", color: "white", fontSize: "42px", textAlign: "center", backgroundColor: "#e64723"}}>100 grams chia - 18.90$ only!</p>
         </div>
 
-        <Link to="/"><button onClick={()=>logout()} className="btn btn-secondary btn-lg">Logout</button></Link>
+        <Link to="/"><button onClick={()=>logOutMembers()} className="btn btn-secondary btn-lg">Logout</button></Link>
         </div>
     )
 }

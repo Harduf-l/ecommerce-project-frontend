@@ -2,7 +2,6 @@ import React from 'react'
 import  {Link } from "react-router-dom";
 import MiniCart from '../Cart/MiniCart'
 
-
 class Header extends React.Component {
 
   constructor(props) {
@@ -79,18 +78,13 @@ class Header extends React.Component {
 <nav className="navbar navbar-expand-lg navbar-light pb-0 pt-2"  style={{borderBottom: "#eaedf2 2px solid", fontSize: "17px"}}>
   <div className="container-fluid">
   <Link className="navbar-brand ms-2" to="/">
-      <span><i style={{fontSize: "37px", color: "#e64723"}}className="fas fa-spa"></i></span>
+      <span className="logoHome"><i className="fas fa-spa"></i></span>
       </Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item text-center">
-        <Link className="nav-link hovernav"  aria-current="page" to="/">
-              Home
-              </Link>
-              </li>
               <li className="nav-item text-center">
               <Link className="nav-link hovernav"  aria-current="page" to="/about">
               About
@@ -103,9 +97,13 @@ class Header extends React.Component {
               </li>
               <li className="nav-item text-center" >
 
-              <Link className="nav-link hovernav"  aria-current="page" to="/checklogin">
-              Login/register
-              </Link>
+              {this.props.userName ? <Link className="nav-link hovernav"  aria-current="page" to="/dashboard">
+              Hello, {this.props.userName}
+              </Link> :
+              <Link className="nav-link hovernav"  aria-current="page" to="/dashboard">
+               Login/register
+               </Link>}
+
 
 
 

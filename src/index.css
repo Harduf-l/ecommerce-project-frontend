@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -175,9 +177,22 @@ html {
     .shopHome {
       position: absolute;
       color: white;
-      font-size: 50px;
-      padding-left: 50px;
+      font-size: 75px;
+      padding-left: 40px; 
       padding-top: 100px; 
+      font-family: "Courgette"; 
+    }
+
+    @media screen and (max-width: 800px) {
+      .shopHome {
+        font-size: 60px;
+      }
+    }
+
+    @media screen and (max-width: 442px) {
+      .shopHome {
+        font-size: 50px;
+      }
     }
 
 
@@ -320,3 +335,15 @@ html {
   color: red; 
   font-size: 13px; 
 }
+
+.logoHome{
+  font-size: 37px;
+  color:#e64723
+}
+
+.logoHome:hover{
+  font-size: 37px;
+  color: #ff3f34; 
+}
+
+

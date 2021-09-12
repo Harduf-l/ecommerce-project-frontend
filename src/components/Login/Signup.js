@@ -3,10 +3,11 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
-export default function Signup() {
+export default function Signup(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
+  const nameRef = useRef()
   const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -15,15 +16,16 @@ export default function Signup() {
   async function handleSubmit(e) {
     e.preventDefault()
 
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) 
       return setError("Passwords do not match")
-    }
 
     try {
       setError("")
       setLoading(true)
+      localStorage.setItem("name", nameRef.current.value) 
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/dashboard")
+      props.checkUserName()
     } catch {
       setError("Failed to create an account")
     }
@@ -38,6 +40,11 @@ export default function Signup() {
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
+          <Form.Group id="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" ref={nameRef}  required />
+            </Form.Group>
+
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />

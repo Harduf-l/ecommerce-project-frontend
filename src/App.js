@@ -40,6 +40,7 @@ class App extends React.Component {
       this.state = {
         numberInCart: 0,
         isLogged: false,
+        userName: "",
       }
 
   }
@@ -60,13 +61,22 @@ class App extends React.Component {
 
   }
 
+  checkUserName = () => {
+    console.log("bababbaba")
+    if ( localStorage.getItem("name") ) {
+      this.setState({userName: localStorage.getItem("name")})
+  } else {
+     this.setState({userName: ""})
+    }
+
+  }
   
 
 render() {
   return (
       <div id="htmldiv">
         <div id="bodydiv">
-          <Header itemsInCart={this.state.numberInCart} logged={this.state.isLogged} checkCart={this.checkCart}/>
+          <Header itemsInCart={this.state.numberInCart} userName={this.state.userName} logged={this.state.isLogged} checkCart={this.checkCart}/>
             <AuthProvider>
               <Switch>
               <Route path="/contact" component={Contact} />
@@ -78,12 +88,11 @@ render() {
               <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
               <Route path="/cart" render={(props) => <Cart checkCart={this.checkCart} {...props}/>} />
               
-              <PrivateRoute path="/membersZone" component={Members}/>
-              <PrivateRoute path="/dashboard" component={Dashboard} />
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <PrivateRoute path="/checklogin" component={Dashboard} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
+              <PrivateRoute path="/membersZone" component={Members} myfunc={this.checkUserName}/>
+              <PrivateRoute path="/dashboard" component={Dashboard} myfunc={this.checkUserName} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} myfunc={this.checkUserName} />
+              <Route path="/signup"  render={(props) => <Signup checkUserName={this.checkUserName} {...props}/>} />
+              <Route path="/login"  render={(props) => <Login checkUserName={this.checkUserName} {...props}/>} />
               <Route path="/forgot-password" component={ForgotPassword} />
 
               <Route path="/product/:id" render={(props) => <Product checkCart={this.checkCart} {...props}/>} />

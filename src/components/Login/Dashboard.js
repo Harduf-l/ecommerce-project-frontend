@@ -3,7 +3,7 @@ import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
@@ -13,7 +13,9 @@ export default function Dashboard() {
 
     try {
       await logout()
+      localStorage.removeItem("name")
       history.push("/login")
+      props.myfunc()
     } catch {
       setError("Failed to log out")
     }
@@ -21,6 +23,7 @@ export default function Dashboard() {
 
   return (
     <>
+    {console.log(props)}
       <Card className="col-lg-5 col-md-8 mt-5" style={{margin: "0 auto"}}>
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
