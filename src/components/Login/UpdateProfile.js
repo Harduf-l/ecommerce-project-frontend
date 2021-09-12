@@ -21,7 +21,7 @@ export default function UpdateProfile(props) {
         localStorage.removeItem("name")
         props.myfunc()
       }).catch((error) => {
-        setError("Please login again")
+        setError("Please logout, then login again")
       });
 
 

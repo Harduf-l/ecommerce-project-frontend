@@ -62,7 +62,6 @@ class App extends React.Component {
   }
 
   checkUserName = () => {
-    console.log("bababbaba")
     if ( localStorage.getItem("name") ) {
       this.setState({userName: localStorage.getItem("name")})
   } else {

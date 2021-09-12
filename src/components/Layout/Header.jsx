@@ -134,9 +134,9 @@ class Header extends React.Component {
       </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
           <li className="nav-item dropdown">
-          <Link className="nav-link dropdown-toggle hovernav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a className="nav-link dropdown-toggle hovernav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
-          </Link>
+          </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/cookies" params={{index: 0}}>cookies</Link></li>
             <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/spreads" params={{index: 1}}>spreads</Link></li>
