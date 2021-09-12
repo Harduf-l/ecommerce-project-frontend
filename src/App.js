@@ -40,7 +40,7 @@ class App extends React.Component {
       this.state = {
         numberInCart: 0,
         isLogged: false,
-        userName: "",
+        userName: localStorage.getItem("name") ||  "",
       }
 
   }

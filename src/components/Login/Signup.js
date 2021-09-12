@@ -3,6 +3,9 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
+import googlePic from '../../pictures/baners/google.png'
+import { signInWithGoogle } from "../../firebase";
+
 export default function Signup(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -23,9 +26,9 @@ export default function Signup(props) {
       setError("")
       setLoading(true)
       localStorage.setItem("name", nameRef.current.value) 
+      props.checkUserName()
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/dashboard")
-      props.checkUserName()
     } catch {
       setError("Failed to create an account")
     }
@@ -60,6 +63,16 @@ export default function Signup(props) {
             <Button disabled={loading} className="w-100 mt-3" type="submit">
               Sign Up
             </Button>
+
+            <div className="login-buttons">
+              <Button variant="light" style={{backgroundColor: "#dfdfed"}} className="w-100 mt-3"  onClick={() => signInWithGoogle(props.checkUserName)}>
+                <div className="d-flex">
+              <img  height={25} src={googlePic} alt="google icon"/>
+              <div style={{margin: "0 auto"}}> Continue with Google</div>
+              </div>
+            </Button>
+          </div>
+
           </Form>
         </Card.Body>
       </Card>

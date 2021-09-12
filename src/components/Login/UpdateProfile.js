@@ -4,14 +4,28 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
-export default function UpdateProfile() {
+
+
+export default function UpdateProfile(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { currentUser, updatePassword, updateEmail } = useAuth()
+  const { currentUser, updatePassword, updateEmail} = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+
+  function removeUser() {
+      currentUser.delete()
+      .then(() => {
+        localStorage.removeItem("name")
+        props.myfunc()
+      }).catch((error) => {
+        setError("Please login again")
+      });
+
+
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -29,6 +43,8 @@ export default function UpdateProfile() {
     if (passwordRef.current.value) {
       promises.push(updatePassword(passwordRef.current.value))
     }
+
+
 
     Promise.all(promises)
       .then(() => {
@@ -76,6 +92,9 @@ export default function UpdateProfile() {
             </Form.Group>
             <Button disabled={loading} className="w-100  mt-3" type="submit">
               Update
+            </Button>
+            <Button variant="secondary" onClick={()=>removeUser()} className="w-100  mt-3">
+              Remove account
             </Button>
           </Form>
         </Card.Body>

@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import "firebase/auth"
 
+
 const app = firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -12,3 +13,17 @@ const app = firebase.initializeApp({
 
 
 export const auth = app.auth()
+
+const googleProvider = new firebase.auth.GoogleAuthProvider()
+
+export const signInWithGoogle = (myfunc) => {
+  auth.signInWithPopup(googleProvider).then((res) => {
+    return res.user
+  }).then((user) => {
+        localStorage.setItem("name", user.displayName)
+        myfunc()
+    })
+  .catch((error) => {
+    console.log(error.message)
+  })
+}
