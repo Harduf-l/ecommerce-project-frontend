@@ -29,3 +29,17 @@ export const signInWithGoogle = (myfunc) => {
     console.log(error.message)
   })
 }
+
+
+export const signUpWithGoogle = (myfunc) => {
+  auth.signInWithPopup(googleProvider).then((res) => {
+    return res.user
+  }).then((user) => {
+        localStorage.setItem("name", user.displayName)
+        myfunc()
+        window.location = '/dashboard'
+    })
+  .catch((error) => {
+    console.log(error.message)
+  })
+}

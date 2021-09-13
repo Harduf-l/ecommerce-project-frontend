@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 import googlePic from '../../pictures/baners/google.png'
-import { signInWithGoogle } from "../../firebase";
+import { signUpWithGoogle } from "../../firebase";
 
 export default function Signup(props) {
   const emailRef = useRef()
@@ -18,7 +18,7 @@ export default function Signup(props) {
 
  function googleAndDirect() {
 
-    signInWithGoogle(props.checkUserName)
+  signUpWithGoogle(props.checkUserName)
     
    
 }
