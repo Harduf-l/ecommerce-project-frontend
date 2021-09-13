@@ -66,10 +66,8 @@ class App extends React.Component {
 
     return auth.onAuthStateChanged(user => {
       if (user) {
-        console.log(user.displayName )
         this.setState({userName: user.displayName}) 
       } else {
-        console.log("error")
         this.setState({userName: false}) 
       }
     })

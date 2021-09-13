@@ -16,14 +16,10 @@ export default function Signup(props) {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-  async function googleAndDirect() {
-    try {
-      signInWithGoogle(props.checkUserName)
-    }catch {
-      setError("Failed to log in")
-    }
+ function googleAndDirect() {
 
-    history.push("/dashboard")
+    signInWithGoogle(props.checkUserName)
+    
    
 }
 

@@ -23,6 +23,7 @@ export const signInWithGoogle = (myfunc) => {
   }).then((user) => {
         localStorage.setItem("name", user.displayName)
         myfunc()
+        window.location = '/dashboard'
     })
   .catch((error) => {
     console.log(error.message)
