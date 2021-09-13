@@ -31,7 +31,7 @@ import Category from "./components/Category/Category"
 import Members from "./components/Protected/Members"
 import ProtectedRoute from "./components/Protected/Protected"
 import Checkout from './components/Cart/Checkout'
-
+import { auth } from "../src/firebase"
 
 class App extends React.Component {
 
@@ -40,10 +40,11 @@ class App extends React.Component {
       this.state = {
         numberInCart: 0,
         isLogged: false,
-        userName: localStorage.getItem("name") ||  "",
-      }
+        userName: false,
 
   }
+
+}
 
   checkCart = () => {
     if ( localStorage.getItem("cart") == null || localStorage.getItem("cart") === [] ) {
@@ -62,12 +63,21 @@ class App extends React.Component {
   }
 
   checkUserName = () => {
-    if ( localStorage.getItem("name") ) {
-      this.setState({userName: localStorage.getItem("name")})
-  } else {
-     this.setState({userName: ""})
-    }
 
+    return auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log(user.displayName )
+        this.setState({userName: user.displayName}) 
+      } else {
+        console.log("error")
+        this.setState({userName: false}) 
+      }
+    })
+
+  }
+  
+  componentDidMount() {
+    this.checkUserName()
   }
   
 

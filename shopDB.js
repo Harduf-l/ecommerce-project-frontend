@@ -14,7 +14,7 @@ module.exports = () => {
         
         fakeUser.id = index
 
-        let name = {}
+        let name = {} 
 
         name.firstname = faker.name.firstName()
         name.lastname = faker.name.lastName()

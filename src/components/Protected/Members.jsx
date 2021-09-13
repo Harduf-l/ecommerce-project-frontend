@@ -1,19 +1,32 @@
 import React from 'react'
-import auth from '../../lib/auth'
 import  {Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext"
 
 import berries from '../../pictures/superfood/berries.jpg'
 import chia from '../../pictures/superfood/chia.png'
+import {  useHistory } from "react-router-dom"
 
 let Members = (props) => {
 
-    function logOutMembers() {
-        logout()
-        props.myfunc()
-    }
+    const {  logout } = useAuth()
+    const history = useHistory()
+    
 
-    const { logout } = useAuth()
+    async function logOutMembers() {
+        
+
+            try {
+              await logout()
+              localStorage.removeItem("name")
+              history.push("/login")
+              props.myfunc()
+            } catch {
+              console.log("Failed to log out")
+            }
+        
+          
+    }
+   
     console.log(props)
     return(
         <div>

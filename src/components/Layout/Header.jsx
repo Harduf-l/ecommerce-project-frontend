@@ -96,7 +96,7 @@ class Header extends React.Component {
               </Link>
               </li>
               <li className="nav-item text-center" >
-
+              {console.log(this.props.userName )}
               {this.props.userName ? <Link className="nav-link hovernav"  aria-current="page" to="/dashboard">
               Hello, {this.props.userName}
               </Link> :

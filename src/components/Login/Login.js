@@ -15,10 +15,14 @@ export default function Login(props) {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-   function googleAndDirect() {
+  async function googleAndDirect() {
+      try {
+        signInWithGoogle(props.checkUserName)
+      }catch {
+        setError("Failed to log in")
+      }
+     
       history.push("/dashboard")
-      signInWithGoogle(props.checkUserName)
-      
   }
 
   async function handleSubmit(e) {

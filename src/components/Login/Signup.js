@@ -16,6 +16,17 @@ export default function Signup(props) {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
+  async function googleAndDirect() {
+    try {
+      signInWithGoogle(props.checkUserName)
+    }catch {
+      setError("Failed to log in")
+    }
+
+    history.push("/dashboard")
+   
+}
+
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -26,9 +37,9 @@ export default function Signup(props) {
       setError("")
       setLoading(true)
       localStorage.setItem("name", nameRef.current.value) 
-      props.checkUserName()
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/dashboard")
+      props.checkUserName()
     } catch {
       setError("Failed to create an account")
     }
@@ -65,7 +76,7 @@ export default function Signup(props) {
             </Button>
 
             <div className="login-buttons">
-              <Button variant="light" style={{backgroundColor: "#dfdfed"}} className="w-100 mt-3"  onClick={() => signInWithGoogle(props.checkUserName)}>
+              <Button variant="light" style={{backgroundColor: "#dfdfed"}} className="w-100 mt-3"   onClick={googleAndDirect}>
                 <div className="d-flex">
               <img  height={25} src={googlePic} alt="google icon"/>
               <div style={{margin: "0 auto"}}> Continue with Google</div>

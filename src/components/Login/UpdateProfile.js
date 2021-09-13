@@ -10,16 +10,17 @@ export default function UpdateProfile(props) {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { currentUser, updatePassword, updateEmail} = useAuth()
+  const { currentUser, logout, updatePassword, updateEmail} = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
   function removeUser() {
+      logout()
       currentUser.delete()
       .then(() => {
-        localStorage.removeItem("name")
         props.myfunc()
+        history.push("/")
       }).catch((error) => {
         setError("Please logout, then login again")
       });

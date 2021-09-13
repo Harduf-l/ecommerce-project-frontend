@@ -6,7 +6,6 @@ class MiniCart extends React.Component {
 
     constructor(props) {
         super() 
-        console.log(props.cartNotHoverFunction)
         this.state = { 
         cartArray: [],
     }
@@ -28,7 +27,6 @@ componentDidMount()  {
 }
 
     minus = (index) => {
-    console.log(index)
     let currentArray = [...this.state.cartArray]
 
     if  (currentArray[index].quantity > 1) {
@@ -43,7 +41,7 @@ componentDidMount()  {
 
 
     plus = (index) => {
-    console.log(index)
+
     let currentArray = [...this.state.cartArray]
 
     currentArray[index].quantity = currentArray[index].quantity +1
@@ -91,9 +89,8 @@ componentDidMount()  {
     }
 
     calculateHeader = (string, sign) => {
-        console.log(string)
         string = string.split(" ")
-        console.log(string)
+
 
         if (sign === 1) {
             return string[0]

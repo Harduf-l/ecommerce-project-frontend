@@ -31,6 +31,7 @@ export function AuthProvider({ children }) {
         localStorage.setItem("name", user.displayName)
       } else {
         console.log("error")
+        localStorage.removeItem("name")
       }
     })
 
