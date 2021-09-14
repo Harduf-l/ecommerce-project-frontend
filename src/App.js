@@ -18,7 +18,7 @@ import Dashboard from './components/Login/Dashboard'
 import UpdateProfile from './components/Login/UpdateProfile'
 import Login from './components/Login/Login'
 import ForgotPassword from './components/Login/ForgotPassword'
-
+import AdminsPortal from './components/AdminsPortal/AdminsPortal'
 
 
 
@@ -29,7 +29,6 @@ import Catalog from './components/Catalog/Catalog'
 import Cart from './components/Cart/Cart'
 import Category from "./components/Category/Category"
 import Members from "./components/Protected/Members"
-import ProtectedRoute from "./components/Protected/Protected"
 import Checkout from './components/Cart/Checkout'
 import { auth } from "../src/firebase"
 
@@ -76,6 +75,7 @@ class App extends React.Component {
   
   componentDidMount() {
     this.checkUserName()
+    this.checkCart()
   }
   
 
@@ -96,6 +96,8 @@ render() {
               <Route path="/cart" render={(props) => <Cart checkCart={this.checkCart} {...props}/>} />
               
               <PrivateRoute path="/membersZone" component={Members} myfunc={this.checkUserName}/>
+              <PrivateRoute path="/adminsPortal" component={AdminsPortal} myfunc={this.checkUserName}/>
+              
               <PrivateRoute path="/dashboard" component={Dashboard} myfunc={this.checkUserName} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} myfunc={this.checkUserName} />
               <Route path="/signup"  render={(props) => <Signup checkUserName={this.checkUserName} {...props}/>} />

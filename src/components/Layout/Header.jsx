@@ -134,7 +134,7 @@ class Header extends React.Component {
       </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
           <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle hovernav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a className="nav-link dropdown-toggle hovernav"  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -152,6 +152,11 @@ class Header extends React.Component {
               <li className="nav-item text-center hovernav" >
               <Link style={{color: "red"}} className="nav-link"  aria-current="page" to="/membersZone">
               Members Zone
+              </Link>
+              </li>
+              <li className="nav-item text-center hovernav" >
+              <Link style={{color: "blue"}} className="nav-link"  aria-current="page" to="/adminsPortal">
+              Admins Portal
               </Link>
               </li>
           </ul>
