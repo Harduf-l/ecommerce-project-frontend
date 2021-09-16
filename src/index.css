@@ -177,7 +177,7 @@ html {
     .shopHome {
       position: absolute;
       color: white;
-      font-size: 75px;
+      font-size: 70px;
       padding-left: 40px; 
       padding-top: 100px; 
       font-family: "Courgette"; 
@@ -344,6 +344,14 @@ html {
 .logoHome:hover{
   font-size: 37px;
   color: #ff3f34; 
+}
+
+
+.heartStyle {
+  color: #bb0000;
+  font-size: 20px;
+
+  
 }
 
 

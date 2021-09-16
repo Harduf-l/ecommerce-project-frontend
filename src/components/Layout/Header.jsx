@@ -12,6 +12,7 @@ class Header extends React.Component {
       cartHover: false, 
       items: 0, 
       smallScreen: true, 
+      heartCond: "far fa-heart"
     }
 
     this.trackInput = (e) => {
@@ -49,6 +50,20 @@ class Header extends React.Component {
 
     this.setState({items: nextProps.itemsInCart })
 
+    if (nextProps.numOfFav !== this.props.numOfFav) {
+      
+        setTimeout(()=>{  
+          this.setState({heartCond: "fas fa-heart" })
+
+      }, 700);
+
+        setTimeout(()=>{  
+          this.setState({heartCond: "far fa-heart" })
+
+      }, 1900);
+
+  }
+
   }
 
   removePlaceHolder = (e) => {
@@ -70,6 +85,12 @@ class Header extends React.Component {
   }
 
 
+  heartover = () => {
+    this.setState({heartCond: "fas fa-heart" })
+  }
+  heartout= () => {
+    this.setState({heartCond: "far fa-heart" })
+  }
 
   render() {
 
@@ -96,20 +117,14 @@ class Header extends React.Component {
               </Link>
               </li>
               <li className="nav-item text-center" >
-              {console.log(this.props.userName )}
               {this.props.userName ? <Link className="nav-link hovernav"  aria-current="page" to="/dashboard">
               Hello, {this.props.userName}
               </Link> :
               <Link className="nav-link hovernav"  aria-current="page" to="/dashboard">
                Login/register
                </Link>}
-
-
-
-
-
-
               </li>
+
               
               {!this.state.smallScreen &&
               <li className="nav-item text-center cartHover" onClick ={this.cartHoverFunction} style={{position: "relative", cursor: "pointer"}}>
@@ -131,6 +146,16 @@ class Header extends React.Component {
                   </div>
               </li> </Link> }
 
+              <Link onMouseOver={this.heartover}  onMouseOut={this.heartout}  to="/favorites" style={{position: "relative"}}>
+              <li className="nav-item text-center" onClick={this.checkFavorite}  style={{ cursor: "pointer"}}>
+              <div className="nav-link ">
+                <div className="heartStyle">
+                   <i className={this.state.heartCond}></i>
+                </div>
+                  </div>
+              </li>
+              </Link>
+
       </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
           <li className="nav-item dropdown">
@@ -150,12 +175,12 @@ class Header extends React.Component {
               </Link>
               </li>
               <li className="nav-item text-center hovernav" >
-              <Link style={{color: "red"}} className="nav-link"  aria-current="page" to="/membersZone">
+              <Link style={{color: "#e61a23"}} className="nav-link"  aria-current="page" to="/membersZone">
               Members Zone
               </Link>
               </li>
               <li className="nav-item text-center hovernav" >
-              <Link style={{color: "blue"}} className="nav-link"  aria-current="page" to="/adminsPortal">
+              <Link style={{color: "#004369"}} className="nav-link"  aria-current="page" to="/adminsPortal">
               Admins Portal
               </Link>
               </li>
