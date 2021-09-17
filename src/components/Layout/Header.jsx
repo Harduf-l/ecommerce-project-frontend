@@ -131,7 +131,7 @@ class Header extends React.Component {
               <div className="nav-link">
                 <div className="cartHover">
                   <i className="fas fa-shopping-cart">
-                    <div className="cartBtnNumberStyle">{this.state.items}</div>
+                    <div className="cartBtnNumberStyle">{this.props.quantity}</div>
                     </i></div>
                   </div>
               </li> </Link> }
