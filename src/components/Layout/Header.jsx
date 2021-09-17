@@ -1,6 +1,9 @@
 import React from 'react'
 import  {Link } from "react-router-dom";
 import MiniCart from '../Cart/MiniCart'
+import { connect } from 'react-redux'
+
+import {changeItems} from '../../redux/actions/cartActions'
 
 class Header extends React.Component {
 
@@ -10,9 +13,8 @@ class Header extends React.Component {
     this.state = { 
       valueInput: "",
       cartHover: false, 
-      items: 0, 
       smallScreen: true, 
-      heartCond: "far fa-heart"
+      heartCond: "fas fa-heart"
     }
 
     this.trackInput = (e) => {
@@ -23,18 +25,8 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    if ( localStorage.getItem("cart") == null || localStorage.getItem("cart") === [] ) {
-      this.setState({items: 0 })
-  } else {
-      let cart = JSON.parse(localStorage.getItem("cart")); 
-      let number = 0;
 
-      for (let i=0; i< cart.length; i++) {
-        number = number + cart[i].quantity
-      }
-
-      this.setState({items: number })
-  }
+  this.props.changeItems()
 
   let { innerWidth: width, } = window;
 
@@ -47,8 +39,6 @@ class Header extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
-    this.setState({items: nextProps.itemsInCart })
 
     if (nextProps.numOfFav !== this.props.numOfFav) {
       
@@ -86,14 +76,14 @@ class Header extends React.Component {
 
 
   heartover = () => {
-    this.setState({heartCond: "fas fa-heart" })
+    this.setState({heartCond: "far fa-heart" })
   }
   heartout= () => {
-    this.setState({heartCond: "far fa-heart" })
+    this.setState({heartCond: "fas fa-heart" })
   }
 
   render() {
-
+  console.log(this.props)
     return (
 
 <nav className="navbar navbar-expand-lg navbar-light pb-0 pt-2"  style={{borderBottom: "#eaedf2 2px solid", fontSize: "17px"}}>
@@ -131,7 +121,7 @@ class Header extends React.Component {
               <div className="nav-link">
                 <div className="cartHover">
                   <i className="fas fa-shopping-cart">
-                    <div className="cartBtnNumberStyle">{this.state.items}</div>
+                    <div className="cartBtnNumberStyle">{this.props.quantity}</div>
                     </i></div>
                   </div>
               </li> }
@@ -148,7 +138,7 @@ class Header extends React.Component {
 
               <Link onMouseOver={this.heartover}  onMouseOut={this.heartout}  to="/favorites" style={{position: "relative"}}>
               <li className="nav-item text-center" onClick={this.checkFavorite}  style={{ cursor: "pointer"}}>
-              <div className="nav-link ">
+              <div className="nav-link">
                 <div className="heartStyle">
                    <i className={this.state.heartCond}></i>
                 </div>
@@ -207,4 +197,10 @@ class Header extends React.Component {
 
 }
 
-export default Header
+
+const mapStateToProps = state => ({
+  quantity: state.cart.quantity
+});
+
+export default connect(mapStateToProps,{changeItems})(Header);
+

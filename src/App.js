@@ -37,7 +37,6 @@ class App extends React.Component {
   constructor(props) {
       super(props)
       this.state = {
-        numberInCart: 0,
         isLogged: false,
         userName: false,
         numOfFav: 0,
@@ -49,21 +48,7 @@ class App extends React.Component {
     this.setState({numOfFav: this.state.numOfFav+1})
   }
 
-  checkCart = () => {
-    if ( localStorage.getItem("cart") == null || localStorage.getItem("cart") === [] ) {
-      this.setState({numberInCart: 0})
-  } else {
-      let cart = JSON.parse(localStorage.getItem("cart")); 
-      let number = 0;
 
-      for (let i=0; i< cart.length; i++) {
-        number = number + cart[i].quantity
-      }
-
-      this.setState({numberInCart: number})
-  }
-
-  }
 
   checkUserName = () => {
 
@@ -79,7 +64,6 @@ class App extends React.Component {
   
   componentDidMount() {
     this.checkUserName()
-    this.checkCart()
   }
   
 
@@ -88,7 +72,7 @@ render() {
       <div id="htmldiv">
         <div id="bodydiv">
 
-          <Header itemsInCart={this.state.numberInCart} numOfFav={this.state.numOfFav} userName={this.state.userName} logged={this.state.isLogged} checkCart={this.checkCart}/>
+          <Header itemsInCart={this.state.numberInCart} numOfFav={this.state.numOfFav} userName={this.state.userName} logged={this.state.isLogged} />
 
             <AuthProvider>
               <Switch>
@@ -99,7 +83,7 @@ render() {
               <Route path="/product/spreads" render={() => <Category num = {1}/>}/>
               <Route path="/product/breads" render={() => <Category num = {2}/>}/>
               <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
-              <Route path="/cart" render={(props) => <Cart checkCart={this.checkCart} {...props}/>} />    
+              <Route path="/cart" render={(props) => <Cart  {...props}/>} />    
               
               <PrivateRoute path="/favorites" component={Favorites} myfunc={this.checkUserName}/>
 
@@ -112,7 +96,7 @@ render() {
               <Route path="/login"  render={(props) => <Login checkUserName={this.checkUserName} {...props}/>} />
               <Route path="/forgot-password" component={ForgotPassword} />
 
-              <Route path="/product/:id" render={(props) => <Product checkCart={this.checkCart} numOfFav={this.numOfFav} {...props}/>} />
+              <Route path="/product/:id" render={(props) => <Product  numOfFav={this.numOfFav} {...props}/>} />
               <Route exact path="/catalog" component={Catalog} />
               <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/" component={Home2} />

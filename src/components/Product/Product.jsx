@@ -12,6 +12,9 @@ import allproducts from '../Data/allproducts'
 
 import { auth } from "../../firebase"
 
+import {connect} from 'react-redux';
+import {changeItems} from '../../redux/actions/cartActions'
+
 class Product extends React.Component {
 
 
@@ -94,7 +97,8 @@ class Product extends React.Component {
             }
 
             localStorage.setItem("cart", JSON.stringify(cart)); 
-            this.props.checkCart()
+
+            this.props.changeItems()
         
       }
 
@@ -111,10 +115,10 @@ class Product extends React.Component {
             )       
           }, 1200);
 
-          setTimeout(()=>{  
-            window.scrollTo(0, 0)     
-            this.props.numOfFav()
-        }, 1300);
+        //   setTimeout(()=>{  
+        //     window.scrollTo(0, 0)     
+        //     this.props.numOfFav()
+        // }, 1300);
 
           
           } else {
@@ -305,8 +309,11 @@ class Product extends React.Component {
 
 }
 
+const mapStateToProps = state => ({
+})
 
-export default Product;
+export default connect(mapStateToProps, {changeItems})(Product)
+
 
 
 
