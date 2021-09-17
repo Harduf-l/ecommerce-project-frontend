@@ -14,9 +14,9 @@ const MyLayout = props => {
 
     const MyAppBar = props => (
         <AppBar {...props}>
-            {/* <Toolbar style={{}}>
-                <Typography variant="h6" id="react-admin-title" />
-            </Toolbar> */}
+            {/* <Toolbar> */}
+                {/* <Typography variant="h6" id="react-admin-title" /> */}
+            {/* </Toolbar> */}
         </AppBar>
     );
 

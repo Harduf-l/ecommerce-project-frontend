@@ -83,7 +83,6 @@ class Header extends React.Component {
   }
 
   render() {
-  console.log(this.props)
     return (
 
 <nav className="navbar navbar-expand-lg navbar-light pb-0 pt-2"  style={{borderBottom: "#eaedf2 2px solid", fontSize: "17px"}}>
@@ -187,7 +186,7 @@ class Header extends React.Component {
 
       { this.state.cartHover && window.location.pathname!=="/cart" && window.location.pathname!=="/checkout" &&
         <div className="cartModal" >
-          <MiniCart checkCart={this.props.checkCart} cartNotHoverFunction={this.cartNotHoverFunction} />
+          <MiniCart cartNotHoverFunction={this.cartNotHoverFunction} />
         </div> }
 
 </nav>
