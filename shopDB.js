@@ -53,7 +53,9 @@ module.exports = () => {
 
         data.products.push(product)
 
+
     }
 
+    
     return data
 }

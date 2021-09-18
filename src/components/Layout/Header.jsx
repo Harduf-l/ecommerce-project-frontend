@@ -2,13 +2,15 @@ import React from 'react'
 import  {Link } from "react-router-dom";
 import MiniCart from '../Cart/MiniCart'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
+
 
 import {changeItems} from '../../redux/actions/cartActions'
 
 class Header extends React.Component {
 
   constructor(props) {
-    super() 
+    super(props) 
 
     this.state = { 
       valueInput: "",
@@ -83,9 +85,17 @@ class Header extends React.Component {
   }
 
   render() {
+
+    let adminStyle;
+    if (this.props.location.pathname ==="/adminsPortal") {
+      adminStyle = "navbar navbar-expand-lg navbar-light pb-0 pt-2 mt-5"
+    } else {
+      adminStyle = "navbar navbar-expand-lg navbar-light pb-0 pt-2"
+    }
+
     return (
 
-<nav className="navbar navbar-expand-lg navbar-light pb-0 pt-2"  style={{borderBottom: "#eaedf2 2px solid", fontSize: "17px"}}>
+<nav className={adminStyle}  style={{borderBottom: "#eaedf2 2px solid", fontSize: "17px"}}>
   <div className="container-fluid">
   <Link className="navbar-brand ms-2" to="/">
       <span className="logoHome"><i className="fas fa-spa"></i></span>
@@ -201,5 +211,5 @@ const mapStateToProps = state => ({
   quantity: state.cart.quantity
 });
 
-export default connect(mapStateToProps,{changeItems})(Header);
+export default withRouter(connect(mapStateToProps,{changeItems})(Header));
 
