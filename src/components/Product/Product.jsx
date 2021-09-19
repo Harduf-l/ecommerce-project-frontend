@@ -10,6 +10,10 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import allproducts from '../Data/allproducts'
 
+import { auth } from "../../firebase"
+
+import {connect} from 'react-redux';
+import {changeItems} from '../../redux/actions/cartActions'
 
 class Product extends React.Component {
 
@@ -23,6 +27,8 @@ class Product extends React.Component {
     this.state= {
       cartBtn: "Add to cart",
       cartStyle: {backgroundColor: "#555555", color: "white"},
+      favoriteBtn: "Add to favorites",
+      favoriteBtnStyle: {backgroundColor: "#305017", color: "white"},
       quantity: 1,
       currentpicture: this.myProduct.pic1,
       stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "1px solid #dd9431", boxShadow: " 0 0 8px #dd9431"},
@@ -50,49 +56,81 @@ class Product extends React.Component {
 
       this.addtoCart = () => {
 
-        this.setState({cartBtn: "Added to cart"})
-        this.setState({cartStyle: {backgroundColor: "#dd9431", color: "white"}}) 
-        
-        setTimeout(()=>{  this.setState({cartBtn: "Add to cart", cartStyle: { backgroundColor: "#555555", color: "white"}}     
-        )       
-      }, 1200);
+            this.setState({cartBtn: "Added to cart"})
+            this.setState({cartStyle: {backgroundColor: "#dd9431", color: "white"}}) 
+            
+            setTimeout(()=>{  this.setState({cartBtn: "Add to cart", cartStyle: { backgroundColor: "#555555", color: "white"}}     
+            )       
+          }, 1200);
 
-        let myQuantity = this.state.quantity
+            let myQuantity = this.state.quantity
 
-        let doesExist = false
-        let cart;
+            let doesExist = false
+            let cart;
 
-        if ( localStorage.getItem("cart") == null) {
-            cart = []; 
-        } else {
-              cart = JSON.parse(localStorage.getItem("cart")); 
-        }
-    
-        if (cart) {
-          for (let i=0; i<cart.length; i++) {
-            if (cart[i].id === this.myProduct.id) {
-              cart[i].quantity = myQuantity
-              doesExist = true
+            if ( localStorage.getItem("cart") == null) {
+                cart = []; 
+            } else {
+                  cart = JSON.parse(localStorage.getItem("cart")); 
             }
-        } 
-        } 
         
-        if (!doesExist) {
-          let product = {
-            id: this.myProduct.id,
-            header: this.myProduct.header,
-            price:  this.myProduct.price,
-            quantity: myQuantity,
-            pic1: this.myProduct.pic1
-        } 
-    
-        cart.push(product)
+            if (cart) {
+              for (let i=0; i<cart.length; i++) {
+                if (cart[i].id === this.myProduct.id) {
+                  cart[i].quantity = myQuantity
+                  doesExist = true
+                }
+            } 
+            } 
+            
+            if (!doesExist) {
+              let product = {
+                id: this.myProduct.id,
+                header: this.myProduct.header,
+                price:  this.myProduct.price,
+                quantity: myQuantity,
+                pic1: this.myProduct.pic1
+            } 
+        
+            cart.push(product)
 
-        }
+            }
 
-    localStorage.setItem("cart", JSON.stringify(cart)); 
-    this.props.checkCart()
-    
+            localStorage.setItem("cart", JSON.stringify(cart)); 
+
+            this.props.changeItems()
+        
+      }
+
+
+
+      this.addtoFavorites = () => {
+        return auth.onAuthStateChanged(user => {
+          if (user) {
+            this.setState({favoriteBtn: "Added to favorites"})
+            this.setState({favoriteBtnStyle: {backgroundColor: "#a50a0a", color: "white"}}) 
+            
+            setTimeout(()=>{  
+              this.setState({favoriteBtn: "Add to favorites", favoriteBtnStyle: { backgroundColor: "#305017", color: "white"}           }     
+            )       
+          }, 1200);
+
+        //   setTimeout(()=>{  
+        //     window.scrollTo(0, 0)     
+        //     this.props.numOfFav()
+        // }, 1300);
+
+          
+          } else {
+
+            window.location = '/login'
+
+          }
+        })
+
+
+
+
       }
 
     this.changePic = (e) => {
@@ -177,7 +215,7 @@ class Product extends React.Component {
       <span  style={{color: "white", backgroundColor: "#2e4e14", cursor: "pointer", borderRadius: "50%", fontSize: "10px", paddingRight: "3px"}} onClick={this.plus}> <i className="fas fa-plus"></i> </span> 
       <br/>
       <button onClick={this.addtoCart} className="btn btn-light mb-1 mt-4 me-2" style={this.state.cartStyle}>{this.state.cartBtn}</button>
-      <button className="btn btn-light mb-1 mt-4" style={{backgroundColor: "#305017", color: "white"}}>Add to favorites</button>
+      <button onClick={this.addtoFavorites} className="btn btn-light mb-1 mt-4" style={this.state.favoriteBtnStyle}>{this.state.favoriteBtn}</button>
 
 
             <div className="accordion accordion-flush mt-3" style={{marginLeft: "-20px"}} id="accordionFlushExample">
@@ -271,8 +309,11 @@ class Product extends React.Component {
 
 }
 
+const mapStateToProps = state => ({
+})
 
-export default Product;
+export default connect(mapStateToProps, {changeItems})(Product)
+
 
 
 

@@ -1,5 +1,5 @@
   
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect  } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
@@ -18,6 +18,11 @@ export default function Login(props) {
    function googleAndDirect() {
       signInWithGoogle(props.checkUserName)
   }
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -38,6 +43,7 @@ export default function Login(props) {
 
   return (
     <>
+    
       <Card className="col-lg-5 col-md-8 mt-5" style={{margin: "0 auto"}}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In</h2>

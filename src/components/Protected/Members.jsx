@@ -27,7 +27,6 @@ let Members = (props) => {
           
     }
    
-    console.log(props)
     return(
         <div>
             <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "40px", color: "#272727"}}>Special sales for members only</h1>

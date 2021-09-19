@@ -1,6 +1,9 @@
 import React from 'react'
 import  {Link } from "react-router-dom";
 
+import {connect} from 'react-redux';
+import {changeItems} from '../../redux/actions/cartActions'
+
 
 class MiniCart extends React.Component {
 
@@ -36,7 +39,8 @@ componentDidMount()  {
     
     localStorage.setItem("cart", JSON.stringify(currentArray)); 
     this.setState({cartArray: currentArray})
-    this.props.checkCart()
+    
+    this.props.changeItems()
     }
 
 
@@ -48,7 +52,8 @@ componentDidMount()  {
     
     localStorage.setItem("cart", JSON.stringify(currentArray)); 
     this.setState({cartArray: currentArray})
-    this.props.checkCart()
+    
+    this.props.changeItems()
 
     }
 
@@ -60,7 +65,8 @@ componentDidMount()  {
         
         localStorage.setItem("cart", JSON.stringify(currentArray)); 
         this.setState({cartArray: currentArray})
-        this.props.checkCart()
+        
+        this.props.changeItems()
     
         }
 
@@ -182,4 +188,8 @@ componentDidMount()  {
     }
 }
 
-export default MiniCart
+
+const mapStateToProps = state => ({
+})
+
+export default connect(mapStateToProps, {changeItems})(MiniCart)

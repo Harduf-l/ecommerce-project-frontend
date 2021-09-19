@@ -1,17 +1,22 @@
 import React from 'react'
 import  {Link } from "react-router-dom";
 import MiniCart from '../Cart/MiniCart'
+import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
+
+
+import {changeItems} from '../../redux/actions/cartActions'
 
 class Header extends React.Component {
 
   constructor(props) {
-    super() 
+    super(props) 
 
     this.state = { 
       valueInput: "",
       cartHover: false, 
-      items: 0, 
       smallScreen: true, 
+      heartCond: "fas fa-heart"
     }
 
     this.trackInput = (e) => {
@@ -22,18 +27,8 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    if ( localStorage.getItem("cart") == null || localStorage.getItem("cart") === [] ) {
-      this.setState({items: 0 })
-  } else {
-      let cart = JSON.parse(localStorage.getItem("cart")); 
-      let number = 0;
 
-      for (let i=0; i< cart.length; i++) {
-        number = number + cart[i].quantity
-      }
-
-      this.setState({items: number })
-  }
+  this.props.changeItems()
 
   let { innerWidth: width, } = window;
 
@@ -47,7 +42,19 @@ class Header extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
-    this.setState({items: nextProps.itemsInCart })
+    if (nextProps.numOfFav !== this.props.numOfFav) {
+      
+        setTimeout(()=>{  
+          this.setState({heartCond: "fas fa-heart" })
+
+      }, 700);
+
+        setTimeout(()=>{  
+          this.setState({heartCond: "far fa-heart" })
+
+      }, 1900);
+
+  }
 
   }
 
@@ -70,12 +77,25 @@ class Header extends React.Component {
   }
 
 
+  heartover = () => {
+    this.setState({heartCond: "far fa-heart" })
+  }
+  heartout= () => {
+    this.setState({heartCond: "fas fa-heart" })
+  }
 
   render() {
 
+    let adminStyle;
+    if (this.props.location.pathname ==="/adminsPortal") {
+      adminStyle = "navbar navbar-expand-lg navbar-light pb-0 pt-2 mt-5"
+    } else {
+      adminStyle = "navbar navbar-expand-lg navbar-light pb-0 pt-2"
+    }
+
     return (
 
-<nav className="navbar navbar-expand-lg navbar-light pb-0 pt-2"  style={{borderBottom: "#eaedf2 2px solid", fontSize: "17px"}}>
+<nav className={adminStyle}  style={{borderBottom: "#eaedf2 2px solid", fontSize: "17px"}}>
   <div className="container-fluid">
   <Link className="navbar-brand ms-2" to="/">
       <span className="logoHome"><i className="fas fa-spa"></i></span>
@@ -96,27 +116,21 @@ class Header extends React.Component {
               </Link>
               </li>
               <li className="nav-item text-center" >
-              {console.log(this.props.userName )}
               {this.props.userName ? <Link className="nav-link hovernav"  aria-current="page" to="/dashboard">
               Hello, {this.props.userName}
               </Link> :
               <Link className="nav-link hovernav"  aria-current="page" to="/dashboard">
                Login/register
                </Link>}
-
-
-
-
-
-
               </li>
+
               
               {!this.state.smallScreen &&
               <li className="nav-item text-center cartHover" onClick ={this.cartHoverFunction} style={{position: "relative", cursor: "pointer"}}>
               <div className="nav-link">
                 <div className="cartHover">
                   <i className="fas fa-shopping-cart">
-                    <div className="cartBtnNumberStyle">{this.state.items}</div>
+                    <div className="cartBtnNumberStyle">{this.props.quantity}</div>
                     </i></div>
                   </div>
               </li> }
@@ -126,10 +140,20 @@ class Header extends React.Component {
               <div className="nav-link">
                 <div className="cartHover">
                   <i className="fas fa-shopping-cart">
-                    <div className="cartBtnNumberStyle">{this.state.items}</div>
+                    <div className="cartBtnNumberStyle">{this.props.quantity}</div>
                     </i></div>
                   </div>
               </li> </Link> }
+
+              <Link onMouseOver={this.heartover}  onMouseOut={this.heartout}  to="/favorites" style={{position: "relative"}}>
+              <li className="nav-item text-center" onClick={this.checkFavorite}  style={{ cursor: "pointer"}}>
+              <div className="nav-link">
+                <div className="heartStyle">
+                   <i className={this.state.heartCond}></i>
+                </div>
+                  </div>
+              </li>
+              </Link>
 
       </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
@@ -150,12 +174,12 @@ class Header extends React.Component {
               </Link>
               </li>
               <li className="nav-item text-center hovernav" >
-              <Link style={{color: "red"}} className="nav-link"  aria-current="page" to="/membersZone">
+              <Link style={{color: "#e61a23"}} className="nav-link"  aria-current="page" to="/membersZone">
               Members Zone
               </Link>
               </li>
               <li className="nav-item text-center hovernav" >
-              <Link style={{color: "blue"}} className="nav-link"  aria-current="page" to="/adminsPortal">
+              <Link style={{color: "#004369"}} className="nav-link"  aria-current="page" to="/adminsPortal">
               Admins Portal
               </Link>
               </li>
@@ -172,7 +196,7 @@ class Header extends React.Component {
 
       { this.state.cartHover && window.location.pathname!=="/cart" && window.location.pathname!=="/checkout" &&
         <div className="cartModal" >
-          <MiniCart checkCart={this.props.checkCart} cartNotHoverFunction={this.cartNotHoverFunction} />
+          <MiniCart cartNotHoverFunction={this.cartNotHoverFunction} />
         </div> }
 
 </nav>
@@ -182,4 +206,10 @@ class Header extends React.Component {
 
 }
 
-export default Header
+
+const mapStateToProps = state => ({
+  quantity: state.cart.quantity
+});
+
+export default withRouter(connect(mapStateToProps,{changeItems})(Header));
+

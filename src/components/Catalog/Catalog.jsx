@@ -9,7 +9,7 @@ class Catalog extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
+
 
       let allMyProducts = [...allproducts]
       allMyProducts =allMyProducts.sort((a, b) => {
@@ -68,7 +68,6 @@ class Catalog extends React.Component {
             const params = Object.fromEntries(urlSearchParams.entries());
             if (params) {
                 search=params.q.slice(1, -1).toLowerCase()
-                console.log(search)
                 const newFilteredData = myArr.filter(product => 
                             product.header.toLowerCase().includes(search)
                 );

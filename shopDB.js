@@ -48,12 +48,14 @@ module.exports = () => {
 
         product.title = faker.commerce.productName()
 
-        product.imageUrl = 'http://localhost:3000/src/logo.svg'
+        product.imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPjZ_nZBdChSQ5_HkJm_dU66WSS2AeXl1_NA&usqp=CAU'
 
 
         data.products.push(product)
 
+
     }
 
+    
     return data
 }

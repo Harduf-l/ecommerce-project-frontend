@@ -23,7 +23,6 @@ export default function Dashboard(props) {
 
   return (
     <>
-    {console.log(props)}
       <Card className="col-lg-5 col-md-8 mt-5" style={{margin: "0 auto"}}>
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
