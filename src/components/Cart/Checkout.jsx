@@ -352,14 +352,11 @@ class Checkout extends React.Component {
                 <Link className="align-self-end" to="/cart" style={{textDecoration: "none", color: "black"}}><span style={{textDecoration: "underline"}}>Go back to shopping cart</span></Link>
                 </div>
             
-{/*   
-            <div className="mt-4 flex d-flex justify-content-between">
-            <img src={paypal} style={{width: "160px"}} alt={"paypal"}/>
-            <img src={cards} style={{width: "160px"}} alt={"creditCard"}/>
-            </div> */}
 
+{/* 
             {this.state.endProcess && 
-            <Paypal/> }
+            <Paypal/> } */}
+             <Paypal/> 
 
         </div>
     </div>

@@ -4,6 +4,13 @@ import { useAuth } from "../../contexts/AuthContext"
 
 import berries from '../../pictures/superfood/berries.jpg'
 import chia from '../../pictures/superfood/chia.png'
+import goji from '../../pictures/superfood/goji-berry.jpg'
+import spirulina from '../../pictures/superfood/Spirulina.jpg'
+
+import bread1 from '../../pictures/bread/baguette.jpg'
+import bread4 from '../../pictures/bread/whole-wheat-bread.jpg'
+
+
 import {  useHistory } from "react-router-dom"
 
 let Members = (props) => {
@@ -27,22 +34,55 @@ let Members = (props) => {
           
     }
    
+    const discountStyle = {position: "relative", top: "60px", color: "white", fontSize: "20px", textAlign: "center", backgroundColor: "rgba(51,51,51, 0.5)"}
+
     return(
         <div>
-            <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "40px", color: "#272727"}}>Special sales for members only</h1>
+           <span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "60px"}}>Special Sales</h2></span>
+
+           <div className="d-flex flex-wrap justify-content-around"> 
+
         <div style={{ 
-            backgroundImage: `url(${berries})`, height: "200px", objectFit: "contain"
+            backgroundImage: `url(${berries})`, margin: "10px", borderRadius: "20px", height: "200px",width: "200px", objectFit: "contain"
           }}>
-            <p style={{position: "relative", top: "60px", color: "white", fontSize: "42px", textAlign: "center", backgroundColor: "#e64723"}}>200 grams fresh berries - 9.90$ only!</p>
+            <p style={discountStyle}>200 grams fresh berries - 9.90$ only!</p>
         </div>
 
         <div style={{ 
-            backgroundImage: `url(${chia})`, marginTop: "40px", height: "200px", objectFit: "contain"
+            backgroundImage: `url(${chia})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
           }}>
-            <p style={{position: "relative", top: "60px", color: "white", fontSize: "42px", textAlign: "center", backgroundColor: "#e64723"}}>100 grams chia - 18.90$ only!</p>
+            <p style={discountStyle}>100 grams chia - 18.90$ only!</p>
         </div>
 
+        <div style={{ 
+            backgroundImage: `url(${bread1})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+          }}>
+            <p style={discountStyle}>4 baguettes - 4.90$ only!</p>
+        </div>
+
+        <div style={{ 
+            backgroundImage: `url(${goji})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+          }}>
+            <p style={discountStyle}>100 grams goji - 8.90$ only!</p>
+        </div>
+
+        <div style={{ 
+            backgroundImage: `url(${spirulina})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+          }}>
+            <p style={discountStyle}>100 grams spirulina - 10.90$ only!</p>
+        </div>
+
+        <div style={{ 
+            backgroundImage: `url(${bread4})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+          }}>
+            <p style={discountStyle}>rye bread loaf - 8.90$ only!</p>
+        </div>
+        
+        </div>
+
+        <div style={{width: "100px", margin: "0 auto", textAlign: "center", marginTop: "100px"}}>
         <Link to="/"><button onClick={()=>logOutMembers()} className="btn btn-secondary btn-lg">Logout</button></Link>
+        </div>
         </div>
     )
 }
