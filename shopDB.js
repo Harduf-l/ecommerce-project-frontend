@@ -16,7 +16,41 @@ module.exports = () => {
             {name: "User",
             capabilities: "viewing mode",
             id: 3}
-    ]
+    ],
+        orders: [
+            {id: "1",
+            status: "on the way",
+            customer: "4"
+        },
+        {id: "2",
+        status: "collecting products",
+        customer: "1"
+        },
+        {id: "3",
+        status: "cancellation request",
+        customer: "3"
+        },
+        {id: "4",
+        status: "client received order",
+        customer: "7"
+        },
+        {id: "5",
+        status: "waiting for products to arrive warehouse",
+        customer: "9"
+        },
+        {id: "6",
+        status: "left with carrier",
+        customer: "6"
+        },
+        {id: "7",
+        status: "on the way",
+        customer: "1"
+        },
+        {id: "8",
+        status: "order completed",
+        customer: "11"
+        }
+        ]
     }
 
     const num = 50
