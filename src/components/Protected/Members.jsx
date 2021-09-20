@@ -34,7 +34,7 @@ let Members = (props) => {
           
     }
    
-    const discountStyle = {position: "relative", top: "60px", color: "white", fontSize: "20px", textAlign: "center", backgroundColor: "#e64723"}
+    const discountStyle = {position: "relative", top: "60px", color: "white", fontSize: "20px", textAlign: "center", backgroundColor: "rgba(51,51,51, 0.5)"}
 
     return(
         <div>
@@ -43,37 +43,37 @@ let Members = (props) => {
            <div className="d-flex flex-wrap justify-content-around"> 
 
         <div style={{ 
-            backgroundImage: `url(${berries})`, borderRadius: "20px", height: "200px",width: "200px", objectFit: "contain"
+            backgroundImage: `url(${berries})`, margin: "10px", borderRadius: "20px", height: "200px",width: "200px", objectFit: "contain"
           }}>
             <p style={discountStyle}>200 grams fresh berries - 9.90$ only!</p>
         </div>
 
         <div style={{ 
-            backgroundImage: `url(${chia})`,borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+            backgroundImage: `url(${chia})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
           }}>
             <p style={discountStyle}>100 grams chia - 18.90$ only!</p>
         </div>
 
         <div style={{ 
-            backgroundImage: `url(${bread1})`,borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+            backgroundImage: `url(${bread1})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
           }}>
             <p style={discountStyle}>4 baguettes - 4.90$ only!</p>
         </div>
 
         <div style={{ 
-            backgroundImage: `url(${goji})`,borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+            backgroundImage: `url(${goji})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
           }}>
             <p style={discountStyle}>100 grams goji - 8.90$ only!</p>
         </div>
 
         <div style={{ 
-            backgroundImage: `url(${spirulina})`,borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+            backgroundImage: `url(${spirulina})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
           }}>
             <p style={discountStyle}>100 grams spirulina - 10.90$ only!</p>
         </div>
 
         <div style={{ 
-            backgroundImage: `url(${bread4})`,borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
+            backgroundImage: `url(${bread4})`,margin: "10px", borderRadius: "20px", height: "200px", width: "200px", objectFit: "contain"
           }}>
             <p style={discountStyle}>rye bread loaf - 8.90$ only!</p>
         </div>
