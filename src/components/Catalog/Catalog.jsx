@@ -25,11 +25,13 @@ class Catalog extends React.Component {
           return 0;
       });
 
-      
+
       this.state = {
           q: "",
           allProducts:  allMyProducts,
           filteredProducts: allMyProducts,
+          currentPage: 1,
+          filteredProductsPage: allMyProducts,
           categoryOn: "",
           price: false, 
           pricelowest: false,
@@ -38,8 +40,11 @@ class Catalog extends React.Component {
           lowcarbOn: false,
           loading: false, 
       }
+
     }
-  
+
+
+
     searchMethod=(word)=>{
 
 
@@ -52,17 +57,18 @@ class Catalog extends React.Component {
             let currentArray = this.state.allProducts
             currentArray = currentArray.filter(product => product.category === "breads")
             document.getElementById("breads").checked = true;  
-            this.setState({filteredProducts: currentArray })
+            this.setState({filteredProducts: currentArray}, () => this.fixFilteredPage())
         } else if (word === "?cookies") {
             let currentArray = this.state.allProducts
             currentArray = currentArray.filter(product => product.category === "cookies")
             document.getElementById("cookies").checked = true;  
-            this.setState({filteredProducts: currentArray })
+            this.setState({filteredProducts: currentArray}, () => this.fixFilteredPage())
+          
         } else if (word === "?superfood") {
             let currentArray = this.state.allProducts
             currentArray = currentArray.filter(product => product.category === "superfood")
             document.getElementById("superfood").checked = true;  
-            this.setState({filteredProducts: currentArray })
+            this.setState({filteredProducts: currentArray}, () => this.fixFilteredPage())
         } else {
             const urlSearchParams = new URLSearchParams(word);
             const params = Object.fromEntries(urlSearchParams.entries());
@@ -71,13 +77,16 @@ class Catalog extends React.Component {
                 const newFilteredData = myArr.filter(product => 
                             product.header.toLowerCase().includes(search)
                 );
-                this.setState({filteredProducts: newFilteredData})
+                this.setState({filteredProducts: newFilteredData}, () => this.fixFilteredPage())
             } 
         }
     }
 
 
     componentDidMount() {
+
+        this.fixFilteredPage()
+
         this.setState({loading: true})
 
         window.scrollTo(0, 0)
@@ -127,7 +136,8 @@ class Catalog extends React.Component {
         }
        
         let filteredArray = currentArray.filter(cookie => cookie.header.toLowerCase().includes(newWord))
-        this.setState({filteredProducts: filteredArray })
+        this.setState({filteredProducts: filteredArray }, ()=> this.fixFilteredPage())
+
     }
 
     filterbyPrice = (e) => {
@@ -139,12 +149,13 @@ class Catalog extends React.Component {
 
     if (e.target.id === "pricelower") {
             currentArray = currentArray.sort((a, b) => (a.price > b.price) ? 1 : -1)
-            this.setState({filteredProducts: currentArray })
+            this.setState({filteredProducts: currentArray }, ()=> this.fixFilteredPage())
+
      
     }
     else if (e.target.id === "pricehigher") {
             currentArray = currentArray.sort((a, b) => (b.price > a.price) ? 1 : -1)
-            this.setState({filteredProducts: currentArray })
+            this.setState({filteredProducts: currentArray }, ()=> this.fixFilteredPage())
           
     }
 
@@ -188,7 +199,7 @@ class Catalog extends React.Component {
             this.setState({pricehighest: numberEntered})
         }
 
-        this.setState({filteredProducts: currentArray })
+        this.setState({filteredProducts: currentArray }, ()=> this.fixFilteredPage())
 
     }
 
@@ -203,7 +214,7 @@ class Catalog extends React.Component {
         if (e.target.value === "vegan") {
             if (e.target.checked) {
                 currentArray = currentArray.filter(product => product.vegan === true)
-                this.setState({filteredProducts: currentArray })
+                this.setState({filteredProducts: currentArray }, ()=> this.fixFilteredPage())
                 this.setState({vaganOn: true})
             } else {
                 this.setState({vaganOn: false})
@@ -211,39 +222,102 @@ class Catalog extends React.Component {
         } else if (e.target.value === "lowcarb") {
             if (e.target.checked) {
             currentArray = currentArray.filter(product => product.lowcarb === true)
-            this.setState({filteredProducts: currentArray }) 
+            this.setState({filteredProducts: currentArray }, ()=> this.fixFilteredPage())
             this.setState({lowcarbOn: true})
             }else {
                 this.setState({lowcarbOn: false})
             }
         } 
 
-        this.setState({filteredProducts: currentArray }) 
+        this.setState({filteredProducts: currentArray }, ()=> this.fixFilteredPage())
 
     }
 
 
     filterbyCategory = (e) => {
         let currentArray = this.state.allProducts
+
+        if (this.state.vaganOn) {
+            currentArray = currentArray.filter(product => product.vegan === true)
+        }
+
+        if (this.state.lowcarbOn) {
+            currentArray = currentArray.filter(product => product.lowcarb === true)
+        }
+
         if (e.target.id !== "all") {
         currentArray = currentArray.filter(product => product.category === e.target.id)
-        this.setState({filteredProducts: currentArray })
+        this.setState({categoryOn: e.target.id})
+        this.setState({filteredProducts: currentArray }, ()=> this.fixFilteredPage())
         }
 
         if (e.target.id === "all") {
-        this.setState({filteredProducts: currentArray })
+        this.setState({categoryOn: ""})
+        this.setState({filteredProducts: currentArray }, ()=> this.fixFilteredPage())
         }
     }
 
- 
-  
+    onSpecPage = (e) => {
+        e.preventDefault();
+        window.scrollTo(0, 0)
+
+        let currentArray = [...this.state.filteredProducts];
+        let val = Number(e.target.innerHTML);
+
+        console.log(currentArray)
+
+        let newMin = (val-1) * 9 
+        let newMax = newMin + 9
+        if ( newMax > currentArray.length) {
+            newMax = currentArray.length
+        }
+
+        console.log(newMin)
+        console.log(newMax)
+
+        currentArray = currentArray.slice(newMin, newMax)
+        this.setState({currentPage: val})
+        console.log(currentArray)
+        this.setState({filteredProductsPage: currentArray})
+      };
+
+
+      fixFilteredPage = () => {
+        let currentArray = [...this.state.filteredProducts];
+        console.log(currentArray)
+        if (currentArray.length >= 8) {
+            currentArray = currentArray.slice(0, 9)
+        }
+
+        this.setState({filteredProductsPage: currentArray})
+
+      }
+
+     buttonList = () => {    
+        let pagesNum = Math.ceil(this.state.filteredProducts.length / 9) 
+        const row = [];
+
+        for (let i = 1; i <= pagesNum; i++) {
+          row.push(
+              <div className="text-center p-1 d-inline">
+              <button className="page-link d-inline" type="submit" onClick={this.onSpecPage}>
+                {i} 
+              </button>
+              </div>
+          );
+        }
+        return row;
+    } 
+    
+
+
     render() {
-  
+
       return (
         
         <div className="row">
 
-        {  }
+ 
         <div className="col-lg-3 col-12">
         <CatalogForm filterbyCategory={this.filterbyCategory} filterbySpecialPeople={this.filterbySpecialPeople} filterbyPrice={this.filterbyPrice} filterbyPriceRange={this.filterbyPriceRange} saveWord={this.saveWordFilter}/>
         </div>
@@ -255,11 +329,15 @@ class Catalog extends React.Component {
         })
         }
 
-        {!this.state.loading && this.state.filteredProducts.map((cookie, index)=>{
-        return <SearchDisplay key={index} myid={index} foodContent={cookie} />
+        {!this.state.loading && this.state.filteredProductsPage.map((cookie, index)=>{
+        return (
+        <SearchDisplay key={index} myid={index} foodContent={cookie} />
+        )
         })}
+        </div>
 
-
+        <div style={{textAlign: "center", paddingTop: "80px"}}>
+        {!this.state.loading && this.state.filteredProducts && this.buttonList() }
         </div>
         </div>
         
