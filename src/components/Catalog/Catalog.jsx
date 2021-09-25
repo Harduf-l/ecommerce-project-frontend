@@ -324,7 +324,7 @@ class Catalog extends React.Component {
 
         <div className="col-lg-9 col-12  d-flex flex-wrap mt-3 justify-content-center">
 
-        {this.state.loading && this.state.filteredProducts.map((cookie, index)=>{
+        {this.state.loading && this.state.filteredProductsPage.map((cookie, index)=>{
         return <SkeletonDisplay key={index} myid={index} />
         })
         }

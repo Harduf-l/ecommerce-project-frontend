@@ -4,6 +4,10 @@ import  {Link } from "react-router-dom";
 import CheckoutCart from './CheckoutCart'
 import Paypal from './Paypal'
 
+import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
+
+
 class Checkout extends React.Component {
 
     constructor(props) {
@@ -274,7 +278,7 @@ class Checkout extends React.Component {
 
             <div className="row">
                 <div className="col-lg-6 col-12">
-                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" value={(localStorage.getItem("namelogged")) && localStorage.getItem("namelogged")} type="text"/>
+                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" type="text"/>
                     <div className="errorMsg">{this.state.nameInstructions}</div>
                 </div>
 
@@ -353,10 +357,15 @@ class Checkout extends React.Component {
                 </div>
             
 
-{/* 
-            {this.state.endProcess && 
-            <Paypal/> } */}
-             <Paypal/> 
+
+            {/* {this.state.endProcess && 
+            <Paypal/> }  */}
+             <Paypal active={this.state.endProcess}/> 
+
+             <div>
+                <p>{this.state.orderID}</p>
+                <p>{this.state.payerID}</p>
+             </div>
 
         </div>
     </div>
@@ -370,4 +379,13 @@ class Checkout extends React.Component {
 
 
 
-export default Checkout; 
+// export default Checkout; 
+
+const mapStateToProps = state => ({
+    orderNumber: state.cart.orderID,
+    payerNumber: state.cart.payerID
+  });
+  
+  export default withRouter(connect(mapStateToProps)(Checkout));
+  
+  

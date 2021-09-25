@@ -30,6 +30,7 @@ import Cart from './components/Cart/Cart'
 import Category from "./components/Category/Category"
 import Members from "./components/Protected/Members"
 import Checkout from './components/Cart/Checkout'
+import OrderCompleted from './components/Cart/OrderCompleted'
 import { auth } from "../src/firebase"
 
 class App extends React.Component {
@@ -76,6 +77,7 @@ render() {
 
             <AuthProvider>
               <Switch>
+              <Route exact path="/" component={Home2} />
               <Route path="/contact" component={Contact} />
               <Route path="/about" component={About} />
               <Route path="/blog" component={Blog} />
@@ -83,6 +85,8 @@ render() {
               <Route path="/product/spreads" render={() => <Category num = {1}/>}/>
               <Route path="/product/breads" render={() => <Category num = {2}/>}/>
               <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
+              
+              <Route path="/ordercompleted" component={OrderCompleted} />
               <Route path="/cart" render={(props) => <Cart  {...props}/>} />    
               
               <PrivateRoute path="/favorites" component={Favorites} myfunc={this.checkUserName}/>
@@ -99,7 +103,6 @@ render() {
               <Route path="/product/:id" render={(props) => <Product  numOfFav={this.numOfFav} {...props}/>} />
               <Route exact path="/catalog" component={Catalog} />
               <Route exact path="/checkout" component={Checkout} />
-              <Route exact path="/" component={Home2} />
               <Route component={Page404} />
               </Switch>
               </AuthProvider>

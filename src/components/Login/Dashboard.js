@@ -35,7 +35,7 @@ export default function Dashboard(props) {
           </Link>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
+      <div className="w-100 text-center mt-2 pb-5">
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>

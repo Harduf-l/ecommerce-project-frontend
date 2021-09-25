@@ -318,4 +318,3 @@ export default connect(mapStateToProps, {changeItems})(Product)
 
 
 
-

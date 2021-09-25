@@ -5,10 +5,16 @@ import { UserList } from '../AdminsPortal/UserList'
 import { RoleList } from '../AdminsPortal/RoleList'
 import { ProductsList, ProductsEdit } from '../AdminsPortal/ProductsList'
 import { OrdersEdit, OrdersList } from '../AdminsPortal/OrdersList'
-
 import { createHashHistory } from 'history';
+// import MyLayout from '../AdminsPortal/MyLayout'
 
 const dataProvider = jsonServerProvider('http://localhost:5000');
+
+// import { FirebaseAuthProvider } from 'react-admin-firebase'
+// import { firebaseConfig } from '../../firebase'
+// const options = {}
+// const authProvider = FirebaseAuthProvider(firebaseConfig,options)
+// authProvider={authProvider}
 
 const history = createHashHistory();
 

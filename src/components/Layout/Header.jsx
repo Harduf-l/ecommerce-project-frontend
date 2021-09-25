@@ -89,7 +89,8 @@ class Header extends React.Component {
     let adminStyle;
     if (this.props.location.pathname ==="/adminsPortal") {
       adminStyle = "navbar navbar-expand-lg navbar-light pb-0 pt-2 mt-5"
-    } else {
+    }
+     else {
       adminStyle = "navbar navbar-expand-lg navbar-light pb-0 pt-2"
     }
 

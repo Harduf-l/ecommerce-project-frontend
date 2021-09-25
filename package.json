@@ -16,6 +16,7 @@
     "ra-data-json-server": "^3.18.0",
     "react": "^17.0.2",
     "react-admin": "^3.18.1",
+    "react-admin-firebase": "^3.2.24",
     "react-bootstrap": "^1.6.3",
     "react-dom": "^17.0.2",
     "react-inner-image-zoom": "^2.0.3",
