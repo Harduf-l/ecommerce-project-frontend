@@ -31,7 +31,7 @@ class Product extends React.Component {
       favoriteBtnStyle: {backgroundColor: "#305017", color: "white"},
       quantity: 1,
       currentpicture: this.myProduct.pic1,
-      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "1px solid #dd9431", boxShadow: " 0 0 8px #dd9431"},
+      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "2px solid #dd9431", boxShadow: " 0 0 8px #dd9431"},
       stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
       stylepicture3: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
 
@@ -134,7 +134,7 @@ class Product extends React.Component {
       }
 
     this.changePic = (e) => {
-      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px",border: "1px solid #dd9431", boxShadow: " 0 0 8px #dd9431"}
+      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px",border: "2px solid #dd9431", boxShadow: " 0 0 8px #dd9431"}
       const regularStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"}
 
       switch(e.target.id) {
