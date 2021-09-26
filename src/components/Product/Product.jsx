@@ -175,9 +175,21 @@ class Product extends React.Component {
   window.scrollTo(0, 0)
 }
 
-    render() {
+  render() {
       
-    
+  const myReviews = [
+    {name: "Harduf L.",
+    header: "super tasty!",
+    content: "i fell in love",
+    rating: "4",
+    },
+    {
+    name: "Barak G.",
+    header: "not so good!",
+    content: "i don't love it!",
+    rating: "2",
+    }
+  ]
 
   return (
 
@@ -229,37 +241,44 @@ class Product extends React.Component {
             <div className="accordion-body">In order to keep cookies fresh as possible, please keep them in the refrigerator.<br/><br/> Delivery free worldwide.</div>
           </div>
         </div>
+
+
+
+      {myReviews && 
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingTwo">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-              Reviews (2)
+              Reviews ({myReviews.length})
             </button>
           </h2>
           <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-            <div className="accordion-body">
+            <div style={{height: "20px"}}>
+            </div>
+          { myReviews.map(currentReview => {
+            return             <div style={{marginLeft: "20px"}}>
             <div>        <ReactStars
-                        count={5}
+                        count={currentReview.rating}
                         size={20}
                         value = {5}
                         activeColor="#e64723"
             /></div>
-           <h6>very tasty natural food.</h6>
-           <p>I enjoyed it very much. highly recommended</p>
-           <p style={{color: "grey", textAlign: "end"}}>Jeniffer N.</p>
-            
-           <div>        <ReactStars
-                        count={5}
-                        size={20}
-                        value = {4}
-                        activeColor="#e64723"
-            /></div>
-           <h6>surprisingly well made.</h6>
-           <p>but a bit too expensive. better wait for sales</p>
-           <p style={{color: "grey", textAlign: "end"}}>Edward R.</p>
-
+           <h6>{currentReview.header}</h6>
+           <p style={{margin: 0}}>{currentReview.content}</p>
+           <p style={{color: "grey", textAlign: "end"}}>{currentReview.name}</p>
+          
             </div>
-          </div>
+          })
+        }
+
+
+          </div> 
+
         </div>
+        }
+
+
+
+
       </div>
 
         

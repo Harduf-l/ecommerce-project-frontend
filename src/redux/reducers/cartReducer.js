@@ -14,6 +14,6 @@ export default function(state = initialState , action) {
                 quantity: action.quantity,
             }
         default:
-            return state;
+            return state
     }
 }

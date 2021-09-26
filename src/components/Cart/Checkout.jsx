@@ -257,6 +257,10 @@ class Checkout extends React.Component {
     
         }
 
+    moveToEnd = () => {
+        this.props.history.push('/ordercompleted')
+    }
+
 
     render() {
 
@@ -360,7 +364,7 @@ class Checkout extends React.Component {
 
             {/* {this.state.endProcess && 
             <Paypal/> }  */}
-             <Paypal active={this.state.endProcess}/> 
+             <Paypal moveToEnd={this.moveToEnd} active={this.state.endProcess}/> 
 
              <div>
                 <p>{this.state.orderID}</p>
