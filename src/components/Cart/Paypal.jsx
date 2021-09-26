@@ -1,7 +1,7 @@
 import { PayPalButton } from "react-paypal-button-v2";
 import { useHistory } from "react-router-dom";
 import React from 'react'
-import { Redirect  } from 'react-router-dom';
+
 
 // let Paypal = (props) => {
 //      const history = useHistory();
@@ -38,7 +38,7 @@ class Paypal extends React.Component {
         //  console.log(data)
         //   this.props.moveToEnd()
 
-        
+
           // OPTIONAL: Call your server to save the transaction
           // return fetch("/paypal-transaction-complete", {
           //   method: "post",

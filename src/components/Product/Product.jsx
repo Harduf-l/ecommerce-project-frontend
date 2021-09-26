@@ -188,7 +188,13 @@ class Product extends React.Component {
     header: "not so good!",
     content: "i don't love it!",
     rating: "2",
-    }
+    },
+    {
+      name: "Yael G.",
+      header: "nice!",
+      content: "i love it!",
+      rating: "5",
+      }
   ]
 
   return (
@@ -254,6 +260,7 @@ class Product extends React.Component {
           <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
             <div style={{height: "20px"}}>
             </div>
+            <div  style={{height: "200px", overflowY: "scroll"}}>
           { myReviews.map(currentReview => {
             return             <div style={{marginLeft: "20px"}}>
             <div>        <ReactStars
@@ -264,11 +271,12 @@ class Product extends React.Component {
             /></div>
            <h6>{currentReview.header}</h6>
            <p style={{margin: 0}}>{currentReview.content}</p>
-           <p style={{color: "grey", textAlign: "end"}}>{currentReview.name}</p>
+           <p style={{color: "grey", paddingRight: "20px", textAlign: "end"}}>{currentReview.name}</p>
           
             </div>
           })
         }
+        </div>
 
 
           </div> 
