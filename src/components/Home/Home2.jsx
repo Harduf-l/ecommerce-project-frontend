@@ -67,7 +67,7 @@ returnSuper =()=> {
  <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
    <div className="carousel-inner">
      <div className="carousel-item active">
-         <div style={{backgroundImage: `url(${cacao_seeds})`, backgroundSize: "cover", height: "550px",backgroundRepeat: "no-repeat",backgroundPosition: "center", margin: "8px"}}>
+         <div style={{backgroundImage: `url(${cacao_seeds})`, backgroundSize: "cover", height: "550px",backgroundRepeat: "no-repeat",backgroundPosition: "center"}}>
          <div style={{height: "450px"}}><p className="shopHomeBackground">Welcome to a world of health and joy</p></div>
          <div style={{textAlign: "center"}}><Link to="/catalog" className="shopSquareBackground">Shop now</Link></div>
         </div>

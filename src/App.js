@@ -86,7 +86,7 @@ render() {
               <Route path="/product/breads" render={() => <Category num = {2}/>}/>
               <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
               
-              <Route path="/ordercompleted" component={OrderCompleted} />
+              {/* <Route path="/ordercompleted" component={OrderCompleted} /> */}
               <Route path="/cart" render={(props) => <Cart  {...props}/>} />    
               
               <PrivateRoute path="/favorites" component={Favorites} myfunc={this.checkUserName}/>

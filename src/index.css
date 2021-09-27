@@ -183,14 +183,14 @@ html {
       font-family: "Courgette"; 
     }
 
-    .shopHome {
+    /* .shopHome {
       position: absolute;
       color: white;
       font-size: 76px;
       padding-left: 40px; 
       padding-top: 100px; 
       font-family: "Courgette"; 
-    }
+    } */
 
     @media screen and (max-width: 800px) {
       .shopHomeBackground {
@@ -217,7 +217,7 @@ html {
   background-color: rgba(69,51,63, 0.5);
 }
 
-.shopSquare {
+/* .shopSquare {
 
   position: absolute;
   top: 470px;
@@ -232,20 +232,12 @@ html {
 }
 .shopSquare:hover {
   color: white; 
-}
+} */
 
 .shopSquareBackground:hover {
   color: white; 
 }
 
-@media screen and (max-width: 760px) {
-  .shopSquareBackground {left: 30%; top: 500px }
-    
-}
-
-@media screen and (max-width: 400px) {
-    
-}
 
 
 .homeLinks{

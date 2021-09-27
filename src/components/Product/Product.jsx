@@ -34,7 +34,8 @@ class Product extends React.Component {
       stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "2px solid #dd9431", boxShadow: " 0 0 8px #dd9431"},
       stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
       stylepicture3: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
-
+      starsInserted: "",
+      formClasses: "mt-4 d-none"
     }
 
     
@@ -197,6 +198,13 @@ class Product extends React.Component {
       }
   ]
 
+  const ratingChanged = (newRating) => {
+    this.setState({"starsInserted": newRating})
+
+    console.log(this.state.starsInserted)
+    
+  };
+
   return (
 
 <div id="bigfoodDiv" className=" container d-flex justify-content-center flex-wrap pt-5">
@@ -214,6 +222,7 @@ class Product extends React.Component {
         count={5}
         size={24}
         value = {4}
+        edit = {false}
         activeColor="#e64723"
       />,
   
@@ -264,10 +273,11 @@ class Product extends React.Component {
           { myReviews.map(currentReview => {
             return             <div style={{marginLeft: "20px"}}>
             <div>        <ReactStars
-                        count={currentReview.rating}
+                        count={5}
                         size={20}
-                        value = {5}
+                        value = {currentReview.rating}
                         activeColor="#e64723"
+                        edit = {false}
             /></div>
            <h6>{currentReview.header}</h6>
            <p style={{margin: 0}}>{currentReview.content}</p>
@@ -277,13 +287,44 @@ class Product extends React.Component {
           })
         }
         </div>
-
-
           </div> 
 
         </div>
         }
+        <div className="mt-4 ms-3">
+          <button onClick={() => {(this.state.formClasses === "mt-4 d-none" )?this.setState({"formClasses": "mt-4"}):this.setState({"formClasses": "mt-4 d-none"})}} className="btn btn-light" style={{border: "2px solid #dadada"}}>Add a review</button>
 
+          <form className={this.state.formClasses} style={{backgroundColor: "#ebeef3", padding: "20px 20px 20px 10px", borderRadius: "10px"}}>
+              <div class="mb-3">
+                <label for="nameInput" class="form-label">Name</label>
+                <input type="text" class="form-control" id="nameInput"/>
+              </div>
+              <div class="mb-3">
+                <label for="headerInput" class="form-label">Header</label>
+                <input type="text" class="form-control" id="headerInput"/>
+              </div>
+
+              <div class="mb-3">
+                <div>Your rating</div>
+                <ReactStars
+                        count={5}
+                        size={20}
+                        value = {5}
+                        activeColor="#e64723"
+                        onChange={ratingChanged}
+                  />
+              </div>
+
+              <div class="mb-3">
+                <label for="contentInput" class="form-label">Content</label>
+                <textarea rows="4" type="text" class="form-control" id="contentInput"></textarea>
+              </div>
+
+
+              <button type="submit" class="btn btn-light"  style={{border: "2px solid #dadada"}}>Submit</button>
+          </form>
+
+        </div>
 
 
 
