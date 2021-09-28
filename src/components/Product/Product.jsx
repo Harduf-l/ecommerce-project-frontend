@@ -31,9 +31,9 @@ class Product extends React.Component {
       favoriteBtnStyle: {backgroundColor: "#305017", color: "white"},
       quantity: 1,
       currentpicture: this.myProduct.pic1,
-      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px", border: "2px solid #dd9431", boxShadow: " 0 0 8px #dd9431"},
-      stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
-      stylepicture3: {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"},
+      stylepicture1: {width: "80px", height: "80px", objectFit: "cover",  margin: "5px", border: "2px solid #dd9431", boxShadow: " 0 0 8px #dd9431"},
+      stylepicture2: {width: "80px", height: "80px", objectFit: "cover",  margin: "5px"},
+      stylepicture3: {width: "80px", height: "80px", objectFit: "cover",  margin: "5px"},
       starsInserted: "",
       formClasses: "mt-4 d-none"
     }
@@ -120,7 +120,6 @@ class Product extends React.Component {
         //     window.scrollTo(0, 0)     
         //     this.props.numOfFav()
         // }, 1300);
-
           
           } else {
 
@@ -131,12 +130,11 @@ class Product extends React.Component {
 
 
 
-
       }
 
     this.changePic = (e) => {
-      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px",border: "2px solid #dd9431", boxShadow: " 0 0 8px #dd9431"}
-      const regularStyle = {width: "80px", height: "80px", objectFit: "cover",  marginLeft: "20px"}
+      const specialStyle = {width: "80px", height: "80px", objectFit: "cover",  margin: "5px",border: "2px solid #dd9431", boxShadow: " 0 0 8px #dd9431"}
+      const regularStyle = {width: "80px", height: "80px", objectFit: "cover",  margin: "5px"}
 
       switch(e.target.id) {
         case "pic1":
@@ -291,7 +289,7 @@ class Product extends React.Component {
 
         </div>
         }
-        <div className="mt-4 ms-3">
+        <div className="mt-4 ms-3 pb-3 pb-md-0">
           <button onClick={() => {(this.state.formClasses === "mt-4 d-none" )?this.setState({"formClasses": "mt-4"}):this.setState({"formClasses": "mt-4 d-none"})}} className="btn btn-light" style={{border: "2px solid #dadada"}}>Add a review</button>
 
           <form className={this.state.formClasses} style={{backgroundColor: "#ebeef3", padding: "20px 20px 20px 10px", borderRadius: "10px"}}>
@@ -334,7 +332,7 @@ class Product extends React.Component {
         
     </div>
 
-       <div className="col-12 col-lg-4 col-md-6 pt-4 pt-md-2 pe-4">
+       <div className="col-12 col-lg-4 col-md-6 pt-4 pe-3 ps-3">
 
        <div style={{textAlign: "center"}}>
         <InnerImageZoom alt={"product"} src={this.state.currentpicture} hasSpacer={true} height={450} width={400}/>
@@ -350,7 +348,7 @@ class Product extends React.Component {
         </div>
 
 
-  <div className="col-lg-3 col-12 ps-3 pt-4 pt-lg-0" style={{textAlign: "center"}}>
+  <div className="col-lg-3 col-12 ps-md-3 ps-sm-0 pt-4 pt-lg-0" style={{textAlign: "center"}}>
 
         <div style={{border: "1px rgba(221,148,49, 0.5) solid", paddingTop: "5px", marginTop: "10px"}}>
           <h4 style={{paddingBottom: "10px", paddingTop: "10px", color: "#2b3239"}}>Important to know</h4> 
