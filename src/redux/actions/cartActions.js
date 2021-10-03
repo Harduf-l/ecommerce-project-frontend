@@ -34,6 +34,7 @@ export const changeItems = (index, whatToDo) => {
       break;
   }
 
+  
   if (
     localStorage.getItem("cart") == null ||
     localStorage.getItem("cart") === []

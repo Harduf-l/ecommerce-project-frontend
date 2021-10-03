@@ -1,10 +1,26 @@
 import happyFamily from '../../pictures/happyFamily.jpg'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
 let About = () => {
+
+    ///// code not in use /////
+
+    const [user, setUser] = useState([]);
+
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/users")
+        .then((res) => {
+            console.log(res.data[0])
+            setUser(res.data[0])
+        });
+      }, []);
+    /////////
+      
     return(
         <div>
 <span className="homeHeaderSpan"><h2 className="homeHeader" style={{marginBottom: "60px"}}>About</h2></span>
-
 <div className="row ps-5 pe-5">
 <div className="col-lg-6 col-12">
     <h3 style={{fontWeight: "440"}}>Your family deserve the best.</h3>
