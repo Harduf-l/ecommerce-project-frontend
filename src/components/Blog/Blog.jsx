@@ -1,6 +1,6 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
-import axios from 'axios'
+import axios from "axios";
 
 class Blog extends React.Component {
   constructor() {
@@ -9,52 +9,82 @@ class Blog extends React.Component {
       posts: [],
       comments: [],
       loading: true,
-      formClasses: "mt-4 d-none"
+      formClasses: "mt-4 d-none",
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/posts")
-      .then((response) => response.json())
-      .then((json) => json.splice(0, 10))
-      .then((json) => this.setState({ posts: json }));
+    this.setState({ loading: true });
 
-    fetch("http://localhost:3000/comments")
-      .then((response) => response.json())
-      .then((json) => this.setState({ comments: json }))
+    axios.get("http://localhost:3000/posts").then((json) =>
+      this.setState({ posts: json.data }, () => {
+        console.log(json.data);
+      })
+    );
+
+    axios
+      .get("http://localhost:3000/comments")
+      .then((json) => {
+        this.setState({ comments: json.data }, () => {
+          console.log(json.data);
+        });
+        let jsoni = json.data;
+        for (let i = 0; i < jsoni.length; i++) {
+          let currentComment = jsoni[i];
+          let currentCommentsArray = [];
+
+          if (this.state["commentArray_" + jsoni[i].postId] === undefined) {
+            currentCommentsArray = [];
+          } else {
+              currentCommentsArray = [
+                currentComment,
+                ...this.state["commentArray_" + jsoni[i].postId]
+              ];
+            } 
+
+          this.setState({
+            ["commentArray_" + jsoni[i].postId]: currentCommentsArray,
+          });
+        }
+      })
       .then(this.setState({ loading: false }));
   }
 
-    sendComment = (e, postId) => {
-        e.preventDefault()
-        console.log(postId)
+  sendComment = (e, postId) => {
+    e.preventDefault();
+    console.log(postId);
 
-        let myNumber = postId
-        let newComment = 
+    let myNumber = postId;
+    let newComment = {
+      postId: +myNumber,
+      name: this.state["currNameComment" + postId],
+      email: this.state["currEmailComment" + postId],
+      body: this.state["currContentComment" + postId],
+    };
 
-        {
-            "postId": +myNumber,  
-            "name": this.state["currNameComment" + postId],
-            "email": this.state["currEmailComment" + postId],
-            "body": this.state["currContentComment" + postId]
-            
-        }
-        
-        console.log(newComment)
+    //
+    let currentCommentsArray = [
+        newComment,
+        ...this.state["commentArray_" + postId]
+      ];
 
-        axios.post("http://localhost:3000/comments", newComment)
-        .then((res) => {
-            console.log(res)
-            this.componentDidMount()
-            this.setState({
-                ["currNameComment" + postId] : "",
-                ["currEmailComment" + postId]: "",
-                ["currContentComment" + postId] : "",
-            })
+    this.setState({
+        ["commentArray_" + postId]: currentCommentsArray,
+      });
+      //
 
-        })
+    console.log(newComment);
 
-    }
+    axios.post("http://localhost:3000/comments", newComment).then((res) => {
+      console.log(res);
+      this.setState({
+        ["currNameComment" + postId]: "",
+        ["currEmailComment" + postId]: "",
+        ["currContentComment" + postId]: "",
+        ["style" + postId]: "mt-4 d-none",
+      });
+    });
+  };
 
   render() {
     return (
@@ -64,41 +94,32 @@ class Blog extends React.Component {
             Blog
           </h2>
         </span>
-        {this.state.loading &&
-          this.state.posts.map((post) => {
-            return (
-              <div style={{ width: "80%", margin: "0 auto",}}>
-                <Skeleton
-                  style={{
-                    border: "2px solid #ebeef3",
-                    height: "300px",
-                    marginBottom: "30px",
-                  }}
-                />
-                <div
-                  style={{
-                    paddingLeft: "8px",
-                    display: "block",
-                    height: "150px",
-                    overflowY: "scroll",
-                    backgroundColor: "#f0f0f0",
-                  }}
-                >
-                  {this.state.comments.map((comment) => {
-                    if (comment.postId === post.id)
-                      return (
-                        <div>
-                          <Skeleton
-                            style={{ paddingTop: "15px", height: "30px" }}
-                          />
-                        </div>
-                      );
-                  })}
-                </div>
+        {this.state.loading && (
+          <div style={{ width: "80%", margin: "0 auto" }}>
+            <Skeleton
+              style={{
+                border: "2px solid #ebeef3",
+                height: "300px",
+                marginBottom: "30px",
+              }}
+            />
+            <div
+              style={{
+                paddingLeft: "8px",
+                display: "block",
+                height: "150px",
+                overflowY: "scroll",
+                backgroundColor: "#f0f0f0",
+              }}
+            >
+              <div>
+                <Skeleton style={{ paddingTop: "15px", height: "30px" }} />
               </div>
-            );
-          })}
-        {!this.state.loading !== 0 &&
+            </div>
+          </div>
+        )}
+
+        {this.state.posts &&
           this.state.posts.map((post) => {
             return (
               <div
@@ -107,7 +128,7 @@ class Blog extends React.Component {
                   width: "80%",
                   margin: "0 auto",
                   marginBottom: "30px",
-                  paddingBottom: "20px"
+                  paddingBottom: "20px",
                 }}
               >
                 <h4 style={{ textAlign: "center", paddingTop: "20px" }}>
@@ -119,7 +140,10 @@ class Blog extends React.Component {
                   className="mb-4 pt-3 ps-2"
                   style={{ borderTop: "1px #8f9397 solid" }}
                 >
-                  Comments:
+                  Comments
+                  {this.state["commentArray_" + post.id] &&
+                  <span> ({this.state["commentArray_" + post.id].length})</span> }
+
                 </h6>
                 <div
                   style={{
@@ -130,8 +154,8 @@ class Blog extends React.Component {
                     backgroundColor: "#f0f0f0",
                   }}
                 >
-                  {this.state.comments.map((comment) => {
-                    if (comment.postId === post.id)
+                  {this.state["commentArray_" + post.id] &&
+                    this.state["commentArray_" + post.id].map((comment) => {
                       return (
                         <div
                           style={{
@@ -153,31 +177,73 @@ class Blog extends React.Component {
                           <p>{comment.body}</p>
                         </div>
                       );
-                  })}
+                    })}
                 </div>
-                
-                <button onClick={() => {(this.state["style"+post.id] === "mt-4 d-none" )?this.setState({["style"+post.id]: "mt-4"}):this.setState({["style"+post.id]: "mt-4 d-none"})}} className="btn btn-light mt-3 ms-2" style={{border: "2px solid #dadada"}}>Add a comment</button>
+
+                <button
+                  onClick={() => {
+                    this.state["style" + post.id] === "mt-4 d-none"
+                      ? this.setState({ ["style" + post.id]: "mt-4" })
+                      : this.setState({ ["style" + post.id]: "mt-4 d-none" });
+                  }}
+                  className="btn btn-light mt-3 ms-2"
+                  style={{ border: "2px solid #dadada" }}
+                >
+                  Add a comment
+                </button>
                 <form
-                    className={this.state["style"+post.id]?this.state["style"+post.id]:"mt-4 d-none" }
+                  className={
+                    this.state["style" + post.id]
+                      ? this.state["style" + post.id]
+                      : "mt-4 d-none"
+                  }
                   style={{
                     backgroundColor: "#e7ffc9",
                     padding: "20px 20px 20px 10px",
                     borderRadius: "10px",
-                    marginTop: "30px"
+                    marginTop: "30px",
                   }}
                 >
                   <div class="mb-3">
                     <label for="nameInput" class="form-label">
                       Name
                     </label>
-                    <input value={this.state["currNameComment" + post.id]?this.state["currNameComment" + post.id]: ""} onChange={(e)=> this.setState({["currNameComment" + post.id]: e.target.value}) } type="text" class="form-control" id="nameInput" />
+                    <input
+                      value={
+                        this.state["currNameComment" + post.id]
+                          ? this.state["currNameComment" + post.id]
+                          : ""
+                      }
+                      onChange={(e) =>
+                        this.setState({
+                          ["currNameComment" + post.id]: e.target.value,
+                        })
+                      }
+                      type="text"
+                      class="form-control"
+                      id="nameInput"
+                    />
                   </div>
 
                   <div class="mb-3">
                     <label for="nameInput" class="form-label">
                       Email
                     </label>
-                    <input value={this.state["currEmailComment" + post.id]?this.state["currEmailComment" + post.id]: ""} onChange={(e)=> this.setState({["currEmailComment" + post.id]: e.target.value}) } type="text" class="form-control" id="emailInput" />
+                    <input
+                      value={
+                        this.state["currEmailComment" + post.id]
+                          ? this.state["currEmailComment" + post.id]
+                          : ""
+                      }
+                      onChange={(e) =>
+                        this.setState({
+                          ["currEmailComment" + post.id]: e.target.value,
+                        })
+                      }
+                      type="text"
+                      class="form-control"
+                      id="emailInput"
+                    />
                   </div>
 
                   <div class="mb-3">
@@ -185,8 +251,16 @@ class Blog extends React.Component {
                       Content
                     </label>
                     <textarea
-                    onChange={(e)=> this.setState({["currContentComment" + post.id]: e.target.value}) } 
-                    value={this.state["currContentComment" + post.id]?this.state["currContentComment" + post.id]: ""}
+                      onChange={(e) =>
+                        this.setState({
+                          ["currContentComment" + post.id]: e.target.value,
+                        })
+                      }
+                      value={
+                        this.state["currContentComment" + post.id]
+                          ? this.state["currContentComment" + post.id]
+                          : ""
+                      }
                       rows="4"
                       type="text"
                       class="form-control"
@@ -195,7 +269,7 @@ class Blog extends React.Component {
                   </div>
 
                   <button
-                    onClick={(e)=>this.sendComment(e, post.id)}
+                    onClick={(e) => this.sendComment(e, post.id)}
                     type="submit"
                     class="btn btn-light"
                     style={{ border: "2px solid #dadada" }}
