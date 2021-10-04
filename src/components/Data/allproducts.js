@@ -182,7 +182,7 @@ const allProducts =
             {
             header: "Nuts spread",
             description: "nuts are the best.",
-            moreDescription:   "les us choose for you, a natural based butter.",
+            moreDescription:   "let us choose for you, a natural based butter.",
             loveIt: "we are sure you are going to like it...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             previousPrice: 31,
@@ -273,7 +273,7 @@ const allProducts =
             {
             header: "Spelt bread",
             description: "spelt is a high-quality grain",
-            moreDescription:   "les us choose for you, a natural based butter.",
+            moreDescription:   "let us choose for you, a natural based butter.",
             loveIt: "we are sure you are going to like it...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             previousPrice: 31,
@@ -303,7 +303,7 @@ const allProducts =
             {
             header: "White bread",
             description: "white dreamy bread, no need for extra words.",
-            moreDescription:   "special texture that feel so smooth. only natural ingredients.",
+            moreDescription:   "",
             loveIt: "This creamy spread is going to be your new favorite...",
             info: "nuts are super healthy ingredient in your diet. don't forget to include handful of nuts every day, for a perfect health you shoudn't miss those nuts benefits! in order to supply your body everything it needs. a perfect breakfast is suitable for athlets, meditators, and people all over the world. respect your body, you will not regret it. with us, you can be sure you nourish it well.",
             previousPrice: 12,
@@ -330,6 +330,10 @@ const allProducts =
             category: "breads",
             id: "french-bread",
             },
+
+
+            ///
+            
             {
             header: "Berries",
             description: "wonderful fresh berries.",

@@ -9,7 +9,6 @@ class Blog extends React.Component {
       posts: [],
       comments: [],
       loading: true,
-      formClasses: "mt-4 d-none",
     };
   }
 
@@ -18,72 +17,140 @@ class Blog extends React.Component {
 
     axios.get("http://localhost:3000/posts").then((json) =>
       this.setState({ posts: json.data }, () => {
-        console.log(json.data);
+        let postsList = json.data;
+
+        postsList.map((element) => {
+          this.setState({ ["style" + element.id]: "mt-4 d-none" });
+        });
       })
     );
 
     axios
       .get("http://localhost:3000/comments")
       .then((json) => {
-        this.setState({ comments: json.data }, () => {
-          console.log(json.data);
-        });
-        let jsoni = json.data;
-        for (let i = 0; i < jsoni.length; i++) {
-          let currentComment = jsoni[i];
-          let currentCommentsArray = [];
 
-          if (this.state["commentArray_" + jsoni[i].postId] === undefined) {
-            currentCommentsArray = [];
-          } else {
+        let jsoni = json.data;
+
+        jsoni.map(currentComment => {
+          
+            let currentCommentsArray;
+
+  
+            if (!this.state["commentArray_" + currentComment.postId]) {
+              currentCommentsArray = [currentComment];
+            } else {
               currentCommentsArray = [
                 currentComment,
-                ...this.state["commentArray_" + jsoni[i].postId]
+                ...this.state["commentArray_" + currentComment.postId],
               ];
-            } 
-
-          this.setState({
-            ["commentArray_" + jsoni[i].postId]: currentCommentsArray,
-          });
-        }
+            }
+            
+            console.log(currentCommentsArray)
+            this.setState({
+              ["commentArray_" + currentComment.postId]: currentCommentsArray,
+            });
+        })
       })
       .then(this.setState({ loading: false }));
   }
 
+  checkEmail = (string, postId)=> {
+
+    if (!string) {
+        this.setState({
+            ["errorEmailField" + postId]: "Email should be provided",
+          });
+
+        return false; 
+    }
+
+
+    if (/[a-zA-Z0-9-_.]+@[a-z]+.[a-z]{2,4}/gm.test(string)) {
+        return true; 
+    } else {
+        this.setState({
+            ["errorEmailField" + postId]: "Email should be valid",
+          });
+
+        return false; 
+    }
+
+  }
+
+  checkName = (string, postId)=> {
+      
+    if (!string) {
+        this.setState({
+            ["errorNameField" + postId]: "Name should be provided",
+          });
+
+        return false; 
+    }
+
+
+    if (/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(string)) {
+        return true; 
+    } else {
+        this.setState({
+            ["errorNameField" + postId]: "Name should be valid",
+          });
+
+        return false; 
+    }
+    
+
+}
+
+    checkContent = (string, postId)=> {
+        if (!string) {
+            this.setState({
+                ["errorContentField" + postId]: "Content should be provided",
+              });
+    
+            return false; 
+        }
+        return true; 
+}
+
   sendComment = (e, postId) => {
     e.preventDefault();
-    console.log(postId);
 
-    let myNumber = postId;
-    let newComment = {
-      postId: +myNumber,
-      name: this.state["currNameComment" + postId],
-      email: this.state["currEmailComment" + postId],
-      body: this.state["currContentComment" + postId],
-    };
+    let emailField = this.checkEmail(this.state["currEmailComment" + postId], postId) 
+    let nameField = this.checkName(this.state["currNameComment" + postId], postId)
+    let contentField = this.checkContent(this.state["currContentComment" + postId], postId)
 
-    //
-    let currentCommentsArray = [
+
+    if ( emailField && nameField && contentField) {
+      let myNumber = postId;
+      let newComment = {
+        postId: +myNumber,
+        name: this.state["currNameComment" + postId],
+        email: this.state["currEmailComment" + postId],
+        body: this.state["currContentComment" + postId],
+      };
+
+      //
+      let currentCommentsArray = [
         newComment,
-        ...this.state["commentArray_" + postId]
+        ...this.state["commentArray_" + postId],
       ];
 
-    this.setState({
+      this.setState({
         ["commentArray_" + postId]: currentCommentsArray,
       });
       //
 
-    console.log(newComment);
 
-    axios.post("http://localhost:3000/comments", newComment).then((res) => {
-      console.log(res);
-      this.setState({
-        ["currNameComment" + postId]: "",
-        ["currEmailComment" + postId]: "",
-        ["currContentComment" + postId]: "",
-        ["style" + postId]: "mt-4 d-none",
+
+      axios.post("http://localhost:3000/comments", newComment).then((res) => {
+        this.setState({
+          ["currNameComment" + postId]: "",
+          ["currEmailComment" + postId]: "",
+          ["currContentComment" + postId]: "",
+          ["style" + postId]: "mt-4 d-none",
+        });
       });
-    });
+    }
   };
 
   render() {
@@ -105,11 +172,7 @@ class Blog extends React.Component {
             />
             <div
               style={{
-                paddingLeft: "8px",
-                display: "block",
                 height: "150px",
-                overflowY: "scroll",
-                backgroundColor: "#f0f0f0",
               }}
             >
               <div>
@@ -141,9 +204,12 @@ class Blog extends React.Component {
                   style={{ borderTop: "1px #8f9397 solid" }}
                 >
                   Comments
-                  {this.state["commentArray_" + post.id] &&
-                  <span> ({this.state["commentArray_" + post.id].length})</span> }
-
+                  {this.state["commentArray_" + post.id] && (
+                    <span>
+                      {" "}
+                      ({this.state["commentArray_" + post.id].length})
+                    </span>
+                  )}
                 </h6>
                 <div
                   style={{
@@ -192,11 +258,7 @@ class Blog extends React.Component {
                   Add a comment
                 </button>
                 <form
-                  className={
-                    this.state["style" + post.id]
-                      ? this.state["style" + post.id]
-                      : "mt-4 d-none"
-                  }
+                  className={this.state["style" + post.id]}
                   style={{
                     backgroundColor: "#e7ffc9",
                     padding: "20px 20px 20px 10px",
@@ -223,6 +285,7 @@ class Blog extends React.Component {
                       class="form-control"
                       id="nameInput"
                     />
+                    <small style={{color: "red"}}>{this.state["errorNameField" + post.id]}</small>
                   </div>
 
                   <div class="mb-3">
@@ -244,6 +307,7 @@ class Blog extends React.Component {
                       class="form-control"
                       id="emailInput"
                     />
+                    <small style={{color: "red"}}>{this.state["errorEmailField" + post.id]}</small>
                   </div>
 
                   <div class="mb-3">
@@ -266,6 +330,7 @@ class Blog extends React.Component {
                       class="form-control"
                       id="contentInput"
                     ></textarea>
+                    <small style={{color: "red"}}>{this.state["errorContentField" + post.id]}</small>
                   </div>
 
                   <button
