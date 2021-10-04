@@ -7,7 +7,7 @@ class ProductSkeleton extends React.Component {
 
         <div
         id="bigfoodDiv"
-        className=" container d-flex justify-content-center flex-wrap pt-5"
+        className=" container d-flex justify-content-center flex-wrap pt-2"
       >
       <div className="row pt-5 container">
         <div className="col-lg-5 col-md-6 col-sm-12">

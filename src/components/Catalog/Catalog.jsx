@@ -2,7 +2,7 @@ import SearchDisplay from './SearchDisplay'
 import SkeletonDisplay from './SkeletonDisplay'
 import CatalogForm from './CatalogForm'
 import React from 'react'
-
+import axios from "axios";
 import allproducts from '../Data/allproducts'
 
 class Catalog extends React.Component {
@@ -11,27 +11,12 @@ class Catalog extends React.Component {
         super(props)
 
 
-      let allMyProducts = [...allproducts]
-      allMyProducts =allMyProducts.sort((a, b) => {
-          let fa = a.header.toLowerCase(),
-              fb = b.header.toLowerCase();
-      
-          if (fa < fb) {
-              return -1;
-          }
-          if (fa > fb) {
-              return 1;
-          }
-          return 0;
-      });
-
-
       this.state = {
           q: "",
-          allProducts:  allMyProducts,
-          filteredProducts: allMyProducts,
+          allProducts:  false,
+          filteredProducts: false,
           currentPage: 1,
-          filteredProductsPage: allMyProducts,
+          filteredProductsPage: false,
           categoryOn: "",
           price: false, 
           pricelowest: false,
@@ -85,20 +70,41 @@ class Catalog extends React.Component {
 
     componentDidMount() {
 
+        axios.get("http://localhost:3000/products")
+        .then((json) => {
+        let allMyProducts = [...json.data]
+
+        allMyProducts =allMyProducts.sort((a, b) => {
+            let fa = a.header.toLowerCase(),
+                fb = b.header.toLowerCase();
+        
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        });
+
+         this.setState({ allProducts: allMyProducts,
+        filteredProducts: allMyProducts,
+        filteredProductsPage: allMyProducts
+        })
+        console.log(this.state.allProducts)
+    }).then(()=> {
         this.fixFilteredPage()
-
-        this.setState({loading: true})
-
+    }).then(()=> {
+        
         window.scrollTo(0, 0)
         if (this.props.location.search) {
             this.searchMethod(this.props.location.search)
         }   else {
             document.getElementById("all").checked = true;  
         }
-        
-        setTimeout(()=>{  this.setState({loading: false}  
-        )       
-      }, 2000);
+    })
+
+    
 
     }
 
@@ -283,8 +289,9 @@ class Catalog extends React.Component {
 
 
       fixFilteredPage = () => {
-        let currentArray = [...this.state.filteredProducts];
-        console.log(currentArray)
+        let currentArray = Object.assign([], this.state.filteredProducts);
+
+
         if (currentArray.length >= 8) {
             currentArray = currentArray.slice(0, 9)
         }
@@ -324,12 +331,12 @@ class Catalog extends React.Component {
 
         <div className="col-lg-9 col-12  d-flex flex-wrap mt-3 justify-content-center">
 
-        {this.state.loading && this.state.filteredProductsPage.map((cookie, index)=>{
+        {!this.state.allProducts && [1,2,3,4,5,6,7,8,9].map((element, index)=>{
         return <SkeletonDisplay key={index} myid={index} />
         })
         }
 
-        {!this.state.loading && this.state.filteredProductsPage.map((cookie, index)=>{
+        {this.state.allProducts && this.state.filteredProductsPage.map((cookie, index)=>{
         return (
         <SearchDisplay key={index} myid={index} foodContent={cookie} />
         )
