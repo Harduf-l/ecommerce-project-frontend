@@ -1,7 +1,7 @@
 import axios from "axios";
 import ProductArrived from './ProductArrived'
 import React from "react";
-
+import ProductSkeleton from './ProductSkeleton'
 
 class Product extends React.Component {
   constructor(props) {
@@ -28,7 +28,8 @@ class Product extends React.Component {
 
     return (
       <div>
-        {this.state.myProduct && <ProductArrived myProduct={this.state.myProduct}/>}
+        {!this.state.myProduct && <ProductSkeleton/>}
+        {this.state.myProduct && <ProductArrived myProduct={this.state.myProduct}/>} 
       </div>
 
     )

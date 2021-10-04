@@ -1,6 +1,5 @@
 import InnerImageZoom from "react-inner-image-zoom";
 import ReactStars from "react-rating-stars-component";
-import axios from "axios";
 
 import vegan_pic from "../../pictures/baners/natural.png";
 import lowcarb_pic from "../../pictures/baners/paleo.png";

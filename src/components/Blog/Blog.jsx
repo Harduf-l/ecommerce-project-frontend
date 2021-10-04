@@ -6,7 +6,7 @@ class Blog extends React.Component {
   constructor() {
     super();
     this.state = {
-      posts: [],
+      posts: false,
       comments: [],
       loading: true,
     };
@@ -161,7 +161,7 @@ class Blog extends React.Component {
             Blog
           </h2>
         </span>
-        {this.state.loading && (
+        {!this.state.posts && (
           <div style={{ width: "80%", margin: "0 auto" }}>
             <Skeleton
               style={{
