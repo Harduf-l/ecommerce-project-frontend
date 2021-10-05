@@ -69,7 +69,8 @@ class Catalog extends React.Component {
 
 
     componentDidMount() {
-
+        window.scrollTo(0, 0)
+        
         axios.get("http://localhost:3000/products")
         .then((json) => {
         let allMyProducts = [...json.data]
@@ -96,7 +97,6 @@ class Catalog extends React.Component {
         this.fixFilteredPage()
     }).then(()=> {
         
-        window.scrollTo(0, 0)
         if (this.props.location.search) {
             this.searchMethod(this.props.location.search)
         }   else {

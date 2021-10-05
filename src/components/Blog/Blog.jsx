@@ -28,99 +28,96 @@ class Blog extends React.Component {
     axios
       .get("http://localhost:3000/comments")
       .then((json) => {
-
         let jsoni = json.data;
 
-        jsoni.map(currentComment => {
-          
-            let currentCommentsArray;
+        jsoni.map((currentComment) => {
+          let currentCommentsArray;
 
-  
-            if (!this.state["commentArray_" + currentComment.postId]) {
-              currentCommentsArray = [currentComment];
-            } else {
-              currentCommentsArray = [
-                currentComment,
-                ...this.state["commentArray_" + currentComment.postId],
-              ];
-            }
-            
-            console.log(currentCommentsArray)
-            this.setState({
-              ["commentArray_" + currentComment.postId]: currentCommentsArray,
-            });
-        })
+          if (!this.state["commentArray_" + currentComment.postId]) {
+            currentCommentsArray = [currentComment];
+          } else {
+            currentCommentsArray = [
+              currentComment,
+              ...this.state["commentArray_" + currentComment.postId],
+            ];
+          }
+
+          this.setState({
+            ["commentArray_" + currentComment.postId]: currentCommentsArray,
+          });
+        });
       })
       .then(this.setState({ loading: false }));
   }
 
-  checkEmail = (string, postId)=> {
-
+  checkEmail = (string, postId) => {
     if (!string) {
-        this.setState({
-            ["errorEmailField" + postId]: "Email should be provided",
-          });
+      this.setState({
+        ["errorEmailField" + postId]: "Email should be provided",
+      });
 
-        return false; 
+      return false;
     }
-
 
     if (/[a-zA-Z0-9-_.]+@[a-z]+.[a-z]{2,4}/gm.test(string)) {
-        return true; 
+      return true;
     } else {
-        this.setState({
-            ["errorEmailField" + postId]: "Email should be valid",
-          });
+      this.setState({
+        ["errorEmailField" + postId]: "Email should be valid",
+      });
 
-        return false; 
+      return false;
     }
+  };
 
-  }
-
-  checkName = (string, postId)=> {
-      
+  checkName = (string, postId) => {
     if (!string) {
-        this.setState({
-            ["errorNameField" + postId]: "Name should be provided",
-          });
+      this.setState({
+        ["errorNameField" + postId]: "Name should be provided",
+      });
 
-        return false; 
+      return false;
     }
-
 
     if (/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(string)) {
-        return true; 
+      return true;
     } else {
-        this.setState({
-            ["errorNameField" + postId]: "Name should be valid",
-          });
+      this.setState({
+        ["errorNameField" + postId]: "Name should be valid",
+      });
 
-        return false; 
+      return false;
     }
-    
+  };
 
-}
+  checkContent = (string, postId) => {
+    if (!string) {
+      this.setState({
+        ["errorContentField" + postId]: "Content should be provided",
+      });
 
-    checkContent = (string, postId)=> {
-        if (!string) {
-            this.setState({
-                ["errorContentField" + postId]: "Content should be provided",
-              });
-    
-            return false; 
-        }
-        return true; 
-}
+      return false;
+    }
+    return true;
+  };
 
   sendComment = (e, postId) => {
     e.preventDefault();
 
-    let emailField = this.checkEmail(this.state["currEmailComment" + postId], postId) 
-    let nameField = this.checkName(this.state["currNameComment" + postId], postId)
-    let contentField = this.checkContent(this.state["currContentComment" + postId], postId)
+    let emailField = this.checkEmail(
+      this.state["currEmailComment" + postId],
+      postId
+    );
+    let nameField = this.checkName(
+      this.state["currNameComment" + postId],
+      postId
+    );
+    let contentField = this.checkContent(
+      this.state["currContentComment" + postId],
+      postId
+    );
 
-
-    if ( emailField && nameField && contentField) {
+    if (emailField && nameField && contentField) {
       let myNumber = postId;
       let newComment = {
         postId: +myNumber,
@@ -129,18 +126,21 @@ class Blog extends React.Component {
         body: this.state["currContentComment" + postId],
       };
 
-      //
-      let currentCommentsArray = [
-        newComment,
-        ...this.state["commentArray_" + postId],
-      ];
+      let currentCommentsArray;
+
+      if (this.state["commentArray_" + postId]) {
+        currentCommentsArray = [
+          newComment,
+          ...this.state["commentArray_" + postId],
+        ];
+      } else {
+        currentCommentsArray = [newComment];
+      }
 
       this.setState({
         ["commentArray_" + postId]: currentCommentsArray,
       });
       //
-
-
 
       axios.post("http://localhost:3000/comments", newComment).then((res) => {
         this.setState({
@@ -184,6 +184,7 @@ class Blog extends React.Component {
 
         {this.state.posts &&
           this.state.posts.map((post) => {
+            console.log(post);
             return (
               <div
                 style={{
@@ -198,30 +199,49 @@ class Blog extends React.Component {
                   {post.title}
                 </h4>
                 <br />
-                <p className="pb-4 ps-2">{post.body}</p>
+                <div className="row col-12">
+                  <div className="col-sm-12 col-md-12 col-lg-8">
+                    <p className="ps-3">{post.body}</p>
+                  </div>
+                  <div className="col-sm-12 col-md-12 col-lg-4 ">
+                    <img
+                      style={{
+                        objectFit: "cover",
+                        width: "100%",
+                        borderRadius: "20px",
+                        margin: "8px",
+                      }}
+                      src={post.img}
+                      alt="blog-picture"
+                    />
+                  </div>
+                </div>
                 <h6
                   className="mb-4 pt-3 ps-2"
                   style={{ borderTop: "1px #8f9397 solid" }}
                 >
                   Comments
-                  {this.state["commentArray_" + post.id] && (
+                  {this.state["commentArray_" + post.id] ? (
                     <span>
                       {" "}
                       ({this.state["commentArray_" + post.id].length})
                     </span>
+                  ) : (
+                    <span> (0)</span>
                   )}
                 </h6>
-                <div
-                  style={{
-                    paddingLeft: "8px",
-                    display: "block",
-                    height: "150px",
-                    overflowY: "scroll",
-                    backgroundColor: "#f0f0f0",
-                  }}
-                >
-                  {this.state["commentArray_" + post.id] &&
-                    this.state["commentArray_" + post.id].map((comment) => {
+
+                {this.state["commentArray_" + post.id] && (
+                  <div
+                    style={{
+                      paddingLeft: "8px",
+                      display: "block",
+                      height: "150px",
+                      overflowY: "scroll",
+                      backgroundColor: "#f0f0f0",
+                    }}
+                  >
+                    {this.state["commentArray_" + post.id].map((comment) => {
                       return (
                         <div
                           style={{
@@ -244,8 +264,19 @@ class Blog extends React.Component {
                         </div>
                       );
                     })}
-                </div>
+                  </div>
+                )}
+                {!this.state["commentArray_" + post.id] && (
 
+                    <p style={{ paddingLeft: "8px",
+                      display: "block",
+                      paddingTop: "20px",
+                      paddingBottom: "20px",
+                      backgroundColor: "#f0f0f0", fontSize: "14px"}}>
+                      No comments yet... be the first one to leave a comment.
+                    </p>
+            
+                )}
                 <button
                   onClick={() => {
                     this.state["style" + post.id] === "mt-4 d-none"
@@ -285,7 +316,9 @@ class Blog extends React.Component {
                       class="form-control"
                       id="nameInput"
                     />
-                    <small style={{color: "red"}}>{this.state["errorNameField" + post.id]}</small>
+                    <small style={{ color: "red" }}>
+                      {this.state["errorNameField" + post.id]}
+                    </small>
                   </div>
 
                   <div class="mb-3">
@@ -307,7 +340,9 @@ class Blog extends React.Component {
                       class="form-control"
                       id="emailInput"
                     />
-                    <small style={{color: "red"}}>{this.state["errorEmailField" + post.id]}</small>
+                    <small style={{ color: "red" }}>
+                      {this.state["errorEmailField" + post.id]}
+                    </small>
                   </div>
 
                   <div class="mb-3">
@@ -330,7 +365,9 @@ class Blog extends React.Component {
                       class="form-control"
                       id="contentInput"
                     ></textarea>
-                    <small style={{color: "red"}}>{this.state["errorContentField" + post.id]}</small>
+                    <small style={{ color: "red" }}>
+                      {this.state["errorContentField" + post.id]}
+                    </small>
                   </div>
 
                   <button
