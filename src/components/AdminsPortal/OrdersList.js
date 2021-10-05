@@ -6,11 +6,7 @@ import { List, Datagrid, TextField,EditButton
     const orderFilters = [
         <TextInput source="q" label="Search" alwaysOn />,
     ];
-    
-    
-    
-    
-    
+
     export const OrdersList = props => (
         <List  filters={orderFilters} {...props}>
             <Datagrid>

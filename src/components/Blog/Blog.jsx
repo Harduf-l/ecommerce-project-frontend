@@ -273,7 +273,7 @@ class Blog extends React.Component {
                       paddingTop: "20px",
                       paddingBottom: "20px",
                       backgroundColor: "#f0f0f0", fontSize: "14px"}}>
-                      No comments yet... be the first one to leave a comment.
+                      There are no comments yet... be the first one to leave a comment.
                     </p>
             
                 )}

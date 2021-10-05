@@ -10477,7 +10477,7 @@
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   "version" "1.2.3"
 
-"ra-core@^3.14.0", "ra-core@^3.18.0":
+"ra-core@^3.14.0", "ra-core@^3.17.2", "ra-core@^3.18.0":
   "integrity" "sha512-h4Pb4aosaG4ME/z8foVl40fAWrg+UiijWhSVPqjRSiaX/8eP0o8HfS0r6jviFOXfhB/ecXDUmPXCcSfp4fsjsQ=="
   "resolved" "https://registry.npmjs.org/ra-core/-/ra-core-3.18.0.tgz"
   "version" "3.18.0"
@@ -10498,6 +10498,13 @@
   dependencies:
     "query-string" "^5.1.1"
     "ra-core" "^3.18.0"
+
+"ra-data-simple-rest@^3.18.3":
+  "integrity" "sha512-uGmfh0JDjxt7vKHduZ/7Otx4WxsYCOMPMCZO5nAJjpX/pUBTK/glWuxPKwd2Alfi3oEm60UmqPQUlLF9PmkqnQ=="
+  "resolved" "https://registry.npmjs.org/ra-data-simple-rest/-/ra-data-simple-rest-3.18.3.tgz"
+  "version" "3.18.3"
+  dependencies:
+    "query-string" "^5.1.1"
 
 "ra-i18n-polyglot@^3.18.0":
   "integrity" "sha512-siKcAP92+Najag/q222EUpr28NCRJihjTVm+XbvIPYxbjGVNBnZbQ+2GIzolQ8ruGTZ+M30AMIx/Agph3nf1hQ=="

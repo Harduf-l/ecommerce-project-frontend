@@ -70,7 +70,7 @@ class ProductSkeleton extends React.Component {
           <Skeleton style={{ width: "100%", height: "400px" }} />
 
           <div>
-            <div className="d-flex justify-content-around">
+            <div className="d-flex justify-content-around" style={{paddingTop: "20px"}}>
               <Skeleton
                 style={{ width: "70px", height: "80px", margin: "5px" }}
               />
@@ -87,7 +87,7 @@ class ProductSkeleton extends React.Component {
         <div className="col-lg-3 col-md-12 col-sm-12">
  
           <Skeleton
-            style={{ width: "100%", height: "300px", margin: "7px" }}
+            style={{ width: "100%", height: "360px", margin: "7px" }}
           />
           <Skeleton
             style={{

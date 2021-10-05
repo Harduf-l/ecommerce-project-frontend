@@ -3,19 +3,19 @@ import { List, Datagrid, TextField, ImageField, EditButton
 } from 'react-admin';
 
 
-const productFilters = [
-    <TextInput source="q" label="Search" alwaysOn />,
-];
-
-
-
+// const productFilters = [
+//     <TextInput source="header" label="Search" alwaysOn />,
+// ];
+// filters={productFilters}
 
 
 export const ProductsList = props => (
-    <List  filters={productFilters} {...props}>
+    <List  {...props}>
         <Datagrid>
             <TextField source="id" />
-            <TextField source="title" />
+            <TextField source="header" />
+            <TextField source="price" />
+            <TextField source="salePrice" />
             <EditButton />
         </Datagrid>
     </List>
@@ -25,8 +25,9 @@ export const ProductsList = props => (
 export const ProductsEdit = (props) => (
     <Edit {...props}>
       <SimpleForm>
-      <TextInput source="id" />
-        <TextInput source="title" />
+        <TextInput source="header" />
+        <TextInput source="price" />
+        <TextInput source="salePrice" />
       </SimpleForm>
     </Edit>
   );
