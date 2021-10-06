@@ -163,10 +163,10 @@ class Header extends React.Component {
             Categories
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/cookies" params={{index: 0}}>cookies</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/spreads" params={{index: 1}}>spreads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/breads" params={{index: 2}}>breads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/superfood" params={{index: 3}}>superfood</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/categories/cookies" params={{index: 0}}>cookies</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/categories/spreads" params={{index: 1}}>spreads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/categories/breads" params={{index: 2}}>breads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/categories/superfood" params={{index: 3}}>superfood</Link></li>
           </ul>
         </li>
               <li className="nav-item hovernav">

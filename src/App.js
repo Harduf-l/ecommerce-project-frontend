@@ -30,7 +30,7 @@ import Cart from './components/Cart/Cart'
 import Category from "./components/Category/Category"
 import Members from "./components/Protected/Members"
 import Checkout from './components/Cart/Checkout'
-import OrderCompleted from './components/Cart/OrderCompleted'
+// import OrderCompleted from './components/Cart/OrderCompleted'
 import { auth } from "../src/firebase"
 
 class App extends React.Component {
@@ -81,10 +81,10 @@ render() {
               <Route path="/contact" component={Contact} />
               <Route path="/about" component={About} />
               <Route path="/blog" component={Blog} />
-              <Route path="/product/cookies" render={() => <Category num = {0}/>}/>
-              <Route path="/product/spreads" render={() => <Category num = {1}/>}/>
-              <Route path="/product/breads" render={() => <Category num = {2}/>}/>
-              <Route path="/product/superfood" render={() => <Category num = {3}/>}/>
+              <Route path="/categories/cookies" render={() => <Category name = "cookies"/>}/>
+              <Route path="/categories/spreads" render={() => <Category name = "spreads"/>}/>
+              <Route path="/categories/breads" render={() => <Category name = "breads"/>}/>
+              <Route path="/categories/superfood" render={() => <Category name = "superfood"/>}/>
               
               {/* <Route path="/ordercompleted" component={OrderCompleted} /> */}
               <Route path="/cart" render={(props) => <Cart  {...props}/>} />    

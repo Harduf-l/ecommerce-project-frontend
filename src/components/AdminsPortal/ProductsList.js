@@ -12,6 +12,7 @@ import { List, Datagrid, TextField, ImageField, EditButton
 export const ProductsList = props => (
     <List  {...props}>
         <Datagrid>
+            <ImageField source="pic1"/>
             <TextField source="id" />
             <TextField source="header" label="Name" />
             <TextField source="price" />
@@ -34,7 +35,7 @@ export const ProductsEdit = (props) => (
         <TextInput source="shortDesc" />
         <TextInput source="longDesc" />
         <TextInput source="loveDesc" />
-        <TextInput source="stroageInfo" />
+        <TextInput source="storageInfo" />
         <TextInput source="category" />
         <TextInput source="vegan" />
         <TextInput source="lowcarb" />
@@ -57,7 +58,7 @@ export const ProductsEdit = (props) => (
         <TextInput source="shortDesc" />
         <TextInput source="longDesc" />
         <TextInput source="loveDesc" />
-        <TextInput source="stroageInfo" />
+        <TextInput source="storageInfo" />
         <TextInput source="category" />
         <TextInput source="vegan" />
         <TextInput source="lowcarb" />

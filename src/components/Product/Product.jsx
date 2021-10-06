@@ -9,6 +9,7 @@ class Product extends React.Component {
 
     this.state = {
       myProduct: false, 
+      myProductComments: false,
     };
   }
    
@@ -22,14 +23,22 @@ class Product extends React.Component {
           console.log(this.state.myProduct.rating);
         })
       );
+    
+      axios
+      .get(`http://localhost:5000/reviews/${this.props.match.params.id}`)
+      .then((json) =>
+        this.setState({ myProductComments: json.data })
+      );
+
+
   }
 
   render() {
 
     return (
       <div>
-        {!this.state.myProduct && <ProductSkeleton/>}
-        {this.state.myProduct && <ProductArrived myProduct={this.state.myProduct}/>} 
+        {(!this.state.myProduct || !this.state.myProductComments) && <ProductSkeleton/>}
+        {this.state.myProduct && this.state.myProductComments && <ProductArrived myProduct={this.state.myProduct} myComments={this.state.myProductComments}/>} 
       </div>
 
     )

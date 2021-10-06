@@ -200,10 +200,10 @@ class Blog extends React.Component {
                 </h4>
                 <br />
                 <div className="row col-12">
-                  <div className="col-sm-12 col-md-12 col-lg-8 col-xl-9">
+                  <div className="col-sm-12 col-md-12 col-lg-7">
                     <p className="ps-3">{post.body}</p>
                   </div>
-                  <div className="col-sm-12 col-md-12 col-lg-4 col-xl-3 ">
+                  <div className="col-sm-12 col-md-12 col-lg-5 ">
                     <img
                       style={{
                         objectFit: "cover",

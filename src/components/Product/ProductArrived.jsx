@@ -14,16 +14,20 @@ import { auth } from "../../firebase";
 
 import { connect } from "react-redux";
 import { changeItems } from "../../redux/actions/cartActions";
-
+import axios from "axios";
 
 
 class Product extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
+    console.log(props.myComments)
     // this.props.myProduct = this.findProductById(this.props.match.params.id);
 
     this.state = {
+      headerReview: "",
+      contentReview: "",
+      nameReview: "",
+      myComments: this.props.myComments,
       cartBtn: "Add to cart",
       cartStyle: { backgroundColor: "#555555", color: "white" },
       favoriteBtn: "Add to favorites",
@@ -50,7 +54,7 @@ class Product extends React.Component {
         objectFit: "cover",
         margin: "5px",
       },
-      starsInserted: "",
+      starsInserted: 5,
       formClasses: "mt-4 d-none",
     };
 
@@ -138,6 +142,50 @@ class Product extends React.Component {
       });
     };
 
+    
+    this.addReview = (e) => {
+      e.preventDefault()
+
+      console.log(this.state.headerReview)
+      console.log(this.state.contentReview)
+      console.log(this.state.nameReview)
+      console.log(this.state.starsInserted)
+
+      if (this.state.starsInserted &&
+        this.state.headerReview &&
+        this.state.contentReview &&
+        this.state.nameReview &&
+        this.props.myProduct.id) {
+
+          const newReview = {
+            rating: this.state.starsInserted,
+            title: this.state.headerReview,
+            content: this.state.contentReview,
+            userName: this.state.nameReview,
+            productId: this.props.myProduct.id
+          };
+
+          console.log(newReview)
+          let commentsArray = [...this.state.myComments]
+          commentsArray.push(newReview)
+
+          this.setState({myComments: commentsArray})
+          
+
+          axios.post("http://localhost:5000/reviews", newReview).then((res) => {
+            window.scrollTo(0, 0);
+            this.setState({
+              headerReview: "",
+              formClasses: "mt-4 d-none",
+              contentReview: "",
+              nameReview: "",
+              starsInserted: 5
+            });
+          });
+
+        }
+    }
+
     this.changePic = (e) => {
       const specialStyle = {
         width: "80px",
@@ -193,31 +241,10 @@ class Product extends React.Component {
   }
 
   render() {
-    const myReviews = [
-      {
-        name: "Harduf L.",
-        header: "super tasty!",
-        content: "i fell in love",
-        rating: "4",
-      },
-      {
-        name: "Barak G.",
-        header: "not so good!",
-        content: "i don't love it!",
-        rating: "2",
-      },
-      {
-        name: "Yael G.",
-        header: "nice!",
-        content: "i love it!",
-        rating: "5",
-      },
-    ];
+
 
     const ratingChanged = (newRating) => {
       this.setState({ starsInserted: newRating });
-
-      console.log(this.state.starsInserted);
     };
 
     return (
@@ -357,7 +384,7 @@ class Product extends React.Component {
               </div>
             </div>
 
-            {myReviews && (
+            {this.state.myComments.length > 0 && (
               <div className="accordion-item">
                 <h2 className="accordion-header" id="flush-headingTwo">
                   <button
@@ -368,7 +395,7 @@ class Product extends React.Component {
                     aria-expanded="false"
                     aria-controls="flush-collapseTwo"
                   >
-                    Reviews ({myReviews.length})
+                    Reviews ({this.state.myComments.length})
                   </button>
                 </h2>
                 <div
@@ -378,8 +405,13 @@ class Product extends React.Component {
                   data-bs-parent="#accordionFlushExample"
                 >
                   <div style={{ height: "20px" }}></div>
-                  <div style={{ height: "200px", overflowY: "scroll" }}>
-                    {myReviews.map((currentReview) => {
+
+             
+                  <div 
+                  style=
+                  {{ height: "200px", overflowY: "scroll" }}
+                  >
+                    {this.state.myComments.map((currentReview) => {
                       return (
                         <div style={{ marginLeft: "20px" }}>
                           <div>
@@ -392,7 +424,7 @@ class Product extends React.Component {
                               edit={false}
                             />
                           </div>
-                          <h6>{currentReview.header}</h6>
+                          <h6>{currentReview.title}</h6>
                           <p style={{ margin: 0 }}>{currentReview.content}</p>
                           <p
                             style={{
@@ -401,13 +433,13 @@ class Product extends React.Component {
                               textAlign: "end",
                             }}
                           >
-                            {currentReview.name}
+                            {currentReview.userName}
                           </p>
                         </div>
                       );
                     })}
-                  </div>
-                </div>
+                  </div> 
+                </div> 
               </div>
             )}
             <div className="mt-4 ms-3 pb-3 pb-md-0">
@@ -435,13 +467,17 @@ class Product extends React.Component {
                   <label for="nameInput" class="form-label">
                     Name
                   </label>
-                  <input type="text" class="form-control" id="nameInput" />
+                  <input value={this.state.nameReview} onChange={(e)=>{this.setState({nameReview: e.target.value})}}
+                  type="text" class="form-control" id="nameInput" />
                 </div>
                 <div class="mb-3">
                   <label for="headerInput" class="form-label">
                     Header
                   </label>
-                  <input type="text" class="form-control" id="headerInput" />
+                  <input 
+                  value={this.state.headerReview}
+                  onChange={(e)=>{this.setState({headerReview: e.target.value})}}
+                  type="text" class="form-control" id="headerInput" />
                 </div>
 
                 <div class="mb-3">
@@ -459,7 +495,10 @@ class Product extends React.Component {
                   <label for="contentInput" class="form-label">
                     Content
                   </label>
+                  
                   <textarea
+                  value={this.state.contentReview}
+                  onChange={(e)=>{this.setState({contentReview: e.target.value})}}
                     rows="4"
                     type="text"
                     class="form-control"
@@ -468,6 +507,7 @@ class Product extends React.Component {
                 </div>
 
                 <button
+                  onClick={(e)=> this.addReview(e)}
                   type="submit"
                   class="btn btn-light"
                   style={{ border: "2px solid #dadada" }}
