@@ -15,7 +15,7 @@ class Blog extends React.Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    axios.get("http://localhost:3000/posts").then((json) =>
+    axios.get("http://localhost:5000/posts").then((json) =>
       this.setState({ posts: json.data }, () => {
         let postsList = json.data;
 
@@ -26,7 +26,7 @@ class Blog extends React.Component {
     );
 
     axios
-      .get("http://localhost:3000/comments")
+      .get("http://localhost:5000/comments")
       .then((json) => {
         let jsoni = json.data;
 
@@ -142,7 +142,7 @@ class Blog extends React.Component {
       });
       //
 
-      axios.post("http://localhost:3000/comments", newComment).then((res) => {
+      axios.post("http://localhost:5000/comments", newComment).then((res) => {
         this.setState({
           ["currNameComment" + postId]: "",
           ["currEmailComment" + postId]: "",
@@ -200,10 +200,10 @@ class Blog extends React.Component {
                 </h4>
                 <br />
                 <div className="row col-12">
-                  <div className="col-sm-12 col-md-12 col-lg-8">
+                  <div className="col-sm-12 col-md-12 col-lg-8 col-xl-9">
                     <p className="ps-3">{post.body}</p>
                   </div>
-                  <div className="col-sm-12 col-md-12 col-lg-4 ">
+                  <div className="col-sm-12 col-md-12 col-lg-4 col-xl-3 ">
                     <img
                       style={{
                         objectFit: "cover",

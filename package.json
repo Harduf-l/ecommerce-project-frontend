@@ -21,6 +21,7 @@
     "react-admin-firebase": "^3.2.24",
     "react-bootstrap": "^1.6.3",
     "react-dom": "^17.0.2",
+    "react-id-generator": "^3.0.2",
     "react-inner-image-zoom": "^2.0.3",
     "react-leaflet": "^3.1.0",
     "react-loading-skeleton": "^2.2.0",

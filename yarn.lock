@@ -10720,6 +10720,11 @@
   dependencies:
     "@babel/runtime" "^7.12.1"
 
+"react-id-generator@^3.0.2":
+  "integrity" "sha512-d0rqWzZ6g0P9agHtA7wX/ErQ4iV/657/0Oz+SX3kid7nR4d0YwaWjjOTIrgYHv2lICZKrxIH4BaKppKrM8fRfw=="
+  "resolved" "https://registry.npmjs.org/react-id-generator/-/react-id-generator-3.0.2.tgz"
+  "version" "3.0.2"
+
 "react-inner-image-zoom@^2.0.3":
   "integrity" "sha512-l/30pVjYieeooac8ifLQX18Zn3goFhlhL4Zo/lV2DPCtm8rkNaCo/6Oxx8HqBMq+p7QXvnG9qYs06577UbHw/g=="
   "resolved" "https://registry.npmjs.org/react-inner-image-zoom/-/react-inner-image-zoom-2.0.3.tgz"
@@ -10931,7 +10936,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.6 || 15.x.x || 16.x.x || 17.x.x", "react@^15.6.1 || ^16.0.0 || ^17.0.0", "react@^16.4.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^16.9.0 || ^17.0.0", "react@^17.0.1", "react@^17.0.2", "react@^17.x", "react@>= 16", "react@>= 16.8", "react@>=0.14.0", "react@>=0.14.9", "react@>=15", "react@>=15.0.0", "react@>=16.3.0", "react@>=16.3.2", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.6 || 15.x.x || 16.x.x || 17.x.x", "react@^15.6.1 || ^16.0.0 || ^17.0.0", "react@^16.4.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^16.9.0 || ^17.0.0", "react@^17.0.1", "react@^17.0.2", "react@^17.x", "react@>= 16", "react@>= 16.8", "react@>= 16.8.0", "react@>=0.14.0", "react@>=0.14.9", "react@>=15", "react@>=15.0.0", "react@>=16.3.0", "react@>=16.3.2", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

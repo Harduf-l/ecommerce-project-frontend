@@ -6,6 +6,8 @@ import Paypal from './Paypal'
 
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom";
+import axios from "axios";
+import { changeItems } from "../../redux/actions/cartActions";
 
 
 class Checkout extends React.Component {
@@ -65,6 +67,46 @@ class Checkout extends React.Component {
          ) {
             console.log("order is placed")
             this.setState({endProcess: true})
+
+            let cart = JSON.parse(localStorage.getItem("cart"))
+            let finalPrice = +(localStorage.getItem("price")); 
+            let deliveryChosen = (localStorage.getItem("deliveryMethod")); 
+
+            let orderId =  Date.now()
+
+            let newOrder = {
+                "orderSubTotal": finalPrice,
+                "status": "payment accepted",
+                "deliveryType": deliveryChosen,
+                "products": cart,
+                "id": orderId
+              };
+
+            axios.post("http://localhost:5000/orders", newOrder).then((res) => {
+                document.getElementById("zipcodeField").value=""
+
+                document.getElementById("firstNameField").value=""
+                document.getElementById("lastNameField").value=""
+                document.getElementById("countryField").value=""
+
+                document.getElementById("emailField").value=""
+                document.getElementById("phoneField").value=""
+                document.getElementById("cityField").value=""
+                document.getElementById("adressField").value=""
+                localStorage.removeItem("cart")
+                this.setState({
+                    nameClass: "regularInput",
+                    lastNameClass: "regularInput",
+                    emailClass: "regularInput",
+                    phoneClass: "regularInput",
+                    countryClass: "regularInput",
+                    cityClass: "regularInput",
+                    zipClass: "regularInput",
+                    addressClass: "regularInput",
+                })
+                this.props.changeItems();
+              });
+
         } else {
             if (!this.state.nameOK) {
                 this.setState({nameInstructions: "Enter a valid first name"})
@@ -109,9 +151,6 @@ class Checkout extends React.Component {
         let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
         let result = pattern.test(e.target.value)
 
-
-        switch(e.target.id) {
-            case "firstname":
                 if (!result) {
                     this.setState({nameInstructions: "Enter a valid first name"})
                     this.setState({nameOK: false})
@@ -122,10 +161,6 @@ class Checkout extends React.Component {
                     localStorage.setItem("firstname", e.target.value)
                     this.setState({nameClass: "goodInput"})
                 }
-              break;
-            default:
-                break; 
-          }
     }
 
     checkLastName = (e) => {
@@ -133,8 +168,6 @@ class Checkout extends React.Component {
         let pattern = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
         let result = pattern.test(e.target.value)
 
-        switch(e.target.id) {
-            case "lastname":
                 if (!result) {
                     this.setState({lastNameInstructions: "Enter a valid last name"})
                     this.setState({lastNameOK: false})
@@ -145,11 +178,6 @@ class Checkout extends React.Component {
                     localStorage.setItem("lastname", e.target.value)
                     this.setState({lastNameClass: "goodInput"})
                 }
-              break;
-            default:
-                break; 
-          }
-
 
     }
 
@@ -263,8 +291,6 @@ class Checkout extends React.Component {
 
 
     render() {
-
-            
      return (
 
         <div className="container">
@@ -282,12 +308,12 @@ class Checkout extends React.Component {
 
             <div className="row">
                 <div className="col-lg-6 col-12">
-                    <input className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)} id="firstname" placeholder="Name" type="text"/>
+                    <input id="firstNameField" className={this.state.nameClass} onBlur={(e) => this.checkFirstName(e)}  placeholder="Name" type="text"/>
                     <div className="errorMsg">{this.state.nameInstructions}</div>
                 </div>
 
                 <div className="col-lg-6 col-12">
-                    <input  className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)} id="lastname" placeholder="Last name" type="text"/> 
+                    <input id="lastNameField" className={this.state.lastNameClass}  onBlur={(e) => this.checkLastName(e)}  placeholder="Last name" type="text"/> 
                     <div className="errorMsg">{this.state.lastNameInstructions}</div>
                 </div>
             </div>
@@ -297,35 +323,35 @@ class Checkout extends React.Component {
                 <div className="row">
 
                     <div className="col-lg-6 col-12">
-                        <input className={this.state.zipClass} onBlur={(e) => this.checkzip(e)}  placeholder="Zip / Postcode" type="text"/> 
+                        <input id="zipcodeField" className={this.state.zipClass} onBlur={(e) => this.checkzip(e)}  placeholder="Zip / Postcode" type="text"/> 
                         <div className="errorMsg">{this.state.zipInstructions}</div>
                     </div>
 
                     <div  className="col-lg-6 col-12">
-                        <input className={this.state.countryClass}  onBlur={(e) => this.checkcountry(e)} placeholder="Country" type="text"/> 
+                        <input id="countryField" className={this.state.countryClass}  onBlur={(e) => this.checkcountry(e)} placeholder="Country" type="text"/> 
                         <div className="errorMsg">{this.state.countyInstructions}</div>
                     </div>
                
                 </div>
 
-                <input className={this.state.emailClass}   onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
+                <input id="emailField" className={this.state.emailClass}   onBlur={(e) => this.checkEmail(e)} placeholder="Email" type="email"/> 
                
                <div className="errorMsg">{this.state.emailInstructions}</div>
           
 
-                <input className={this.state.phoneClass}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="text"/> 
+                <input  id="phoneField" className={this.state.phoneClass}  onBlur={(e) => this.checkPhone(e)} placeholder="Mobile Phone" type="text"/> 
                
                <div className="errorMsg">{this.state.phoneInstructions}</div>
 
 
-                    <input className={this.state.cityClass}   onBlur={(e) => this.checkcity(e)} placeholder="City / Suburb" type="text"/> 
+                    <input  id="cityField" className={this.state.cityClass}   onBlur={(e) => this.checkcity(e)} placeholder="City / Suburb" type="text"/> 
                     <div className="errorMsg">{this.state.cityInstructions}</div>
 
-                    <input className={this.state.addressClass}   onBlur={(e) => this.checkAddress(e)} placeholder="Full address" type="text"/> 
+                    <input id="adressField" className={this.state.addressClass}   onBlur={(e) => this.checkAddress(e)} placeholder="Full address" type="text"/> 
                     <div className="errorMsg">{this.state.addressInstructions}</div>
                
 
-                    <input style={{padding: "6px", marginTop: "20px"}} type="checkbox"/> Subscribe
+                    <input id="checkboxField" style={{padding: "6px", marginTop: "20px"}} type="checkbox"/> Subscribe
                </div>
 
             </div>
@@ -367,8 +393,6 @@ class Checkout extends React.Component {
              <Paypal moveToEnd={this.moveToEnd} active={this.state.endProcess}/> 
 
              <div>
-                <p>{this.state.orderID}</p>
-                <p>{this.state.payerID}</p>
              </div>
 
         </div>
@@ -385,11 +409,9 @@ class Checkout extends React.Component {
 
 // export default Checkout; 
 
-const mapStateToProps = state => ({
-    orderNumber: state.cart.orderID,
-    payerNumber: state.cart.payerID
+
+  const mapStateToProps = (state) => ({
+    reduxCart: state.cart.reduxCart,
   });
   
-  export default withRouter(connect(mapStateToProps)(Checkout));
-  
-  
+  export default connect(mapStateToProps, { changeItems })(Checkout);

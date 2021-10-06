@@ -71,7 +71,7 @@ class Catalog extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
         
-        axios.get("http://localhost:3000/products")
+        axios.get("http://localhost:5000/products")
         .then((json) => {
         let allMyProducts = [...json.data]
 

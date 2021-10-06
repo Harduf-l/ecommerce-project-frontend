@@ -16,7 +16,7 @@ class Product extends React.Component {
     window.scrollTo(0, 0);
     console.log("hello!")
     axios
-      .get(`http://localhost:3000/products/${this.props.match.params.id}`)
+      .get(`http://localhost:5000/products/${this.props.match.params.id}`)
       .then((json) =>
         this.setState({ myProduct: json.data }, () => {
           console.log(this.state.myProduct.rating);

@@ -105,7 +105,7 @@ class Product extends React.Component {
         let product = {
           id: this.props.myProduct.id,
           header: this.props.myProduct.header,
-          price: this.props.myProduct.price,
+          price: this.props.myProduct.salePrice,
           quantity: myQuantity,
           pic1: this.props.myProduct.pic1,
         };

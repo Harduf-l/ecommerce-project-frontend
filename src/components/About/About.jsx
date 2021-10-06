@@ -10,7 +10,7 @@ let About = () => {
 
 
     useEffect(() => {
-        axios.get("http://localhost:3000/users")
+        axios.get("http://localhost:5000/users")
         .then((res) => {
             console.log(res.data[0])
             setUser(res.data[0])
