@@ -174,11 +174,11 @@ class Header extends React.Component {
               Catalog
               </Link>
               </li>
-              <li className="nav-item text-center hovernav" >
+              {/* <li className="nav-item text-center hovernav" >
               <Link style={{color: "#e61a23"}} className="nav-link"  aria-current="page" to="/membersZone">
               Members Zone
               </Link>
-              </li>
+              </li> */}
               <li className="nav-item text-center hovernav" >
               <Link style={{color: "#004369"}} className="nav-link"  aria-current="page" to="/adminsPortal">
               Admins Portal

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-import cacao_seeds from "../../pictures/superfood/cacao-seeds-original.jpg";
 import React from "react";
 import Carousel2 from "./Carousel2";
 import axios from "axios";
@@ -28,15 +27,16 @@ class Home2 extends React.Component {
 
     axios
       .get("http://localhost:5000/products/categories/superfood")
-      .then((json) => this.setState({ superfoodArray: json.data }));
+      .then((json) => this.setState({ superfoodArray: json.data}, ()=> {console.log(this.state.superfoodArray)}));
   }
 
   render() {
     return (
       <div>
+        {this.state.superfoodArray &&
         <div
           style={{
-            backgroundImage: `url(${cacao_seeds})`,
+            backgroundImage: `url(${this.state.superfoodArray[1].originalPic})`,
             backgroundSize: "cover",
             height: "550px",
             backgroundRepeat: "no-repeat",
@@ -53,7 +53,7 @@ class Home2 extends React.Component {
               Shop now
             </Link>
           </div>
-        </div>
+        </div> }
 
         <div
           style={{ maxWidth: "1200px", margin: "0 auto", marginTop: "64px" }}

@@ -1,5 +1,5 @@
 import { List, Datagrid, TextField,EditButton 
-    ,ReferenceField, TextInput, SimpleForm, Edit, ArrayField
+    ,ReferenceField, TextInput, SimpleForm, Edit, ArrayField, SelectInput,
     } from 'react-admin';
     
     
@@ -34,8 +34,15 @@ import { List, Datagrid, TextField,EditButton
     export const OrdersEdit = (props) => (
         <Edit {...props}>
           <SimpleForm>
-            <TextInput source="status" />
-            <TextInput source="customerId" />
+            {/* <TextInput source="status" /> */}
+            <TextInput disabled source="id" label="order id" />
+            <SelectInput source="status" choices={[
+            { id: 'payment accepted', name: 'payment accepted' },
+            { id: 'left warehouse', name: 'left warehouse' },
+            { id: 'left warehouse', name: 'on the way' },
+            { id: 'left warehouse', name: 'arrived country destination' },
+            { id: 'photography', name: 'delivery completed' },
+]} />
           </SimpleForm>
         </Edit>
       );

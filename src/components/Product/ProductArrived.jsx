@@ -146,32 +146,28 @@ class Product extends React.Component {
     this.addReview = (e) => {
       e.preventDefault()
 
-      console.log(this.state.headerReview)
-      console.log(this.state.contentReview)
-      console.log(this.state.nameReview)
-      console.log(this.state.starsInserted)
+      // if (this.state.starsInserted &&
+      //   this.state.headerReview &&
+      //   this.state.contentReview &&
+      //   this.state.nameReview &&
+      //   this.props.myProduct.id) {
 
-      if (this.state.starsInserted &&
-        this.state.headerReview &&
-        this.state.contentReview &&
-        this.state.nameReview &&
-        this.props.myProduct.id) {
+          let reviewId = Date.now()
 
           const newReview = {
             rating: this.state.starsInserted,
             title: this.state.headerReview,
             content: this.state.contentReview,
-            userName: this.state.nameReview,
-            productId: this.props.myProduct.id
+            name: this.state.nameReview,
+            productId: this.props.myProduct.id,
+            id: reviewId
           };
 
-          console.log(newReview)
           let commentsArray = [...this.state.myComments]
           commentsArray.push(newReview)
 
           this.setState({myComments: commentsArray})
           
-
           axios.post("http://localhost:5000/reviews", newReview).then((res) => {
             window.scrollTo(0, 0);
             this.setState({
@@ -181,10 +177,11 @@ class Product extends React.Component {
               nameReview: "",
               starsInserted: 5
             });
-          });
-
-        }
+          }).catch((err)=> {console.log(err.response.data)})
+        
     }
+
+
 
     this.changePic = (e) => {
       const specialStyle = {
@@ -259,7 +256,8 @@ class Product extends React.Component {
             <NavLink className="hoverlink" to="/">
               Home
             </NavLink>
-            <NavLink className="hoverlink" to={this.props.myProduct.category}>
+
+            <NavLink className="hoverlink" to={`/categories/${this.props.myProduct.category}`}>
               {" "}
               / {this.props.myProduct.category}
             </NavLink>
@@ -409,7 +407,7 @@ class Product extends React.Component {
              
                   <div 
                   style=
-                  {{ height: "200px", overflowY: "scroll" }}
+                  {{ height: "130px", overflowY: "scroll" }}
                   >
                     {this.state.myComments.map((currentReview) => {
                       return (

@@ -8,6 +8,9 @@ import { createHashHistory } from 'history';
 import { FirebaseAuthProvider } from 'react-admin-firebase'
 import { firebaseConfig } from '../../firebase'
 import simpleRestProvider from 'ra-data-simple-rest'
+import PeopleIcon from '@material-ui/icons/Person'
+import ordersIcon from '@material-ui/icons/CalendarViewDay';
+
 
 const dataProvider = simpleRestProvider('http://localhost:5000');
 
@@ -21,9 +24,9 @@ const history = createHashHistory();
 const AdminsPortal = () => (
 
       <Admin authProvider={authProvider} history={history}  dataProvider={dataProvider}>
-            <Resource name="users" create={UserCreate} edit={UserEdit} list={UserList} />
+            <Resource name="users" icon={PeopleIcon} create={UserCreate} edit={UserEdit} list={UserList} />
             <Resource name="products" create={ProductsCreate}  edit={ProductsEdit} list={ProductsList} /> 
-            <Resource name="orders"  edit={OrdersEdit} list={OrdersList} />
+            <Resource name="orders"  icon={ordersIcon}  edit={OrdersEdit} list={OrdersList} />
       </Admin>
 
   );

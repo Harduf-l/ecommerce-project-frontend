@@ -1,5 +1,5 @@
 import { List, Datagrid, TextField, ImageField,Create, EditButton 
-        ,ReferenceInput,SelectInput, TextInput, SimpleForm, Edit
+        ,ReferenceInput,SelectInput, TextInput, SimpleForm, Edit, BooleanField, BooleanInput
         } from 'react-admin';
 
 
@@ -8,16 +8,10 @@ export const UserList = props => (
         <Datagrid rowClick="edit">
         <TextField source="id" />
         <TextField source="name" />
-        <TextField source="age" />
-
-{/* 
-        <ReferenceField source="role" reference="roles">
-                <TextField source="name" />
-        </ReferenceField>
-        <ReferenceField source="role" reference="roles">
-                <TextField source="capabilities" />
-        </ReferenceField> */}
-        
+        <TextField source="phone" />
+        <TextField source="email" />
+        <TextField source="address" />
+        <BooleanField source="active" />
         <EditButton />
         </Datagrid>
     </List>
@@ -25,19 +19,30 @@ export const UserList = props => (
 
 
 export const UserEdit = (props) => (
-        <Edit {...props}>
-          <SimpleForm>
-            <TextInput source="name" />
-            <TextInput source="age" />
-          </SimpleForm>
-        </Edit>
-      );
-    
-      export const UserCreate = (props) => (
-        <Create {...props}>
-          <SimpleForm>
-            <TextInput source="name" />
-            <TextInput source="age" />
-          </SimpleForm>
-        </Create>
-      );
+  <Edit {...props}>
+    <SimpleForm>
+    <TextInput disabled source="id" />
+      <TextInput source="name" />
+      <TextInput source="phone" />
+      <TextInput source="email" />
+      <TextField source="address" />
+      <BooleanInput source="active" />
+    </SimpleForm>
+  </Edit>
+);
+
+
+export const UserCreate = (props) => (
+  <Create {...props}>
+        <SimpleForm>
+    <TextInput source="id" />
+      <TextInput source="name" />
+      <TextInput source="phone" />
+      <TextInput source="email" />
+      <TextField source="address" />
+      <TextField source="active" />
+      <BooleanField source="active" />
+    </SimpleForm>
+  </Create>
+);
+  
