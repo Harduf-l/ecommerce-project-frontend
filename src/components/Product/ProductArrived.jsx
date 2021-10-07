@@ -24,6 +24,9 @@ class Product extends React.Component {
     // this.props.myProduct = this.findProductById(this.props.match.params.id);
 
     this.state = {
+      contentError: "",
+      titleError: "",
+      nameError: "",
       headerReview: "",
       contentReview: "",
       nameReview: "",
@@ -146,12 +149,6 @@ class Product extends React.Component {
     this.addReview = (e) => {
       e.preventDefault()
 
-      // if (this.state.starsInserted &&
-      //   this.state.headerReview &&
-      //   this.state.contentReview &&
-      //   this.state.nameReview &&
-      //   this.props.myProduct.id) {
-
           let reviewId = Date.now()
 
           const newReview = {
@@ -175,9 +172,24 @@ class Product extends React.Component {
               formClasses: "mt-4 d-none",
               contentReview: "",
               nameReview: "",
-              starsInserted: 5
+              starsInserted: 5,
+              nameError: "",
+              titleError: "",
+              contentError: ""
             });
-          }).catch((err)=> {console.log(err.response.data)})
+          }).catch((err)=> {console.log(err.response.data)
+            this.setState({
+              nameError: "",
+              titleError: "",
+              contentError: ""
+            }, ()=> {
+              err.response.data.map((element) => {
+                console.log("hi")
+                console.log(element.field)
+                this.setState({ [element.field + "Error"]: element.field + " " + element.message })
+              })
+            })
+          })
         
     }
 
@@ -431,7 +443,7 @@ class Product extends React.Component {
                               textAlign: "end",
                             }}
                           >
-                            {currentReview.userName}
+                            {currentReview.name}
                           </p>
                         </div>
                       );
@@ -467,8 +479,9 @@ class Product extends React.Component {
                   </label>
                   <input value={this.state.nameReview} onChange={(e)=>{this.setState({nameReview: e.target.value})}}
                   type="text" class="form-control" id="nameInput" />
+                  <div className="reviewError">{this.state.nameError}</div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" style={{paddingTop: "10px"}}>
                   <label for="headerInput" class="form-label">
                     Header
                   </label>
@@ -476,9 +489,10 @@ class Product extends React.Component {
                   value={this.state.headerReview}
                   onChange={(e)=>{this.setState({headerReview: e.target.value})}}
                   type="text" class="form-control" id="headerInput" />
+                  <div className="reviewError">{this.state.titleError}</div>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3" style={{paddingTop: "10px"}}>
                   <div>Your rating</div>
                   <ReactStars
                     count={5}
@@ -489,7 +503,7 @@ class Product extends React.Component {
                   />
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3" >
                   <label for="contentInput" class="form-label">
                     Content
                   </label>
@@ -502,13 +516,14 @@ class Product extends React.Component {
                     class="form-control"
                     id="contentInput"
                   ></textarea>
+                  <div className="reviewError">{this.state.contentError}</div>
                 </div>
 
                 <button
                   onClick={(e)=> this.addReview(e)}
                   type="submit"
                   class="btn btn-light"
-                  style={{ border: "2px solid #dadada" }}
+                  style={{ border: "2px solid #dadada", marginTop: "15px" }}
                 >
                   Submit
                 </button>
