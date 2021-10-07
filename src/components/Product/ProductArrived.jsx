@@ -160,10 +160,7 @@ class Product extends React.Component {
             id: reviewId
           };
 
-          let commentsArray = [...this.state.myComments]
-          commentsArray.push(newReview)
 
-          this.setState({myComments: commentsArray})
           
           axios.post("http://localhost:5000/reviews", newReview).then((res) => {
             window.scrollTo(0, 0);
@@ -176,8 +173,13 @@ class Product extends React.Component {
               nameError: "",
               titleError: "",
               contentError: ""
+            }, ()=> {
+              let commentsArray = [...this.state.myComments]
+              commentsArray.push(newReview)
+              this.setState({myComments: commentsArray})
             });
-          }).catch((err)=> {console.log(err.response.data)
+          }).catch((err)=> {
+            console.log(err.response.data)
             this.setState({
               nameError: "",
               titleError: "",
@@ -523,7 +525,7 @@ class Product extends React.Component {
                   onClick={(e)=> this.addReview(e)}
                   type="submit"
                   class="btn btn-light"
-                  style={{ border: "2px solid #dadada", marginTop: "15px" }}
+                  style={{ border: "2px solid #dadada", marginTop: "10px" }}
                 >
                   Submit
                 </button>
