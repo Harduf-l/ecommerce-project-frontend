@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import React from 'react'
 
 let SearchDisplay = ({foodContent}) => {
-  let {header, id, description, pic1,vegan, lowcarb, price,previousPrice } = foodContent
+  let {header, id, description, pic1,vegan, lowcarb, price, salePrice } = foodContent
 
 return(
 
@@ -14,17 +14,17 @@ return(
 
     <div className="col-12">
     <h4 style={{marginBottom: "5px"}}>{header}</h4>
-    <div>
+    <div className="mt-3">
         {vegan && <img style={{padding: "2px"}}src={vegan_pic} alt="vegan"/>}
         {lowcarb && <img style={{padding: "2px"}} src={lowcarb_pic} alt="vegan"/>}
         {!lowcarb && !vegan && <img style={{padding: "2px", visibility:"hidden"}} src={lowcarb_pic} alt="vegan"/>}
       </div>
     </div>
 
-    <div className="col-6">
+    <div className="col-6 mt-3">
       <div>{description}</div>
-      <div style={{textDecoration: "line-through"}}>original price: <span>{previousPrice}$</span></div>
-      <div style={{fontWeight: "bold", color: "#e64723"}}>sale price: {price}$</div>
+      <div style={{textDecoration: "line-through"}}>original price: <span>{price}$</span></div>
+      <div style={{fontWeight: "bold", color: "#e64723"}}>sale price: {salePrice}$</div>
     </div>
 
     <div className="col-6">

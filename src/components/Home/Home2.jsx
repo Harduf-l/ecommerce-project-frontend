@@ -1,119 +1,125 @@
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import cacao_seeds from '../../pictures/superfood/cacao-seeds-original.jpg'
-import React from 'react'
-import Carousel2 from './Carousel2'
-import allproducts from '../Data/allproducts'
-
-
+import React from "react";
+import Carousel2 from "./Carousel2";
+import axios from "axios";
 
 class Home2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cookiesArray: false,
+      breadsArray: false,
+      superfoodArray: false,
+    };
+  }
 
-    constructor(props) {
-        super(props)
-        this.state = {
-        
-        }
+  componentDidMount() {
+    window.scrollTo(0, 0);
 
-    }
+    axios
+      .get("http://localhost:5000/products/categories/breads")
+      .then((json) => this.setState({ breadsArray: json.data }));
 
-    componentDidMount() {
-        window.scrollTo(0, 0)
-      }
+    axios
+      .get("http://localhost:5000/products/categories/cookies")
+      .then((json) => this.setState({ cookiesArray: json.data }));
 
-returnCookies =()=> {
-    let allMyProducts = [...allproducts]
+    axios
+      .get("http://localhost:5000/products/categories/superfood")
+      .then((json) => this.setState({ superfoodArray: json.data}, ()=> {console.log(this.state.superfoodArray)}));
+  }
 
-    allMyProducts = allMyProducts.filter((element) => 
-    (element.category === "cookies"));
-    if (allMyProducts.length>10){
-        allMyProducts= allMyProducts.splice(0,10)
-    }
-    return allMyProducts
-}
+  render() {
+    return (
+      <div>
+        {this.state.superfoodArray &&
+        <div
+          style={{
+            backgroundImage: `url(${this.state.superfoodArray[1].originalPic})`,
+            backgroundSize: "cover",
+            height: "550px",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        >
+          <div style={{ height: "450px" }}>
+            <p className="shopHomeBackground">
+              Welcome to a world of health and joy
+            </p>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <Link to="/catalog" className="shopSquareBackground">
+              Shop now
+            </Link>
+          </div>
+        </div> }
 
-returnBreads =()=> {
-    let allMyProducts = [...allproducts]
+        <div
+          style={{ maxWidth: "1200px", margin: "0 auto", marginTop: "64px" }}
+        >
+          <span className="homeHeaderSpan">
+            <h2
+              className="homeHeader"
+              style={{ textAlign: "center", marginBottom: "20px" }}
+            >
+              Get to know our new breads collection
+            </h2>
+          </span>
+          <div>
+            {this.state.breadsArray && (
+              <Carousel2 myArray={this.state.breadsArray}></Carousel2>
+            )}
+          </div>
 
-    allMyProducts = allMyProducts.filter((element) => 
-    (element.category === "breads"));
-    if (allMyProducts.length>10){
-        allMyProducts= allMyProducts.splice(0,10)
-    }
-    return allMyProducts
-}
+          <Link
+            to={{ pathname: `/catalog/`, search: `breads` }}
+            className="homeLinks"
+          >
+            <button>Watch more</button>
+          </Link>
 
-returnSuper =()=> {
-    let allMyProducts = [...allproducts]
+          <span className="homeHeaderSpan">
+            <h2
+              className="homeHeader"
+              style={{ textAlign: "center", marginBottom: "20px" }}
+            >
+              Superfood for a perfect health
+            </h2>
+          </span>
+          {this.state.superfoodArray && (
+            <Carousel2 myArray={this.state.superfoodArray}></Carousel2>
+          )}
 
-    allMyProducts = allMyProducts.filter((element) => 
-    (element.category === "superfood"));
-    if (allMyProducts.length>10){
-        allMyProducts= allMyProducts.splice(0,10)
-    }
+          <Link
+            to={{ pathname: `/catalog/`, search: `superfood` }}
+            className="homeLinks"
+          >
+            <button>Watch more</button>
+          </Link>
 
-    return allMyProducts
-}
+          <span className="homeHeaderSpan">
+            <h2
+              className="homeHeader"
+              style={{ textAlign: "center", marginBottom: "20px" }}
+            >
+              Cookies On Sale
+            </h2>
+          </span>
+          {this.state.cookiesArray && (
+            <Carousel2 myArray={this.state.cookiesArray}></Carousel2>
+          )}
 
-
-    render() {
-
-            
-     return (
-
-        <div>
-
-
- <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
-   <div className="carousel-inner">
-     <div className="carousel-item active">
-         <p className="shopHome">Welcome to a world of health and joy</p>
-       <img src={cacao_seeds}  style={{height: "550px", width: "410px", objectFit: "cover", margin: "8px"} } class="d-block w-100" alt="..."/>
-     </div>
-   </div>
- </div> 
-<Link to="/catalog" className="shopSquare">Shop now</Link>
-
-
-<div style={{maxWidth: "1200px", margin: '0 auto', marginTop:'64px' }}>
-<span className="homeHeaderSpan"><h2 className="homeHeader" style={{textAlign: "center", marginBottom: "20px"}}>Get to know our new breads collection</h2></span>
-    <div >
-    <Carousel2 myArray={this.returnBreads()}>
-    </Carousel2>
-    </div>
-
-    <Link to={{ pathname: `/catalog/`, search: `breads` }} className="homeLinks"><button>Watch more</button></Link>
-
-
-    <span className="homeHeaderSpan"><h2 className="homeHeader" style={{textAlign: "center", marginBottom: "20px"}}>Superfood for a perfect health</h2></span>
-    <Carousel2 myArray={this.returnSuper()}>
-
-    </Carousel2>
-
-
-<Link to={{ pathname: `/catalog/`, search: `superfood` }} className="homeLinks"><button>Watch more</button></Link>
-
-
-    <span className="homeHeaderSpan"><h2 className="homeHeader" style={{textAlign: "center", marginBottom: "20px"}}>Cookies On Sale</h2></span>
-    <Carousel2 myArray={this.returnCookies()}>
-  
-        </Carousel2>
-        <Link to={{ pathname: `/catalog/`, search: `cookies` }} className="homeLinks"><button>Watch more</button></Link>
-
-
-    </div>
+          <Link
+            to={{ pathname: `/catalog/`, search: `cookies` }}
+            className="homeLinks"
+          >
+            <button>Watch more</button>
+          </Link>
         </div>
-        
-
-     )
-    }
+      </div>
+    );
+  }
 }
 
-
-
-export default Home2; 
-
-
-
-
-
+export default Home2;

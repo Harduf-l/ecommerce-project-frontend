@@ -163,10 +163,10 @@ class Header extends React.Component {
             Categories
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/cookies" params={{index: 0}}>cookies</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/spreads" params={{index: 1}}>spreads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/breads" params={{index: 2}}>breads</Link></li>
-            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/product/superfood" params={{index: 3}}>superfood</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/categories/cookies" params={{index: 0}}>cookies</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/categories/spreads" params={{index: 1}}>spreads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/categories/breads" params={{index: 2}}>breads</Link></li>
+            <li><Link style={{textAlign: "center"}} className="dropdown-item" to="/categories/superfood" params={{index: 3}}>superfood</Link></li>
           </ul>
         </li>
               <li className="nav-item hovernav">
@@ -174,11 +174,11 @@ class Header extends React.Component {
               Catalog
               </Link>
               </li>
-              <li className="nav-item text-center hovernav" >
+              {/* <li className="nav-item text-center hovernav" >
               <Link style={{color: "#e61a23"}} className="nav-link"  aria-current="page" to="/membersZone">
               Members Zone
               </Link>
-              </li>
+              </li> */}
               <li className="nav-item text-center hovernav" >
               <Link style={{color: "#004369"}} className="nav-link"  aria-current="page" to="/adminsPortal">
               Admins Portal

@@ -1,21 +1,22 @@
 import { List, Datagrid, TextField, ImageField, EditButton 
-,ReferenceInput,SelectInput, TextInput, SimpleForm, Edit
+,ReferenceInput,SelectInput, TextInput, SimpleForm, Edit, Create,
 } from 'react-admin';
 
 
-const productFilters = [
-    <TextInput source="q" label="Search" alwaysOn />,
-];
-
-
-
+// const productFilters = [
+//     <TextInput source="header" label="Search" alwaysOn />,
+// ];
+// filters={productFilters}
 
 
 export const ProductsList = props => (
-    <List  filters={productFilters} {...props}>
+    <List  {...props}>
         <Datagrid>
+            <ImageField source="pic1"/>
             <TextField source="id" />
-            <TextField source="title" />
+            <TextField source="header" label="Name" />
+            <TextField source="price" />
+            <TextField source="salePrice" />
             <EditButton />
         </Datagrid>
     </List>
@@ -25,8 +26,46 @@ export const ProductsList = props => (
 export const ProductsEdit = (props) => (
     <Edit {...props}>
       <SimpleForm>
-      <TextInput source="id" />
-        <TextInput source="title" />
+      <TextInput disabled source="id" />
+        <TextInput source="header" />
+        <TextInput source="rating" />
+        <TextInput source="price" />
+        <TextInput source="salePrice" />
+        <TextInput source="quantity" />
+        <TextInput source="shortDesc" />
+        <TextInput source="longDesc" />
+        <TextInput source="loveDesc" />
+        <TextInput source="storageInfo" />
+        <TextInput source="category" />
+        <TextInput source="vegan" />
+        <TextInput source="lowcarb" />
+        <TextInput source="pic1" />
+        <TextInput source="pic2" />
+        <TextInput source="pic3" />
       </SimpleForm>
     </Edit>
   );
+
+  export const ProductsCreate = (props) => (
+    <Create {...props}>
+          <SimpleForm>
+      <TextInput source="id" />
+        <TextInput source="header" />
+        <TextInput source="rating" />
+        <TextInput source="price" />
+        <TextInput source="salePrice" />
+        <TextInput source="quantity" />
+        <TextInput source="shortDesc" />
+        <TextInput source="longDesc" />
+        <TextInput source="loveDesc" />
+        <TextInput source="storageInfo" />
+        <TextInput source="category" />
+        <TextInput source="vegan" />
+        <TextInput source="lowcarb" />
+        <TextInput source="pic1" />
+        <TextInput source="pic2" />
+        <TextInput source="pic3" />
+      </SimpleForm>
+    </Create>
+  );
+
