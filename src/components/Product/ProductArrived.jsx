@@ -139,6 +139,44 @@ class Product extends React.Component {
               favoriteBtnStyle: { backgroundColor: "#305017", color: "white" },
             });
           }, 1200);
+
+
+
+        ///////////
+        
+      let doesFavExist = false;
+      let loveCart = []
+
+      if (localStorage.getItem("loveCart") == null ) {
+        loveCart = [];
+      } else {
+        loveCart = JSON.parse(localStorage.getItem("loveCart"));
+      }
+
+      if (loveCart) {
+        for (let i = 0; i < loveCart.length; i++) {
+          if (loveCart[i].id === this.props.myProduct.id) {
+            doesFavExist = true;
+          }
+        }
+      }
+
+      if (!doesFavExist) {
+        let productLoved = {
+          id: this.props.myProduct.id,
+          header: this.props.myProduct.header,
+          price: this.props.myProduct.salePrice,
+          pic1: this.props.myProduct.pic1,
+        };
+
+        loveCart.push(productLoved);
+      }
+
+      localStorage.setItem("loveCart", JSON.stringify(loveCart));
+        ///////
+
+
+
         } else {
           window.location = "/login";
         }
@@ -388,7 +426,7 @@ class Product extends React.Component {
                 data-bs-parent="#accordionFlushExample"
               >
                 <div className="accordion-body">
-                  In order to keep cookies fresh as possible, please keep them
+                  In order to keep product fresh as possible, please keep it
                   in the refrigerator.
                   <br />
                   <br /> Delivery free worldwide.

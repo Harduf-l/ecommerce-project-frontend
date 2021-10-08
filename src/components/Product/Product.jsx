@@ -25,7 +25,7 @@ class Product extends React.Component {
       );
     
       axios
-      .get(`http://localhost:5000/reviews/${this.props.match.params.id}`)
+      .get(`http://localhost:5000/reviews/category/${this.props.match.params.id}`)
       .then((json) =>
         this.setState({ myProductComments: json.data })
       );

@@ -125,8 +125,11 @@ class Cart extends React.Component {
               <table className="table smaller-phone-th">
                 <thead>
                   <tr style={{ paddingTop: "80px" }}>
-                    <th style={{ fontWeight: "600", borderColor: "#cecece" }}>
+                  <th style={{ fontWeight: "600", borderColor: "#cecece" }}>
                       <span className="ms-4">Product</span>
+                    </th>
+                    <th style={{ fontWeight: "600", borderColor: "#cecece" }}>
+                      <span className="ms-4"></span>
                     </th>
                     <th style={{ fontWeight: "600", borderColor: "#cecece" }}>
                       Price
@@ -164,13 +167,17 @@ class Cart extends React.Component {
                                 alt={"food product"}
                               />
                             </Link>
-
-                            <span style={{ marginLeft: "10px" }}>
-                              {element.header}
-                            </span>
                           </div>
                         </td>
-
+                        <td
+                          style={{
+                            paddingTop: "30px",
+                            paddingBottom: "30px",
+                            borderColor: "#cecece",
+                          }}
+                        >
+                          {element.header}
+                        </td>
                         <td
                           style={{
                             paddingTop: "30px",
@@ -265,7 +272,7 @@ class Cart extends React.Component {
           </div>
 
           <div
-            className="col-lg-5 col-12 ps-4 pt-2 "
+            className="col-lg-5 col-12 ps-4 pt-2 pb-3 "
             style={{ backgroundColor: "#f2f5f3" }}
           >
             <h4
