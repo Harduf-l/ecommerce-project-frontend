@@ -1,22 +1,6 @@
 import happyFamily from '../../pictures/happyFamily.jpg'
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 
 let About = () => {
-
-    ///// code not in use /////
-
-    const [user, setUser] = useState([]);
-
-
-    useEffect(() => {
-        axios.get("http://localhost:5000/users")
-        .then((res) => {
-            console.log(res.data[0])
-            setUser(res.data[0])
-        },);
-      }, []);
-    /////////
       
     return(
         <div>

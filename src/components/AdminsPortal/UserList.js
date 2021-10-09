@@ -25,7 +25,7 @@ export const UserEdit = (props) => (
       <TextInput source="name" />
       <TextInput source="phone" />
       <TextInput source="email" />
-      <TextField source="address" />
+      <TextInput source="address" />
       <BooleanInput source="active" />
     </SimpleForm>
   </Edit>

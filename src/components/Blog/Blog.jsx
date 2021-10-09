@@ -184,7 +184,6 @@ class Blog extends React.Component {
 
         {this.state.posts &&
           this.state.posts.map((post) => {
-            console.log(post);
             return (
               <div
                 style={{

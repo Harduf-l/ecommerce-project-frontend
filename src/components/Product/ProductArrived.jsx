@@ -20,9 +20,7 @@ import axios from "axios";
 class Product extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.myComments)
-    // this.props.myProduct = this.findProductById(this.props.match.params.id);
-
+    
     this.state = {
       contentError: "",
       titleError: "",
@@ -217,15 +215,12 @@ class Product extends React.Component {
               this.setState({myComments: commentsArray})
             });
           }).catch((err)=> {
-            console.log(err.response.data)
             this.setState({
               nameError: "",
               titleError: "",
               contentError: ""
             }, ()=> {
               err.response.data.map((element) => {
-                console.log("hi")
-                console.log(element.field)
                 this.setState({ [element.field + "Error"]: element.field + " " + element.message })
               })
             })

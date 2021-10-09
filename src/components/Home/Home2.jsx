@@ -27,7 +27,7 @@ class Home2 extends React.Component {
 
     axios
       .get("http://localhost:5000/products/categories/superfood")
-      .then((json) => this.setState({ superfoodArray: json.data}, ()=> {console.log(this.state.superfoodArray)}));
+      .then((json) => this.setState({ superfoodArray: json.data}, ));
   }
 
   render() {

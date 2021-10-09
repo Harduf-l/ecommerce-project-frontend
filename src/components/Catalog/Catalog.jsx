@@ -92,7 +92,7 @@ class Catalog extends React.Component {
         filteredProducts: allMyProducts,
         filteredProductsPage: allMyProducts
         })
-        console.log(this.state.allProducts)
+
     }).then(()=> {
         this.fixFilteredPage()
     }).then(()=> {
@@ -270,7 +270,7 @@ class Catalog extends React.Component {
         let currentArray = [...this.state.filteredProducts];
         let val = Number(e.target.innerHTML);
 
-        console.log(currentArray)
+
 
         let newMin = (val-1) * 9 
         let newMax = newMin + 9
@@ -278,12 +278,10 @@ class Catalog extends React.Component {
             newMax = currentArray.length
         }
 
-        console.log(newMin)
-        console.log(newMax)
 
         currentArray = currentArray.slice(newMin, newMax)
         this.setState({currentPage: val})
-        console.log(currentArray)
+
         this.setState({filteredProductsPage: currentArray})
       };
 

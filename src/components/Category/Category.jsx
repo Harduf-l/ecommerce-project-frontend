@@ -18,16 +18,17 @@ class Category extends React.Component {
 
 
     axios.get(`http://localhost:5000/products/categories/${this.props.name}`).then((json) =>
-      this.setState({ productsArray: json.data }, () => {console.log(this.state.productsArray)})
+      this.setState({ productsArray: json.data })
     );
 
     }
 
     componentWillReceiveProps(nextProps) {
+
         this.setState({productsArray: false})
 
         axios.get(`http://localhost:5000/products/categories/${nextProps.name}`).then((json) =>
-        this.setState({ productsArray: json.data }, () => {console.log(this.state.productsArray)})
+        this.setState({ productsArray: json.data })
       );
 
     }
