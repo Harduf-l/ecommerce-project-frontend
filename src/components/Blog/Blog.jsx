@@ -120,34 +120,34 @@ class Blog extends React.Component {
     if (emailField && nameField && contentField) {
       let myNumber = postId;
       let newComment = {
+        id: Date.now(),
         postId: +myNumber,
         name: this.state["currNameComment" + postId],
         email: this.state["currEmailComment" + postId],
         body: this.state["currContentComment" + postId],
       };
 
-      let currentCommentsArray;
-
-      if (this.state["commentArray_" + postId]) {
-        currentCommentsArray = [
-          newComment,
-          ...this.state["commentArray_" + postId],
-        ];
-      } else {
-        currentCommentsArray = [newComment];
-      }
-
-      this.setState({
-        ["commentArray_" + postId]: currentCommentsArray,
-      });
+     
       //
 
       axios.post("http://localhost:5000/comments", newComment).then((res) => {
+        let currentCommentsArray;
+
+        if (this.state["commentArray_" + postId]) {
+          currentCommentsArray = [
+            newComment,
+            ...this.state["commentArray_" + postId],
+          ];
+        } else {
+          currentCommentsArray = [newComment];
+        }
+
         this.setState({
           ["currNameComment" + postId]: "",
           ["currEmailComment" + postId]: "",
           ["currContentComment" + postId]: "",
           ["style" + postId]: "mt-4 d-none",
+          ["commentArray_" + postId]: currentCommentsArray,
         });
       });
     }
@@ -211,7 +211,7 @@ class Blog extends React.Component {
                         margin: "8px",
                       }}
                       src={post.img}
-                      alt="blog-picture"
+                      alt="blog"
                     />
                   </div>
                 </div>

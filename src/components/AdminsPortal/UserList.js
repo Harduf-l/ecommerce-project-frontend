@@ -1,5 +1,5 @@
-import { List, Datagrid, TextField, ImageField,Create, EditButton 
-        ,ReferenceInput,SelectInput, TextInput, SimpleForm, Edit, BooleanField, BooleanInput
+import { List, Datagrid, TextField, Create, EditButton 
+        , TextInput, SimpleForm, Edit, BooleanField, BooleanInput
         } from 'react-admin';
 
 
@@ -8,6 +8,7 @@ export const UserList = props => (
         <Datagrid rowClick="edit">
         <TextField source="id" />
         <TextField source="name" />
+        <TextField source="orders" />
         <TextField source="phone" />
         <TextField source="email" />
         <TextField source="address" />

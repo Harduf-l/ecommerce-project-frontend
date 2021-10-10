@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 import googlePic from '../../pictures/baners/google.png'
-import { signUpWithGoogle } from "../../firebase";
+import { signInWithGoogle } from "../../firebase";
 
 export default function Signup(props) {
   const emailRef = useRef()
@@ -18,7 +18,7 @@ export default function Signup(props) {
 
  function googleAndDirect() {
 
-  signUpWithGoogle(props.checkUserName)
+  signInWithGoogle(props.checkUserName)
     
    
 }
@@ -33,7 +33,7 @@ export default function Signup(props) {
       setError("")
       setLoading(true)
       localStorage.setItem("name", nameRef.current.value) 
-      await signup(emailRef.current.value, passwordRef.current.value)
+      await signup(emailRef.current.value, passwordRef.current.value, nameRef.current.value)
       history.push("/dashboard")
       props.checkUserName()
     } catch {

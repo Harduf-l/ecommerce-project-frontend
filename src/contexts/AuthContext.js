@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { auth } from "../firebase"
+import axios from "axios";
 
 const AuthContext = React.createContext()
 
@@ -11,9 +12,35 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
 
-  function signup(email, password) {
+  function signup(email, password, name) {
     return auth.createUserWithEmailAndPassword(email, password)
     .then(function(result) {
+
+      let sign; 
+
+      axios
+      .get(`http://localhost:5000/users/email/${email}`)
+      .then((json) =>
+        sign = typeof json.data 
+      ).then(() => {
+        if (sign === "string") {
+          let newUser = {
+            id: Date.now(),
+            name:  name,
+            email: email,
+            active: true,
+            orders: []
+          }
+          axios
+          .post("http://localhost:5000/users", newUser)
+          .then ((json) => {
+            console.log(json)
+          }
+          )
+        }
+      })
+
+
       return result.user.updateProfile({
         displayName: localStorage.getItem("name")
       })

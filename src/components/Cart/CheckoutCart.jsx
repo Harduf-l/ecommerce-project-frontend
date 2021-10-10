@@ -47,7 +47,7 @@ componentDidMount()  {
 
     return(
 
-        <div class="table-responsive justify-content-center flex d-flex pt-2">
+        <div className="table-responsive justify-content-center flex d-flex pt-2">
             <table className="table smaller-phone-th"  style={{width: "450px"}}>
                 <thead style={{display: "block"}}>
                 <tr>
@@ -63,7 +63,7 @@ componentDidMount()  {
                 </thead>
                 <tbody style={{'height': '160px', 'overflowY':'scroll', 'display': 'block'}}>
             {this.state.cartArray.map((element, index)=>{
-                return  <tr style={{borderColor: "black"}}>
+                return  <tr key={index} style={{borderColor: "black"}}>
                     
                     <td style={{borderColor: "#cecece", width: "280px"}}>
                     <div className="flex d-flex flex-wrap align-items-center">
@@ -107,3 +107,10 @@ componentDidMount()  {
 }
 
 export default CheckoutCart
+
+
+
+
+
+
+

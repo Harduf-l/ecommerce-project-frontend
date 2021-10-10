@@ -39,9 +39,9 @@ import { List, Datagrid, TextField,EditButton
             <SelectInput source="status" choices={[
             { id: 'payment accepted', name: 'payment accepted' },
             { id: 'left warehouse', name: 'left warehouse' },
-            { id: 'left warehouse', name: 'on the way' },
-            { id: 'left warehouse', name: 'arrived country destination' },
-            { id: 'photography', name: 'delivery completed' },
+            { id: 'on the way', name: 'on the way' },
+            { id: 'arrived country destination', name: 'arrived country destination' },
+            { id: 'delivery completed', name: 'delivery completed' },
 ]} />
           </SimpleForm>
         </Edit>

@@ -1,5 +1,5 @@
-import { List, Datagrid, TextField, ImageField,Create, EditButton 
-    ,ReferenceInput,SelectInput, TextInput, SimpleForm, Edit, BooleanField, BooleanInput
+import { List, Datagrid, TextField,Create, EditButton 
+    , TextInput, SimpleForm, Edit, 
     } from 'react-admin';
 
 

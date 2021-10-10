@@ -211,7 +211,7 @@ class Product extends React.Component {
               contentError: ""
             }, ()=> {
               let commentsArray = [...this.state.myComments]
-              commentsArray.push(newReview)
+              commentsArray.unshift(newReview)
               this.setState({myComments: commentsArray})
             });
           }).catch((err)=> {

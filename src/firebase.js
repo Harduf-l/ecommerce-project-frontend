@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import "firebase/auth"
-
+import axios from "axios";
 
 
 const app = firebase.initializeApp({
@@ -36,8 +36,36 @@ const googleProvider = new firebase.auth.GoogleAuthProvider()
 
 export const signInWithGoogle = (myfunc) => {
   auth.signInWithPopup(googleProvider).then((res) => {
+    console.log(res.user)
     return res.user
   }).then((user) => {
+        console.log(user.email)
+        console.log(user.displayName)
+
+        let sign; 
+
+        axios
+        .get(`http://localhost:5000/users/email/${user.email}`)
+        .then((json) =>
+          sign = typeof json.data 
+        ).then(() => {
+          if (sign === "string") {
+            let newUser = {
+              id: Date.now(),
+              name:  user.displayName,
+              email: user.email,
+              active: true,
+              orders: []
+            }
+            axios
+            .post("http://localhost:5000/users", newUser)
+            .then ((json) => {
+              console.log(json)
+            }
+            )
+          }
+        })
+
         localStorage.setItem("name", user.displayName)
         myfunc()
         window.location = '/dashboard'
@@ -47,16 +75,3 @@ export const signInWithGoogle = (myfunc) => {
   })
 }
 
-
-export const signUpWithGoogle = (myfunc) => {
-  auth.signInWithPopup(googleProvider).then((res) => {
-    return res.user
-  }).then((user) => {
-        localStorage.setItem("name", user.displayName)
-        myfunc()
-        window.location = '/dashboard'
-    })
-  .catch((error) => {
-    console.log(error.message)
-  })
-}
