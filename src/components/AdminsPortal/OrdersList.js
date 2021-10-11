@@ -1,5 +1,5 @@
 import { List, Datagrid, TextField,EditButton 
-    ,ReferenceField, TextInput, SimpleForm, Edit, ArrayField, SelectInput,
+    ,ReferenceField, TextInput, SimpleForm, Edit, ArrayField, SelectInput, ArrayInput
     } from 'react-admin';
     
     
@@ -22,9 +22,10 @@ import { List, Datagrid, TextField,EditButton
                 </Datagrid>
               </ArrayField>
                 <TextField source="status" />
-                <ReferenceField source="customerId" reference="users">
+                <TextField source="firebaseEmail" label="User email"/>
+                {/* <ReferenceField source="customerId" reference="users">
                 <TextField source="name" />
-                </ReferenceField>
+                </ReferenceField> */}
                 <EditButton />
             </Datagrid>
         </List>
@@ -35,7 +36,9 @@ import { List, Datagrid, TextField,EditButton
         <Edit {...props}>
           <SimpleForm>
             {/* <TextInput source="status" /> */}
+
             <TextInput disabled source="id" label="order id" />
+            <TextInput source="orderSubTotal" label="sub total" />
             <SelectInput source="status" choices={[
             { id: 'payment accepted', name: 'payment accepted' },
             { id: 'left warehouse', name: 'left warehouse' },

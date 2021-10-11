@@ -23,6 +23,7 @@ export function AuthProvider({ children }) {
       .then((json) =>
         sign = typeof json.data 
       ).then(() => {
+        console.log(sign)
         if (sign === "string") {
           let newUser = {
             id: Date.now(),
@@ -34,7 +35,7 @@ export function AuthProvider({ children }) {
           axios
           .post("http://localhost:5000/users", newUser)
           .then ((json) => {
-            console.log(json)
+            console.log("baaaaaaaaaaaaaaaaaaaaaa" + json)
           }
           )
         }

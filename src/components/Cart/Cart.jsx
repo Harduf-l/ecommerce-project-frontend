@@ -121,7 +121,7 @@ class Cart extends React.Component {
           style={{ margin: "0 auto", marginTop: "30px" }}
         >
           <div className="col-lg-5 col-12 mb-lg-0 mb-5">
-            <div class="table-responsive">
+            <div className="table-responsive">
               <table className="table smaller-phone-th">
                 <thead>
                   <tr style={{ paddingTop: "80px" }}>

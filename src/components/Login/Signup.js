@@ -26,8 +26,11 @@ export default function Signup(props) {
   async function handleSubmit(e) {
     e.preventDefault()
 
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) 
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match")
+    } else if (passwordRef.current.value.length <= 4) {
+      return setError("Password must contain 6 characters")
+    }
 
     try {
       setError("")

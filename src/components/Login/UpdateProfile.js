@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-
+import axios from "axios";
 
 
 export default function UpdateProfile(props) {
@@ -19,6 +19,8 @@ export default function UpdateProfile(props) {
       logout()
       currentUser.delete()
       .then(() => {
+        axios
+        .delete(`http://localhost:5000/users/email/${currentUser.email}`)
         props.myfunc()
         history.push("/")
       }).catch((error) => {
