@@ -1,5 +1,5 @@
 import { List, Datagrid, TextField,EditButton 
-    ,ReferenceField, TextInput, SimpleForm, Edit, ArrayField, SelectInput, ArrayInput
+    ,ReferenceField, TextInput, SimpleForm, Edit, ArrayField, SelectInput,
     } from 'react-admin';
     
     

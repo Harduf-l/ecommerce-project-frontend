@@ -56,11 +56,17 @@ export default function Dashboard(props) {
     .then(()=> 
     {
       SetConfirmEmail("alert alert-success pt-3")
+      SetBadEmail("alert alert-danger pt-3 d-none")
       setName("")
       setContent("")
       setSubject("")
     })
-    .catch(()=> SetBadEmail("alert alert-danger pt-3"))
+    .catch(()=> 
+    {
+    SetBadEmail("alert alert-danger pt-3")
+    SetConfirmEmail("alert alert-success pt-3 d-none")
+    }
+    )
 
   }
 
@@ -83,7 +89,7 @@ export default function Dashboard(props) {
                 Update Profile
               </Link>
             </Card.Body>
-            <div className="w-100 text-center mt-2 pb-5">
+            <div className="w-100 text-center mt-2 pb-2">
               <Button variant="link" onClick={handleLogout}>
                 Log Out
               </Button>
@@ -95,92 +101,76 @@ export default function Dashboard(props) {
               Your Orders
             </h2>
             {orders.length >= 1 && (
-              <div>
-                <table
-                  style={{ border: "1px #2b3239 solid", color: "#2b3239" }}
-                >
-                  <thead style={myStyle}>
-                    <th
-                      style={{
-                        width: "170px",
-                        border: "1px #2b3239 solid",
-                        paddingLeft: "10px",
-                      }}
-                    >
-                      Id
-                    </th>
-                    <th
-                      style={{
-                        width: "130px",
-                        border: "1px #2b3239 solid",
-                        paddingLeft: "10px",
-                      }}
-                    >
-                      Subtotal
-                    </th>
-                    <th
-                      style={{
-                        width: "280px",
-                        border: "1px #2b3239 solid",
-                        paddingLeft: "10px",
-                      }}
-                    >
-                      Status
-                    </th>
-                    <th
-                      style={{
-                        width: "120px",
-                        border: "1px #2b3239 solid",
-                        paddingLeft: "10px",
-                      }}
-                    >
-                      Delivery
-                    </th>
-                  </thead>
-                  {orders.map((order) => {
-                    return (
-                      <tr>
-                        <td
-                          style={{
-                            width: "170px",
-                            border: "1px #2b3239 solid",
-                            paddingLeft: "10px",
-                          }}
-                        >
-                          {order.id}
-                        </td>
-                        <td
-                          style={{
-                            width: "130px",
-                            border: "1px #2b3239 solid",
-                            paddingLeft: "10px",
-                          }}
-                        >
-                          ${order.orderSubTotal}
-                        </td>
-                        <td
-                          style={{
-                            width: "280px",
-                            border: "1px #2b3239 solid",
-                            paddingLeft: "10px",
-                          }}
-                        >
-                          {order.status}
-                        </td>
-                        <td
-                          style={{
-                            width: "120px",
-                            border: "1px #2b3239 solid",
-                            paddingLeft: "10px",
-                          }}
-                        >
-                          {order.deliveryType}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </table>
-              </div>
+                          <div className="table-responsive mt-2">
+                          <table className="table smaller-phone-th">
+                            <thead>
+                              <tr style={{ paddingTop: "80px" }}>
+                              <th style={{ fontWeight: "600", borderColor: "#cecece" }}>
+                                  <span className="ms-1">Id</span>
+                                </th>
+                                <th style={{ fontWeight: "600", borderColor: "#cecece" }}>
+                                  <span className="">Subtotal</span>
+                                </th>
+                                <th style={{ fontWeight: "600", borderColor: "#cecece" }}>
+                                    Status
+                                </th>
+            
+                                <th style={{ fontWeight: "600", borderColor: "#cecece" }}>
+                                    Shipping
+                                </th>
+            
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {orders.map((order) => {
+                                return (
+                                  <tr style={{ borderColor: "black" }}>
+                                    <td
+                                      style={{
+                                        paddingTop: "30px",
+                                        paddingBottom: "30px",
+                                        borderColor: "#cecece",
+                                      }}
+                                    >
+                                      {order.id}
+                                    </td>
+
+                                    <td
+                                      style={{
+                                        paddingTop: "30px",
+                                        paddingBottom: "30px",
+                                        borderColor: "#cecece",
+                                      }}
+                                    >
+                                      ${order.orderSubTotal}
+                                    </td>
+
+                                    <td
+                                      style={{
+                                        paddingTop: "30px",
+                                        paddingBottom: "30px",
+                                        borderColor: "#cecece",
+                                      }}
+                                    >
+                                      {order.status}
+                                    </td>
+
+                                    <td
+                                      style={{
+                                        paddingTop: "30px",
+                                        paddingBottom: "30px",
+                                        borderColor: "#cecece",
+                                      }}
+                                    >
+                                      {order.deliveryType}
+                                    </td>
+                                 
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
             )}
             {orders !== false && orders.length === 0 && (
               <div>
@@ -208,7 +198,7 @@ export default function Dashboard(props) {
           </div>
           
           <div className={badEmailSent}>
-            An error occured while trying to send you an email. 
+            An error occured while trying to send your message. 
           </div>
           
 
