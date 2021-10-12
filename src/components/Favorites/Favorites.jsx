@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 let Favorites = () => {
   const [loveArray, setLoveArray] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let currentLoveArray = [];
@@ -17,6 +18,7 @@ let Favorites = () => {
     }
 
     setLoveArray(currentLoveArray);
+    setLoading(false)
   }, []);
 
   let removeItem = (index) => {
@@ -41,7 +43,7 @@ let Favorites = () => {
 
         </thead>
         <tbody>
-          {loveArray.map((item, index) => {
+          {(loveArray.length >= 1 && !loading) && loveArray.map((item, index) => {
             return (
               <tr style={{ borderColor: "black" }}>
                 <td style={{ borderColor: "#cecece" }}>
@@ -100,6 +102,12 @@ let Favorites = () => {
               </tr>
             );
           })}
+          {(loveArray.length === 0 && !loading ) && 
+          <div style={{width: "80%", margin: "0 auto"}}>
+          <div>Nothing in your favorites yet. </div>
+          <Link to="/catalog">Go back shopping</Link>
+          </div>
+          }
         </tbody>
       </table>
     </div>
