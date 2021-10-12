@@ -3,11 +3,6 @@ import { List, Datagrid, TextField,EditButton
     } from 'react-admin';
     
     
-    // const orderFilters = [
-    //     <TextInput source="q" label="Search" alwaysOn />,
-    // ];
-    // filters={orderFilters}
-    
     export const OrdersList = props => (
         <List   {...props}>
             <Datagrid>
@@ -46,6 +41,16 @@ import { List, Datagrid, TextField,EditButton
             { id: 'arrived country destination', name: 'arrived country destination' },
             { id: 'delivery completed', name: 'delivery completed' },
 ]} />
+
+
+<ArrayField source="products">
+                <Datagrid>
+                    <TextField source="header" label="name" />
+                    <TextField source="price" />
+                    <TextField source="quantity" />
+                </Datagrid>
+              </ArrayField>
+              
           </SimpleForm>
         </Edit>
       );

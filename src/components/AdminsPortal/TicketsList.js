@@ -29,7 +29,6 @@ export const TicketEdit = (props) => (
             { id: 'accepted', name: 'accepted' },
             { id: 'rejected', name: 'rejected' },
             { id: 'closed', name: 'closed' },
-
 ]} />
 
     <TextInput source="response"/>
