@@ -20,7 +20,7 @@ class Blog extends React.Component {
         let postsList = json.data;
 
         postsList.map((element) => {
-          this.setState({ ["style" + element.id]: "mt-4 d-none" });
+          return this.setState({ ["style" + element.id]: "mt-4 d-none" });
         });
       })
     );
@@ -30,16 +30,15 @@ class Blog extends React.Component {
       .then((json) => {
         let jsoni = json.data;
 
-        jsoni.map((currentComment) => {
+        jsoni.forEach((currentComment) => {
           let currentCommentsArray;
-
           if (!this.state["commentArray_" + currentComment.postId]) {
             currentCommentsArray = [currentComment];
           } else {
             currentCommentsArray = [
               currentComment,
               ...this.state["commentArray_" + currentComment.postId],
-            ];
+            ]; 
           }
 
           this.setState({

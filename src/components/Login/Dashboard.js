@@ -14,7 +14,6 @@ export default function Dashboard(props) {
 
   const { currentUser, logout } = useAuth();
   const history = useHistory();
-  const myStyle = { border: "1px #2b3239 solid", color: "#2b3239" };
 
   const [orders, setOrders] = useState(false);
 

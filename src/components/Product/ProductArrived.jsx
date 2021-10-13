@@ -221,7 +221,7 @@ class Product extends React.Component {
               contentError: ""
             }, ()=> {
               err.response.data.map((element) => {
-                this.setState({ [element.field + "Error"]: element.field + " " + element.message })
+                return this.setState({ [element.field + "Error"]: element.field + " " + element.message })
               })
             })
           })
