@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
       let sign; 
 
       axios
-      .get(`http://localhost:5000/users/email/${email}`)
+      .get(`${process.env.REACT_APP_API_URL}/users/email/${email}`)
       .then((json) =>
         sign = typeof json.data 
       ).then(() => {
@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
             orders: []
           }
           axios
-          .post("http://localhost:5000/users", newUser)
+          .post(`${process.env.REACT_APP_API_URL}/users`, newUser)
           .then ((json) => {
             console.log("baaaaaaaaaaaaaaaaaaaaaa" + json)
           }

@@ -17,7 +17,7 @@ class Product extends React.Component {
     window.scrollTo(0, 0);
 
     axios
-      .get(`http://localhost:5000/products/${this.props.match.params.id}`)
+      .get(`${process.env.REACT_APP_API_URL}/products/${this.props.match.params.id}`)
       .then((json) =>
         this.setState({ myProduct: json.data }, () => {
 
@@ -25,7 +25,7 @@ class Product extends React.Component {
       );
     
       axios
-      .get(`http://localhost:5000/reviews/category/${this.props.match.params.id}`)
+      .get(`${process.env.REACT_APP_API_URL}/reviews/category/${this.props.match.params.id}`)
       .then((json) =>
         this.setState({ myProductComments: json.data })
       );

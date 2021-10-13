@@ -20,7 +20,7 @@ export default function UpdateProfile(props) {
       currentUser.delete()
       .then(() => {
         axios
-        .delete(`http://localhost:5000/users/email/${currentUser.email}`)
+        .delete(`${process.env.REACT_APP_API_URL}/users/email/${currentUser.email}`)
         props.myfunc()
         history.push("/")
       }).catch((error) => {

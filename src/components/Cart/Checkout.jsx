@@ -85,7 +85,7 @@ let Checkout = (props) => {
                 "firebaseEmail": firebaseEmail
               };
 
-            axios.post("http://localhost:5000/orders", newOrder).then((res) => {
+            axios.post(`${process.env.REACT_APP_API_URL}/orders`, newOrder).then((res) => {
                 document.getElementById("zipcodeField").value=""
 
                 document.getElementById("firstNameField").value=""
@@ -115,7 +115,7 @@ let Checkout = (props) => {
               if (currentUser) {
 
               axios
-              .get(`http://localhost:5000/users/email/${firebaseEmail}`)
+              .get(`${process.env.REACT_APP_API_URL}/users/email/${firebaseEmail}`)
               .then((json) => {
                 return json.data.orders
               }).then((ordersAbove) => {
@@ -136,7 +136,7 @@ let Checkout = (props) => {
                   let newUser = {
                       orders: newArrayOfOrders
                   }
-                  axios.put(`http://localhost:5000/users/email/${firebaseEmail}`, newUser)
+                  axios.put(`${process.env.REACT_APP_API_URL}/users/email/${firebaseEmail}`, newUser)
 
               })
             }

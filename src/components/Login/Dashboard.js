@@ -22,7 +22,7 @@ export default function Dashboard(props) {
   const [content, setContent] = useState("")
 
   axios
-    .get(`http://localhost:5000/orders/email/${currentUser.email}`)
+    .get(`${process.env.REACT_APP_API_URL}/orders/email/${currentUser.email}`)
     .then((json) => setOrders(json.data));
 
   async function handleLogout() {
@@ -51,7 +51,7 @@ export default function Dashboard(props) {
     }
 
     axios
-    .post(`http://localhost:5000/tickets`, newTicket )
+    .post(`${process.env.REACT_APP_API_URL}/tickets`, newTicket )
     .then(()=> 
     {
       SetConfirmEmail("alert alert-success pt-3")
