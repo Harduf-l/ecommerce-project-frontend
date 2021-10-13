@@ -18,15 +18,15 @@ class Home2 extends React.Component {
     window.scrollTo(0, 0);
 
     axios
-      .get("http://localhost:5000/products/categories/breads")
+      .get(`${process.env.REACT_APP_API_URL}/products/categories/breads`)
       .then((json) => this.setState({ breadsArray: json.data }));
 
     axios
-      .get("http://localhost:5000/products/categories/cookies")
+      .get(`${process.env.REACT_APP_API_URL}/products/categories/cookies`)
       .then((json) => this.setState({ cookiesArray: json.data }));
 
     axios
-      .get("http://localhost:5000/products/categories/superfood")
+      .get(`${process.env.REACT_APP_API_URL}/products/categories/superfood`)
       .then((json) => this.setState({ superfoodArray: json.data}, ));
   }
 

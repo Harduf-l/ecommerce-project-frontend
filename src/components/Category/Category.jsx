@@ -17,7 +17,7 @@ class Category extends React.Component {
     componentDidMount() {
 
 
-    axios.get(`http://localhost:5000/products/categories/${this.props.name}`).then((json) =>
+    axios.get(`${process.env.REACT_APP_API_URL}/products/categories/${this.props.name}`).then((json) =>
       this.setState({ productsArray: json.data })
     );
 
@@ -27,7 +27,7 @@ class Category extends React.Component {
 
         this.setState({productsArray: false})
 
-        axios.get(`http://localhost:5000/products/categories/${nextProps.name}`).then((json) =>
+        axios.get(`${process.env.REACT_APP_API_URL}/products/categories/${nextProps.name}`).then((json) =>
         this.setState({ productsArray: json.data })
       );
 

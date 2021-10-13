@@ -15,7 +15,7 @@ class Blog extends React.Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    axios.get("http://localhost:5000/posts").then((json) =>
+    axios.get(`${process.env.REACT_APP_API_URL}/posts`).then((json) =>
       this.setState({ posts: json.data }, () => {
         let postsList = json.data;
 
@@ -26,7 +26,7 @@ class Blog extends React.Component {
     );
 
     axios
-      .get("http://localhost:5000/comments")
+      .get(`${process.env.REACT_APP_API_URL}/comments`)
       .then((json) => {
         let jsoni = json.data;
 
@@ -129,7 +129,7 @@ class Blog extends React.Component {
      
       //
 
-      axios.post("http://localhost:5000/comments", newComment).then((res) => {
+      axios.post(`${process.env.REACT_APP_API_URL}/comments`, newComment).then((res) => {
         let currentCommentsArray;
 
         if (this.state["commentArray_" + postId]) {

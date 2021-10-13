@@ -19,13 +19,15 @@ import { firebaseConfig } from '../../firebase'
 import simpleRestProvider from 'ra-data-simple-rest'
 import PeopleIcon from '@material-ui/icons/Person'
 import ordersIcon from '@material-ui/icons/CalendarViewDay';
-import ReviewsIcon from '@mui/icons-material/Reviews';
-import myDashboard from './Dashboard'
-import TimelineIcon from '@mui/icons-material/Timeline';
-import CommentIcon from '@mui/icons-material/Comment';
-import NoteIcon from '@mui/icons-material/Note';
 
-const dataProvider = simpleRestProvider('http://localhost:5000');
+import myDashboard from './Dashboard'
+
+// import ReviewsIcon from '@mui/icons-material/Reviews';
+// import TimelineIcon from '@mui/icons-material/Timeline';
+// import CommentIcon from '@mui/icons-material/Comment';
+// import NoteIcon from '@mui/icons-material/Note';
+
+const dataProvider = simpleRestProvider(process.env.REACT_APP_API_URL);
 
 
 const options = {}
@@ -48,10 +50,10 @@ return (
             <Resource name="users" icon={PeopleIcon} create={UserCreate} edit={UserEdit} list={UserList} />
             <Resource name="products" create={ProductsCreate}  edit={ProductsEdit} list={ProductsList} /> 
             <Resource name="orders"  icon={ordersIcon}  edit={OrdersEdit} list={OrdersList} />
-            <Resource name="reviews" icon={ReviewsIcon}  create={ReviewCreate} edit={ReviewEdit} list={ReviewList} />
-            <Resource name="comments" icon={CommentIcon}  create={CommentsCreate} edit={CommentsEdit} list={CommentsList} />
-            <Resource name="tickets" icon={NoteIcon}  edit={TicketEdit} list={TicketList} />
-            <Resource name="graphs" icon={TimelineIcon}  list={chart} />
+            <Resource name="reviews"   create={ReviewCreate} edit={ReviewEdit} list={ReviewList} />
+            <Resource name="comments"   create={CommentsCreate} edit={CommentsEdit} list={CommentsList} />
+            <Resource name="tickets"   edit={TicketEdit} list={TicketList} />
+            <Resource name="graphs"   list={chart} />
       </Admin>
 )
 

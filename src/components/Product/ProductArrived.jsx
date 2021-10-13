@@ -198,7 +198,7 @@ class Product extends React.Component {
 
 
           
-          axios.post("http://localhost:5000/reviews", newReview).then((res) => {
+          axios.post(`${process.env.REACT_APP_API_URL}/reviews`, newReview).then((res) => {
             window.scrollTo(0, 0);
             this.setState({
               headerReview: "",
