@@ -321,7 +321,6 @@ class Product extends React.Component {
             edit={false}
             activeColor="#e64723"
           />
-          ,
           {this.props.myProduct.vegan && (
             <img
               style={{ padding: "2px", marginTop: "10px" }}

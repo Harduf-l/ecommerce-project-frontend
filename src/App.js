@@ -14,6 +14,10 @@ import Page404 from './components/Page404/Page404'
 import Home2 from './components/Home/Home2'
 import Signup from './components/Login/Signup'
 import PrivateRoute from './components/Login/PrivateRoute'
+import PrivateRouteAdmin from './components/Login/PrivateRouteAdmin.js'
+
+
+
 import Dashboard from './components/Login/Dashboard'
 import UpdateProfile from './components/Login/UpdateProfile'
 import Login from './components/Login/Login'
@@ -81,6 +85,7 @@ render() {
               <Route path="/contact" component={Contact} />
               <Route path="/about" component={About} />
               <Route path="/blog" component={Blog} />
+              {/* <Route path="/adminsPortal" component={AdminsPortal} /> */}
               <Route path="/categories/cookies" render={() => <Category name = "cookies"/>}/>
               <Route path="/categories/spreads" render={() => <Category name = "spreads"/>}/>
               <Route path="/categories/breads" render={() => <Category name = "breads"/>}/>
@@ -89,11 +94,11 @@ render() {
               {/* <Route path="/ordercompleted" component={OrderCompleted} /> */}
               <Route path="/cart" render={(props) => <Cart  {...props}/>} />    
               
+              <PrivateRouteAdmin path="/adminsPortal" component={AdminsPortal}/>
               <PrivateRoute path="/favorites" component={Favorites} myfunc={this.checkUserName}/>
 
               <PrivateRoute path="/membersZone" component={Members} myfunc={this.checkUserName}/>
-              <PrivateRoute path="/adminsPortal" component={AdminsPortal} myfunc={this.checkUserName}/>
-              
+
               <PrivateRoute path="/dashboard" component={Dashboard} myfunc={this.checkUserName} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} myfunc={this.checkUserName} />
               <Route path="/signup"  render={(props) => <Signup checkUserName={this.checkUserName} {...props}/>} />
