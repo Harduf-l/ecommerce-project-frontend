@@ -59,6 +59,9 @@ class Blog extends React.Component {
     }
 
     if (/[a-zA-Z0-9-_.]+@[a-z]+.[a-z]{2,4}/gm.test(string)) {
+      this.setState({
+        ["errorEmailField" + postId]: "",
+      });
       return true;
     } else {
       this.setState({
@@ -79,6 +82,9 @@ class Blog extends React.Component {
     }
 
     if (/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(string)) {
+      this.setState({
+        ["errorNameField" + postId]: "",
+      });
       return true;
     } else {
       this.setState({
@@ -97,6 +103,10 @@ class Blog extends React.Component {
 
       return false;
     }
+
+    this.setState({
+      ["errorContentField" + postId]: "",
+    })
     return true;
   };
 

@@ -8,7 +8,6 @@ import organic from "../../pictures/baners/organic.png";
 import React from "react";
 
 import { NavLink } from "react-router-dom";
-import allproducts from "../Data/allproducts";
 
 import { auth } from "../../firebase";
 
@@ -185,6 +184,13 @@ class Product extends React.Component {
     this.addReview = (e) => {
       e.preventDefault()
 
+
+      // if ( this.state.starsInserted && this.state.headerReview
+      //   && this.state.contentReview && this.state.nameReview
+      //   &&this.props.myProduct.id )
+
+      // {
+      
           let reviewId = Date.now()
 
           const newReview = {
@@ -225,7 +231,7 @@ class Product extends React.Component {
               })
             })
           })
-        
+      // }
     }
 
 
@@ -274,11 +280,6 @@ class Product extends React.Component {
     };
   }
 
-  findProductById(id) {
-    return allproducts.find((currProduct) => {
-      return currProduct.id === id;
-    });
-  }
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -343,12 +344,22 @@ class Product extends React.Component {
               <i className="fas fa-heart"></i>
             </span>
           </p>
+
+          {(this.props.myProduct.price > this.props.myProduct.salePrice) &&
+          <div>
           <div style={{ textDecoration: "line-through" }}>
             Original price: <span>{this.props.myProduct.price}$</span>
           </div>
           <div style={{ fontWeight: "bold", color: "#e64723" }}>
             Sale price: {this.props.myProduct.salePrice}$
           </div>
+          </div>
+          }
+          {(this.props.myProduct.price === this.props.myProduct.salePrice) &&
+          <div  style={{ fontWeight: "bold", color: "#e64723" }}>
+            Price: <span>{this.props.myProduct.price}$</span>
+          </div>
+          }
           <br />
           <span className="me-1">Quantity:</span>
           <span

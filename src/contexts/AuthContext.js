@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
           axios
           .post(`${process.env.REACT_APP_API_URL}/users`, newUser)
           .then ((json) => {
-            console.log("baaaaaaaaaaaaaaaaaaaaaa" + json)
+            console.log(json)
           }
           )
         }
