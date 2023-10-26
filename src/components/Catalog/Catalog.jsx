@@ -70,11 +70,12 @@ class Catalog extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0)
-        
+        console.log("hi 1 before axios get")
         axios.get(`${process.env.REACT_APP_API_URL}/products`)
         .then((json) => {
+        console.log("hey after axios")
         let allMyProducts = [...json.data]
-
+            console.log(allMyProducts.toString())
         allMyProducts =allMyProducts.sort((a, b) => {
             let fa = a.header.toLowerCase(),
                 fb = b.header.toLowerCase();

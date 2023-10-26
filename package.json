@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@react-leaflet/core": "^1.0.2",
     "@testing-library/jest-dom": "^5.14.1",
@@ -58,9 +60,9 @@
       "not op_mini all"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ]
   }
 }

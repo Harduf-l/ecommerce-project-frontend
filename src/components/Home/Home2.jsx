@@ -33,6 +33,7 @@ class Home2 extends React.Component {
   render() {
     return (
       <div>
+      {console.log(this.state)}
         {this.state.superfoodArray &&
         <div
           style={{
